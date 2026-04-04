@@ -123,7 +123,7 @@ export default function Hero() {
               
               {/* Avatar */}
               <div className="absolute inset-4 rounded-full bg-navy-900 border border-white/10 overflow-hidden flex items-center justify-center glass-card">
-                <img src="/portofolio-adit/profile.jpg" alt="Adit Hardiansyah Surachman" className="w-full h-full object-cover" />
+                <img src="/profile.jpg" alt="Adit Hardiansyah Surachman" className="w-full h-full object-cover" />
               </div>
             </div>
           </motion.div>
