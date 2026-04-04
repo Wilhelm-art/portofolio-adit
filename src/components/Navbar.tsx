@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Github, Linkedin, MessageSquare } from 'lucide-react';
-import { NAV_LINKS, CONTACT_DATA } from '../lib/constants';
+import { Menu, X } from 'lucide-react';
+import { NAV_LINKS } from '../lib/constants';
 import { cn } from '../lib/utils';
 
 export default function Navbar() {
@@ -50,14 +50,13 @@ export default function Navbar() {
           </nav>
           
           <div className="flex items-center gap-4 pl-8 border-l border-white/10">
-            <a href={CONTACT_DATA.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
-              <Github size={18} />
-            </a>
-            <a href={CONTACT_DATA.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors" aria-label="LinkedIn">
-              <Linkedin size={18} />
-            </a>
-            <a href={CONTACT_DATA.discord} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-indigo-400 transition-colors" aria-label="Discord">
-              <MessageSquare size={18} />
+            <a
+              href="https://drive.google.com/file/d/1hYE9VO-6FSNTNs8u2o9DthaKgkWcW497/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2 bg-electric-blue/10 border border-electric-blue/30 text-electric-blue text-sm font-medium rounded-full hover:bg-electric-blue hover:text-white transition-all transform hover:scale-105"
+            >
+              View CV
             </a>
           </div>
         </div>
@@ -93,15 +92,14 @@ export default function Navbar() {
                 </a>
               ))}
               
-              <div className="flex items-center gap-6 mt-4 pt-4 border-t border-white/10">
-                <a href={CONTACT_DATA.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
-                  <Github size={20} />
-                </a>
-                <a href={CONTACT_DATA.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors" aria-label="LinkedIn">
-                  <Linkedin size={20} />
-                </a>
-                <a href={CONTACT_DATA.discord} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-indigo-400 transition-colors" aria-label="Discord">
-                  <MessageSquare size={20} />
+              <div className="flex flex-col gap-4 mt-4 pt-4 border-t border-white/10">
+                <a
+                  href="https://drive.google.com/file/d/1hYE9VO-6FSNTNs8u2o9DthaKgkWcW497/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3 bg-electric-blue text-center text-white font-medium rounded-lg"
+                >
+                  View CV
                 </a>
               </div>
             </div>

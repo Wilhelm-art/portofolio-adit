@@ -45,7 +45,7 @@ export default function Footer() {
             <MessageSquare size={20} />
           </a>
           <a
-            href={`mailto:${CONTACT_DATA.email}`}
+            href={CONTACT_DATA.email}
             className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-electric-blue hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all"
             aria-label="Email"
           >

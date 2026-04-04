@@ -27,16 +27,11 @@ export default function Projects() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Featured Project */}
             <motion.div variants={fadeInUp} className="glass-card rounded-2xl overflow-hidden group flex flex-col lg:col-span-1">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center p-8">
                 <div className="absolute top-4 right-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-[10px] font-bold px-3 py-1 rounded-full z-20 shadow-lg">
                   THESIS
                 </div>
-                <div className="absolute inset-0 bg-navy-900/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                <img 
-                  src={FEATURED_PROJECT.image} 
-                  alt={FEATURED_PROJECT.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
+                <div className="text-white/20 font-bold text-2xl tracking-tighter opacity-50 group-hover:opacity-80 transition-opacity">SiKeuMas</div>
               </div>
               
               <div className="p-6 flex-1 flex flex-col">
@@ -83,13 +78,8 @@ export default function Projects() {
             {/* Other Projects */}
             {OTHER_PROJECTS.map((project) => (
               <motion.div key={project.id} variants={fadeInUp} className="glass-card rounded-2xl overflow-hidden group flex flex-col">
-                <div className="relative h-48 overflow-hidden">
-                  <div className="absolute inset-0 bg-navy-900/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
+                <div className="relative h-48 overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center p-8 text-center">
+                  <div className="text-white/20 font-bold text-lg tracking-widest opacity-50 group-hover:opacity-80 transition-opacity uppercase px-4 line-clamp-2">{project.title}</div>
                 </div>
                 
                 <div className="p-6 flex-1 flex flex-col">
