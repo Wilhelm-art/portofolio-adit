@@ -1,13 +1,13 @@
 import { motion } from 'motion/react';
 import { SKILLS_DATA } from '../lib/constants';
 import { fadeInUp, staggerContainer } from '../lib/animations';
-import { Code2, Database, Layout, Wrench } from 'lucide-react';
+import { ShieldCheck, Code2, Network, Award } from 'lucide-react';
 
 const icons = {
-  Frontend: Layout,
-  Backend: Code2,
-  Database: Database,
-  Tools: Wrench,
+  Security: ShieldCheck,
+  Programming: Code2,
+  Infrastructure: Network,
+  Certification: Award,
 };
 
 export default function Skills() {

@@ -9,35 +9,35 @@ export const NAV_LINKS = [
 
 export const HERO_DATA = {
   name: 'Adit',
-  titles: ['IT Graduate', 'Full-Stack Developer', 'Problem Solver', 'Open to Work'],
-  subtitle: 'Building smart digital solutions that matter.',
+  titles: ['IT Graduate', 'Cybersecurity Enthusiast', 'Web Developer', 'Open to Work'],
+  subtitle: 'An Information Technology graduate with a strong interest in cybersecurity, threat analysis, and network infrastructure. Equipped with sharp system analysis skills and a technical vocational background that instilled a strong discipline for SOPs and safety.',
 };
 
 export const ABOUT_DATA = {
-  bio: "I'm Adit, a fresh IT graduate passionate about building scalable, user-centered web applications. My academic journey culminated in a thesis on mosque financial management systems — combining civic tech with modern web development. I'm now actively seeking opportunities where I can contribute, grow, and ship great products.",
+  bio: "Hello! I am Adit Hardiansyah Surachman, a Bachelor of Information Technology graduate with a 3.62 GPA. I have a profound passion for securing digital environments and building efficient systems. Supported by my vocational background in Mechanical Engineering, I have developed a highly analytical mindset, strict adherence to Standard Operating Procedures (SOP), and a strong attention to detail in technical documentation. I am ready to contribute to securing and managing the reliability of corporate digital information systems.",
   stats: [
-    { label: 'Projects', value: 10, suffix: '+' },
-    { label: 'Years of Study', value: 4, suffix: '' },
+    { label: 'GPA', value: 3.62, suffix: '' },
+    { label: 'Years of Study', value: 4, suffix: '+' },
     { label: 'Published Thesis', value: 1, suffix: '' },
   ],
 };
 
 export const SKILLS_DATA = [
   {
-    category: 'Frontend',
-    skills: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS'],
+    category: 'Security',
+    skills: ['Network Security', 'Threat Analysis', 'Risk Management', 'System Testing & Troubleshooting'],
   },
   {
-    category: 'Backend',
-    skills: ['Node.js', 'Express', 'Laravel', 'PHP', 'REST API'],
+    category: 'Programming',
+    skills: ['PHP', 'Python', 'Java', 'SQL'],
   },
   {
-    category: 'Database',
-    skills: ['MySQL', 'PostgreSQL', 'MongoDB'],
+    category: 'Infrastructure',
+    skills: ['LAN/WAN', 'Linux', 'SDLC'],
   },
   {
-    category: 'Tools',
-    skills: ['Git', 'GitHub', 'Figma', 'VS Code', 'Postman', 'Vercel'],
+    category: 'Certification',
+    skills: ['Google Cybersecurity Certificate (2025) — Coursera'],
   },
 ];
 
@@ -45,8 +45,8 @@ export const FEATURED_PROJECT = {
   id: 'sikeuamas',
   title: 'SiKeuMas — Web-Based Mosque Financial Management System',
   badge: '🏆 Thesis Project',
-  description: 'A comprehensive web application designed to digitize and streamline mosque financial administration — including income/expense tracking, donation management, zakat & infaq recording, financial report generation (PDF), and a transparency dashboard for mosque communities. Built with Laravel, MySQL, and Bootstrap.',
-  tags: ['Laravel', 'PHP', 'MySQL', 'Bootstrap', 'FPDF', 'Chart.js'],
+  description: 'Designed and developed a web-based financial management application for Masjid At-Tijaniyah using the cash basis accounting method to modernize and transparently manage community funds.',
+  tags: ['Web Development', 'Cash Basis Accounting', 'PHP', 'MySQL', 'Laravel', 'Bootstrap'],
   features: [
     'Income & expense ledger',
     'Donation & zakat tracking',
@@ -62,75 +62,56 @@ export const FEATURED_PROJECT = {
 
 export const OTHER_PROJECTS = [
   {
-    id: 'ecommerce',
-    title: 'E-commerce Web App',
-    description: 'A full-stack e-commerce platform with cart functionality, user authentication, and payment integration.',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB'],
+    id: 'budget-calc',
+    title: 'Web-Based Budget Calculation Application',
+    description: 'Developed during my internship at Dinas Perdagangan dan Perindustrian Kota Bandung to digitize manual financial reporting processes, ensuring data integrity and audit readiness.',
+    tags: ['System Analysis', 'Web Application', 'Data Management'],
     github: '#',
     demo: '#',
-    image: 'https://picsum.photos/seed/ecommerce/600/400',
-  },
-  {
-    id: 'grade-management',
-    title: 'Student Grade Management System',
-    description: 'An academic portal for teachers to manage student grades and generate report cards.',
-    tags: ['Laravel', 'PHP', 'MySQL'],
-    github: '#',
-    demo: '#',
-    image: 'https://picsum.photos/seed/grades/600/400',
-  },
-  {
-    id: 'event-booking',
-    title: 'Campus Event Booking App',
-    description: 'A platform for university students to discover and book campus events with ticketing.',
-    tags: ['Next.js', 'React', 'PostgreSQL', 'Tailwind'],
-    github: '#',
-    demo: '#',
-    image: 'https://picsum.photos/seed/events/600/400',
-  },
-  {
-    id: 'iot-dashboard',
-    title: 'IoT Room Monitoring Dashboard',
-    description: 'Real-time dashboard displaying temperature and humidity data from IoT sensors.',
-    tags: ['React', 'MQTT', 'Node.js', 'Chart.js'],
-    github: '#',
-    demo: '#',
-    image: 'https://picsum.photos/seed/iot/600/400',
+    image: 'https://picsum.photos/seed/budget/600/400',
   },
 ];
 
 export const EXPERIENCE_DATA = [
   {
     id: 1,
-    type: 'education',
-    title: 'S1 Information Technology',
-    organization: 'University of Technology',
-    period: '2020–2024',
-    details: 'GPA: 3.85/4.00',
+    type: 'experience',
+    title: 'IT / Administrative Staff (Intern)',
+    organization: 'Dinas Perdagangan dan Perindustrian Kota Bandung',
+    period: 'Oct 2024 – Jan 2025',
+    details: 'Digitized manual processes by developing a web-based budget calculation app to improve the efficiency and accuracy of annual financial reporting.',
   },
   {
     id: 2,
     type: 'experience',
-    title: 'Web Developer Intern',
-    organization: 'Tech Solutions Inc.',
-    period: 'Jun 2023 - Dec 2023',
-    details: 'Developed and maintained client websites using React and Node.js. Collaborated with the design team to implement responsive UI.',
+    title: 'Production Operator (Intern)',
+    organization: 'PT. Bahagia Sejahtera Metalindo',
+    period: 'Aug 2020 – Sep 2020',
+    details: 'Gained hands-on industrial experience as a production operator during vocational internship.',
   },
   {
     id: 3,
     type: 'education',
-    title: 'Thesis: Sistem Informasi Keuangan Masjid Berbasis Web',
-    organization: 'University of Technology',
-    period: '2024',
-    details: 'Grade: A. Developed a comprehensive financial management system for mosques.',
+    title: 'Bachelor of Information Technology (S1 Teknik Informatika)',
+    organization: 'STMIK Mardira Indonesia',
+    period: 'Jul 2021 – Sep 2025',
+    details: 'GPA: 3.62 / 4.00',
   },
   {
     id: 4,
+    type: 'education',
+    title: 'Mechanical Engineering (Teknik Pemesinan)',
+    organization: 'SMK Mahardhika Batujajar',
+    period: 'Jul 2018 – Jun 2021',
+    details: 'Score: 81.79',
+  },
+  {
+    id: 5,
     type: 'certification',
-    title: 'Front-End Web Developer Expert',
-    organization: 'Dicoding',
-    period: '2023',
-    details: 'Completed advanced frontend development coursework including PWA, accessibility, and testing.',
+    title: 'Google Cybersecurity Certificate',
+    organization: 'Coursera',
+    period: '2025',
+    details: 'Comprehensive professional certificate covering security frameworks, threat analysis, incident response, and network hardening.',
   },
 ];
 
@@ -139,6 +120,6 @@ export const CONTACT_DATA = {
   phone: '+62 856-5983-2513',
   location: 'Bandung, Indonesia',
   linkedin: 'https://linkedin.com/in/placeholder',
-  github: 'https://github.com/placeholder',
+  github: 'https://github.com/Wilhelm-art',
   whatsappMessage: "Hi Adit, I found your portfolio and I'd like to connect!",
 };
