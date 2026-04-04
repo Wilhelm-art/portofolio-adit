@@ -50,7 +50,7 @@ export const CERTIFICATIONS_DATA = [
 
 export const FEATURED_PROJECT = {
   id: 'sikeuamas',
-  title: 'SiKeuMas — Web-Based Mosque Financial Management System',
+  title: 'Web-Based Mosque Financial Management System (Thesis)',
   badge: '🏆 Thesis Project',
   description: 'Designed and developed a web-based financial management application for Masjid At-Tijaniyah using the cash basis accounting method to modernize and transparently manage community funds.',
   tags: ['Web Development', 'Cash Basis Accounting', 'System Design'],
@@ -63,14 +63,14 @@ export const FEATURED_PROJECT = {
     'Responsive and mobile-friendly UI',
   ],
   github: 'https://github.com/Wilhelm-art',
-  demo: '/projects/sikeuamas',
+  demo: '#',
   image: 'https://picsum.photos/seed/sikeuamas/800/450',
 };
 
 export const OTHER_PROJECTS = [
   {
     id: 'budget-calc',
-    title: 'Web-Based Budget Calculation Application',
+    title: 'Web-Based Budget Calculation Application (Internship)',
     description: 'Developed during my internship at Dinas Perdagangan dan Perindustrian Kota Bandung to digitize manual financial reporting processes, ensuring data integrity and audit readiness.',
     tags: ['System Analysis', 'Web Application', 'Data Management'],
     github: 'https://github.com/Wilhelm-art',
@@ -137,6 +137,6 @@ export const CONTACT_DATA = {
   location: 'Bandung, Indonesia',
   linkedin: 'https://www.linkedin.com/in/adit-hardiansyah-surachman-b9aab1315/',
   github: 'https://github.com/Wilhelm-art',
-  discord: 'https://discordapp.com/users/I760497895220445194',
+  discord: 'https://discordapp.com/channels/@me',
   whatsappMessage: "Hi Adit, I found your portfolio and I'd like to connect!",
 };

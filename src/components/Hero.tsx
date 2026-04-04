@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Download } from 'lucide-react';
-import { HERO_DATA } from '../lib/constants';
+import { ArrowRight, Download, Github, Linkedin, MessageSquare } from 'lucide-react';
+import { HERO_DATA, CONTACT_DATA } from '../lib/constants';
 import { fadeInUp, blobAnimation } from '../lib/animations';
 
 export default function Hero() {
@@ -85,12 +85,26 @@ export default function Hero() {
               </a>
               
               <a
-                href="/portofolio-adit/Adit_CV.pdf"
-                download
+                href="https://drive.google.com/file/d/1hYE9VO-6FSNTNs8u2o9DthaKgkWcW497/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-lg flex items-center gap-2 hover:bg-white/10 transition-all"
               >
-                <span>Download CV</span>
+                <span>View Full CV</span>
                 <Download size={18} className="group-hover:-translate-y-1 transition-transform" />
+              </a>
+            </motion.div>
+
+            {/* Social Links under Hero */}
+            <motion.div variants={fadeInUp} className="flex items-center justify-center lg:justify-start gap-6 mt-10">
+              <a href={CONTACT_DATA.github} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors" aria-label="GitHub">
+                <Github size={24} />
+              </a>
+              <a href={CONTACT_DATA.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-blue-500 transition-colors" aria-label="LinkedIn">
+                <Linkedin size={24} />
+              </a>
+              <a href={CONTACT_DATA.discord} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-indigo-400 transition-colors" aria-label="Discord">
+                <MessageSquare size={24} />
               </a>
             </motion.div>
           </motion.div>
