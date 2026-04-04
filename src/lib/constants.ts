@@ -1,12 +1,3 @@
-export const NAV_LINKS = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
-];
-
 export const HERO_DATA = {
   name: 'Adit',
   titles: ['IT Graduate', 'Cybersecurity Enthusiast', 'Web Developer', 'Open to Work'],

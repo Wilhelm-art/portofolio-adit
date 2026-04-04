@@ -4,71 +4,66 @@ import { Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 const navLinks = [
-  { label: "Home",       href: "#home"       },
-  { label: "About",      href: "#about"      },
-  { label: "Skills",     href: "#skills"     },
-  { label: "Projects",   href: "#projects"   },
-  { label: "Experience", href: "#experience" },
-  { label: "Contact",    href: "#contact"    },
+  { label: 'Home',       id: 'home'       },
+  { label: 'About',      id: 'about'      },
+  { label: 'Skills',     id: 'skills'     },
+  { label: 'Projects',   id: 'projects'   },
+  { label: 'Experience', id: 'experience' },
+  { label: 'Contact',    id: 'contact'    },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState('home');
 
+  // Scroll shadow effect
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // Active section highlighting via IntersectionObserver
   useEffect(() => {
-    const sections = ["home", "about", "skills", "projects", "experience", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.3 }
     );
-
-    sections.forEach((id) => {
+    navLinks.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
-
     return () => observer.disconnect();
   }, []);
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const targetId = href.replace("#", "");
-    const target = document.getElementById(targetId);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-      setIsMobileMenuOpen(false);
-    }
+  // Reliable scroll — uses <button>, no href, works on all browsers including iOS Safari
+  const scrollToSection = (id: string) => {
+    const target = document.getElementById(id);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled ? 'bg-navy-900/80 backdrop-blur-md py-4 shadow-lg border-b border-white/5' : 'bg-transparent py-6'
+        isScrolled
+          ? 'bg-navy-900/80 backdrop-blur-md py-4 shadow-lg border-b border-white/5'
+          : 'bg-transparent py-6'
       )}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+
         {/* Logo */}
-        <a 
-          href="#home" 
-          onClick={(e) => handleNavClick(e, "#home")}
-          className="text-2xl font-bold tracking-tighter flex items-center gap-1 group cursor-pointer"
+        <button
+          onClick={() => scrollToSection('home')}
+          className="text-2xl font-bold tracking-tighter flex items-center gap-1 group bg-transparent border-none outline-none cursor-pointer"
+          aria-label="Go to top"
         >
           <span className="text-white group-hover:text-cyan-400 transition-colors">Adit</span>
           <motion.span
@@ -76,32 +71,32 @@ export default function Navbar() {
             transition={{ duration: 1, repeat: Infinity }}
             className="w-2 h-6 bg-cyan-accent inline-block"
           />
-        </a>
+        </button>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           <nav className="flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm font-medium transition-colors duration-200 cursor-pointer relative group ${
-                  activeSection === link.href.replace("#", "")
-                    ? "text-cyan-400 font-semibold"
-                    : "text-slate-300 hover:text-white hover:text-cyan-400"
-                }`}
+            {navLinks.map(({ label, id }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className={cn(
+                  'text-sm font-medium transition-colors duration-200 cursor-pointer relative group bg-transparent border-none outline-none',
+                  activeSection === id
+                    ? 'text-cyan-400 font-semibold'
+                    : 'text-slate-300 hover:text-cyan-400'
+                )}
               >
-                {link.label}
+                {label}
                 <span className={cn(
-                  "absolute -bottom-1 left-0 h-0.5 bg-cyan-accent transition-all duration-300",
-                  activeSection === link.href.replace("#", "") ? "w-full" : "w-0 group-hover:w-full"
+                  'absolute -bottom-1 left-0 h-0.5 bg-cyan-accent transition-all duration-300',
+                  activeSection === id ? 'w-full' : 'w-0 group-hover:w-full'
                 )} />
-              </a>
+              </button>
             ))}
           </nav>
-          
-          <div className="flex items-center gap-4 pl-8 border-l border-white/10">
+
+          <div className="pl-8 border-l border-white/10">
             <a
               href="https://drive.google.com/file/d/1hYE9VO-6FSNTNs8u2o9DthaKgkWcW497/view?usp=sharing"
               target="_blank"
@@ -113,17 +108,17 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Hamburger */}
         <button
           className="md:hidden text-slate-300 hover:text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav Drawer */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.nav
@@ -132,28 +127,28 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-navy-900 border-b border-white/10 overflow-hidden"
           >
-            <div className="flex flex-col py-4 px-6 gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-lg font-medium transition-colors duration-200 ${
-                    activeSection === link.href.replace("#", "")
-                      ? "text-cyan-400 font-semibold"
-                      : "text-slate-300 hover:text-cyan-400"
-                  }`}
+            <div className="flex flex-col py-4 px-6 gap-1">
+              {navLinks.map(({ label, id }) => (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={cn(
+                    'text-left w-full py-3 text-lg font-medium transition-colors duration-200 bg-transparent border-none outline-none cursor-pointer',
+                    activeSection === id
+                      ? 'text-cyan-400 font-semibold'
+                      : 'text-slate-300 hover:text-cyan-400'
+                  )}
                 >
-                  {link.label}
-                </a>
+                  {label}
+                </button>
               ))}
-              
-              <div className="flex flex-col gap-4 mt-4 pt-4 border-t border-white/10">
+
+              <div className="mt-4 pt-4 border-t border-white/10">
                 <a
                   href="https://drive.google.com/file/d/1hYE9VO-6FSNTNs8u2o9DthaKgkWcW497/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 bg-electric-blue text-center text-white font-medium rounded-lg"
+                  className="block w-full py-3 bg-electric-blue text-center text-white font-medium rounded-lg hover:bg-blue-600 transition-colors"
                 >
                   View CV
                 </a>

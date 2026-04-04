@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Download } from 'lucide-react';
 import { ABOUT_DATA } from '../lib/constants';
-import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../lib/animations';
+import { fadeInUp, staggerContainer, slideInRight } from '../lib/animations';
 import AnimatedCounter from './AnimatedCounter';
 
 export default function About() {

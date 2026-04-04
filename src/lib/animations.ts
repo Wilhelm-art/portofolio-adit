@@ -25,11 +25,6 @@ export const slideInRight: Variants = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
-export const scaleUp: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
-};
-
 export const blobAnimation: Variants = {
   animate: {
     scale: [1, 1.1, 1],
