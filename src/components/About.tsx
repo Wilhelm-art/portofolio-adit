@@ -54,7 +54,7 @@ export default function About() {
             </div>
 
             <a
-              href="/Adit_CV.pdf"
+              href="/portofolio-adit/Adit_CV.pdf"
               download
               className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-lg text-white hover:bg-white/10 hover:border-white/20 transition-all"
             >

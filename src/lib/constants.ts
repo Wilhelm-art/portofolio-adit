@@ -14,7 +14,7 @@ export const HERO_DATA = {
 };
 
 export const ABOUT_DATA = {
-  bio: "Hello! I am Adit Hardiansyah Surachman, a Bachelor of Information Technology graduate with a 3.62 GPA. I have a profound passion for securing digital environments and building efficient systems. Supported by my vocational background in Mechanical Engineering, I have developed a highly analytical mindset, strict adherence to Standard Operating Procedures (SOP), and a strong attention to detail in technical documentation. I am ready to contribute to securing and managing the reliability of corporate digital information systems.",
+  bio: "Hello! I am Adit Hardiansyah Surachman, a Bachelor of Information Technology graduate. I have a profound passion for securing digital environments and building modern web applications. Supported by my vocational background in Mechanical Engineering, I have developed a highly analytical mindset, strict adherence to Standard Operating Procedures (SOP), and a strong attention to detail. I am ready to contribute to securing and managing the reliability of corporate digital information systems.",
   stats: [
     { label: 'GPA', value: 3.62, suffix: '' },
     { label: 'Years of Study', value: 4, suffix: '+' },
@@ -25,19 +25,26 @@ export const ABOUT_DATA = {
 export const SKILLS_DATA = [
   {
     category: 'Security',
-    skills: ['Network Security', 'Threat Analysis', 'Risk Management', 'System Testing & Troubleshooting'],
+    skills: ['Network Security', 'Threat Analysis', 'Risk Management', 'Cybersecurity Basics', 'System Testing & Troubleshooting'],
   },
   {
     category: 'Programming',
-    skills: ['PHP', 'Python', 'Java', 'SQL'],
+    skills: ['React', 'Next.js', 'TypeScript', 'PHP', 'Python', 'Java', 'SQL'],
   },
   {
     category: 'Infrastructure',
     skills: ['LAN/WAN', 'Linux', 'SDLC'],
   },
+];
+
+export const CERTIFICATIONS_DATA = [
   {
-    category: 'Certification',
-    skills: ['Google Cybersecurity Certificate (2025) — Coursera'],
+    title: 'Google Cybersecurity Certificate (2025) — Coursera',
+    url: 'https://www.coursera.org/account/accomplishments/professional-cert/certificate/LQ1NNIQRM3Q1',
+  },
+  {
+    title: 'Lulus Uji Kompetensi Keahlian (UKK) Teknik Pemesinan Nasional (2021)',
+    url: 'https://drive.google.com/file/d/1PvSBMgh9uuPJrmUhJKu7hf4B1iTFQf0T/view?usp=sharing',
   },
 ];
 
@@ -46,7 +53,7 @@ export const FEATURED_PROJECT = {
   title: 'SiKeuMas — Web-Based Mosque Financial Management System',
   badge: '🏆 Thesis Project',
   description: 'Designed and developed a web-based financial management application for Masjid At-Tijaniyah using the cash basis accounting method to modernize and transparently manage community funds.',
-  tags: ['Web Development', 'Cash Basis Accounting', 'PHP', 'MySQL', 'Laravel', 'Bootstrap'],
+  tags: ['Web Development', 'Cash Basis Accounting', 'System Design'],
   features: [
     'Income & expense ledger',
     'Donation & zakat tracking',
@@ -55,7 +62,7 @@ export const FEATURED_PROJECT = {
     'Role-based access (Admin / Treasurer / Viewer)',
     'Responsive and mobile-friendly UI',
   ],
-  github: '#',
+  github: 'https://github.com/Wilhelm-art',
   demo: '/projects/sikeuamas',
   image: 'https://picsum.photos/seed/sikeuamas/800/450',
 };
@@ -66,9 +73,18 @@ export const OTHER_PROJECTS = [
     title: 'Web-Based Budget Calculation Application',
     description: 'Developed during my internship at Dinas Perdagangan dan Perindustrian Kota Bandung to digitize manual financial reporting processes, ensuring data integrity and audit readiness.',
     tags: ['System Analysis', 'Web Application', 'Data Management'],
-    github: '#',
+    github: 'https://github.com/Wilhelm-art',
     demo: '#',
     image: 'https://picsum.photos/seed/budget/600/400',
+  },
+  {
+    id: 'komik-zynqtoon',
+    title: 'Komik Zynqtoon',
+    description: 'A web-based comic reading platform designed with a modern UI to provide a seamless and engaging reading experience for users. Built with modern web technologies.',
+    tags: ['Web Development', 'Next.js', 'UI/UX'],
+    github: 'https://github.com/Wilhelm-art/komik-zynqtoon',
+    demo: 'https://komik-zynqtoon.vercel.app/',
+    image: 'https://picsum.photos/seed/zynqtoon/600/400',
   },
 ];
 
@@ -116,10 +132,10 @@ export const EXPERIENCE_DATA = [
 ];
 
 export const CONTACT_DATA = {
-  email: 'adit@email.com',
+  email: 'adithardiansyah091@gmail.com',
   phone: '+62 856-5983-2513',
   location: 'Bandung, Indonesia',
-  linkedin: 'https://linkedin.com/in/placeholder',
+  linkedin: 'https://www.linkedin.com/in/adit-hardiansyah-surachman-b9aab1315/',
   github: 'https://github.com/Wilhelm-art',
   whatsappMessage: "Hi Adit, I found your portfolio and I'd like to connect!",
 };

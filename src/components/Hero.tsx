@@ -85,7 +85,7 @@ export default function Hero() {
               </a>
               
               <a
-                href="/Adit_CV.pdf"
+                href="/portofolio-adit/Adit_CV.pdf"
                 download
                 className="group px-8 py-4 bg-white/5 border border-white/10 text-white font-medium rounded-lg flex items-center gap-2 hover:bg-white/10 transition-all"
               >
@@ -109,7 +109,7 @@ export default function Hero() {
               
               {/* Avatar */}
               <div className="absolute inset-4 rounded-full bg-navy-900 border border-white/10 overflow-hidden flex items-center justify-center glass-card">
-                <img src="/profile.jpg" alt="Adit Hardiansyah Surachman" className="w-full h-full object-cover" />
+                <img src="/portofolio-adit/profile.jpg" alt="Adit Hardiansyah Surachman" className="w-full h-full object-cover" />
               </div>
             </div>
           </motion.div>
