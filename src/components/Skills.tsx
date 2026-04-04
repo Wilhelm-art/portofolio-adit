@@ -11,7 +11,7 @@ const icons = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-navy-900/50 relative">
+    <section className="py-24 bg-navy-900/50 relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"

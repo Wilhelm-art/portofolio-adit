@@ -15,6 +15,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
   body {
     @apply bg-navy-800 text-slate-200 font-sans antialiased selection:bg-electric-blue/30 selection:text-white;

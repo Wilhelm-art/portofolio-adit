@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
-import { NAV_LINKS } from '../lib/constants';
 import { cn } from '../lib/utils';
+
+const navLinks = [
+  { label: "Home",       href: "#home"       },
+  { label: "About",      href: "#about"      },
+  { label: "Skills",     href: "#skills"     },
+  { label: "Projects",   href: "#projects"   },
+  { label: "Experience", href: "#experience" },
+  { label: "Contact",    href: "#contact"    },
+];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +24,37 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    const sections = ["home", "about", "skills", "projects", "experience", "contact"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <header
@@ -25,8 +65,12 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="text-2xl font-bold tracking-tighter flex items-center gap-1 group">
-          <span className="text-white group-hover:text-electric-blue transition-colors">Adit</span>
+        <a 
+          href="#home" 
+          onClick={(e) => handleNavClick(e, "#home")}
+          className="text-2xl font-bold tracking-tighter flex items-center gap-1 group cursor-pointer"
+        >
+          <span className="text-white group-hover:text-cyan-400 transition-colors">Adit</span>
           <motion.span
             animate={{ opacity: [1, 0, 1] }}
             transition={{ duration: 1, repeat: Infinity }}
@@ -37,14 +81,22 @@ export default function Navbar() {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           <nav className="flex items-center gap-8">
-            {NAV_LINKS.map((link) => (
+            {navLinks.map((link) => (
               <a
-                key={link.name}
+                key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-slate-300 hover:text-white hover:text-electric-blue transition-colors relative group"
+                onClick={(e) => handleNavClick(e, link.href)}
+                className={`text-sm font-medium transition-colors duration-200 cursor-pointer relative group ${
+                  activeSection === link.href.replace("#", "")
+                    ? "text-cyan-400 font-semibold"
+                    : "text-slate-300 hover:text-white hover:text-cyan-400"
+                }`}
               >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-electric-blue transition-all group-hover:w-full" />
+                {link.label}
+                <span className={cn(
+                  "absolute -bottom-1 left-0 h-0.5 bg-cyan-accent transition-all duration-300",
+                  activeSection === link.href.replace("#", "") ? "w-full" : "w-0 group-hover:w-full"
+                )} />
               </a>
             ))}
           </nav>
@@ -81,14 +133,18 @@ export default function Navbar() {
             className="md:hidden bg-navy-900 border-b border-white/10 overflow-hidden"
           >
             <div className="flex flex-col py-4 px-6 gap-4">
-              {NAV_LINKS.map((link) => (
+              {navLinks.map((link) => (
                 <a
-                  key={link.name}
+                  key={link.label}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-lg font-medium text-slate-300 hover:text-electric-blue transition-colors"
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`text-lg font-medium transition-colors duration-200 ${
+                    activeSection === link.href.replace("#", "")
+                      ? "text-cyan-400 font-semibold"
+                      : "text-slate-300 hover:text-cyan-400"
+                  }`}
                 >
-                  {link.name}
+                  {link.label}
                 </a>
               ))}
               

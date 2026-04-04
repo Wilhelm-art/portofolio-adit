@@ -50,7 +50,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section className="py-24 relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"

@@ -132,7 +132,7 @@ export const EXPERIENCE_DATA = [
 ];
 
 export const CONTACT_DATA = {
-  email: 'mailto:adithardiansyah091@gmail.com',
+  email: 'adithardiansyah091@gmail.com',
   phone: '+62 856-5983-2513',
   location: 'Bandung, Indonesia',
   linkedin: 'https://www.linkedin.com/in/adit-hardiansyah-surachman-b9aab1315/',

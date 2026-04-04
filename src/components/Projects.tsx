@@ -6,7 +6,7 @@ import { fadeInUp, staggerContainer } from '../lib/animations';
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 relative">
+    <section className="py-24 relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"

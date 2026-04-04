@@ -5,7 +5,7 @@ import { fadeInUp, staggerContainer } from '../lib/animations';
 
 export default function Timeline() {
   return (
-    <section id="experience" className="py-24 bg-navy-900/50 relative overflow-hidden">
+    <section className="py-24 bg-navy-900/50 relative overflow-hidden">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"

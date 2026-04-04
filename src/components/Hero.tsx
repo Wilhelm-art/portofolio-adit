@@ -30,7 +30,7 @@ export default function Hero() {
   }, [currentText, isDeleting, titleIndex]);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background Blobs */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <motion.div

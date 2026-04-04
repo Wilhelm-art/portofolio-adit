@@ -13,12 +13,24 @@ export default function Home() {
     <div className="min-h-screen bg-navy-800 text-slate-200 font-sans">
       <Navbar />
       <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Timeline />
-        <Contact />
+        <section id="home">
+          <Hero />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="skills">
+          <Skills />
+        </section>
+        <section id="projects">
+          <Projects />
+        </section>
+        <section id="experience">
+          <Timeline />
+        </section>
+        <section id="contact">
+          <Contact />
+        </section>
       </main>
       <Footer />
       <WhatsAppButton />
