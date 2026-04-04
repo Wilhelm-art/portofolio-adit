@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, MessageSquare } from 'lucide-react';
 import { CONTACT_DATA } from '../lib/constants';
 
 export default function Footer() {
@@ -34,6 +34,15 @@ export default function Footer() {
             aria-label="LinkedIn"
           >
             <Linkedin size={20} />
+          </a>
+          <a
+            href={CONTACT_DATA.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-electric-blue hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all"
+            aria-label="Discord"
+          >
+            <MessageSquare size={20} />
           </a>
           <a
             href={`mailto:${CONTACT_DATA.email}`}

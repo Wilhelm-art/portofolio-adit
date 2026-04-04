@@ -137,5 +137,6 @@ export const CONTACT_DATA = {
   location: 'Bandung, Indonesia',
   linkedin: 'https://www.linkedin.com/in/adit-hardiansyah-surachman-b9aab1315/',
   github: 'https://github.com/Wilhelm-art',
+  discord: 'https://discordapp.com/users/I760497895220445194',
   whatsappMessage: "Hi Adit, I found your portfolio and I'd like to connect!",
 };
