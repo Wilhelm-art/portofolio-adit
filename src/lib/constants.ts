@@ -20,29 +20,37 @@ export const getAboutData = (lang: 'en' | 'id') => {
 export const getSkillsData = (lang: 'en' | 'id') => {
   return [
     {
-      category: lang === 'id' ? 'Keamanan' : 'Security',
-      skills: lang === 'id' 
-        ? ['Keamanan Jaringan', 'Analisis Ancaman', 'Manajemen Risiko', 'Dasar Keamanan Siber', 'Pengujian Sistem'] 
-        : ['Network Security', 'Threat Analysis', 'Risk Management', 'Cybersecurity Basics', 'System Testing & Troubleshooting'],
+      category: lang === 'id' ? 'Pemrograman & Framework' : 'Programming & Frameworks',
+      skills: ['PHP', 'Python', 'Java', 'TypeScript', 'React', 'Next.js', 'Laravel', 'Tailwind CSS', 'SQL'],
     },
     {
-      category: lang === 'id' ? 'Pemrograman' : 'Programming',
-      skills: ['React', 'Next.js', 'TypeScript', 'PHP', 'Python', 'Java', 'SQL'],
+      category: lang === 'id' ? 'Keamanan & Jaringan' : 'Security & Networking',
+      skills: lang === 'id'
+        ? ['Keamanan Jaringan', 'Analisis Ancaman', 'Manajemen Risiko', 'LAN/WAN', 'Pengujian & Troubleshooting Sistem']
+        : ['Network Security', 'Threat Analysis', 'Risk Management', 'LAN/WAN', 'System Testing & Troubleshooting'],
     },
     {
-      category: lang === 'id' ? 'Infrastruktur' : 'Infrastructure',
-      skills: ['LAN/WAN', 'Linux', 'SDLC'],
+      category: lang === 'id' ? 'Sistem & Alat' : 'Systems & Tools',
+      skills: ['Linux', 'SDLC', 'Microsoft Office', 'Microsoft Excel', 'Microsoft Word'],
     },
   ];
 };
 
 export const CERTIFICATIONS_DATA = [
   {
-    title: 'Google Cybersecurity Certificate (2025) — Coursera',
+    title: 'Google Cybersecurity Certificate (2026) — Coursera',
     url: 'https://www.coursera.org/account/accomplishments/professional-cert/certificate/LQ1NNIQRM3Q1',
   },
   {
-    title: 'Lulus Uji Kompetensi Keahlian (UKK) Teknik Pemesinan Nasional (2021)',
+    title: 'Cybersecurity Specialist — Digitalent Kominfo',
+    url: '#',
+  },
+  {
+    title: 'Junior Mobile Developer — BNSP',
+    url: '#',
+  },
+  {
+    title: 'Uji Kompetensi Keahlian (UKK) Teknik Pemesinan Nasional (2021)',
     url: 'https://drive.google.com/file/d/1PvSBMgh9uuPJrmUhJKu7hf4B1iTFQf0T/view?usp=sharing',
   },
 ];
