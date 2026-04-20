@@ -70,7 +70,7 @@ export const getFeaturedProject = (lang: 'en' | 'id') => {
       'Role-based access (Admin / Treasurer / Viewer)',
       'Responsive and mobile-friendly UI',
     ],
-    github: 'https://github.com/Wilhelm-art',
+    github: 'https://github.com/Wilhelm-art/sistem-kas-masjid',
     demo: '#',
     image: 'https://picsum.photos/seed/sikeuamas/800/450',
   };
