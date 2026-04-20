@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
+@plugin "tailwindcss/plugin";
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   
@@ -15,21 +18,32 @@
 @layer base {
   html {
     scroll-padding-top: 80px;
-  }
-  body {
-    /* Critical for iOS Safari momentum scrolling */
-    -webkit-overflow-scrolling: touch;
-    @apply bg-navy-800 text-slate-200 font-sans antialiased selection:bg-electric-blue/30 selection:text-white;
+    -webkit-tap-highlight-color: transparent;
   }
   
-  /* Custom Scrollbar */
+  /* Apply light mode by default, then override with dark classes using dark: */
+  body {
+    -webkit-overflow-scrolling: touch;
+    @apply bg-slate-50 text-slate-800 transition-colors duration-300 font-sans antialiased selection:bg-electric-blue/30 selection:text-electric-blue;
+  }
+  
+  .dark body {
+    @apply bg-navy-800 text-slate-200 selection:text-white;
+  }
+  
   ::-webkit-scrollbar {
     width: 10px;
   }
   ::-webkit-scrollbar-track {
+    @apply bg-slate-200;
+  }
+  .dark ::-webkit-scrollbar-track {
     @apply bg-navy-900;
   }
   ::-webkit-scrollbar-thumb {
+    @apply bg-slate-400 rounded-full border-2 border-slate-200;
+  }
+  .dark ::-webkit-scrollbar-thumb {
     @apply bg-slate-700 rounded-full border-2 border-navy-900;
   }
   ::-webkit-scrollbar-thumb:hover {
@@ -39,7 +53,7 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-xl;
+    @apply bg-white/50 dark:bg-white/5 backdrop-blur-md border border-slate-200/50 dark:border-white/10 shadow-lg dark:shadow-xl transition-colors duration-300;
   }
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-electric-blue to-cyan-accent;
