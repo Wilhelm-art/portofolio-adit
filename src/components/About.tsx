@@ -44,7 +44,7 @@ export default function About() {
 
               <div className="flex justify-center sm:justify-start">
                 <a
-                  href="https://drive.google.com/file/d/1hYE9VO-6FSNTNs8u2o9DthaKgkWcW497/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1MH7uaqvyoAH9m9-N6185lMznZVtxhR04/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl text-slate-700 dark:text-white font-medium hover:bg-slate-200 dark:hover:bg-white/10 transition-colors w-full sm:w-auto justify-center"

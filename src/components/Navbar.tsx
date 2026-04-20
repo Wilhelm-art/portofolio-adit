@@ -118,7 +118,7 @@ export default function Navbar() {
             </button>
 
             <a
-              href="https://drive.google.com/file/d/1hYE9VO-6FSNTNs8u2o9DthaKgkWcW497/view?usp=sharing"
+              href="https://drive.google.com/file/d/1MH7uaqvyoAH9m9-N6185lMznZVtxhR04/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-2 px-5 py-2 bg-electric-blue/10 border border-electric-blue/30 text-electric-blue text-sm font-medium rounded-full hover:bg-electric-blue hover:text-white transition-all transform hover:scale-105"
@@ -192,7 +192,7 @@ export default function Navbar() {
                 </button>
 
                 <a
-                  href="https://drive.google.com/file/d/1hYE9VO-6FSNTNs8u2o9DthaKgkWcW497/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1MH7uaqvyoAH9m9-N6185lMznZVtxhR04/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full py-3 bg-electric-blue text-center text-white font-semibold rounded-xl hover:bg-blue-600 active:bg-blue-700 transition-colors"
