@@ -42,14 +42,6 @@ export const CERTIFICATIONS_DATA = [
     url: 'https://www.coursera.org/account/accomplishments/professional-cert/certificate/LQ1NNIQRM3Q1',
   },
   {
-    title: 'Cybersecurity Specialist — Digitalent Kominfo',
-    url: '#',
-  },
-  {
-    title: 'Junior Mobile Developer — BNSP',
-    url: '#',
-  },
-  {
     title: 'Uji Kompetensi Keahlian (UKK) Teknik Pemesinan Nasional (2021)',
     url: 'https://drive.google.com/file/d/1PvSBMgh9uuPJrmUhJKu7hf4B1iTFQf0T/view?usp=sharing',
   },
