@@ -100,6 +100,28 @@ export const getOtherProjects = (lang: 'en' | 'id') => {
       demo: 'https://komik-zynqtoon.vercel.app/',
       image: 'https://picsum.photos/seed/zynqtoon/600/400',
     },
+    {
+      id: 'surabi-cikal',
+      title: 'Surabi Cikal Cisangkan',
+      description: lang === 'id'
+        ? 'Website landing page profesional untuk bisnis kuliner Surabi Cikal Cisangkan, dirancang dengan antarmuka yang responsif, katalog menu, dan info kontak yang terintegrasi.'
+        : 'A professional landing page for the Surabi Cikal Cisangkan culinary business, featuring a responsive interface, interactive menu catalog, and integrated contact information.',
+      tags: ['Web Development', 'Landing Page', 'UI/UX'],
+      github: 'https://github.com/Wilhelm-art/surabi-cikal',
+      demo: 'https://wilhelm-art.github.io/surabi-cikal',
+      image: 'https://picsum.photos/seed/surabi/600/400',
+    },
+    {
+      id: 'logsentinel',
+      title: 'LogSentinel',
+      description: lang === 'id'
+        ? 'Platform analisis log bertenaga AI dengan infrastruktur backend tangguh dan antarmuka frontend yang responsif untuk mengunggah dan menganalisis data log sistem.'
+        : 'An AI-powered log analysis platform with a robust backend infrastructure and responsive frontend interface for uploading and analyzing system log data.',
+      tags: ['Next.js', 'AI Integration', 'Full-stack'],
+      github: 'https://github.com/Wilhelm-art/logsentinel',
+      demo: 'https://logsentinel.vercel.app/',
+      image: 'https://picsum.photos/seed/logsentinel/600/400',
+    },
   ];
 };
 
