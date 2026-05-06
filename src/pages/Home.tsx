@@ -10,7 +10,7 @@ import WhatsAppButton from '../components/WhatsAppButton';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-navy-800 text-slate-200 font-sans">
+    <div className="min-h-[100svh] font-sans">
       <Navbar />
       <main>
         <section id="home">
