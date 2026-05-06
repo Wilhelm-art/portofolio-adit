@@ -108,7 +108,7 @@ export const getOtherProjects = (lang: 'en' | 'id') => {
         : 'A professional landing page for the Surabi Cikal Cisangkan culinary business, featuring a responsive interface, interactive menu catalog, and integrated contact information.',
       tags: ['Web Development', 'Landing Page', 'UI/UX'],
       github: 'https://github.com/Wilhelm-art/surabi-cikal',
-      demo: 'https://wilhelm-art.github.io/surabi-cikal',
+      demo: 'https://surabi-cikal-cisangkan.vercel.app/',
       image: 'https://picsum.photos/seed/surabi/600/400',
     },
     {
@@ -119,7 +119,7 @@ export const getOtherProjects = (lang: 'en' | 'id') => {
         : 'An AI-powered log analysis platform with a robust backend infrastructure and responsive frontend interface for uploading and analyzing system log data.',
       tags: ['Next.js', 'AI Integration', 'Full-stack'],
       github: 'https://github.com/Wilhelm-art/logsentinel',
-      demo: 'https://logsentinel.vercel.app/',
+      demo: 'https://logsentinel-five.vercel.app/',
       image: 'https://picsum.photos/seed/logsentinel/600/400',
     },
   ];
