@@ -72,7 +72,7 @@ export const getFeaturedProject = (lang: 'en' | 'id') => {
     ],
     github: 'https://github.com/Wilhelm-art/sistem-kas-masjid',
     demo: '#',
-    image: 'https://picsum.photos/seed/sikeuamas/800/450',
+    image: '/sikeumas.png',
   };
 };
 
@@ -87,7 +87,7 @@ export const getOtherProjects = (lang: 'en' | 'id') => {
       tags: lang === 'id' ? ['Analisis Sistem', 'Aplikasi Web', 'Manajemen Data'] : ['System Analysis', 'Web Application', 'Data Management'],
       github: 'https://github.com/Wilhelm-art',
       demo: '#',
-      image: 'https://picsum.photos/seed/budget/600/400',
+      image: '/budget.png',
     },
     {
       id: 'komik-zynqtoon',
@@ -98,7 +98,7 @@ export const getOtherProjects = (lang: 'en' | 'id') => {
       tags: ['Web Development', 'Next.js', 'UI/UX'],
       github: 'https://github.com/Wilhelm-art/komik-zynqtoon',
       demo: 'https://komik-zynqtoon.vercel.app/',
-      image: 'https://picsum.photos/seed/zynqtoon/600/400',
+      image: '/zynqtoon.png',
     },
     {
       id: 'surabi-cikal',
@@ -109,7 +109,7 @@ export const getOtherProjects = (lang: 'en' | 'id') => {
       tags: ['Web Development', 'Landing Page', 'UI/UX'],
       github: 'https://github.com/Wilhelm-art/surabi-cikal',
       demo: 'https://surabi-cikal-cisangkan.vercel.app/',
-      image: 'https://picsum.photos/seed/surabi/600/400',
+      image: '/surabi.png',
     },
     {
       id: 'logsentinel',
@@ -120,7 +120,7 @@ export const getOtherProjects = (lang: 'en' | 'id') => {
       tags: ['Next.js', 'AI Integration', 'Full-stack'],
       github: 'https://github.com/Wilhelm-art/logsentinel',
       demo: 'https://logsentinel-five.vercel.app/',
-      image: 'https://picsum.photos/seed/logsentinel/600/400',
+      image: '/logsentinel.png',
     },
   ];
 };

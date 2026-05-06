@@ -32,11 +32,11 @@ export default function Projects() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <motion.div variants={fadeInUp} className="glass-card rounded-2xl overflow-hidden group flex flex-col lg:col-span-1 shadow-md dark:shadow-xl border border-slate-200 dark:border-white/10 hover:-translate-y-2 transition-transform duration-300">
-              <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-indigo-100 to-blue-50 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center p-6 sm:p-8">
+              <div className="relative h-48 sm:h-56 overflow-hidden bg-slate-100 dark:bg-navy-900">
                 <div className="absolute top-4 right-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full z-20 shadow-lg uppercase">
                   {t('projects.featured').replace('🏆 ', '')}
                 </div>
-                <div className="text-slate-400 dark:text-white/20 font-bold text-2xl sm:text-3xl tracking-tighter opacity-50 group-hover:opacity-80 transition-opacity">SiKeuMas</div>
+                <img src={featuredProject.image} alt={featuredProject.title} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
               </div>
               
               <div className="p-5 sm:p-6 flex-1 flex flex-col bg-white dark:bg-transparent">
@@ -82,8 +82,8 @@ export default function Projects() {
 
             {otherProjects.map((project) => (
               <motion.div key={project.id} variants={fadeInUp} className="glass-card rounded-2xl overflow-hidden group flex flex-col shadow-md dark:shadow-xl border border-slate-200 dark:border-white/10 hover:-translate-y-2 transition-transform duration-300">
-                <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-indigo-100 to-blue-50 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center p-6 sm:p-8 text-center">
-                  <div className="text-slate-400 dark:text-white/20 font-bold text-lg sm:text-xl tracking-widest opacity-50 group-hover:opacity-80 transition-opacity uppercase px-4 line-clamp-2">{project.title.split(' ')[0]}</div>
+                <div className="relative h-48 sm:h-56 overflow-hidden bg-slate-100 dark:bg-navy-900">
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500" />
                 </div>
                 
                 <div className="p-5 sm:p-6 flex-1 flex flex-col bg-white dark:bg-transparent">
