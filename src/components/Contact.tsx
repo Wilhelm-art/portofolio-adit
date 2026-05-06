@@ -66,7 +66,7 @@ export default function Contact() {
           </motion.div>
 
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 max-w-5xl mx-auto">
-            <motion.div variants={slideInLeft} className="lg:w-1/3 space-y-4 sm:space-y-6">
+            <motion.div variants={slideInLeft} className="w-full lg:w-1/3 space-y-4 sm:space-y-6">
               <div className="glass-card p-5 sm:p-6 rounded-2xl flex items-start gap-4 group hover:border-electric-blue/30 transition-colors shadow-sm dark:shadow-xl border border-slate-200 dark:border-white/10">
                 <div className="p-3 bg-electric-blue/10 text-electric-blue rounded-xl group-hover:bg-electric-blue group-hover:text-white transition-colors shrink-0">
                   <Mail size={24} />
@@ -100,7 +100,7 @@ export default function Contact() {
               </div>
             </motion.div>
 
-            <motion.div variants={slideInRight} className="lg:w-2/3 mt-4 lg:mt-0">
+            <motion.div variants={slideInRight} className="w-full lg:w-2/3 mt-4 lg:mt-0">
               <form onSubmit={handleSubmit(onSubmit)} className="glass-card p-6 sm:p-8 rounded-2xl space-y-5 sm:space-y-6 shadow-sm dark:shadow-xl border border-slate-200 dark:border-white/10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                   <div>
