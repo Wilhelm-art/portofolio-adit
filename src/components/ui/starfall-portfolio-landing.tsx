@@ -25,7 +25,7 @@ const AuroraBackground: React.FC = () => {
         const currentMount = mountRef.current;
         const scene = new THREE.Scene();
         const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.domElement.style.position = 'fixed';
         renderer.domElement.style.top = '0';
@@ -33,18 +33,14 @@ const AuroraBackground: React.FC = () => {
         renderer.domElement.style.zIndex = '0';
         renderer.domElement.style.display = 'block';
         currentMount.appendChild(renderer.domElement);
-        
         const material = new THREE.ShaderMaterial({
-            uniforms: { 
-              iTime: { value: 0 }, 
-              iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) } 
-            },
+            uniforms: { iTime: { value: 0 }, iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) } },
             vertexShader: `void main() { gl_Position = vec4(position, 1.0); }`,
             fragmentShader: `
                 uniform float iTime; uniform vec2 iResolution;
                 #define NUM_OCTAVES 3
                 float rand(vec2 n) { return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453); }
-                float noise(vec2 p){ vec2 ip=floor(p);vec2 u=fract(p);u=u*u*(3.0-2.0*u);float res=mix(mix(rand(ip),rand(ip+vec2(1.0, 0.0)),u.x),mix(rand(ip+vec2(0.0, 1.0)),rand(ip+vec2(1.0, 1.0)),u.x),u.y);return res*res; }
+                float noise(vec2 p){ vec2 ip=floor(p);vec2 u=fract(p);u=u*u*(3.0-2.0*u);float res=mix(mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x),mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y);return res*res; }
                 float fbm(vec2 x) { float v=0.0;float a=0.3;vec2 shift=vec2(100);mat2 rot=mat2(cos(0.5),sin(0.5),-sin(0.5),cos(0.50));for(int i=0;i<NUM_OCTAVES;++i){v+=a*noise(x);x=rot*x*2.0+shift;a*=0.4;}return v;}
                 void main() {
                     vec2 p=((gl_FragCoord.xy)-iResolution.xy*0.5)/iResolution.y*mat2(6.,-4.,4.,6.);vec4 o=vec4(0.);float f=2.+fbm(p+vec2(iTime*5.,0.))*.5;
@@ -66,7 +62,7 @@ const AuroraBackground: React.FC = () => {
 };
 
 // --- DEFAULT DATA ---
-const defaultData: {
+interface DefaultData {
   logo: { initials: React.ReactNode; name: React.ReactNode; };
   navLinks: NavLink[];
   resume: { label: string; onClick?: () => void; };
@@ -74,7 +70,9 @@ const defaultData: {
   ctaButtons: { primary: { label: string; onClick?: () => void; }; secondary: { label: string; onClick?: () => void; }; };
   projects: Project[];
   stats: Stat[];
-} = {
+}
+
+const defaultData: DefaultData = {
   logo: { initials: 'MT', name: 'Meng To' },
   navLinks: [ { label: 'About', href: '#about' }, { label: 'Projects', href: '#projects' }, { label: 'Skills', href: '#skills' } ],
   resume: { label: 'Resume' },
@@ -126,8 +124,8 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({
                     <p className="md:text-xl max-w-3xl leading-relaxed inter-font text-lg font-light text-muted-foreground mx-auto">{hero.subtitle}</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                    <button onClick={ctaButtons?.primary?.onClick} className="primary-button px-6 py-3 text-foreground rounded-lg font-medium text-sm min-w-[160px]">{ctaButtons?.primary?.label}</button>
-                    <button onClick={ctaButtons?.secondary?.onClick} className="glass-button min-w-[160px] inter-font text-sm font-medium text-foreground rounded-lg px-6 py-3">{ctaButtons?.secondary?.label}</button>
+                    <button onClick={ctaButtons.primary.onClick} className="primary-button px-6 py-3 text-foreground rounded-lg font-medium text-sm min-w-[160px]">{ctaButtons.primary.label}</button>
+                    <button onClick={ctaButtons.secondary.onClick} className="glass-button min-w-[160px] inter-font text-sm font-medium text-foreground rounded-lg px-6 py-3">{ctaButtons.secondary.label}</button>
                 </div>
                 <div className="divider mb-16" />
                 <div id="projects" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-16">

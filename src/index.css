@@ -4,53 +4,11 @@
 @plugin "tailwindcss/plugin";
 @custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  --background: #fafafa;
-  --foreground: #27272a;
-  --card: #ffffff;
-  --card-foreground: #09090b;
-  --popover: #ffffff;
-  --popover-foreground: #09090b;
-  --primary: #18181b;
-  --primary-foreground: #fafafa;
-  --secondary: #f4f4f5;
-  --secondary-foreground: #18181b;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --accent: #f4f4f5;
-  --accent-foreground: #18181b;
-  --destructive: #ef4444;
-  --destructive-foreground: #fafafa;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #18181b;
-}
-
-.dark {
-  --background: #030712;
-  --foreground: #f4f4f5;
-  --card: #09090b;
-  --card-foreground: #fafafa;
-  --popover: #09090b;
-  --popover-foreground: #fafafa;
-  --primary: #fafafa;
-  --primary-foreground: #18181b;
-  --secondary: #27272a;
-  --secondary-foreground: #fafafa;
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
-  --accent: #27272a;
-  --accent-foreground: #fafafa;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #fafafa;
-  --border: #27272a;
-  --input: #27272a;
-  --ring: #d4d4d8;
-}
-
 @theme {
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
+  --font-geist: "Geist", "Archivo", sans-serif;
+  --font-inter: "Inter", "Space Grotesk", sans-serif;
   
   --color-navy-950: #030712;
   --color-navy-900: #090f1d;
@@ -72,37 +30,6 @@
   --color-cyan-800: #5b21b6;
   --color-cyan-900: #4c1d95;
   --color-cyan-950: #2e1065;
-
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-
-  --animate-float: float 6s ease-in-out infinite;
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
 }
 
 @layer base {
@@ -155,7 +82,7 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/60 dark:bg-zinc-900/50 backdrop-blur-xl border border-zinc-200/50 dark:border-white/5 shadow-md dark:shadow-2xl transition-all duration-300;
+    @apply bg-white/40 dark:bg-zinc-900/50 backdrop-blur-xl border border-zinc-200/50 dark:border-white/5 shadow-md dark:shadow-2xl transition-all duration-300;
   }
   
   .minimal-card, .glass-cyber-card {
@@ -182,39 +109,49 @@
     @apply border border-zinc-200 dark:border-white/5 hover:border-zinc-300 dark:hover:border-white/10 transition-colors duration-300;
   }
 
+  /* --- STARFALL CUSTOM STYLES --- */
+  .geist-font {
+    font-family: var(--font-geist);
+  }
+
+  .inter-font {
+    font-family: var(--font-inter);
+  }
+
+  .glass-button {
+    @apply bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 backdrop-blur-md hover:bg-slate-900/10 dark:hover:bg-white/10 transition-all duration-300;
+  }
+
+  .primary-button {
+    @apply bg-slate-900 text-white dark:bg-white dark:text-black hover:bg-slate-800 dark:hover:bg-slate-100 transition-all duration-300;
+  }
+
+  .divider {
+    @apply w-full h-[1px] bg-slate-200/50 dark:bg-white/10;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400;
+  }
+
   .float-animation {
     animation: float 6s ease-in-out infinite;
   }
 
-  .glass-button {
-    @apply bg-white/5 dark:bg-white/5 backdrop-blur-md border border-zinc-200/10 dark:border-white/10 text-foreground transition-all duration-300 hover:bg-white/10 dark:hover:bg-white/10 hover:border-zinc-200/20 dark:hover:border-white/20;
-  }
-
-  .primary-button {
-    @apply bg-foreground text-background transition-all duration-300 hover:opacity-90;
-  }
-
-  .divider {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-zinc-200/20 dark:via-white/10 to-transparent;
-  }
-
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-400 to-indigo-400;
-  }
-
   .project-image {
-    @apply bg-white/5 dark:bg-white/5 border border-zinc-200/5 dark:border-white/5;
+    @apply bg-slate-100 dark:bg-white/5 border border-slate-200/20 dark:border-white/5;
   }
 
   .skill-badge {
-    @apply bg-white/5 dark:bg-white/5 border border-zinc-200/10 dark:border-white/10;
+    @apply bg-slate-100/50 dark:bg-white/5 border border-slate-200/30 dark:border-white/10 text-slate-700 dark:text-zinc-300;
   }
+}
 
-  .geist-font {
-    font-family: var(--font-sans);
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
   }
-
-  .inter-font {
-    font-family: var(--font-sans);
+  50% {
+    transform: translateY(-10px);
   }
 }

@@ -55,7 +55,7 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-[9999] transition-all duration-300',
         isScrolled
-          ? 'bg-white/90 dark:bg-navy-900/90 backdrop-blur-md py-4 shadow-lg border-b border-slate-200 dark:border-white/5'
+          ? 'bg-white/40 dark:bg-[#030712]/40 backdrop-blur-md py-4 shadow-sm border-b border-slate-900/5 dark:border-white/5'
           : 'bg-transparent py-6'
       )}
     >
@@ -63,15 +63,13 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => scrollToSection('home')}
-          className="text-2xl font-bold tracking-tighter flex items-center gap-1 group bg-transparent border-none outline-none cursor-pointer"
+          className="text-lg font-medium tracking-tight flex items-center gap-2 bg-transparent border-none outline-none cursor-pointer"
           aria-label="Scroll to top"
         >
-          <span className="text-slate-900 dark:text-white group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors">Adit</span>
-          <motion.span
-            animate={{ opacity: [1, 0, 1] }}
-            transition={{ duration: 1, repeat: Infinity }}
-            className="w-2 h-6 bg-cyan-accent inline-block"
-          />
+          <div className="w-8 h-8 rounded-lg bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 flex items-center justify-center">
+            <span className="geist-font text-sm font-bold text-slate-800 dark:text-white">AH</span>
+          </div>
+          <span className="geist-font text-slate-800 dark:text-white font-semibold">Adit</span>
         </button>
 
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
@@ -82,16 +80,16 @@ export default function Navbar() {
                 type="button"
                 onClick={() => scrollToSection(id)}
                 className={cn(
-                  'text-sm font-medium transition-colors duration-200 cursor-pointer relative group bg-transparent border-none outline-none',
+                  'text-sm font-light transition-colors duration-200 cursor-pointer relative group bg-transparent border-none outline-none inter-font',
                   activeSection === id
-                    ? 'text-cyan-500 dark:text-cyan-400 font-semibold'
-                    : 'text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400'
+                    ? 'text-slate-900 dark:text-white font-medium'
+                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                 )}
               >
                 {t(`nav.${id}`)}
                 <span
                   className={cn(
-                    'absolute -bottom-1 left-0 h-0.5 bg-cyan-accent transition-all duration-300',
+                    'absolute -bottom-1 left-0 h-[1px] bg-slate-900 dark:bg-white transition-all duration-350',
                     activeSection === id ? 'w-full' : 'w-0 group-hover:w-full'
                   )}
                 />
@@ -99,29 +97,29 @@ export default function Navbar() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 pl-6 border-l border-slate-200 dark:border-white/10">
+          <div className="flex items-center gap-3 pl-6 border-l border-slate-900/10 dark:border-white/10">
             <button
               onClick={toggleLanguage}
-              className="p-2 flex items-center gap-1 text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-white/5"
+              className="p-2 flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg bg-transparent border-none outline-none cursor-pointer"
               aria-label="Toggle Language"
             >
-              <Languages size={18} />
-              <span className="text-xs font-bold uppercase">{language}</span>
+              <Languages size={16} />
+              <span className="text-[10px] font-bold uppercase">{language}</span>
             </button>
             
             <button
               onClick={toggleTheme}
-              className="p-2 text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors rounded-full hover:bg-slate-100 dark:hover:bg-white/5"
+              className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg bg-transparent border-none outline-none cursor-pointer"
               aria-label="Toggle Theme"
             >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </button>
 
             <a
               href="https://drive.google.com/file/d/1gnTbq-vJhQnL2z-wkXwxheaXb1D6rH40/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 px-5 py-2 bg-electric-blue/10 border border-electric-blue/30 text-electric-blue text-sm font-medium rounded-full hover:bg-electric-blue hover:text-white transition-all transform hover:scale-105"
+              className="glass-button px-4 py-2 rounded-lg text-slate-800 dark:text-white text-xs font-medium inter-font hover:scale-102 transition-transform"
             >
               {t('common.viewCV')}
             </a>
@@ -131,19 +129,19 @@ export default function Navbar() {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400"
+            className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-transparent border-none outline-none cursor-pointer"
           >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
           
           <button
             type="button"
-            className="text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-white p-2 -mr-2"
+            className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white p-2 -mr-2 bg-transparent border-none outline-none cursor-pointer"
             onClick={() => setMobileMenu((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
@@ -156,7 +154,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-white/95 dark:bg-navy-900/95 backdrop-blur-md border-b border-slate-200 dark:border-white/10"
+            className="md:hidden overflow-hidden bg-white/95 dark:bg-[#030712]/95 backdrop-blur-md border-b border-slate-900/10 dark:border-white/10"
             onClick={(e) => e.stopPropagation()}
           >
             <nav className="flex flex-col py-2 px-6">
@@ -165,17 +163,13 @@ export default function Navbar() {
                   key={id}
                   type="button"
                   onClick={() => scrollToSection(id)}
-                  onTouchEnd={(e) => {
-                    e.preventDefault();
-                    scrollToSection(id);
-                  }}
                   className={cn(
-                    'text-left w-full py-4 text-lg font-medium transition-colors duration-150',
+                    'text-left w-full py-4 text-base font-light transition-colors duration-150',
                     'bg-transparent border-none outline-none cursor-pointer select-none',
-                    'border-b border-slate-100 dark:border-white/5 last:border-b-0',
+                    'border-b border-slate-900/5 dark:border-white/5 last:border-b-0 inter-font',
                     activeSection === id
-                      ? 'text-cyan-500 dark:text-cyan-400 font-semibold'
-                      : 'text-slate-700 dark:text-slate-300 active:text-cyan-500 dark:active:text-cyan-400'
+                      ? 'text-slate-900 dark:text-white font-medium'
+                      : 'text-slate-500 dark:text-slate-400'
                   )}
                 >
                   {t(`nav.${id}`)}
@@ -185,9 +179,9 @@ export default function Navbar() {
               <div className="py-4 flex flex-col gap-4">
                 <button
                   onClick={toggleLanguage}
-                  className="flex items-center justify-center gap-2 py-3 bg-slate-100 dark:bg-white/5 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10 transition-colors"
+                  className="flex items-center justify-center gap-2 py-3 bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl font-medium text-slate-700 dark:text-slate-350 hover:bg-slate-900/10 dark:hover:bg-white/10 transition-colors"
                 >
-                  <Languages size={20} />
+                  <Languages size={18} />
                   <span>{language === 'en' ? 'Switch to Indonesian' : 'Switch to English'}</span>
                 </button>
 
@@ -195,7 +189,7 @@ export default function Navbar() {
                   href="https://drive.google.com/file/d/1gnTbq-vJhQnL2z-wkXwxheaXb1D6rH40/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full py-3 bg-electric-blue text-center text-white font-semibold rounded-xl hover:bg-blue-600 active:bg-blue-700 transition-colors"
+                  className="block w-full py-3 bg-slate-950 dark:bg-white text-center text-white dark:text-black font-semibold rounded-xl hover:opacity-90 transition-opacity"
                 >
                   {t('common.viewCV')}
                 </a>

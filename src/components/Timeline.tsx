@@ -10,12 +10,12 @@ export default function Timeline() {
 
   // Animations specifically optimized for the dual-sided timeline
   const timelineCardLeft: Variants = {
-    hidden: { opacity: 0, x: -40 },
+    hidden: { opacity: 0, x: -30 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
   };
 
   const timelineCardRight: Variants = {
-    hidden: { opacity: 0, x: 40 },
+    hidden: { opacity: 0, x: 30 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } }
   };
 
@@ -25,11 +25,8 @@ export default function Timeline() {
   };
 
   return (
-    <section id="experience" className="py-20 sm:py-24 relative overflow-hidden transition-colors duration-300">
-      {/* Background visual enhancements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-accent/2 blur-[180px] rounded-full pointer-events-none" />
-
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="experience" className="py-20 sm:py-24 relative bg-transparent">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -42,17 +39,17 @@ export default function Timeline() {
             variants={timelineCardLeft} 
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
-              {t('experience.title').split(' ')[0]} <span className="text-gradient font-extrabold font-display">{t('experience.title').split(' ').slice(1).join(' ')}</span>
+            <h2 className="text-3xl md:text-4xl font-light mb-4 text-slate-900 dark:text-white tracking-tight geist-font">
+              {t('experience.title').split(' ')[0]} <span className="gradient-text font-extrabold tracking-tight">{t('experience.title').split(' ').slice(1).join(' ')}</span>
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 font-sans text-base sm:text-lg">
+            <p className="text-slate-600 dark:text-slate-400 font-light inter-font text-base sm:text-lg">
               {language === 'id' ? 'Perjalanan akademik dan profesional saya sejauh ini.' : 'My academic and professional journey so far.'}
             </p>
           </motion.div>
 
           <div className="relative">
             {/* Central Timeline Line */}
-            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-electric-blue to-cyan-accent md:-translate-x-1/2" />
+            <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-slate-900/10 dark:bg-white/10 md:-translate-x-1/2" />
 
             <div className="space-y-12">
               {experienceData.map((item, index) => {
@@ -69,13 +66,13 @@ export default function Timeline() {
                       isEven ? 'md:flex-row-reverse' : ''
                     }`}
                   >
-                    {/* Minimal Bullet Node */}
+                    {/* Bullet Node */}
                     <motion.div 
                       variants={centerNode}
-                      className="absolute left-6 md:left-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border border-cyan-accent flex items-center justify-center -translate-x-1/2 z-10 group"
+                      className="absolute left-6 md:left-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white dark:bg-zinc-900 border border-slate-900/10 dark:border-white/10 flex items-center justify-center -translate-x-1/2 z-10 group"
                     >
-                      <div className="absolute inset-0 rounded-full bg-cyan-accent/10 scale-125 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
-                      <Icon size={16} className="text-cyan-500 sm:w-[18px] sm:h-[18px] group-hover:scale-110 transition-transform" />
+                      <div className="absolute inset-0 rounded-full bg-slate-900/5 dark:bg-white/5 scale-110 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <Icon size={16} className="text-cyan-accent sm:w-[18px] sm:h-[18px] group-hover:scale-105 transition-transform" />
                     </motion.div>
 
                     {/* Timeline Item Box */}
@@ -87,21 +84,21 @@ export default function Timeline() {
                     >
                       <motion.div 
                         whileHover={{ y: -4 }}
-                        className="minimal-card p-6 rounded-2xl"
+                        className="glass-card p-6 rounded-2xl"
                       >
-                        <span className="inline-block px-3.5 py-1 bg-cyan-accent/10 border border-cyan-accent/15 dark:border-white/5 rounded-full text-[10px] sm:text-xs font-semibold text-cyan-600 dark:text-cyan-400 mb-4 font-display tracking-wider">
+                        <span className="inline-block px-3 py-1 bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-full text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-zinc-250 mb-4 font-display tracking-wider">
                           {item.period}
                         </span>
                         
-                        <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-1.5 hover:text-cyan-500 transition-colors font-display leading-snug">
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1.5 hover:text-cyan-accent transition-colors font-display leading-snug">
                           {item.title}
                         </h3>
                         
-                        <h4 className="text-electric-blue dark:text-slate-350 font-medium mb-3.5 text-sm sm:text-base font-sans">
+                        <h4 className="text-slate-500 dark:text-slate-400 font-medium mb-3.5 text-sm sm:text-base font-sans">
                           {item.organization}
                         </h4>
                         
-                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed font-sans text-justify md:text-inherit">
+                        <p className="text-slate-600 dark:text-slate-450 text-sm leading-relaxed font-light inter-font text-justify md:text-inherit">
                           {item.details}
                         </p>
                       </motion.div>

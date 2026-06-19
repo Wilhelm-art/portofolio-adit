@@ -35,11 +35,9 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
     
-    // Read the Web3Forms access key from the environment
     const accessKey = (import.meta as any).env.VITE_WEB3FORMS_ACCESS_KEY;
     
     if (accessKey) {
-      // Direct email submission using Web3Forms API
       try {
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
@@ -73,7 +71,6 @@ export default function Contact() {
         setTimeout(() => setSubmitStatus('idle'), 5000);
       }
     } else {
-      // Fallback: Direct redirect to Gmail Web Composer in a new tab
       try {
         const emailRecipient = CONTACT_DATA.email;
         const subject = encodeURIComponent(data.subject);
@@ -94,11 +91,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-24 relative overflow-hidden">
-      {/* Decorative gradient blur */}
-      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-cyan-accent/2 blur-[180px] rounded-full pointer-events-none" />
-
-      <div className="container mx-auto px-4 sm:px-6">
+    <section id="contact" className="py-20 sm:py-24 relative bg-transparent">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -107,10 +101,10 @@ export default function Contact() {
         >
           {/* Header */}
           <motion.div variants={fadeInUp} className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
-              {t('contact.title').split(' ')[0]} <span className="text-gradient font-extrabold font-display">{t('contact.title').split(' ').slice(1).join(' ')}</span>
+            <h2 className="text-3xl md:text-4xl font-light mb-4 text-slate-900 dark:text-white tracking-tight geist-font">
+              {t('contact.title').split(' ')[0]} <span className="gradient-text font-extrabold tracking-tight">{t('contact.title').split(' ').slice(1).join(' ')}</span>
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-4 font-sans text-base sm:text-lg">
+            <p className="text-slate-650 dark:text-slate-400 max-w-2xl mx-auto px-4 font-light inter-font text-base sm:text-lg">
               {t('contact.subtitle')}
             </p>
           </motion.div>
@@ -121,15 +115,15 @@ export default function Contact() {
               
               {/* Email Block */}
               <motion.div 
-                whileHover={{ y: -4 }}
-                className="minimal-card p-6 rounded-2xl flex items-start gap-4 group"
+                whileHover={{ y: -3 }}
+                className="glass-card p-6 rounded-2xl flex items-start gap-4 group"
               >
-                <div className="p-3 bg-cyan-accent/10 text-cyan-500 rounded-xl group-hover:bg-cyan-accent group-hover:text-white transition-colors shrink-0 duration-300">
-                  <Mail size={24} />
+                <div className="p-3 bg-slate-900/5 dark:bg-white/5 text-slate-900 dark:text-white rounded-xl border border-slate-900/10 dark:border-white/10 group-hover:scale-105 transition-transform shrink-0 duration-300">
+                  <Mail size={22} className="text-cyan-accent" />
                 </div>
                 <div className="overflow-hidden">
-                  <h3 className="text-slate-800 dark:text-white font-bold font-display mb-1 text-base">{t('contact.emailMe')}</h3>
-                  <a href={`mailto:${CONTACT_DATA.email}`} className="text-slate-600 dark:text-slate-400 hover:text-cyan-500 transition-colors text-sm sm:text-base truncate block font-sans">
+                  <h3 className="text-slate-900 dark:text-white font-medium mb-1 text-sm geist-font">{t('contact.emailMe')}</h3>
+                  <a href={`mailto:${CONTACT_DATA.email}`} className="text-slate-600 dark:text-slate-400 hover:text-cyan-accent transition-colors text-xs sm:text-sm truncate block font-sans">
                     {CONTACT_DATA.email}
                   </a>
                 </div>
@@ -137,19 +131,19 @@ export default function Contact() {
 
               {/* Phone Block */}
               <motion.div 
-                whileHover={{ y: -4 }}
-                className="minimal-card p-6 rounded-2xl flex items-start gap-4 group"
+                whileHover={{ y: -3 }}
+                className="glass-card p-6 rounded-2xl flex items-start gap-4 group"
               >
-                <div className="p-3 bg-cyan-accent/10 text-cyan-500 rounded-xl group-hover:bg-cyan-accent group-hover:text-white transition-colors shrink-0 duration-300">
-                  <Phone size={24} />
+                <div className="p-3 bg-slate-900/5 dark:bg-white/5 text-slate-900 dark:text-white rounded-xl border border-slate-900/10 dark:border-white/10 group-hover:scale-105 transition-transform shrink-0 duration-300">
+                  <Phone size={22} className="text-cyan-accent" />
                 </div>
                 <div>
-                  <h3 className="text-slate-800 dark:text-white font-bold font-display mb-1 text-base">WhatsApp</h3>
+                  <h3 className="text-slate-900 dark:text-white font-medium mb-1 text-sm geist-font">WhatsApp</h3>
                   <a 
                     href={`https://wa.me/${CONTACT_DATA.phone.replace(/[^0-9]/g, '')}`} 
                     target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-slate-600 dark:text-slate-400 hover:text-cyan-500 transition-colors text-sm sm:text-base font-sans font-medium"
+                    rel="noopener noreferrer" 
+                    className="text-slate-600 dark:text-slate-400 hover:text-cyan-accent transition-colors text-xs sm:text-sm font-sans"
                   >
                     {CONTACT_DATA.phone}
                   </a>
@@ -158,98 +152,147 @@ export default function Contact() {
 
               {/* Location Block */}
               <motion.div 
-                whileHover={{ y: -4 }}
-                className="minimal-card p-6 rounded-2xl flex items-start gap-4 group"
+                whileHover={{ y: -3 }}
+                className="glass-card p-6 rounded-2xl flex items-start gap-4 group"
               >
-                <div className="p-3 bg-cyan-accent/10 text-cyan-500 rounded-xl group-hover:bg-cyan-accent group-hover:text-white transition-colors shrink-0 duration-300">
-                  <MapPin size={24} />
+                <div className="p-3 bg-slate-900/5 dark:bg-white/5 text-slate-900 dark:text-white rounded-xl border border-slate-900/10 dark:border-white/10 group-hover:scale-105 transition-transform shrink-0 duration-300">
+                  <MapPin size={22} className="text-cyan-accent" />
                 </div>
                 <div>
-                  <h3 className="text-slate-800 dark:text-white font-bold font-display mb-1 text-base">{t('contact.location')}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base font-sans">{CONTACT_DATA.location}</p>
+                  <h3 className="text-slate-900 dark:text-white font-medium mb-1 text-sm geist-font">{t('contact.location')}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm font-sans">
+                    {CONTACT_DATA.location}
+                  </p>
                 </div>
               </motion.div>
+
             </motion.div>
 
             {/* Contact Form Side */}
-            <motion.div variants={slideInRight} className="w-full lg:w-2/3 mt-4 lg:mt-0">
-              <form 
-                onSubmit={handleSubmit(onSubmit)} 
-                className="minimal-card p-6 sm:p-8 rounded-3xl space-y-6"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 font-display">{t('contact.name')}</label>
+            <motion.div 
+              variants={slideInRight} 
+              className="w-full lg:w-2/3"
+            >
+              <div className="glass-card p-6 sm:p-10 rounded-2xl relative overflow-hidden">
+                
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Name */}
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="text-xs font-semibold text-slate-700 dark:text-slate-350 uppercase tracking-wider font-display">{t('contact.name')}</label>
+                      <input
+                        id="name"
+                        type="text"
+                        placeholder="John Doe"
+                        {...register('name')}
+                        className={`w-full px-4 py-3 bg-slate-900/5 dark:bg-zinc-950/40 border rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none transition-colors font-sans ${
+                          errors.name 
+                            ? 'border-red-500/50 focus:border-red-500' 
+                            : 'border-slate-900/10 dark:border-white/10 focus:border-slate-900/30 dark:focus:border-white/20'
+                        }`}
+                      />
+                      {errors.name && (
+                        <p className="text-xs text-red-500 flex items-center gap-1 font-sans">
+                          <AlertCircle size={12} /> {errors.name.message}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Email */}
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="text-xs font-semibold text-slate-700 dark:text-slate-350 uppercase tracking-wider font-display">{t('contact.email')}</label>
+                      <input
+                        id="email"
+                        type="email"
+                        placeholder="john@example.com"
+                        {...register('email')}
+                        className={`w-full px-4 py-3 bg-slate-900/5 dark:bg-zinc-950/40 border rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none transition-colors font-sans ${
+                          errors.email 
+                            ? 'border-red-500/50 focus:border-red-500' 
+                            : 'border-slate-900/10 dark:border-white/10 focus:border-slate-900/30 dark:focus:border-white/20'
+                        }`}
+                      />
+                      {errors.email && (
+                        <p className="text-xs text-red-500 flex items-center gap-1 font-sans">
+                          <AlertCircle size={12} /> {errors.email.message}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Subject */}
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="text-xs font-semibold text-slate-700 dark:text-slate-350 uppercase tracking-wider font-display">Subject</label>
                     <input
-                      {...register('name')}
+                      id="subject"
                       type="text"
-                      id="name"
-                      className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-white/5 rounded-xl px-4.5 py-3.5 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans shadow-sm"
+                      placeholder="Project details"
+                      {...register('subject')}
+                      className={`w-full px-4 py-3 bg-slate-900/5 dark:bg-zinc-950/40 border rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none transition-colors font-sans ${
+                        errors.subject 
+                          ? 'border-red-500/50 focus:border-red-500' 
+                          : 'border-slate-900/10 dark:border-white/10 focus:border-slate-900/30 dark:focus:border-white/20'
+                      }`}
                     />
-                    {errors.name && <p className="text-red-500 dark:text-red-400 text-xs mt-1.5 font-medium">{errors.name.message}</p>}
+                    {errors.subject && (
+                      <p className="text-xs text-red-500 flex items-center gap-1 font-sans">
+                        <AlertCircle size={12} /> {errors.subject.message}
+                      </p>
+                    )}
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 font-display">{t('contact.email')}</label>
-                    <input
-                      {...register('email')}
-                      type="email"
-                      id="email"
-                      className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-white/5 rounded-xl px-4.5 py-3.5 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans shadow-sm"
+
+                  {/* Message */}
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="text-xs font-semibold text-slate-700 dark:text-slate-350 uppercase tracking-wider font-display">{t('contact.message')}</label>
+                    <textarea
+                      id="message"
+                      rows={5}
+                      placeholder="Let's build something together..."
+                      {...register('message')}
+                      className={`w-full px-4 py-3 bg-slate-900/5 dark:bg-zinc-950/40 border rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none transition-colors font-sans resize-none ${
+                        errors.message 
+                          ? 'border-red-500/50 focus:border-red-500' 
+                          : 'border-slate-900/10 dark:border-white/10 focus:border-slate-900/30 dark:focus:border-white/20'
+                      }`}
                     />
-                    {errors.email && <p className="text-red-500 dark:text-red-400 text-xs mt-1.5 font-medium">{errors.email.message}</p>}
+                    {errors.message && (
+                      <p className="text-xs text-red-500 flex items-center gap-1 font-sans">
+                        <AlertCircle size={12} /> {errors.message.message}
+                      </p>
+                    )}
                   </div>
-                </div>
 
-                <div>
-                  <label htmlFor="subject" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 font-display">Subject</label>
-                  <input
-                    {...register('subject')}
-                    type="text"
-                    id="subject"
-                    className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-white/5 rounded-xl px-4.5 py-3.5 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans shadow-sm"
-                  />
-                  {errors.subject && <p className="text-red-500 dark:text-red-400 text-xs mt-1.5 font-medium">{errors.subject.message}</p>}
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 font-display">{t('contact.message')}</label>
-                  <textarea
-                    {...register('message')}
-                    id="message"
-                    rows={5}
-                    className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-white/5 rounded-2xl px-4.5 py-3.5 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans resize-none shadow-sm"
-                  ></textarea>
-                  {errors.message && <p className="text-red-500 dark:text-red-400 text-xs mt-1.5 font-medium">{errors.message.message}</p>}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 bg-electric-blue text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed shadow-sm hover:bg-opacity-95 font-display transform active:scale-[0.98]"
-                >
-                  {isSubmitting ? (
-                    <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  ) : (
-                    <>
-                      <span className="tracking-wide">{t('contact.send')}</span>
-                      <Send size={16} className="group-hover:translate-x-1 duration-300" />
-                    </>
+                  {/* Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full primary-button py-4 rounded-xl font-medium text-sm flex items-center justify-center gap-2 disabled:opacity-50 transition-opacity font-display"
+                  >
+                    {isSubmitting ? (
+                      t('contact.sending')
+                    ) : (
+                      <>
+                        <span>{t('contact.send')}</span>
+                        <Send size={16} />
+                      </>
+                    )}
+                  </button>
+                  
+                  {/* Status Messages */}
+                  {submitStatus === 'success' && (
+                    <div className="p-4 bg-green-150/15 border border-green-500/30 rounded-xl flex items-center gap-3 text-green-600 dark:text-green-400 text-sm font-sans">
+                      <CheckCircle size={20} className="shrink-0" />
+                      <span>{t('contact.success')}</span>
+                    </div>
                   )}
-                </button>
-
-                {submitStatus === 'success' && (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 rounded-2xl flex items-center gap-3 text-green-600 dark:text-green-400 text-sm font-semibold">
-                    <CheckCircle size={20} className="shrink-0" />
-                    <p>{t('contact.success')}</p>
-                  </motion.div>
-                )}
-                {submitStatus === 'error' && (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="p-4 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 rounded-2xl flex items-center gap-3 text-red-600 dark:text-red-400 text-sm font-semibold">
-                    <AlertCircle size={20} className="shrink-0" />
-                    <p>{t('contact.error')}</p>
-                  </motion.div>
-                )}
-              </form>
+                  {submitStatus === 'error' && (
+                    <div className="p-4 bg-red-150/15 border border-red-500/30 rounded-xl flex items-center gap-3 text-red-600 dark:text-red-400 text-sm font-sans">
+                      <AlertCircle size={20} className="shrink-0" />
+                      <span>{t('contact.error')}</span>
+                    </div>
+                  )}
+                </form>
+              </div>
             </motion.div>
           </div>
         </motion.div>
