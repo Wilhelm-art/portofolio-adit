@@ -83,13 +83,13 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/75 dark:bg-zinc-900/50 backdrop-blur-xl border border-zinc-200 dark:border-white/5 shadow-sm dark:shadow-2xl hover:shadow-md transition-all duration-300;
+    @apply bg-white/80 dark:bg-zinc-900/50 backdrop-blur-xl border border-zinc-200/80 dark:border-white/5 shadow-md dark:shadow-2xl hover:shadow-lg transition-all duration-300;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
   }
   
   .minimal-card, .glass-cyber-card {
-    @apply bg-white dark:bg-zinc-900/40 backdrop-blur-xl border border-zinc-200 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300;
+    @apply bg-white/85 dark:bg-zinc-900/40 backdrop-blur-xl border border-zinc-200/80 dark:border-white/5 shadow-sm hover:shadow-md transition-all duration-300;
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
   }

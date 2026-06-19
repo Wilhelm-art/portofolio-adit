@@ -57,7 +57,7 @@ export default function About() {
                     {stat.value}
                     <span className="text-cyan-accent font-extrabold font-display">{stat.suffix}</span>
                   </div>
-                  <div className="text-slate-500 dark:text-slate-450 text-sm font-normal inter-font">
+                  <div className="text-slate-500 dark:text-slate-400 text-sm font-normal inter-font">
                     {stat.label}
                   </div>
                 </div>

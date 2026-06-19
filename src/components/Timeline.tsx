@@ -86,7 +86,7 @@ export default function Timeline() {
                         whileHover={{ y: -4 }}
                         className="glass-card p-6 rounded-2xl"
                       >
-                        <span className="inline-block px-3 py-1 bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-full text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-zinc-250 mb-4 font-display tracking-wider">
+                        <span className="inline-block px-3 py-1 bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-full text-[10px] sm:text-xs font-semibold text-slate-800 dark:text-zinc-200 mb-4 font-display tracking-wider">
                           {item.period}
                         </span>
                         
@@ -98,7 +98,7 @@ export default function Timeline() {
                           {item.organization}
                         </h4>
                         
-                        <p className="text-slate-600 dark:text-slate-450 text-sm leading-relaxed font-light inter-font text-justify md:text-inherit">
+                        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed font-light inter-font text-justify md:text-inherit">
                           {item.details}
                         </p>
                       </motion.div>

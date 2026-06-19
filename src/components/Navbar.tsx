@@ -179,7 +179,7 @@ export default function Navbar() {
               <div className="py-4 flex flex-col gap-4">
                 <button
                   onClick={toggleLanguage}
-                  className="flex items-center justify-center gap-2 py-3 bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl font-medium text-slate-700 dark:text-slate-350 hover:bg-slate-900/10 dark:hover:bg-white/10 transition-colors"
+                  className="flex items-center justify-center gap-2 py-3 bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-900/10 dark:hover:bg-white/10 transition-colors"
                 >
                   <Languages size={18} />
                   <span>{language === 'en' ? 'Switch to Indonesian' : 'Switch to English'}</span>

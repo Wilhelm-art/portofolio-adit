@@ -132,11 +132,12 @@ export default function CyberCanvas() {
           vec3 darkBase = vec3(0.012, 0.027, 0.07);
           col = oColor * 1.45 + darkBase * (1.0 - clamp(length(oColor) * 1.5, 0.0, 1.0));
         } else {
-          // Soft warm white base (#fcfcfc is vec3(0.988))
-          vec3 lightBase = vec3(0.988, 0.988, 0.988);
-          // Make the pastel aurora extremely subtle (intensity 0.08) for a clean minimalist look
-          vec3 pastelAurora = oColor * 0.08;
-          col = mix(lightBase, vec3(0.65, 0.55, 0.92) * pastelAurora.r + vec3(0.45, 0.72, 0.95) * pastelAurora.g + vec3(0.52, 0.82, 0.78) * pastelAurora.b, clamp(length(pastelAurora) * 1.5, 0.0, 1.0));
+          // Soft warm white base (#f8f8fc has a subtle cool undertone)
+          vec3 lightBase = vec3(0.975, 0.975, 0.99);
+          // Make the pastel aurora more visible (intensity 0.15) for a refined, elegant glow
+          vec3 pastelAurora = oColor * 0.15;
+          vec3 tintedAurora = vec3(0.60, 0.50, 0.90) * pastelAurora.r + vec3(0.45, 0.70, 0.92) * pastelAurora.g + vec3(0.50, 0.80, 0.75) * pastelAurora.b;
+          col = mix(lightBase, tintedAurora + lightBase * 0.5, clamp(length(pastelAurora) * 2.0, 0.0, 0.35));
         }
 
         gl_FragColor = vec4(col, 1.0);
@@ -197,7 +198,7 @@ export default function CyberCanvas() {
     >
       <canvas
         ref={canvasRef}
-        className="w-full h-full block opacity-90 dark:opacity-[0.88] pointer-events-auto"
+        className="w-full h-full block opacity-80 dark:opacity-[0.88] pointer-events-auto"
       />
     </div>
   );

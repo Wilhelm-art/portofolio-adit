@@ -76,7 +76,7 @@ export default function Projects() {
                       className={`flex items-center gap-3 px-5 py-3 rounded-lg text-sm font-medium transition-all duration-300 cursor-pointer w-full sm:w-auto lg:w-full border ${
                         isActive
                           ? 'bg-slate-900 text-white dark:bg-white dark:text-black border-slate-900 dark:border-white shadow-sm'
-                          : 'bg-slate-900/5 dark:bg-white/5 border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-350 hover:border-slate-900/20 dark:hover:border-white/20'
+                          : 'bg-slate-900/5 dark:bg-white/5 border-slate-900/10 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-slate-900/20 dark:hover:border-white/20'
                       }`}
                     >
                       <span className={`${isActive ? 'text-white' : 'text-cyan-accent'}`}>{btn.icon}</span>
@@ -128,7 +128,7 @@ export default function Projects() {
                         {featured.features && (
                           <div className="mb-6 hidden sm:block">
                             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-zinc-200 mb-2.5 font-display">KEY FEATURES:</h4>
-                            <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-650 dark:text-slate-405">
+                            <ul className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-slate-600 dark:text-slate-400">
                               {featured.features.map((feature, i) => (
                                 <li key={i} className="flex items-center gap-2">
                                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-accent shrink-0" />
@@ -168,7 +168,7 @@ export default function Projects() {
                               href={featured.demo}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-slate-800 hover:text-slate-900 dark:text-slate-350 dark:hover:text-white flex items-center gap-1.5 text-sm font-semibold transition-colors ml-auto group/demo"
+                              className="text-slate-800 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white flex items-center gap-1.5 text-sm font-semibold transition-colors ml-auto group/demo"
                             >
                               <span className="font-display">{t('projects.viewDemo')}</span>
                               <ExternalLink size={14} className="group-hover/demo:translate-x-0.5 group-hover/demo:-translate-y-0.5 transition-transform" />
@@ -276,7 +276,7 @@ export default function Projects() {
                                 href={project.demo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-slate-800 hover:text-slate-900 dark:text-slate-350 dark:hover:text-white flex items-center gap-1.5 text-xs font-semibold transition-colors ml-auto group/demo"
+                                className="text-slate-800 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white flex items-center gap-1.5 text-xs font-semibold transition-colors ml-auto group/demo"
                               >
                                 <span className="font-display">{t('projects.viewDemo')}</span>
                                 <ExternalLink size={12} className="group-hover/demo:translate-x-0.5 group-hover/demo:-translate-y-0.5 transition-transform" />

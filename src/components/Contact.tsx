@@ -104,7 +104,7 @@ export default function Contact() {
             <h2 className="text-3xl md:text-4xl font-light mb-4 text-slate-900 dark:text-white tracking-tight geist-font">
               {t('contact.title').split(' ')[0]} <span className="gradient-text font-extrabold tracking-tight">{t('contact.title').split(' ').slice(1).join(' ')}</span>
             </h2>
-            <p className="text-slate-650 dark:text-slate-400 max-w-2xl mx-auto px-4 font-light inter-font text-base sm:text-lg">
+            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-4 font-light inter-font text-base sm:text-lg">
               {t('contact.subtitle')}
             </p>
           </motion.div>
@@ -179,7 +179,7 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {/* Name */}
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-xs font-semibold text-slate-700 dark:text-slate-350 uppercase tracking-wider font-display">{t('contact.name')}</label>
+                      <label htmlFor="name" className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider font-display">{t('contact.name')}</label>
                       <input
                         id="name"
                         type="text"
@@ -200,7 +200,7 @@ export default function Contact() {
 
                     {/* Email */}
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-xs font-semibold text-slate-700 dark:text-slate-350 uppercase tracking-wider font-display">{t('contact.email')}</label>
+                      <label htmlFor="email" className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider font-display">{t('contact.email')}</label>
                       <input
                         id="email"
                         type="email"
@@ -222,7 +222,7 @@ export default function Contact() {
 
                   {/* Subject */}
                   <div className="space-y-2">
-                    <label htmlFor="subject" className="text-xs font-semibold text-slate-700 dark:text-slate-350 uppercase tracking-wider font-display">Subject</label>
+                    <label htmlFor="subject" className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider font-display">Subject</label>
                     <input
                       id="subject"
                       type="text"
@@ -243,7 +243,7 @@ export default function Contact() {
 
                   {/* Message */}
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-xs font-semibold text-slate-700 dark:text-slate-350 uppercase tracking-wider font-display">{t('contact.message')}</label>
+                    <label htmlFor="message" className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider font-display">{t('contact.message')}</label>
                     <textarea
                       id="message"
                       rows={5}
@@ -280,13 +280,13 @@ export default function Contact() {
                   
                   {/* Status Messages */}
                   {submitStatus === 'success' && (
-                    <div className="p-4 bg-green-150/15 border border-green-500/30 rounded-xl flex items-center gap-3 text-green-600 dark:text-green-400 text-sm font-sans">
+                    <div className="p-4 bg-green-100/15 border border-green-500/30 rounded-xl flex items-center gap-3 text-green-600 dark:text-green-400 text-sm font-sans">
                       <CheckCircle size={20} className="shrink-0" />
                       <span>{t('contact.success')}</span>
                     </div>
                   )}
                   {submitStatus === 'error' && (
-                    <div className="p-4 bg-red-150/15 border border-red-500/30 rounded-xl flex items-center gap-3 text-red-600 dark:text-red-400 text-sm font-sans">
+                    <div className="p-4 bg-red-100/15 border border-red-500/30 rounded-xl flex items-center gap-3 text-red-600 dark:text-red-400 text-sm font-sans">
                       <AlertCircle size={20} className="shrink-0" />
                       <span>{t('contact.error')}</span>
                     </div>
