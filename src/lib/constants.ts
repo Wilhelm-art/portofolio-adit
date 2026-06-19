@@ -47,11 +47,11 @@ export const getSkillsData = (lang: 'en' | 'id') => {
 export const CERTIFICATIONS_DATA = [
   {
     title: 'Google Cybersecurity Certificate (2026) — Coursera',
-    url: 'https://www.coursera.org/account/accomplishments/professional-cert/certificate/LQ1NNIQRM3Q1',
+    url: 'https://drive.google.com/file/d/1HOwxuX834gxiyAHmYR59sBcSmdvgTZpZ/view?usp=sharing',
   },
   {
     title: 'Sertifikat Kompetensi Kerja Nasional (BNSP) — Teknik Pemesinan (2021)',
-    url: 'https://drive.google.com/file/d/1PvSBMgh9uuPJrmUhJKu7hf4B1iTFQf0T/view?usp=sharing',
+    url: 'https://drive.google.com/file/d/1OPbuB9XTssClEjfKDS-APmF7KQJ46t5v/view?usp=sharing',
   },
 ];
 
@@ -94,7 +94,7 @@ export const getOtherProjects = (lang: 'en' | 'id') => {
         : 'A premium e-commerce platform for buying, selling, and renting flagship gadgets. Built with Next.js 16, Prisma ORM, PostgreSQL, and NextAuth.js v5, featuring strict security and OTP verification.',
       tags: ['Next.js', 'Prisma', 'PostgreSQL', 'NextAuth', 'Tailwind v4'],
       github: 'https://github.com/Wilhelm-art/gadget-vault',
-      demo: '#',
+      demo: 'https://gadget-vault-silk.vercel.app/',
       image: '/gadget-vault.png',
     },
     {
