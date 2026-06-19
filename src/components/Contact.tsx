@@ -34,21 +34,62 @@ export default function Contact() {
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    try {
-      const emailRecipient = CONTACT_DATA.email;
-      const subject = encodeURIComponent(data.subject);
-      const body = encodeURIComponent(
-        `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
-      );
-      const mailtoUrl = `mailto:${emailRecipient}?subject=${subject}&body=${body}`;
-      window.location.href = mailtoUrl;
-      setSubmitStatus('success');
-      reset();
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-      setTimeout(() => setSubmitStatus('idle'), 5000);
+    
+    // Read the Web3Forms access key from the environment
+    const accessKey = (import.meta as any).env.VITE_WEB3FORMS_ACCESS_KEY;
+    
+    if (accessKey) {
+      // Direct email submission using Web3Forms API
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            name: data.name,
+            email: data.email,
+            subject: data.subject,
+            message: data.message,
+            from_name: 'Portfolio Contact Form',
+          }),
+        });
+        
+        const result = await response.json();
+        if (response.status === 200) {
+          setSubmitStatus('success');
+          reset();
+        } else {
+          console.error('Web3Forms Error:', result);
+          setSubmitStatus('error');
+        }
+      } catch (error) {
+        console.error('Submission Error:', error);
+        setSubmitStatus('error');
+      } finally {
+        setIsSubmitting(false);
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      }
+    } else {
+      // Fallback: mailto redirect
+      try {
+        const emailRecipient = CONTACT_DATA.email;
+        const subject = encodeURIComponent(data.subject);
+        const body = encodeURIComponent(
+          `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
+        );
+        const mailtoUrl = `mailto:${emailRecipient}?subject=${subject}&body=${body}`;
+        window.location.href = mailtoUrl;
+        setSubmitStatus('success');
+        reset();
+      } catch (error) {
+        setSubmitStatus('error');
+      } finally {
+        setIsSubmitting(false);
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      }
     }
   };
 
