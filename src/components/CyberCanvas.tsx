@@ -132,11 +132,11 @@ export default function CyberCanvas() {
           vec3 darkBase = vec3(0.012, 0.027, 0.07);
           col = oColor * 1.45 + darkBase * (1.0 - clamp(length(oColor) * 1.5, 0.0, 1.0));
         } else {
-          // Warm white base (#fafafa is roughly vec3(0.98)) with very soft pastel aurora
-          vec3 lightBase = vec3(0.98, 0.98, 0.98);
-          // Map dark aurora to beautiful soft pastel shades (lavender, soft blue, pale pink)
-          vec3 pastelAurora = oColor * 0.32;
-          col = mix(lightBase, vec3(0.6, 0.5, 0.9) * pastelAurora.r + vec3(0.4, 0.7, 0.95) * pastelAurora.g + vec3(0.5, 0.85, 0.75) * pastelAurora.b, clamp(length(pastelAurora) * 2.0, 0.0, 1.0));
+          // Soft warm white base (#fcfcfc is vec3(0.988))
+          vec3 lightBase = vec3(0.988, 0.988, 0.988);
+          // Make the pastel aurora extremely subtle (intensity 0.08) for a clean minimalist look
+          vec3 pastelAurora = oColor * 0.08;
+          col = mix(lightBase, vec3(0.65, 0.55, 0.92) * pastelAurora.r + vec3(0.45, 0.72, 0.95) * pastelAurora.g + vec3(0.52, 0.82, 0.78) * pastelAurora.b, clamp(length(pastelAurora) * 1.5, 0.0, 1.0));
         }
 
         gl_FragColor = vec4(col, 1.0);
