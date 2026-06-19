@@ -73,15 +73,15 @@ export default function Contact() {
         setTimeout(() => setSubmitStatus('idle'), 5000);
       }
     } else {
-      // Fallback: mailto redirect
+      // Fallback: Direct redirect to Gmail Web Composer in a new tab
       try {
         const emailRecipient = CONTACT_DATA.email;
         const subject = encodeURIComponent(data.subject);
         const body = encodeURIComponent(
           `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
         );
-        const mailtoUrl = `mailto:${emailRecipient}?subject=${subject}&body=${body}`;
-        window.location.href = mailtoUrl;
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailRecipient}&su=${subject}&body=${body}`;
+        window.open(gmailUrl, '_blank');
         setSubmitStatus('success');
         reset();
       } catch (error) {
