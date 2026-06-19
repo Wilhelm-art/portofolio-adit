@@ -127,7 +127,7 @@ export default function Hero() {
                 <img 
                   src="/profile.jpg" 
                   alt="Adit Hardiansyah Surachman" 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" 
+                  className="w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 ease-out" 
                 />
               </motion.div>
             </div>
