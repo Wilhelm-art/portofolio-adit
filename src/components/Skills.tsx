@@ -2,16 +2,24 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CERTIFICATIONS_DATA, getSkillsData } from '../lib/constants';
 import { fadeInUp, staggerContainer } from '../lib/animations';
-import { ShieldCheck, Code2, Award, ExternalLink, Wrench } from 'lucide-react';
+import { ShieldCheck, Code2, Award, ExternalLink, Wrench, Languages, ClipboardCheck } from 'lucide-react';
 import { useLanguage } from '../lib/LanguageContext';
 
 const icons: Record<string, React.ElementType> = {
   'Programming & Frameworks': Code2,
   'Pemrograman & Framework': Code2,
+  'Information Technology': Code2,
+  'Teknologi Informasi': Code2,
   'Security & Networking': ShieldCheck,
   'Keamanan & Jaringan': ShieldCheck,
+  'Cybersecurity & Networking': ShieldCheck,
+  'Keamanan Siber & Jaringan': ShieldCheck,
   'Systems & Tools': Wrench,
   'Sistem & Alat': Wrench,
+  'Administration & Office': ClipboardCheck,
+  'Administrasi & Perkantoran': ClipboardCheck,
+  'Languages': Languages,
+  'Bahasa': Languages,
 };
 
 export default function Skills() {
