@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Github, ExternalLink, Layers, Code, Sparkles } from 'lucide-react';
 import { getFeaturedProject, getOtherProjects } from '../lib/constants';
-import { fadeInUp, staggerContainer } from '../lib/animations';
+import { slideInLeft, staggerContainer } from '../lib/animations';
 import { useLanguage } from '../lib/LanguageContext';
 
 export default function Projects() {
@@ -47,7 +47,10 @@ export default function Projects() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
             
             {/* Left Side: Header & Filters (Sticky on desktop) */}
-            <div className="lg:col-span-4 lg:sticky lg:top-28 lg:h-fit flex flex-col items-center lg:items-start text-center lg:text-left mb-8 lg:mb-0">
+            <motion.div 
+              variants={slideInLeft}
+              className="lg:col-span-4 lg:sticky lg:top-28 lg:h-fit flex flex-col items-center lg:items-start text-center lg:text-left mb-8 lg:mb-0"
+            >
               <h2 className="text-3xl md:text-4xl font-light mb-4 text-slate-900 dark:text-white leading-tight tracking-tight geist-font">
                 {t('projects.title').split(' ')[0]} <span className="gradient-text font-extrabold tracking-tight">{t('projects.title').split(' ').slice(1).join(' ')}</span>
               </h2>
@@ -76,10 +79,13 @@ export default function Projects() {
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Side: Projects Grid */}
-            <div className="lg:col-span-8">
+            <motion.div 
+              variants={slideInLeft}
+              className="lg:col-span-8"
+            >
               <motion.div 
                 layout
                 className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -91,10 +97,10 @@ export default function Projects() {
                     return (
                       <motion.div
                         layout
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.4 }}
+                        initial={{ opacity: 0, x: -30 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 30 }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }}
                         key={project.id}
                         className={`glass-card rounded-2xl overflow-hidden group flex flex-col ${
                           isFeaturedCard ? 'md:col-span-2' : 'md:col-span-1'
@@ -187,7 +193,7 @@ export default function Projects() {
                   })}
                 </AnimatePresence>
               </motion.div>
-            </div>
+            </motion.div>
 
           </div>
         </motion.div>
