@@ -1,39 +1,61 @@
-import Navbar from '../components/Navbar';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Skills from '../components/Skills';
-import Projects from '../components/Projects';
-import Timeline from '../components/Timeline';
-import Contact from '../components/Contact';
-import Footer from '../components/Footer';
-import WhatsAppButton from '../components/WhatsAppButton';
+import React from 'react';
+import { PortfolioPage, PortfolioPageProps } from "@/src/components/ui/starfall-portfolio-landing";
+
+const customPortfolioData: PortfolioPageProps = {
+  logo: {
+    initials: 'AT',
+    name: 'Alex Thompson',
+  },
+  navLinks: [
+    { label: 'Bio', href: '#about' },
+    { label: 'Work', href: '#projects' },
+    { label: 'Expertise', href: '#skills' },
+  ],
+  resume: {
+    label: 'Download CV',
+    onClick: () => alert('Downloading CV...'),
+  },
+  hero: {
+    titleLine1: 'Full-Stack Engineer &',
+    titleLine2Gradient: 'UX Architect',
+    subtitle: 'I build robust and scalable web applications with a strong focus on user-centric design and performance.',
+  },
+  ctaButtons: {
+    primary: {
+      label: 'Explore My Work',
+      onClick: () => { document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); },
+    },
+    secondary: {
+      label: 'Contact Me',
+      onClick: () => { window.location.href = 'mailto:alex.thompson@example.com'; },
+    },
+  },
+  projects: [
+    { 
+      title: 'E-commerce Platform', 
+      description: 'A scalable online store built with Next.js, TypeScript, and Stripe.',
+      tags: ['Next.js', 'Stripe', 'Vercel'] 
+    },
+    { 
+      title: 'SaaS Dashboard', 
+      description: 'A real-time analytics dashboard for a B2B software-as-a-service product.',
+      tags: ['React', 'Chart.js', 'Firebase'] 
+    },
+    { 
+      title: 'AI Content Generator', 
+      description: 'Leveraging OpenAI to generate marketing copy for businesses.',
+      tags: ['SvelteKit', 'OpenAI', 'Tailwind CSS'],
+      imageContent: <div className="text-2xl text-white/50">🤖</div>
+    },
+  ],
+  stats: [
+    { value: '7+', label: 'Years of Experience' },
+    { value: '30+', label: 'Client Projects' },
+    { value: '99%', label: 'Client Satisfaction' },
+  ],
+  showAnimatedBackground: true, // You can toggle the background
+};
 
 export default function Home() {
-  return (
-    <div className="min-h-[100svh] font-sans">
-      <Navbar />
-      <main>
-        <section id="home">
-          <Hero />
-        </section>
-        <section id="about">
-          <About />
-        </section>
-        <section id="skills">
-          <Skills />
-        </section>
-        <section id="projects">
-          <Projects />
-        </section>
-        <section id="experience">
-          <Timeline />
-        </section>
-        <section id="contact">
-          <Contact />
-        </section>
-      </main>
-      <Footer />
-      <WhatsAppButton />
-    </div>
-  );
+  return <PortfolioPage {...customPortfolioData} />;
 }
