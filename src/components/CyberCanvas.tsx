@@ -33,7 +33,10 @@ export default function CyberCanvas() {
       powerPreference: 'high-performance',
     });
     
-    const getDpr = () => Math.min(window.devicePixelRatio, 1.5);
+    const getDpr = () => {
+      // Clamp pixel ratio on mobile to 1.0 and desktop to 1.25 to prevent fill-rate scroll lag
+      return window.innerWidth < 768 ? 1.0 : Math.min(window.devicePixelRatio, 1.25);
+    };
     renderer.setPixelRatio(getDpr());
     renderer.setSize(container.clientWidth, container.clientHeight);
 
@@ -60,7 +63,7 @@ export default function CyberCanvas() {
       uniform float uDarkTheme;
       varying vec2 vUv;
 
-      #define NUM_OCTAVES 3
+      #define NUM_OCTAVES 2
 
       float rand(vec2 n) {
         return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
@@ -103,9 +106,9 @@ export default function CyberCanvas() {
 
         float f = 1.8 + fbm(p + vec2(iTime * 0.4, 0.0)) * 0.4;
 
-        for (float i = 0.0; i < 28.0; i++) {
+        for (float i = 0.0; i < 16.0; i++) {
           v = p + cos(i * i + (iTime * 0.15 + p.x * 0.06) * 0.1 + i * vec2(11.5, 9.5)) * 3.0 + vec2(sin(iTime * 0.25 + i) * 0.002, cos(iTime * 0.3 - i) * 0.002);
-          float tailNoise = fbm(v + vec2(iTime * 0.05, i)) * 0.25 * (1.0 - (i / 28.0));
+          float tailNoise = fbm(v + vec2(iTime * 0.05, i)) * 0.25 * (1.0 - (i / 16.0));
           
           // Organic evolving Aurora colors (Violet, Indigo, Deep Pink, Emerald)
           vec4 auroraColors = vec4(
@@ -116,11 +119,11 @@ export default function CyberCanvas() {
           );
           
           vec4 currentContribution = auroraColors * exp(sin(i * i + iTime * 0.2)) / length(max(v, vec2(v.x * f * 0.015, v.y * 1.8)));
-          float thinnessFactor = smoothstep(0.0, 1.0, i / 28.0) * 0.55;
+          float thinnessFactor = smoothstep(0.0, 1.0, i / 16.0) * 0.55;
           o += currentContribution * (1.0 + tailNoise * 0.75) * thinnessFactor;
         }
 
-        o = tanh(pow(o / 70.0, vec4(1.5)));
+        o = tanh(pow(o / 40.0, vec4(1.5)));
         vec3 oColor = o.rgb;
 
         vec3 col;
