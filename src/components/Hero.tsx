@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Download, Github, Linkedin, MessageSquare, ShieldCheck } from 'lucide-react';
+import { Download, Github, Linkedin, MessageSquare, ShieldCheck } from 'lucide-react';
 import { CONTACT_DATA, getHeroData } from '../lib/constants';
 import { fadeInUp } from '../lib/animations';
 import { useLanguage } from '../lib/LanguageContext';
@@ -76,18 +76,10 @@ export default function Hero() {
             
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full sm:w-auto">
               <a
-                href="#projects"
-                className="w-full sm:w-auto primary-button px-8 py-3.5 rounded-xl font-medium text-sm flex items-center justify-center gap-2 hover:scale-102 transition-transform duration-300 font-display"
-              >
-                <span>{t('common.viewWork')}</span>
-                <ArrowRight size={18} />
-              </a>
-              
-              <a
                 href="https://drive.google.com/file/d/1gnTbq-vJhQnL2z-wkXwxheaXb1D6rH40/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto glass-button px-8 py-3.5 rounded-xl font-medium text-sm text-slate-800 dark:text-white flex items-center justify-center gap-2 hover:scale-102 transition-transform duration-300 font-display"
+                className="w-full sm:w-auto primary-button px-8 py-3.5 rounded-xl font-medium text-sm flex items-center justify-center gap-2 hover:scale-102 transition-transform duration-300 font-display"
               >
                 <span>{t('common.downloadCV')}</span>
                 <Download size={18} />
