@@ -35,8 +35,13 @@ export default function Contact() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log('Form submitted:', data);
+      const emailRecipient = CONTACT_DATA.email;
+      const subject = encodeURIComponent(data.subject);
+      const body = encodeURIComponent(
+        `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`
+      );
+      const mailtoUrl = `mailto:${emailRecipient}?subject=${subject}&body=${body}`;
+      window.location.href = mailtoUrl;
       setSubmitStatus('success');
       reset();
     } catch (error) {

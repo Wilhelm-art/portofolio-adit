@@ -18,7 +18,7 @@ export default function Projects() {
       ...p,
       isFeatured: false,
       // Assign category groups for filter
-      category: p.id === 'logsentinel' || p.id === 'budget-calc' ? 'web-app' : 'ui-ux'
+      category: p.id === 'logsentinel' || p.id === 'budget-calc' || p.id === 'gadget-vault' ? 'web-app' : 'ui-ux'
     }))
   ];
 

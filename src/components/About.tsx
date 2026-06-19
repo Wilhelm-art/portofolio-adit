@@ -82,7 +82,7 @@ export default function About() {
                 className="flex justify-center sm:justify-start"
               >
                 <a
-                  href="https://drive.google.com/file/d/1kf1vS-8q2b9Pwi7TKhc2PHtWdnQpAzN7/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1gnTbq-vJhQnL2z-wkXwxheaXb1D6rH40/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-3.5 bg-slate-100/80 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl text-slate-700 dark:text-slate-250 font-medium hover:bg-slate-200/80 dark:hover:bg-white/10 transition-all w-full sm:w-auto justify-center font-display shadow-sm hover:shadow-md"

@@ -98,8 +98,8 @@ export default function CyberCanvas() {
 
     // Dynamic Theme Colors
     const isDark = theme === 'dark';
-    const pointColor = isDark ? 0x06b6d4 : 0x3b82f6; // Cyan in dark, Blue in light
-    const lineColor = isDark ? 0x00f0ff : 0x2563eb; 
+    const pointColor = isDark ? 0x10b981 : 0x4f46e5; // Emerald in dark, Indigo in light
+    const lineColor = isDark ? 0x059669 : 0x6366f1; 
 
     // Point Material
     const pointsMaterial = new THREE.PointsMaterial({
@@ -223,8 +223,8 @@ export default function CyberCanvas() {
       let connectionIndex = 0;
       const connectionThreshold = 3.5; // Max distance for nodes to connect
 
-      const cColor = new THREE.Color(isDark ? '#06b6d4' : '#3b82f6'); // Base theme color
-      const accentColor = new THREE.Color(isDark ? '#3b82f6' : '#0891b2');
+      const cColor = new THREE.Color(isDark ? '#10b981' : '#4f46e5'); // Base theme color
+      const accentColor = new THREE.Color(isDark ? '#4f46e5' : '#059669');
 
       for (let i = 0; i < particleCount && connectionIndex < maxConnections; i++) {
         const x1 = posAttr[i * 3];
@@ -299,9 +299,9 @@ export default function CyberCanvas() {
     // 8. Handle Theme Updates Dynamically
     const updateThemeColors = () => {
       const currentDark = theme === 'dark';
-      const updatedPointColor = currentDark ? 0x06b6d4 : 0x3b82f6;
+      const updatedPointColor = currentDark ? 0x10b981 : 0x4f46e5;
       pointsMaterial.color.setHex(updatedPointColor);
-      lineMaterial.opacity = currentDark ? 0.35 : 0.25;
+      lineMaterial.opacity = currentDark ? 0.25 : 0.15;
     };
     
     updateThemeColors();

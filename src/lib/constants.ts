@@ -10,7 +10,7 @@ export const getHeroData = (lang: 'en' | 'id') => {
 export const getAboutData = (lang: 'en' | 'id') => {
   return {
     stats: [
-      { label: lang === 'id' ? 'IPK' : 'GPA', value: 3.62, suffix: '' },
+      { label: lang === 'id' ? 'IPK' : 'GPA', value: 3.61, suffix: '' },
       { label: lang === 'id' ? 'Tahun Studi' : 'Years of Study', value: 4, suffix: '+' },
       { label: lang === 'id' ? 'Publikasi Skripsi' : 'Published Thesis', value: 1, suffix: '' },
     ],
@@ -20,18 +20,26 @@ export const getAboutData = (lang: 'en' | 'id') => {
 export const getSkillsData = (lang: 'en' | 'id') => {
   return [
     {
-      category: lang === 'id' ? 'Pemrograman & Framework' : 'Programming & Frameworks',
-      skills: ['PHP', 'Python', 'Java', 'TypeScript', 'React', 'Next.js', 'Laravel', 'Tailwind CSS', 'SQL'],
+      category: lang === 'id' ? 'Teknologi Informasi' : 'Information Technology',
+      skills: ['PHP', 'Python', 'Next.js', 'React', 'Laravel', 'TypeScript', 'Tailwind CSS', 'SQL', 'Linux', 'SDLC'],
     },
     {
-      category: lang === 'id' ? 'Keamanan & Jaringan' : 'Security & Networking',
+      category: lang === 'id' ? 'Keamanan Siber & Jaringan' : 'Cybersecurity & Networking',
       skills: lang === 'id'
         ? ['Keamanan Jaringan', 'Analisis Ancaman', 'Manajemen Risiko', 'LAN/WAN', 'Pengujian & Troubleshooting Sistem']
         : ['Network Security', 'Threat Analysis', 'Risk Management', 'LAN/WAN', 'System Testing & Troubleshooting'],
     },
     {
-      category: lang === 'id' ? 'Sistem & Alat' : 'Systems & Tools',
-      skills: ['Linux', 'SDLC', 'Microsoft Office', 'Microsoft Excel', 'Microsoft Word'],
+      category: lang === 'id' ? 'Administrasi & Perkantoran' : 'Administration & Office',
+      skills: lang === 'id'
+        ? ['Microsoft Office (Word, Excel, PowerPoint)', 'Google Workspace', 'Pengelolaan Dokumen & Arsip', 'Surat-Menyurat Dinas', 'Rekap Data']
+        : ['Microsoft Office (Word, Excel, PowerPoint)', 'Google Workspace', 'Document & Archive Management', 'Official Correspondence', 'Data Recap'],
+    },
+    {
+      category: lang === 'id' ? 'Bahasa' : 'Languages',
+      skills: lang === 'id'
+        ? ['Bahasa Indonesia (Native)', 'Bahasa Inggris (Aktif)']
+        : ['Indonesian (Native)', 'English (Active)'],
     },
   ];
 };
@@ -42,7 +50,7 @@ export const CERTIFICATIONS_DATA = [
     url: 'https://www.coursera.org/account/accomplishments/professional-cert/certificate/LQ1NNIQRM3Q1',
   },
   {
-    title: 'Uji Kompetensi Keahlian (UKK) Teknik Pemesinan Nasional (2021)',
+    title: 'Sertifikat Kompetensi Kerja Nasional (BNSP) — Teknik Pemesinan (2021)',
     url: 'https://drive.google.com/file/d/1PvSBMgh9uuPJrmUhJKu7hf4B1iTFQf0T/view?usp=sharing',
   },
 ];
@@ -78,6 +86,17 @@ export const getFeaturedProject = (lang: 'en' | 'id') => {
 
 export const getOtherProjects = (lang: 'en' | 'id') => {
   return [
+    {
+      id: 'gadget-vault',
+      title: 'GadgetVault',
+      description: lang === 'id'
+        ? 'Platform e-commerce premium untuk jual-beli dan sewa gadget flagship. Dirancang dengan Next.js 16, Prisma ORM, PostgreSQL, dan NextAuth.js v5 dengan fitur keamanan tingkat tinggi dan validasi OTP.'
+        : 'A premium e-commerce platform for buying, selling, and renting flagship gadgets. Built with Next.js 16, Prisma ORM, PostgreSQL, and NextAuth.js v5, featuring strict security and OTP verification.',
+      tags: ['Next.js', 'Prisma', 'PostgreSQL', 'NextAuth', 'Tailwind v4'],
+      github: 'https://github.com/Wilhelm-art/gadget-vault',
+      demo: '#',
+      image: '/gadget-vault.png',
+    },
     {
       id: 'budget-calc',
       title: lang === 'id' ? 'Aplikasi Kalkulasi Anggaran Berbasis Web (Magang)' : 'Web-Based Budget Calculation Application (Internship)',
@@ -129,47 +148,71 @@ export const getExperienceData = (lang: 'en' | 'id') => {
   return [
     {
       id: 1,
+      type: 'certification',
+      title: lang === 'id' ? 'Google Cybersecurity Certificate' : 'Google Cybersecurity Certificate',
+      organization: 'Coursera',
+      period: '2026',
+      details: lang === 'id' 
+        ? 'Sertifikasi profesional mencakup kerangka keamanan, analisis ancaman, respons insiden, keamanan jaringan, dan hands-on lab Linux/Python.' 
+        : 'Comprehensive professional certificate covering security frameworks, threat analysis, incident response, network hardening, and Linux/Python hands-on labs.',
+    },
+    {
+      id: 2,
+      type: 'experience',
+      title: lang === 'id' ? 'Lead Developer' : 'Lead Developer',
+      organization: 'Masjid AT-Tijaniyah',
+      period: lang === 'id' ? 'Mar 2025 – Agu 2025' : 'Mar 2025 – Aug 2025',
+      details: lang === 'id' 
+        ? 'Merancang dan mengembangkan sistem manajemen keuangan berbasis web secara mandiri untuk memodernisasi pembukuan manual, mengimplementasikan model akuntansi cash basis, serta mengelola siklus pengembangan end-to-end.' 
+        : 'Independently designed and developed a web-based financial management system to modernize manual bookkeeping, implemented cash-basis accounting model, and managed the end-to-end development cycle.',
+    },
+    {
+      id: 3,
       type: 'experience',
       title: lang === 'id' ? 'Staf IT / Administrasi (Magang)' : 'IT / Administrative Staff (Intern)',
       organization: 'Dinas Perdagangan dan Perindustrian Kota Bandung',
       period: lang === 'id' ? 'Okt 2024 – Jan 2025' : 'Oct 2024 – Jan 2025',
       details: lang === 'id' 
-        ? 'Mendigitalisasi proses manual dengan mengembangkan aplikasi web kalkulasi anggaran untuk laporan keuangan tahunan.' 
-        : 'Digitized manual processes by developing a web-based budget calculation app to improve the efficiency and accuracy of annual financial reporting.',
-    },
-    {
-      id: 2,
-      type: 'experience',
-      title: lang === 'id' ? 'Operator Produksi (Magang)' : 'Production Operator (Intern)',
-      organization: 'PT. Bahagia Sejahtera Metalindo',
-      period: lang === 'id' ? 'Agu 2020 – Sep 2020' : 'Aug 2020 – Sep 2020',
-      details: lang === 'id' ? 'Pengalaman industri sebagai operator produksi dalam magang sekolah vokasi.' : 'Gained hands-on industrial experience as a production operator during vocational internship.',
-    },
-    {
-      id: 3,
-      type: 'education',
-      title: 'S1 Teknik Informatika',
-      organization: 'STMIK Mardira Indonesia',
-      period: lang === 'id' ? 'Jul 2021 – Sep 2025' : 'Jul 2021 – Sep 2025',
-      details: lang === 'id' ? 'IPK: 3.62 / 4.00' : 'GPA: 3.62 / 4.00',
+        ? 'Mengembangkan aplikasi perhitungan anggaran berbasis web untuk mendigitalisasi proses manual, meningkatkan efisiensi pelaporan keuangan tahunan, serta memberikan dukungan teknis IT departemen.' 
+        : 'Developed a web-based budget calculation app to digitalize manual processes, increasing efficiency of annual financial reports, and provided IT technical support.',
     },
     {
       id: 4,
       type: 'education',
-      title: 'Teknik Pemesinan',
-      organization: 'SMK Mahardhika Batujajar',
-      period: lang === 'id' ? 'Jul 2018 – Jun 2021' : 'Jul 2018 – Jun 2021',
-      details: lang === 'id' ? 'Nilai: 81.79' : 'Score: 81.79',
+      title: 'S1 Teknik Informatika',
+      organization: 'STMIK Mardira Indonesia',
+      period: lang === 'id' ? 'Jul 2021 – Okt 2025' : 'Jul 2021 – Oct 2025',
+      details: lang === 'id' 
+        ? 'Lulus S1 Teknik Informatika dengan IPK 3.61 / 4.00, mempublikasikan skripsi tentang sistem manajemen kas masjid.' 
+        : 'Graduated S1 Information Technology with a 3.61 / 4.00 GPA, publishing a thesis on a web-based mosque cash system.',
     },
     {
       id: 5,
       type: 'certification',
-      title: 'Google Cybersecurity Certificate',
-      organization: 'Coursera',
-      period: '2025',
+      title: lang === 'id' ? 'Sertifikat Kompetensi Kerja Nasional (BNSP) — Teknik Pemesinan' : 'National Professional Certification (BNSP) — Machining',
+      organization: 'Badan Nasional Sertifikasi Profesi (BNSP)',
+      period: '2021',
       details: lang === 'id' 
-        ? 'Sertifikasi profesional mencakup kerangka keamanan, analisis ancaman, respons insiden, dan keamanan jaringan.' 
-        : 'Comprehensive professional certificate covering security frameworks, threat analysis, incident response, and network hardening.',
+        ? 'Sertifikasi kompetensi keahlian nasional di bidang Teknik Pemesinan.' 
+        : 'National certification of professional competency in Machining.',
+    },
+    {
+      id: 6,
+      type: 'education',
+      title: lang === 'id' ? 'Teknik Pemesinan' : 'Mechanical Engineering (Machining)',
+      organization: 'SMK Mahardhika Batujajar',
+      period: 'Jul 2018 – Jun 2021',
+      details: lang === 'id' ? 'Lulus dengan nilai kelulusan 81.79 / 100.' : 'Graduated with a final score of 81.79 / 100.',
+    },
+    {
+      id: 7,
+      type: 'experience',
+      title: lang === 'id' ? 'Operator Produksi (Magang)' : 'Production Operator (Intern)',
+      organization: 'PT. Bahagia Sejahtera Metalindo',
+      period: lang === 'id' ? 'Agu 2020 – Sep 2020' : 'Aug 2020 – Sep 2020',
+      details: lang === 'id' 
+        ? 'Menjalankan proses produksi sesuai spesifikasi teknis presisi tinggi dengan kepatuhan penuh terhadap standar K3 dan SOP industri.' 
+        : 'Executed production processes in accordance with high-precision technical specifications with full compliance with K3 standards and industrial SOPs.',
     },
   ];
 };

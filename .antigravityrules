@@ -1,0 +1,50 @@
+# ANTIGRAVITY RULES & INSTINCTS (ECC ADOPTED)
+
+These guidelines form the core operating instructions and instincts for all AI agents working in this workspace. Every agent MUST read, verify, and adhere to these rules before starting any coding, research, or execution tasks.
+
+---
+
+## 1. PRE-TASK VERIFICATION (EXECUTION MODE)
+- **CRITICAL:** Before beginning any coding task, you MUST check this `.antigravityrules` file to verify coding standards, security baselines, and workflow constraints.
+- Do not bypass this verification step. If you are modifying files, ensure they comply with the rules set forth here.
+
+---
+
+## 2. ECC CORE WORKFLOW INSTINCTS
+- **Research & Reuse First:**
+  - **GitHub Search:** Run `gh search repos` and `gh search code` first to find existing implementations, templates, and patterns.
+  - **Library Docs:** Confirm API behavior and package usage before implementing.
+  - **Exa/Web Search:** Only use web search when GitHub search and primary docs are insufficient.
+  - Prefer adopting or porting a proven approach over writing net-new code.
+- **Plan First:** Plan before editing large features. Create planning docs (PRD, architecture, tech doc) before coding.
+- **TDD (Test-Driven Development):**
+  - Write tests first (RED), implement to pass (GREEN), then refactor (IMPROVE).
+  - Verify and aim for 80%+ test coverage.
+- **Code Review:** Always conduct a code review after implementing features. Resolve critical/high issues immediately.
+- **Conventional Commits:** Use conventional commit prefixes (`feat:`, `fix:`, `docs:`, `test:`, `chore:`, `refactor:`, `perf:`, `ci:`).
+- **Commit Subject Length:** Keep commit subjects concise, close to ~70 characters.
+
+---
+
+## 3. CODING STYLE & PRINCIPLES
+- **Immutability (CRITICAL):** ALWAYS create new objects/copies. NEVER mutate existing ones in place.
+- **KISS (Keep It Simple):** Prefer the simplest solution that works. Optimize for clarity over cleverness.
+- **DRY (Don't Repeat Yourself):** Extract repeated logic into shared functions or utilities. Avoid copy-paste drift.
+- **YAGNI (You Aren't Gonna Need It):** Do not build features or abstractions before they are needed.
+- **File Organization:** Prefer many small, highly cohesive files (200-400 lines typical, 800 lines max) over few large files.
+- **Error Handling:** Explicitly handle errors at every level. Never silently swallow errors. Fail loudly with clear messages.
+- **Input Validation:** ALWAYS validate user inputs and external data at system boundaries (schema-based when possible).
+- **File Naming:** Prefer camelCase for JavaScript and TypeScript module filenames, and kebab-case for skill or command directories.
+
+---
+
+## 4. SECURITY CHECKLIST (MANDATORY BEFORE COMMIT)
+Before committing any changes, verify:
+- [ ] No hardcoded secrets (API keys, passwords, tokens, auth keys).
+- [ ] All user/external inputs are validated and sanitized.
+- [ ] SQL injection prevention (use parameterized queries).
+- [ ] XSS prevention (sanitized HTML output).
+- [ ] CSRF protection is enabled.
+- [ ] Authentication and authorization checks are verified for sensitive paths.
+- [ ] Rate limiting is applied to endpoints.
+- [ ] Error messages are clean and do not leak sensitive internals.
