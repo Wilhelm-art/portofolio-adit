@@ -36,10 +36,10 @@ export default function Projects() {
   ] as const;
 
   return (
-    <section id="projects" className="py-20 sm:py-24 relative overflow-hidden bg-slate-50/20 dark:bg-navy-950/10">
+    <section id="projects" className="py-20 sm:py-24 relative overflow-hidden">
       {/* Decorative blurs */}
-      <div className="absolute top-1/4 right-0 w-80 h-80 bg-cyan-accent/3 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-electric-blue/3 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-cyan-accent/2 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-electric-blue/2 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
@@ -51,7 +51,7 @@ export default function Projects() {
           {/* Section Header */}
           <motion.div variants={fadeInUp} className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
-              {t('projects.title').split(' ')[0]} <span className="text-gradient font-extrabold text-cyber-glow font-display">{t('projects.title').split(' ').slice(1).join(' ')}</span>
+              {t('projects.title').split(' ')[0]} <span className="text-gradient font-extrabold font-display">{t('projects.title').split(' ').slice(1).join(' ')}</span>
             </h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-4 font-sans text-base sm:text-lg">
               {language === 'id'
@@ -65,7 +65,7 @@ export default function Projects() {
             variants={fadeInUp} 
             className="flex flex-wrap justify-center items-center gap-3 mb-12"
           >
-            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-navy-900 border border-slate-200 dark:border-white/5 rounded-full text-xs font-semibold text-slate-500 dark:text-slate-400 mr-2">
+            <div className="flex items-center gap-1.5 px-3 py-1.5 bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-white/5 rounded-full text-xs font-semibold text-slate-500 dark:text-slate-400 mr-2">
               <Filter size={12} />
               <span>FILTER:</span>
             </div>
@@ -75,8 +75,8 @@ export default function Projects() {
                 onClick={() => setActiveFilter(btn.id)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer border ${
                   activeFilter === btn.id
-                    ? 'bg-electric-blue border-electric-blue text-white shadow-md shadow-electric-blue/20'
-                    : 'bg-white dark:bg-navy-900 border-slate-200 dark:border-white/5 text-slate-600 dark:text-slate-350 hover:border-cyan-accent/50 dark:hover:border-cyan-accent/40'
+                    ? 'bg-electric-blue border-electric-blue text-white shadow-sm'
+                    : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-white/5 text-slate-600 dark:text-slate-350 hover:border-cyan-accent/40'
                 }`}
               >
                 {btn.icon}
@@ -103,14 +103,14 @@ export default function Projects() {
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.4 }}
                     key={project.id}
-                    className={`glass-cyber-card rounded-3xl overflow-hidden group flex flex-col shadow-md hover:shadow-cyber-glow border-glow-pulse ${
+                    className={`minimal-card rounded-3xl overflow-hidden group flex flex-col ${
                       isFeaturedCard ? 'lg:col-span-2' : 'lg:col-span-1'
                     }`}
                   >
                     {/* Project Image Panel */}
-                    <div className="relative h-52 sm:h-60 overflow-hidden bg-slate-100 dark:bg-navy-950 border-b border-slate-200/50 dark:border-white/5">
+                    <div className="relative h-52 sm:h-60 overflow-hidden bg-zinc-100 dark:bg-zinc-950 border-b border-zinc-200/50 dark:border-white/5">
                       {project.isFeatured && (
-                        <div className="absolute top-4 left-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-[10px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full z-20 shadow-lg uppercase tracking-wider font-display animate-cyber-pulse border border-white/20">
+                        <div className="absolute top-4 left-4 bg-gradient-to-r from-electric-blue to-cyan-accent text-white text-[10px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full z-20 shadow-md uppercase tracking-wider font-display border border-white/10">
                           {t('projects.featured').replace('🏆 ', '')}
                         </div>
                       )}
@@ -125,7 +125,7 @@ export default function Projects() {
                     </div>
                     
                     {/* Project Body */}
-                    <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between bg-white/40 dark:bg-transparent">
+                    <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between bg-zinc-50/20 dark:bg-transparent">
                       <div>
                         <h3 className={`font-bold text-slate-800 dark:text-white mb-3 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors leading-tight font-display ${
                           isFeaturedCard ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'
@@ -159,14 +159,14 @@ export default function Projects() {
                           {project.tags.map(tag => (
                             <span 
                               key={tag} 
-                              className="text-[10px] sm:text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-white/5 border border-slate-200/50 dark:border-white/10 px-2.5 py-1 rounded-lg"
+                              className="text-[10px] sm:text-xs font-medium text-slate-500 dark:text-slate-400 bg-zinc-100 dark:bg-white/5 border border-zinc-200/50 dark:border-white/10 px-2.5 py-1 rounded-lg"
                             >
                               {tag}
                             </span>
                           ))}
                         </div>
                         
-                        <div className="flex items-center gap-4 pt-4 border-t border-slate-200/50 dark:border-white/5 mt-auto">
+                        <div className="flex items-center gap-4 pt-4 border-t border-zinc-200/50 dark:border-white/5 mt-auto">
                           <a
                             href={project.github}
                             target="_blank"

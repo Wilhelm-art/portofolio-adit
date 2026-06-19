@@ -3,7 +3,7 @@ import { CONTACT_DATA } from '../lib/constants';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-100 dark:bg-navy-900 py-12 border-t border-slate-200 dark:border-white/5 relative overflow-hidden transition-colors duration-300">
+    <footer className="bg-transparent py-12 border-t border-zinc-200 dark:border-white/5 relative overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
         
         <div className="flex flex-col items-center md:items-start gap-2">

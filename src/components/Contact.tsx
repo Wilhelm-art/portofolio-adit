@@ -94,9 +94,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-24 relative overflow-hidden bg-slate-50/20 dark:bg-navy-950/10">
+    <section id="contact" className="py-20 sm:py-24 relative overflow-hidden">
       {/* Decorative gradient blur */}
-      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-cyan-accent/3 blur-[180px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-cyan-accent/2 blur-[180px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
@@ -108,7 +108,7 @@ export default function Contact() {
           {/* Header */}
           <motion.div variants={fadeInUp} className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">
-              {t('contact.title').split(' ')[0]} <span className="text-gradient font-extrabold text-cyber-glow font-display">{t('contact.title').split(' ').slice(1).join(' ')}</span>
+              {t('contact.title').split(' ')[0]} <span className="text-gradient font-extrabold font-display">{t('contact.title').split(' ').slice(1).join(' ')}</span>
             </h2>
             <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-4 font-sans text-base sm:text-lg">
               {t('contact.subtitle')}
@@ -122,9 +122,9 @@ export default function Contact() {
               {/* Email Block */}
               <motion.div 
                 whileHover={{ y: -4 }}
-                className="glass-cyber-card p-6 rounded-2xl flex items-start gap-4 group shadow-sm hover:shadow-cyber-glow border-glow-pulse"
+                className="minimal-card p-6 rounded-2xl flex items-start gap-4 group"
               >
-                <div className="p-3 bg-cyan-accent/10 text-cyan-500 rounded-xl group-hover:bg-cyan-accent group-hover:text-white transition-colors shrink-0 group-hover:scale-110 duration-300">
+                <div className="p-3 bg-cyan-accent/10 text-cyan-500 rounded-xl group-hover:bg-cyan-accent group-hover:text-white transition-colors shrink-0 duration-300">
                   <Mail size={24} />
                 </div>
                 <div className="overflow-hidden">
@@ -138,9 +138,9 @@ export default function Contact() {
               {/* Phone Block */}
               <motion.div 
                 whileHover={{ y: -4 }}
-                className="glass-cyber-card p-6 rounded-2xl flex items-start gap-4 group shadow-sm hover:shadow-cyber-glow border-glow-pulse"
+                className="minimal-card p-6 rounded-2xl flex items-start gap-4 group"
               >
-                <div className="p-3 bg-cyan-accent/10 text-cyan-500 rounded-xl group-hover:bg-cyan-accent group-hover:text-white transition-colors shrink-0 group-hover:scale-110 duration-300">
+                <div className="p-3 bg-cyan-accent/10 text-cyan-500 rounded-xl group-hover:bg-cyan-accent group-hover:text-white transition-colors shrink-0 duration-300">
                   <Phone size={24} />
                 </div>
                 <div>
@@ -159,9 +159,9 @@ export default function Contact() {
               {/* Location Block */}
               <motion.div 
                 whileHover={{ y: -4 }}
-                className="glass-cyber-card p-6 rounded-2xl flex items-start gap-4 group shadow-sm hover:shadow-cyber-glow border-glow-pulse"
+                className="minimal-card p-6 rounded-2xl flex items-start gap-4 group"
               >
-                <div className="p-3 bg-cyan-accent/10 text-cyan-500 rounded-xl group-hover:bg-cyan-accent group-hover:text-white transition-colors shrink-0 group-hover:scale-110 duration-300">
+                <div className="p-3 bg-cyan-accent/10 text-cyan-500 rounded-xl group-hover:bg-cyan-accent group-hover:text-white transition-colors shrink-0 duration-300">
                   <MapPin size={24} />
                 </div>
                 <div>
@@ -175,7 +175,7 @@ export default function Contact() {
             <motion.div variants={slideInRight} className="w-full lg:w-2/3 mt-4 lg:mt-0">
               <form 
                 onSubmit={handleSubmit(onSubmit)} 
-                className="glass-cyber-card p-6 sm:p-8 rounded-3xl space-y-6 shadow-md hover:shadow-cyber-glow border-glow-pulse"
+                className="minimal-card p-6 sm:p-8 rounded-3xl space-y-6"
               >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -184,7 +184,7 @@ export default function Contact() {
                       {...register('name')}
                       type="text"
                       id="name"
-                      className="w-full bg-white/50 dark:bg-navy-900/40 border border-slate-200 dark:border-white/5 rounded-xl px-4.5 py-3.5 text-slate-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans shadow-sm"
+                      className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-white/5 rounded-xl px-4.5 py-3.5 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans shadow-sm"
                     />
                     {errors.name && <p className="text-red-500 dark:text-red-400 text-xs mt-1.5 font-medium">{errors.name.message}</p>}
                   </div>
@@ -194,7 +194,7 @@ export default function Contact() {
                       {...register('email')}
                       type="email"
                       id="email"
-                      className="w-full bg-white/50 dark:bg-navy-900/40 border border-slate-200 dark:border-white/5 rounded-xl px-4.5 py-3.5 text-slate-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans shadow-sm"
+                      className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-white/5 rounded-xl px-4.5 py-3.5 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans shadow-sm"
                     />
                     {errors.email && <p className="text-red-500 dark:text-red-400 text-xs mt-1.5 font-medium">{errors.email.message}</p>}
                   </div>
@@ -206,7 +206,7 @@ export default function Contact() {
                     {...register('subject')}
                     type="text"
                     id="subject"
-                    className="w-full bg-white/50 dark:bg-navy-900/40 border border-slate-200 dark:border-white/5 rounded-xl px-4.5 py-3.5 text-slate-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans shadow-sm"
+                    className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-white/5 rounded-xl px-4.5 py-3.5 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans shadow-sm"
                   />
                   {errors.subject && <p className="text-red-500 dark:text-red-400 text-xs mt-1.5 font-medium">{errors.subject.message}</p>}
                 </div>
@@ -217,7 +217,7 @@ export default function Contact() {
                     {...register('message')}
                     id="message"
                     rows={5}
-                    className="w-full bg-white/50 dark:bg-navy-900/40 border border-slate-200 dark:border-white/5 rounded-2xl px-4.5 py-3.5 text-slate-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans resize-none shadow-sm"
+                    className="w-full bg-zinc-50/50 dark:bg-zinc-900/40 border border-zinc-200 dark:border-white/5 rounded-2xl px-4.5 py-3.5 text-zinc-900 dark:text-white focus:outline-none focus:border-cyan-accent focus:ring-1 focus:ring-cyan-accent/50 dark:focus:ring-cyan-accent/30 transition-all font-sans resize-none shadow-sm"
                   ></textarea>
                   {errors.message && <p className="text-red-500 dark:text-red-400 text-xs mt-1.5 font-medium">{errors.message.message}</p>}
                 </div>
@@ -225,7 +225,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-electric-blue hover:bg-blue-600 text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed shadow-[0_4px_14px_rgba(59,130,246,0.35)] hover:shadow-cyan-accent/20 hover:shadow-lg font-display transform active:scale-[0.98]"
+                  className="w-full py-4 bg-electric-blue text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed shadow-sm hover:bg-opacity-95 font-display transform active:scale-[0.98]"
                 >
                   {isSubmitting ? (
                     <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />

@@ -17,10 +17,10 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 sm:py-24 relative overflow-hidden bg-slate-50/30 dark:bg-navy-950/20">
+    <section id="about" className="py-20 sm:py-24 relative overflow-hidden">
       {/* Subtle glowing accents */}
-      <div className="absolute top-1/2 left-0 w-80 h-80 bg-cyan-accent/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-electric-blue/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-80 h-80 bg-cyan-accent/3 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-electric-blue/3 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div
@@ -32,18 +32,17 @@ export default function About() {
         >
           <motion.div 
             variants={slideInRight} 
-            className="flex-1 w-full glass-cyber-card p-6 sm:p-10 md:p-12 rounded-3xl relative overflow-hidden group shadow-cyber-glow border border-slate-200/50 dark:border-white/5"
+            className="flex-1 w-full minimal-card p-6 sm:p-10 md:p-12 rounded-3xl relative overflow-hidden group"
           >
-            {/* Tech grid border indicator */}
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-electric-blue via-cyan-accent to-blue-500" />
-            <div className="absolute inset-0 bg-gradient-to-br from-electric-blue/2 to-cyan-accent/2 opacity-60 pointer-events-none" />
+            {/* Elegant top gradient accent line */}
+            <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-electric-blue to-cyan-accent" />
             
             <div className="relative z-10">
               <motion.h2 
                 variants={fadeInUp}
                 className="text-3xl md:text-4xl font-bold mb-6 text-slate-900 dark:text-white tracking-tight"
               >
-                {t('about.title').split(' ')[0]} <span className="text-gradient font-extrabold text-cyber-glow font-display">{t('about.title').split(' ').slice(1).join(' ')}</span>
+                {t('about.title').split(' ')[0]} <span className="text-gradient font-extrabold font-display">{t('about.title').split(' ').slice(1).join(' ')}</span>
               </motion.h2>
               
               <motion.p 
@@ -60,12 +59,12 @@ export default function About() {
                 {aboutData.stats.map((stat, index) => (
                   <motion.div 
                     key={index} 
-                    whileHover={{ y: -4, scale: 1.02 }}
-                    className="flex flex-col items-center sm:items-start p-5 bg-white/40 dark:bg-navy-900/40 rounded-2xl border border-slate-200/60 dark:border-white/5 shadow-sm dark:shadow-md transition-all duration-300"
+                    whileHover={{ y: -4 }}
+                    className="flex flex-col items-center sm:items-start p-5 bg-zinc-50/50 dark:bg-zinc-900/30 rounded-2xl border border-zinc-200/50 dark:border-white/5 shadow-sm transition-all duration-300"
                   >
                     <div className="flex items-center justify-between w-full mb-3">
                       <span className="text-sm font-semibold tracking-wide text-slate-500 dark:text-slate-400 uppercase">{stat.label}</span>
-                      <div className="p-1.5 bg-slate-100 dark:bg-white/5 rounded-lg border border-slate-200/50 dark:border-white/10">
+                      <div className="p-1.5 bg-zinc-100 dark:bg-white/5 rounded-lg border border-zinc-200/50 dark:border-white/10">
                         {statIcons[index] || statIcons[0]}
                       </div>
                     </div>

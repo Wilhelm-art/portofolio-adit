@@ -48,7 +48,7 @@ export default function Hero() {
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-16">
           
           <motion.div 
-            className="flex-1 text-center lg:text-left flex flex-col items-center lg:items-start w-full glass-cyber-card p-6 sm:p-8 md:p-10 rounded-3xl shadow-cyber-glow border-glow-pulse"
+            className="flex-1 text-center lg:text-left flex flex-col items-center lg:items-start w-full minimal-card p-6 sm:p-8 md:p-10 rounded-3xl"
             initial="hidden"
             animate="visible"
             variants={{
@@ -58,15 +58,15 @@ export default function Hero() {
           >
             <motion.div 
               variants={fadeInUp} 
-              className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-accent/10 border border-cyan-accent/30 rounded-full mb-4 text-cyan-600 dark:text-cyan-400 font-medium text-xs tracking-wider uppercase animate-cyber-pulse"
+              className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-accent/8 border border-cyan-accent/20 rounded-full mb-4 text-cyan-600 dark:text-cyan-400 font-medium text-xs tracking-wider uppercase"
             >
-              <ShieldCheck size={14} className="animate-spin-slow" />
+              <ShieldCheck size={14} />
               <span>Cybersecurity & Software Developer</span>
             </motion.div>
 
             <motion.h1 variants={fadeInUp} className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-slate-900 dark:text-white leading-tight">
               {language === 'id' ? 'Halo, Saya' : "Hi, I'm"}{' '}
-              <span className="text-gradient block sm:inline mt-1 sm:mt-0 font-display text-cyber-glow font-extrabold">
+              <span className="text-gradient block sm:inline mt-1 sm:mt-0 font-display font-extrabold">
                 {heroData.name}
               </span>
             </motion.h1>
@@ -85,7 +85,7 @@ export default function Hero() {
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 w-full sm:w-auto">
               <a
                 href="#projects"
-                className="w-full sm:w-auto group relative px-8 py-3.5 bg-electric-blue text-white font-medium rounded-xl overflow-hidden flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(59,130,246,0.3)] hover:shadow-cyan-accent/25 hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+                className="w-full sm:w-auto group relative px-8 py-3.5 bg-electric-blue text-white font-medium rounded-xl overflow-hidden flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(99,102,241,0.25)] hover:shadow-cyan-accent/20 hover:shadow-lg transition-all transform hover:-translate-y-0.5"
               >
                 <div className="absolute inset-0 w-0 bg-white/20 transition-all duration-[250ms] ease-out group-hover:w-full" />
                 <span className="relative font-display">{t('common.viewWork')}</span>
@@ -104,13 +104,13 @@ export default function Hero() {
             </motion.div>
 
             <motion.div variants={fadeInUp} className="flex items-center justify-center lg:justify-start gap-6 mt-10">
-              <motion.a whileHover={{ y: -3, scale: 1.15 }} href={CONTACT_DATA.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-cyan-400 transition-colors p-2" aria-label="GitHub">
+              <motion.a whileHover={{ y: -3, scale: 1.15 }} href={CONTACT_DATA.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-cyan-500 transition-colors p-2" aria-label="GitHub">
                 <Github size={24} />
               </motion.a>
-              <motion.a whileHover={{ y: -3, scale: 1.15 }} href={CONTACT_DATA.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-400 transition-colors p-2" aria-label="LinkedIn">
+              <motion.a whileHover={{ y: -3, scale: 1.15 }} href={CONTACT_DATA.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-cyan-500 transition-colors p-2" aria-label="LinkedIn">
                 <Linkedin size={24} />
               </motion.a>
-              <motion.a whileHover={{ y: -3, scale: 1.15 }} href={CONTACT_DATA.discord} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-cyan-400 transition-colors p-2" aria-label="Discord">
+              <motion.a whileHover={{ y: -3, scale: 1.15 }} href={CONTACT_DATA.discord} target="_blank" rel="noopener noreferrer" className="text-slate-500 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-cyan-500 transition-colors p-2" aria-label="Discord">
                 <MessageSquare size={24} />
               </motion.a>
             </motion.div>
@@ -122,17 +122,16 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 mx-auto group">
-              {/* Outer tech circles */}
-              <div className="absolute inset-0 rounded-full border-2 border-dashed border-cyan-accent/50 animate-[spin_30s_linear_infinite] group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-2 rounded-full border border-electric-blue/30 animate-[spin_20s_linear_infinite_reverse]" />
-              <div className="absolute -inset-4 rounded-full bg-gradient-to-tr from-cyan-accent/20 to-electric-blue/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 mx-auto group">
+              {/* Premium minimalist frame outline */}
+              <div className="absolute -inset-2 rounded-3xl border border-zinc-200/50 dark:border-white/5 transition-all duration-500 group-hover:scale-[1.03] group-hover:border-cyan-accent/30 pointer-events-none" />
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-cyan-accent/10 to-electric-blue/10 blur-lg opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none" />
               
               {/* Profile Image Container */}
               <motion.div 
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.3 }}
-                className="absolute inset-4 rounded-full bg-slate-100 dark:bg-navy-900 border-2 border-slate-200 dark:border-white/10 overflow-hidden flex items-center justify-center shadow-2xl"
+                className="w-full h-full rounded-3xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-white/10 overflow-hidden flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-500"
               >
                 <img 
                   src="/profile.jpg" 

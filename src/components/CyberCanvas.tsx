@@ -6,14 +6,14 @@ export default function CyberCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
-  
+
   useEffect(() => {
     if (!containerRef.current || !canvasRef.current) return;
 
     const container = containerRef.current;
     const canvas = canvasRef.current;
 
-    // 1. Accessibility & Motion Preference Setup
+    // Accessibility motion preference
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
     let noMotion = mq.matches;
     const handleMotionChange = (e: MediaQueryListEvent) => {
@@ -21,317 +21,180 @@ export default function CyberCanvas() {
     };
     mq.addEventListener('change', handleMotionChange);
 
-    // Set canvas description for screen readers
     canvas.setAttribute('role', 'img');
-    canvas.setAttribute('aria-label', 'Interactive 3D cybersecurity node network. Floating nodes tilt and rotate based on mouse movement.');
+    canvas.setAttribute('aria-label', 'Mesmerizing mathematical Aurora Borealis background animation.');
 
-    // 2. Three.js Scene Setup
+    // Scene setup
     const scene = new THREE.Scene();
-    
-    // Perspective Camera: FOV 60 (comfortable view), Aspect ratio dynamic
-    const camera = new THREE.PerspectiveCamera(
-      60,
-      container.clientWidth / container.clientHeight,
-      0.1,
-      100
-    );
-    camera.position.set(0, 0, 15);
-
-    // Renderer: alpha transparent so it overlays on the HTML CSS background
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     const renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
-      alpha: true,
-      powerPreference: 'high-performance'
+      powerPreference: 'high-performance',
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    
+    const getDpr = () => Math.min(window.devicePixelRatio, 1.5);
+    renderer.setPixelRatio(getDpr());
     renderer.setSize(container.clientWidth, container.clientHeight);
 
-    // 3. Generate Particle Texture (Soft glowing circular gradient)
-    const createParticleTexture = () => {
-      const pCanvas = document.createElement('canvas');
-      pCanvas.width = 32;
-      pCanvas.height = 32;
-      const ctx = pCanvas.getContext('2d');
-      if (ctx) {
-        const gradient = ctx.createRadialGradient(16, 16, 0, 16, 16, 16);
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-        gradient.addColorStop(0.2, 'rgba(255, 255, 255, 0.8)');
-        gradient.addColorStop(0.5, 'rgba(6, 182, 212, 0.4)'); // cyan outer glow
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, 32, 32);
-      }
-      const texture = new THREE.CanvasTexture(pCanvas);
-      return texture;
+    // Uniforms
+    const uniforms = {
+      iTime: { value: 0 },
+      iResolution: { value: new THREE.Vector2(container.clientWidth, container.clientHeight) },
+      uDarkTheme: { value: theme === 'dark' ? 1.0 : 0.0 }
     };
 
-    const particleTexture = createParticleTexture();
+    // Vertex Shader
+    const vertexShader = `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = vec4(position, 1.0);
+      }
+    `;
 
-    // 4. Create Node Points & Line Geometries
-    const particleCount = 75;
-    const positions = new Float32Array(particleCount * 3);
-    const velocities: number[] = [];
-    const targetPositions: number[] = [];
+    // Fragment Shader
+    const fragmentShader = `
+      uniform float iTime;
+      uniform vec2 iResolution;
+      uniform float uDarkTheme;
+      varying vec2 vUv;
 
-    const range = 12; // Spread coordinates inside a box
+      #define NUM_OCTAVES 3
 
-    for (let i = 0; i < particleCount; i++) {
-      // Random coordinates inside range
-      positions[i * 3] = (Math.random() - 0.5) * range;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * range;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * (range / 2);
+      float rand(vec2 n) {
+        return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+      }
 
-      // Random velocities for continuous drift
-      velocities.push(
-        (Math.random() - 0.5) * 0.015,
-        (Math.random() - 0.5) * 0.015,
-        (Math.random() - 0.5) * 0.010
-      );
+      float noise(vec2 p) {
+        vec2 ip = floor(p);
+        vec2 u = fract(p);
+        u = u * u * (3.0 - 2.0 * u);
 
-      // Store initial targets
-      targetPositions.push(positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]);
-    }
+        float res = mix(
+          mix(rand(ip), rand(ip + vec2(1.0, 0.0)), u.x),
+          mix(rand(ip + vec2(0.0, 1.0)), rand(ip + vec2(1.0, 1.0)), u.x), u.y);
+        return res * res;
+      }
 
-    const pointsGeometry = new THREE.BufferGeometry();
-    pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      float fbm(vec2 x) {
+        float v = 0.0;
+        float a = 0.3;
+        vec2 shift = vec2(100.0);
+        mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.5));
+        for (int i = 0; i < NUM_OCTAVES; ++i) {
+          v += a * noise(x);
+          x = rot * x * 2.0 + shift;
+          a *= 0.4;
+        }
+        return v;
+      }
 
-    // Dynamic Theme Colors
-    const isDark = theme === 'dark';
-    const pointColor = isDark ? 0x10b981 : 0x4f46e5; // Emerald in dark, Indigo in light
-    const lineColor = isDark ? 0x059669 : 0x6366f1; 
+      void main() {
+        // Subtle screen shake for organic movement
+        vec2 shake = vec2(sin(iTime * 0.3) * 0.003, cos(iTime * 0.5) * 0.003);
+        vec2 p = ((gl_FragCoord.xy + shake * iResolution.xy) - iResolution.xy * 0.5) / iResolution.y;
+        
+        // Tilt coordinate space slightly for dynamic composition
+        p = p * mat2(4.0, -2.5, 2.5, 4.0);
+        
+        vec2 v;
+        vec4 o = vec4(0.0);
 
-    // Point Material
-    const pointsMaterial = new THREE.PointsMaterial({
-      color: pointColor,
-      size: 0.5,
-      map: particleTexture,
-      transparent: true,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
+        float f = 1.8 + fbm(p + vec2(iTime * 0.4, 0.0)) * 0.4;
+
+        for (float i = 0.0; i < 28.0; i++) {
+          v = p + cos(i * i + (iTime * 0.15 + p.x * 0.06) * 0.1 + i * vec2(11.5, 9.5)) * 3.0 + vec2(sin(iTime * 0.25 + i) * 0.002, cos(iTime * 0.3 - i) * 0.002);
+          float tailNoise = fbm(v + vec2(iTime * 0.05, i)) * 0.25 * (1.0 - (i / 28.0));
+          
+          // Organic evolving Aurora colors (Violet, Indigo, Deep Pink, Emerald)
+          vec4 auroraColors = vec4(
+            0.15 + 0.35 * sin(i * 0.15 + iTime * 0.1),
+            0.25 + 0.45 * cos(i * 0.2 + iTime * 0.08),
+            0.65 + 0.35 * sin(i * 0.25 + iTime * 0.12),
+            1.0
+          );
+          
+          vec4 currentContribution = auroraColors * exp(sin(i * i + iTime * 0.2)) / length(max(v, vec2(v.x * f * 0.015, v.y * 1.8)));
+          float thinnessFactor = smoothstep(0.0, 1.0, i / 28.0) * 0.55;
+          o += currentContribution * (1.0 + tailNoise * 0.75) * thinnessFactor;
+        }
+
+        o = tanh(pow(o / 70.0, vec4(1.5)));
+        vec3 oColor = o.rgb;
+
+        vec3 col;
+        if (uDarkTheme > 0.5) {
+          // Deep obsidian base color (#030712 is roughly vec3(0.012, 0.027, 0.07))
+          vec3 darkBase = vec3(0.012, 0.027, 0.07);
+          col = oColor * 1.45 + darkBase * (1.0 - clamp(length(oColor) * 1.5, 0.0, 1.0));
+        } else {
+          // Warm white base (#fafafa is roughly vec3(0.98)) with very soft pastel aurora
+          vec3 lightBase = vec3(0.98, 0.98, 0.98);
+          // Map dark aurora to beautiful soft pastel shades (lavender, soft blue, pale pink)
+          vec3 pastelAurora = oColor * 0.32;
+          col = mix(lightBase, vec3(0.6, 0.5, 0.9) * pastelAurora.r + vec3(0.4, 0.7, 0.95) * pastelAurora.g + vec3(0.5, 0.85, 0.75) * pastelAurora.b, clamp(length(pastelAurora) * 2.0, 0.0, 1.0));
+        }
+
+        gl_FragColor = vec4(col, 1.0);
+      }
+    `;
+
+    const material = new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader,
+      fragmentShader,
+      depthWrite: false,
+      depthTest: false
     });
 
-    const points = new THREE.Points(pointsGeometry, pointsMaterial);
-    
-    // Node Group
-    const cyberGroup = new THREE.Group();
-    cyberGroup.add(points);
-    scene.add(cyberGroup);
+    const geometry = new THREE.PlaneGeometry(2, 2);
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
 
-    // Line Connections Setup
-    // Maximum lines is determined by particle combinations, we limit to max connections
-    const maxConnections = 180;
-    const linePositions = new Float32Array(maxConnections * 2 * 3); // 2 points per line, 3 coords
-    const lineColors = new Float32Array(maxConnections * 2 * 3);
+    let animationFrameId: number;
+    const clock = new THREE.Clock();
 
-    const lineGeometry = new THREE.BufferGeometry();
-    lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
-    lineGeometry.setAttribute('color', new THREE.BufferAttribute(lineColors, 3));
-
-    const lineMaterial = new THREE.LineBasicMaterial({
-      vertexColors: true,
-      transparent: true,
-      opacity: isDark ? 0.35 : 0.25,
-      blending: THREE.AdditiveBlending,
-      linewidth: 1
-    });
-
-    const connections = new THREE.LineSegments(lineGeometry, lineMaterial);
-    cyberGroup.add(connections);
-
-    // 5. Mouse Pointer Tracking Setup
-    const mouse = new THREE.Vector2(0, 0);
-    const targetMouse = new THREE.Vector2(0, 0);
-
-    const handleMouseMove = (e: MouseEvent) => {
-      // Normalize mouse coordinates: -1 to +1
-      const rect = canvas.getBoundingClientRect();
-      targetMouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-      targetMouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        const rect = canvas.getBoundingClientRect();
-        const touch = e.touches[0];
-        targetMouse.x = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
-        targetMouse.y = -((touch.clientY - rect.top) / rect.height) * 2 + 1;
+    const animate = () => {
+      const delta = clock.getDelta();
+      if (!noMotion) {
+        uniforms.iTime.value += delta;
       }
+      renderer.render(scene, camera);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    container.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('touchmove', handleTouchMove, { passive: true });
+    animate();
 
-    // 6. Resize Observer Setup
+    // Resize observer
     const resizeObserver = new ResizeObserver((entries) => {
       if (!entries || entries.length === 0) return;
       const { width, height } = entries[0].contentRect;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
       renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(getDpr());
+      uniforms.iResolution.value.set(width, height);
     });
-    
     resizeObserver.observe(container);
 
-    // 7. Animation Loop
-    const clock = new THREE.Clock();
-    
-    const animate = () => {
-      const dt = clock.getDelta();
-      
-      // Update mouse lerping for smooth inertia response
-      mouse.x += (targetMouse.x - mouse.x) * 0.05;
-      mouse.y += (targetMouse.y - mouse.y) * 0.05;
-
-      if (!noMotion) {
-        // Subtle automatic rotation
-        cyberGroup.rotation.y += dt * 0.05;
-        
-        // Tilt group based on mouse movement
-        cyberGroup.rotation.x = -mouse.y * 0.25;
-        cyberGroup.rotation.z = mouse.x * 0.15;
-
-        // Animate individual node drift
-        const positionsAttr = pointsGeometry.attributes.position;
-        const arr = positionsAttr.array as Float32Array;
-
-        for (let i = 0; i < particleCount; i++) {
-          // Update positions using velocities
-          arr[i * 3] += velocities[i * 3];
-          arr[i * 3 + 1] += velocities[i * 3 + 1];
-          arr[i * 3 + 2] += velocities[i * 3 + 2];
-
-          // Bounce off boundary limits
-          const limitX = range / 2;
-          const limitY = range / 2;
-          const limitZ = range / 4;
-
-          if (Math.abs(arr[i * 3]) > limitX) velocities[i * 3] *= -1;
-          if (Math.abs(arr[i * 3 + 1]) > limitY) velocities[i * 3 + 1] *= -1;
-          if (Math.abs(arr[i * 3 + 2]) > limitZ) velocities[i * 3 + 2] *= -1;
-        }
-
-        positionsAttr.needsUpdate = true;
-      }
-
-      // Re-calculate connecting lines between nodes in 3D space
-      const posAttr = pointsGeometry.attributes.position.array as Float32Array;
-      const linePosAttr = lineGeometry.attributes.position.array as Float32Array;
-      const lineColorAttr = lineGeometry.attributes.color.array as Float32Array;
-
-      let connectionIndex = 0;
-      const connectionThreshold = 3.5; // Max distance for nodes to connect
-
-      const cColor = new THREE.Color(isDark ? '#10b981' : '#4f46e5'); // Base theme color
-      const accentColor = new THREE.Color(isDark ? '#4f46e5' : '#059669');
-
-      for (let i = 0; i < particleCount && connectionIndex < maxConnections; i++) {
-        const x1 = posAttr[i * 3];
-        const y1 = posAttr[i * 3 + 1];
-        const z1 = posAttr[i * 3 + 2];
-
-        for (let j = i + 1; j < particleCount && connectionIndex < maxConnections; j++) {
-          const x2 = posAttr[j * 3];
-          const y2 = posAttr[j * 3 + 1];
-          const z2 = posAttr[j * 3 + 2];
-
-          // Compute distance squared (faster than Math.sqrt)
-          const dx = x1 - x2;
-          const dy = y1 - y2;
-          const dz = z1 - z2;
-          const distSq = dx * dx + dy * dy + dz * dz;
-
-          if (distSq < connectionThreshold * connectionThreshold) {
-            const idx = connectionIndex * 6;
-            
-            // Set Start point of line segment
-            linePosAttr[idx] = x1;
-            linePosAttr[idx + 1] = y1;
-            linePosAttr[idx + 2] = z1;
-
-            // Set End point of line segment
-            linePosAttr[idx + 3] = x2;
-            linePosAttr[idx + 4] = y2;
-            linePosAttr[idx + 5] = z2;
-
-            // Compute line opacity / color mix based on distance
-            const dist = Math.sqrt(distSq);
-            const alphaRatio = 1 - (dist / connectionThreshold);
-            
-            // Mix starting/ending colors
-            const mixColor = cColor.clone().lerp(accentColor, alphaRatio);
-
-            // Assign color vertex values
-            lineColorAttr[idx] = mixColor.r;
-            lineColorAttr[idx + 1] = mixColor.g;
-            lineColorAttr[idx + 2] = mixColor.b;
-
-            lineColorAttr[idx + 3] = mixColor.r;
-            lineColorAttr[idx + 4] = mixColor.g;
-            lineColorAttr[idx + 5] = mixColor.b;
-
-            connectionIndex++;
-          }
-        }
-      }
-
-      // Fill remaining points with zeros if connections are fewer than max
-      for (let k = connectionIndex; k < maxConnections; k++) {
-        const idx = k * 6;
-        linePosAttr[idx] = 0;
-        linePosAttr[idx + 1] = 0;
-        linePosAttr[idx + 2] = 0;
-        linePosAttr[idx + 3] = 0;
-        linePosAttr[idx + 4] = 0;
-        linePosAttr[idx + 5] = 0;
-      }
-
-      lineGeometry.attributes.position.needsUpdate = true;
-      lineGeometry.attributes.color.needsUpdate = true;
-
-      // Render the scene
-      renderer.render(scene, camera);
-    };
-
-    renderer.setAnimationLoop(animate);
-
-    // 8. Handle Theme Updates Dynamically
-    const updateThemeColors = () => {
-      const currentDark = theme === 'dark';
-      const updatedPointColor = currentDark ? 0x10b981 : 0x4f46e5;
-      pointsMaterial.color.setHex(updatedPointColor);
-      lineMaterial.opacity = currentDark ? 0.25 : 0.15;
-    };
-    
-    updateThemeColors();
-
-    // 9. Teardown / Resource Disposal
+    // Teardown
     return () => {
-      renderer.setAnimationLoop(null);
+      cancelAnimationFrame(animationFrameId);
       mq.removeEventListener('change', handleMotionChange);
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('touchmove', handleTouchMove);
       resizeObserver.disconnect();
-
-      // Dispose buffers & objects
-      pointsGeometry.dispose();
-      pointsMaterial.dispose();
-      lineGeometry.dispose();
-      lineMaterial.dispose();
-      particleTexture.dispose();
+      geometry.dispose();
+      material.dispose();
       renderer.dispose();
     };
   }, [theme]);
 
   return (
-    <div 
-      ref={containerRef} 
+    <div
+      ref={containerRef}
       className="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none select-none"
     >
-      <canvas 
-        ref={canvasRef} 
-        className="w-full h-full block opacity-85 dark:opacity-95 pointer-events-auto"
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full block opacity-90 dark:opacity-[0.88] pointer-events-auto"
       />
     </div>
   );
