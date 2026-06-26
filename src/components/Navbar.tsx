@@ -122,6 +122,7 @@ export default function Navbar() {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={toggleTheme}
+            aria-label="Toggle Theme"
             className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 bg-transparent border-none outline-none cursor-pointer"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
