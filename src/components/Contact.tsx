@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CONTACT_DATA } from '../lib/constants';
-import { fadeInUp, staggerContainer, slideInLeft, slideInRight } from '../lib/animations';
 import { useLanguage } from '../lib/LanguageContext';
 
 const contactSchema = z.object({
@@ -34,16 +33,16 @@ export default function Contact() {
   const onSubmit = async (data: ContactFormValues) => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
-    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const accessKey = (import.meta as any).env.VITE_WEB3FORMS_ACCESS_KEY;
-    
+
     if (accessKey) {
       try {
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json',
+            Accept: 'application/json',
           },
           body: JSON.stringify({
             access_key: accessKey,
@@ -54,17 +53,14 @@ export default function Contact() {
             from_name: 'Portfolio Contact Form',
           }),
         });
-        
-        const result = await response.json();
+
         if (response.status === 200) {
           setSubmitStatus('success');
           reset();
         } else {
-          console.error('Web3Forms Error:', result);
           setSubmitStatus('error');
         }
-      } catch (error) {
-        console.error('Submission Error:', error);
+      } catch {
         setSubmitStatus('error');
       } finally {
         setIsSubmitting(false);
@@ -81,7 +77,7 @@ export default function Contact() {
         window.open(gmailUrl, '_blank');
         setSubmitStatus('success');
         reset();
-      } catch (error) {
+      } catch {
         setSubmitStatus('error');
       } finally {
         setIsSubmitting(false);
@@ -91,211 +87,174 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 sm:py-24 relative bg-transparent">
+    <section id="contact" className="py-12 sm:py-24 border-t border-zinc-200 dark:border-zinc-800">
       <div className="container mx-auto px-4 sm:px-6 md:px-12">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-        >
-          {/* Header */}
-          <motion.div variants={fadeInUp} className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl md:text-4xl font-light mb-4 text-slate-900 dark:text-white tracking-tight geist-font">
-              {t('contact.title').split(' ')[0]} <span className="gradient-text font-extrabold tracking-tight">{t('contact.title').split(' ').slice(1).join(' ')}</span>
-            </h2>
-            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto px-4 font-light inter-font text-base sm:text-lg">
-              {t('contact.subtitle')}
-            </p>
-          </motion.div>
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.8, ease: 'easeOut' }}
+              className="lg:w-1/3 flex flex-col"
+            >
+              <h2 className="text-4xl sm:text-6xl md:text-7xl font-medium tracking-tighter text-zinc-950 dark:text-zinc-50 leading-[1.1] geist-font mb-6">
+                {t('contact.title')}
+              </h2>
+              <p className="text-lg text-zinc-600 dark:text-zinc-400 font-light inter-font mb-12 max-w-sm">
+                {t('contact.subtitle')}
+              </p>
 
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 max-w-5xl mx-auto">
-            {/* Info Cards Side */}
-            <motion.div variants={slideInLeft} className="w-full lg:w-1/3 space-y-5">
-              
-              {/* Email Block */}
-              <motion.div 
-                whileHover={{ y: -3 }}
-                className="glass-card p-6 rounded-2xl flex items-start gap-4 group"
-              >
-                <div className="p-3 bg-slate-900/5 dark:bg-white/5 text-slate-900 dark:text-white rounded-xl border border-slate-900/10 dark:border-white/10 group-hover:scale-105 transition-transform shrink-0 duration-300">
-                  <Mail size={22} className="text-cyan-accent" />
-                </div>
-                <div className="overflow-hidden">
-                  <h3 className="text-slate-900 dark:text-white font-medium mb-1 text-sm geist-font">{t('contact.emailMe')}</h3>
-                  <a href={`mailto:${CONTACT_DATA.email}`} className="text-slate-600 dark:text-slate-400 hover:text-cyan-accent transition-colors text-xs sm:text-sm truncate block font-sans">
+              <div className="space-y-8 mt-auto">
+                <div>
+                  <h3 className="text-sm font-medium uppercase tracking-widest text-zinc-500 mb-2 inter-font">
+                    {t('contact.emailMe')}
+                  </h3>
+                  <a
+                    href={`mailto:${CONTACT_DATA.email}`}
+                    className="text-xl sm:text-2xl text-zinc-950 dark:text-zinc-50 font-medium hover:text-zinc-500 transition-colors tracking-tight geist-font break-all"
+                  >
                     {CONTACT_DATA.email}
                   </a>
                 </div>
-              </motion.div>
-
-              {/* Phone Block */}
-              <motion.div 
-                whileHover={{ y: -3 }}
-                className="glass-card p-6 rounded-2xl flex items-start gap-4 group"
-              >
-                <div className="p-3 bg-slate-900/5 dark:bg-white/5 text-slate-900 dark:text-white rounded-xl border border-slate-900/10 dark:border-white/10 group-hover:scale-105 transition-transform shrink-0 duration-300">
-                  <Phone size={22} className="text-cyan-accent" />
-                </div>
                 <div>
-                  <h3 className="text-slate-900 dark:text-white font-medium mb-1 text-sm geist-font">WhatsApp</h3>
-                  <a 
-                    href={`https://wa.me/${CONTACT_DATA.phone.replace(/[^0-9]/g, '')}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-slate-600 dark:text-slate-400 hover:text-cyan-accent transition-colors text-xs sm:text-sm font-sans"
+                  <h3 className="text-sm font-medium uppercase tracking-widest text-zinc-500 mb-2 inter-font">
+                    WhatsApp
+                  </h3>
+                  <a
+                    href={`https://wa.me/${CONTACT_DATA.phone.replace(/[^0-9]/g, '')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xl sm:text-2xl text-zinc-950 dark:text-zinc-50 font-medium hover:text-zinc-500 transition-colors tracking-tight geist-font"
                   >
                     {CONTACT_DATA.phone}
                   </a>
                 </div>
-              </motion.div>
-
-              {/* Location Block */}
-              <motion.div 
-                whileHover={{ y: -3 }}
-                className="glass-card p-6 rounded-2xl flex items-start gap-4 group"
-              >
-                <div className="p-3 bg-slate-900/5 dark:bg-white/5 text-slate-900 dark:text-white rounded-xl border border-slate-900/10 dark:border-white/10 group-hover:scale-105 transition-transform shrink-0 duration-300">
-                  <MapPin size={22} className="text-cyan-accent" />
-                </div>
                 <div>
-                  <h3 className="text-slate-900 dark:text-white font-medium mb-1 text-sm geist-font">{t('contact.location')}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm font-sans">
+                  <h3 className="text-sm font-medium uppercase tracking-widest text-zinc-500 mb-2 inter-font">
+                    {t('contact.location')}
+                  </h3>
+                  <p className="text-xl sm:text-2xl text-zinc-950 dark:text-zinc-50 font-medium tracking-tight geist-font">
                     {CONTACT_DATA.location}
                   </p>
                 </div>
-              </motion.div>
-
+              </div>
             </motion.div>
 
-            {/* Contact Form Side */}
-            <motion.div 
-              variants={slideInRight} 
-              className="w-full lg:w-2/3"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+              className="lg:w-2/3"
             >
-              <div className="glass-card p-6 sm:p-10 rounded-2xl relative overflow-hidden">
-                
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {/* Name */}
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider font-display">{t('contact.name')}</label>
-                      <input
-                        id="name"
-                        type="text"
-                        placeholder="John Doe"
-                        {...register('name')}
-                        className={`w-full px-4 py-3 bg-slate-900/5 dark:bg-zinc-950/40 border rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none transition-colors font-sans ${
-                          errors.name 
-                            ? 'border-red-500/50 focus:border-red-500' 
-                            : 'border-slate-900/10 dark:border-white/10 focus:border-slate-900/30 dark:focus:border-white/20'
-                        }`}
-                      />
-                      {errors.name && (
-                        <p className="text-xs text-red-500 flex items-center gap-1 font-sans">
-                          <AlertCircle size={12} /> {errors.name.message}
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Email */}
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider font-display">{t('contact.email')}</label>
-                      <input
-                        id="email"
-                        type="email"
-                        placeholder="john@example.com"
-                        {...register('email')}
-                        className={`w-full px-4 py-3 bg-slate-900/5 dark:bg-zinc-950/40 border rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none transition-colors font-sans ${
-                          errors.email 
-                            ? 'border-red-500/50 focus:border-red-500' 
-                            : 'border-slate-900/10 dark:border-white/10 focus:border-slate-900/30 dark:focus:border-white/20'
-                        }`}
-                      />
-                      {errors.email && (
-                        <p className="text-xs text-red-500 flex items-center gap-1 font-sans">
-                          <AlertCircle size={12} /> {errors.email.message}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Subject */}
-                  <div className="space-y-2">
-                    <label htmlFor="subject" className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider font-display">Subject</label>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 lg:pl-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label
+                      htmlFor="name"
+                      className="text-sm font-medium uppercase tracking-widest text-zinc-500 inter-font"
+                    >
+                      {t('contact.name')}
+                    </label>
                     <input
-                      id="subject"
+                      id="name"
                       type="text"
-                      placeholder="Project details"
-                      {...register('subject')}
-                      className={`w-full px-4 py-3 bg-slate-900/5 dark:bg-zinc-950/40 border rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none transition-colors font-sans ${
-                        errors.subject 
-                          ? 'border-red-500/50 focus:border-red-500' 
-                          : 'border-slate-900/10 dark:border-white/10 focus:border-slate-900/30 dark:focus:border-white/20'
+                      {...register('name')}
+                      className={`w-full bg-transparent border-b-2 py-3 text-zinc-950 dark:text-zinc-50 text-lg focus:outline-none transition-colors font-sans rounded-none ${
+                        errors.name
+                          ? 'border-red-500'
+                          : 'border-zinc-300 dark:border-zinc-700 focus:border-zinc-950 dark:focus:border-zinc-50'
                       }`}
                     />
-                    {errors.subject && (
-                      <p className="text-xs text-red-500 flex items-center gap-1 font-sans">
-                        <AlertCircle size={12} /> {errors.subject.message}
-                      </p>
-                    )}
                   </div>
 
-                  {/* Message */}
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-xs font-semibold text-slate-700 dark:text-slate-300 uppercase tracking-wider font-display">{t('contact.message')}</label>
-                    <textarea
-                      id="message"
-                      rows={5}
-                      placeholder="Let's build something together..."
-                      {...register('message')}
-                      className={`w-full px-4 py-3 bg-slate-900/5 dark:bg-zinc-950/40 border rounded-xl text-slate-900 dark:text-white text-sm focus:outline-none transition-colors font-sans resize-none ${
-                        errors.message 
-                          ? 'border-red-500/50 focus:border-red-500' 
-                          : 'border-slate-900/10 dark:border-white/10 focus:border-slate-900/30 dark:focus:border-white/20'
+                  <div className="space-y-3">
+                    <label
+                      htmlFor="email"
+                      className="text-sm font-medium uppercase tracking-widest text-zinc-500 inter-font"
+                    >
+                      {t('contact.email')}
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      {...register('email')}
+                      className={`w-full bg-transparent border-b-2 py-3 text-zinc-950 dark:text-zinc-50 text-lg focus:outline-none transition-colors font-sans rounded-none ${
+                        errors.email
+                          ? 'border-red-500'
+                          : 'border-zinc-300 dark:border-zinc-700 focus:border-zinc-950 dark:focus:border-zinc-50'
                       }`}
                     />
-                    {errors.message && (
-                      <p className="text-xs text-red-500 flex items-center gap-1 font-sans">
-                        <AlertCircle size={12} /> {errors.message.message}
-                      </p>
-                    )}
                   </div>
+                </div>
 
-                  {/* Button */}
+                <div className="space-y-3">
+                  <label
+                    htmlFor="subject"
+                    className="text-sm font-medium uppercase tracking-widest text-zinc-500 inter-font"
+                  >
+                    Subject
+                  </label>
+                  <input
+                    id="subject"
+                    type="text"
+                    {...register('subject')}
+                    className={`w-full bg-transparent border-b-2 py-3 text-zinc-950 dark:text-zinc-50 text-lg focus:outline-none transition-colors font-sans rounded-none ${
+                      errors.subject
+                        ? 'border-red-500'
+                        : 'border-zinc-300 dark:border-zinc-700 focus:border-zinc-950 dark:focus:border-zinc-50'
+                    }`}
+                  />
+                </div>
+
+                <div className="space-y-3">
+                  <label
+                    htmlFor="message"
+                    className="text-sm font-medium uppercase tracking-widest text-zinc-500 inter-font"
+                  >
+                    {t('contact.message')}
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={4}
+                    {...register('message')}
+                    className={`w-full bg-transparent border-b-2 py-3 text-zinc-950 dark:text-zinc-50 text-lg focus:outline-none transition-colors font-sans rounded-none resize-none ${
+                      errors.message
+                        ? 'border-red-500'
+                        : 'border-zinc-300 dark:border-zinc-700 focus:border-zinc-950 dark:focus:border-zinc-50'
+                    }`}
+                  />
+                </div>
+
+                <div className="pt-8">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full primary-button py-4 rounded-xl font-medium text-sm flex items-center justify-center gap-2 disabled:opacity-50 transition-opacity font-display"
+                    className="group flex items-center gap-4 text-zinc-950 dark:text-zinc-50 font-medium uppercase tracking-widest text-sm hover:text-zinc-500 transition-colors disabled:opacity-50"
                   >
-                    {isSubmitting ? (
-                      t('contact.sending')
-                    ) : (
-                      <>
-                        <span>{t('contact.send')}</span>
-                        <Send size={16} />
-                      </>
-                    )}
+                    {isSubmitting ? t('contact.sending') : t('contact.send')}
+                    <ArrowRight
+                      size={20}
+                      className="group-hover:translate-x-2 transition-transform"
+                    />
                   </button>
-                  
-                  {/* Status Messages */}
+
                   {submitStatus === 'success' && (
-                    <div className="p-4 bg-green-100/15 border border-green-500/30 rounded-xl flex items-center gap-3 text-green-600 dark:text-green-400 text-sm font-sans">
-                      <CheckCircle size={20} className="shrink-0" />
-                      <span>{t('contact.success')}</span>
-                    </div>
+                    <p className="mt-6 text-green-600 dark:text-green-500 text-sm font-medium">
+                      {t('contact.success')}
+                    </p>
                   )}
                   {submitStatus === 'error' && (
-                    <div className="p-4 bg-red-100/15 border border-red-500/30 rounded-xl flex items-center gap-3 text-red-600 dark:text-red-400 text-sm font-sans">
-                      <AlertCircle size={20} className="shrink-0" />
-                      <span>{t('contact.error')}</span>
-                    </div>
+                    <p className="mt-6 text-red-600 dark:text-red-500 text-sm font-medium">
+                      {t('contact.error')}
+                    </p>
                   )}
-                </form>
-              </div>
+                </div>
+              </form>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -15,9 +15,11 @@ const enTranslations: Translations = {
   'common.viewWork': 'View My Work',
   'common.downloadCV': 'Download Full CV',
   'common.viewFullCV': 'View Full CV',
-  'hero.subtitle': 'An Information Technology graduate with a strong interest in cybersecurity, threat analysis, and network infrastructure. Equipped with sharp system analysis skills and a technical vocational background that instilled a strong discipline for SOPs and safety.',
+  'hero.subtitle':
+    'An Information Technology graduate with a strong interest in cybersecurity, threat analysis, and network infrastructure. Equipped with sharp system analysis skills and a technical vocational background that instilled a strong discipline for SOPs and safety.',
   'about.title': 'About Me',
-  'about.bio': 'Hello! I am Adit Hardiansyah Surachman, a Bachelor of Information Technology graduate. I have a profound passion for securing digital environments and building modern web applications. Supported by my vocational background in Mechanical Engineering, I have developed a highly analytical mindset, strict adherence to Standard Operating Procedures (SOP), and a strong attention to detail. I am ready to contribute to securing and managing the reliability of corporate digital information systems.',
+  'about.bio':
+    'Hello! I am Adit Hardiansyah Surachman, a Bachelor of Information Technology graduate. I have a profound passion for securing digital environments and building modern web applications. Supported by my vocational background in Mechanical Engineering, I have developed a highly analytical mindset, strict adherence to Standard Operating Procedures (SOP), and a strong attention to detail. I am ready to contribute to securing and managing the reliability of corporate digital information systems.',
   'about.gpa': 'GPA',
   'about.years': 'Years of Study',
   'about.thesis': 'Published Thesis',
@@ -28,7 +30,7 @@ const enTranslations: Translations = {
   'projects.sourceCode': 'Source Code',
   'experience.title': 'Timeline',
   'contact.title': 'Get in Touch',
-  'contact.subtitle': "Have a question or want to work together? Feel free to reach out!",
+  'contact.subtitle': 'Have a question or want to work together? Feel free to reach out!',
   'contact.name': 'Name',
   'contact.email': 'Email',
   'contact.message': 'Message',
@@ -52,9 +54,11 @@ const idTranslations: Translations = {
   'common.viewWork': 'Lihat Karya Saya',
   'common.downloadCV': 'Unduh CV Lengkap',
   'common.viewFullCV': 'Lihat CV Lengkap',
-  'hero.subtitle': 'Lulusan Teknik Informatika dengan minat kuat pada keamanan siber, analisis ancaman, dan infrastruktur jaringan. Memiliki kemampuan analisis sistem yang tajam serta latar belakang vokasi teknis yang membiasakan disiplin ketat terhadap SOP dan keselamatan kerja.',
+  'hero.subtitle':
+    'Lulusan Teknik Informatika dengan minat kuat pada keamanan siber, analisis ancaman, dan infrastruktur jaringan. Memiliki kemampuan analisis sistem yang tajam serta latar belakang vokasi teknis yang membiasakan disiplin ketat terhadap SOP dan keselamatan kerja.',
   'about.title': 'Tentang Saya',
-  'about.bio': 'Halo! Saya Adit Hardiansyah Surachman, Lulusan S1 Teknik Informatika. Saya memiliki minat mendalam dalam mengamankan lingkungan digital dan membangun aplikasi web modern. Didukung oleh latar belakang vokasi di bidang Teknik Mesin, saya mengembangkan pola pikir analitis, kepatuhan yang ketat terhadap Standar Operasional Prosedur (SOP), serta perhatian tinggi terhadap detail. Saya siap berkontribusi dalam menjaga keamanan dan keandalan sistem informasi digital perusahaan.',
+  'about.bio':
+    'Halo! Saya Adit Hardiansyah Surachman, Lulusan S1 Teknik Informatika. Saya memiliki minat mendalam dalam mengamankan lingkungan digital dan membangun aplikasi web modern. Didukung oleh latar belakang vokasi di bidang Teknik Mesin, saya mengembangkan pola pikir analitis, kepatuhan yang ketat terhadap Standar Operasional Prosedur (SOP), serta perhatian tinggi terhadap detail. Saya siap berkontribusi dalam menjaga keamanan dan keandalan sistem informasi digital perusahaan.',
   'about.gpa': 'IPK',
   'about.years': 'Tahun Studi',
   'about.thesis': 'Publikasi Skripsi',
@@ -65,7 +69,8 @@ const idTranslations: Translations = {
   'projects.sourceCode': 'Kode Sumber',
   'experience.title': 'Linimasa',
   'contact.title': 'Hubungi Saya',
-  'contact.subtitle': "Mempunyai pertanyaan atau ingin bekerja sama? Jangan ragu untuk menghubungi!",
+  'contact.subtitle':
+    'Mempunyai pertanyaan atau ingin bekerja sama? Jangan ragu untuk menghubungi!',
   'contact.name': 'Nama',
   'contact.email': 'Email',
   'contact.message': 'Pesan',

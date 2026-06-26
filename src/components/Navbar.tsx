@@ -55,7 +55,7 @@ export default function Navbar() {
       className={cn(
         'fixed top-0 left-0 right-0 z-[9999] transition-all duration-300',
         isScrolled
-          ? 'bg-white/40 dark:bg-[#030712]/40 backdrop-blur-md py-4 shadow-sm border-b border-slate-900/5 dark:border-white/5'
+          ? 'bg-white dark:bg-zinc-950 py-4 shadow-sm border-b border-zinc-200 dark:border-zinc-800'
           : 'bg-transparent py-6'
       )}
     >
@@ -66,10 +66,9 @@ export default function Navbar() {
           className="text-lg font-medium tracking-tight flex items-center gap-2 bg-transparent border-none outline-none cursor-pointer"
           aria-label="Scroll to top"
         >
-          <div className="w-8 h-8 rounded-lg bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 flex items-center justify-center">
-            <span className="geist-font text-sm font-bold text-slate-800 dark:text-white">AH</span>
-          </div>
-          <span className="geist-font text-slate-800 dark:text-white font-semibold">Adit</span>
+          <span className="font-display font-bold text-zinc-950 dark:text-zinc-50 tracking-tighter text-xl">
+            ADIT.
+          </span>
         </button>
 
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
@@ -80,36 +79,30 @@ export default function Navbar() {
                 type="button"
                 onClick={() => scrollToSection(id)}
                 className={cn(
-                  'text-sm font-light transition-colors duration-200 cursor-pointer relative group bg-transparent border-none outline-none inter-font',
+                  'text-xs font-medium uppercase tracking-widest transition-colors duration-200 cursor-pointer relative group bg-transparent border-none outline-none inter-font',
                   activeSection === id
-                    ? 'text-slate-900 dark:text-white font-medium'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                    ? 'text-zinc-950 dark:text-zinc-50'
+                    : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50'
                 )}
               >
                 {t(`nav.${id}`)}
-                <span
-                  className={cn(
-                    'absolute -bottom-1 left-0 h-[1px] bg-slate-900 dark:bg-white transition-all duration-350',
-                    activeSection === id ? 'w-full' : 'w-0 group-hover:w-full'
-                  )}
-                />
               </button>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3 pl-6 border-l border-slate-900/10 dark:border-white/10">
+          <div className="flex items-center gap-3 pl-6 border-l border-zinc-200 dark:border-zinc-800">
             <button
               onClick={toggleLanguage}
-              className="p-2 flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg bg-transparent border-none outline-none cursor-pointer"
+              className="p-2 flex items-center gap-1 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors bg-transparent border-none outline-none cursor-pointer"
               aria-label="Toggle Language"
             >
               <Languages size={16} />
               <span className="text-[10px] font-bold uppercase">{language}</span>
             </button>
-            
+
             <button
               onClick={toggleTheme}
-              className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg bg-transparent border-none outline-none cursor-pointer"
+              className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors bg-transparent border-none outline-none cursor-pointer"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
@@ -119,7 +112,7 @@ export default function Navbar() {
               href="https://drive.google.com/file/d/1gnTbq-vJhQnL2z-wkXwxheaXb1D6rH40/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-button px-4 py-2 rounded-lg text-slate-800 dark:text-white text-xs font-medium inter-font hover:scale-102 transition-transform"
+              className="px-4 py-2 bg-zinc-950 dark:bg-zinc-50 text-white dark:text-black text-xs font-medium inter-font uppercase tracking-widest hover:opacity-80 transition-opacity"
             >
               {t('common.viewCV')}
             </a>
@@ -129,14 +122,14 @@ export default function Navbar() {
         <div className="md:hidden flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white bg-transparent border-none outline-none cursor-pointer"
+            className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 bg-transparent border-none outline-none cursor-pointer"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          
+
           <button
             type="button"
-            className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white p-2 -mr-2 bg-transparent border-none outline-none cursor-pointer"
+            className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 p-2 -mr-2 bg-transparent border-none outline-none cursor-pointer"
             onClick={() => setMobileMenu((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
@@ -154,7 +147,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
-            className="md:hidden overflow-hidden bg-white/95 dark:bg-[#030712]/95 backdrop-blur-md border-b border-slate-900/10 dark:border-white/10"
+            className="md:hidden overflow-hidden bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800"
             onClick={(e) => e.stopPropagation()}
           >
             <nav className="flex flex-col py-2 px-6">
@@ -164,22 +157,22 @@ export default function Navbar() {
                   type="button"
                   onClick={() => scrollToSection(id)}
                   className={cn(
-                    'text-left w-full py-4 text-base font-light transition-colors duration-150',
+                    'text-left w-full py-4 text-xs font-medium uppercase tracking-widest transition-colors duration-150',
                     'bg-transparent border-none outline-none cursor-pointer select-none',
-                    'border-b border-slate-900/5 dark:border-white/5 last:border-b-0 inter-font',
+                    'border-b border-zinc-200 dark:border-zinc-800 last:border-b-0 inter-font',
                     activeSection === id
-                      ? 'text-slate-900 dark:text-white font-medium'
-                      : 'text-slate-500 dark:text-slate-400'
+                      ? 'text-zinc-950 dark:text-zinc-50'
+                      : 'text-zinc-500 dark:text-zinc-400'
                   )}
                 >
                   {t(`nav.${id}`)}
                 </button>
               ))}
 
-              <div className="py-4 flex flex-col gap-4">
+              <div className="py-6 flex flex-col gap-4 border-t border-zinc-200 dark:border-zinc-800 mt-2">
                 <button
                   onClick={toggleLanguage}
-                  className="flex items-center justify-center gap-2 py-3 bg-slate-900/5 dark:bg-white/5 border border-slate-900/10 dark:border-white/10 rounded-xl font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-900/10 dark:hover:bg-white/10 transition-colors"
+                  className="flex items-center justify-center gap-2 py-3 bg-zinc-100 dark:bg-zinc-900 text-zinc-950 dark:text-zinc-50 font-medium uppercase tracking-widest text-xs transition-colors"
                 >
                   <Languages size={18} />
                   <span>{language === 'en' ? 'Switch to Indonesian' : 'Switch to English'}</span>
@@ -189,7 +182,7 @@ export default function Navbar() {
                   href="https://drive.google.com/file/d/1gnTbq-vJhQnL2z-wkXwxheaXb1D6rH40/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full py-3 bg-slate-950 dark:bg-white text-center text-white dark:text-black font-semibold rounded-xl hover:opacity-90 transition-opacity"
+                  className="block w-full py-3 bg-zinc-950 dark:bg-zinc-50 text-center text-white dark:text-black font-medium uppercase tracking-widest text-xs transition-opacity"
                 >
                   {t('common.viewCV')}
                 </a>

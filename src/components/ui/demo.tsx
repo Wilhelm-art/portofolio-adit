@@ -1,4 +1,4 @@
-import { PortfolioPage, PortfolioPageProps } from "@/components/ui/starfall-portfolio-landing";
+import { PortfolioPage, PortfolioPageProps } from '@/components/ui/starfall-portfolio-landing';
 
 const customPortfolioData: PortfolioPageProps = {
   logo: {
@@ -17,34 +17,39 @@ const customPortfolioData: PortfolioPageProps = {
   hero: {
     titleLine1: 'Full-Stack Engineer &',
     titleLine2Gradient: 'UX Architect',
-    subtitle: 'I build robust and scalable web applications with a strong focus on user-centric design and performance.',
+    subtitle:
+      'I build robust and scalable web applications with a strong focus on user-centric design and performance.',
   },
   ctaButtons: {
     primary: {
       label: 'Explore My Work',
-      onClick: () => { document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); },
+      onClick: () => {
+        document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+      },
     },
     secondary: {
       label: 'Contact Me',
-      onClick: () => { window.location.href = 'mailto:alex.thompson@example.com'; },
+      onClick: () => {
+        window.location.href = 'mailto:alex.thompson@example.com';
+      },
     },
   },
   projects: [
-    { 
-      title: 'E-commerce Platform', 
+    {
+      title: 'E-commerce Platform',
       description: 'A scalable online store built with Next.js, TypeScript, and Stripe.',
-      tags: ['Next.js', 'Stripe', 'Vercel'] 
+      tags: ['Next.js', 'Stripe', 'Vercel'],
     },
-    { 
-      title: 'SaaS Dashboard', 
+    {
+      title: 'SaaS Dashboard',
       description: 'A real-time analytics dashboard for a B2B software-as-a-service product.',
-      tags: ['React', 'Chart.js', 'Firebase'] 
+      tags: ['React', 'Chart.js', 'Firebase'],
     },
-    { 
-      title: 'AI Content Generator', 
+    {
+      title: 'AI Content Generator',
       description: 'Leveraging OpenAI to generate marketing copy for businesses.',
       tags: ['SvelteKit', 'OpenAI', 'Tailwind CSS'],
-      imageContent: <div className="text-2xl text-white/50">🤖</div>
+      imageContent: <div className="text-2xl text-white/50">🤖</div>,
     },
   ],
   stats: [

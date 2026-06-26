@@ -22,7 +22,10 @@ export default function CyberCanvas() {
     mq.addEventListener('change', handleMotionChange);
 
     canvas.setAttribute('role', 'img');
-    canvas.setAttribute('aria-label', 'Mesmerizing mathematical Aurora Borealis background animation.');
+    canvas.setAttribute(
+      'aria-label',
+      'Mesmerizing mathematical Aurora Borealis background animation.'
+    );
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -32,7 +35,7 @@ export default function CyberCanvas() {
       antialias: true,
       powerPreference: 'high-performance',
     });
-    
+
     const getDpr = () => {
       // Clamp pixel ratio on mobile to 1.0 and desktop to 1.25 to prevent fill-rate scroll lag
       return window.innerWidth < 768 ? 1.0 : Math.min(window.devicePixelRatio, 1.25);
@@ -44,7 +47,7 @@ export default function CyberCanvas() {
     const uniforms = {
       iTime: { value: 0 },
       iResolution: { value: new THREE.Vector2(container.clientWidth, container.clientHeight) },
-      uDarkTheme: { value: theme === 'dark' ? 1.0 : 0.0 }
+      uDarkTheme: { value: theme === 'dark' ? 1.0 : 0.0 },
     };
 
     // Vertex Shader
@@ -149,7 +152,7 @@ export default function CyberCanvas() {
       vertexShader,
       fragmentShader,
       depthWrite: false,
-      depthTest: false
+      depthTest: false,
     });
 
     const geometry = new THREE.PlaneGeometry(2, 2);

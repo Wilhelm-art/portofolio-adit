@@ -29,7 +29,11 @@ export const blobAnimation: Variants = {
   animate: {
     scale: [1, 1.1, 1],
     rotate: [0, 90, 0],
-    borderRadius: ['30% 70% 70% 30% / 30% 30% 70% 70%', '70% 30% 30% 70% / 70% 70% 30% 30%', '30% 70% 70% 30% / 30% 30% 70% 70%'],
+    borderRadius: [
+      '30% 70% 70% 30% / 30% 30% 70% 70%',
+      '70% 30% 30% 70% / 70% 70% 30% 30%',
+      '30% 70% 70% 30% / 30% 30% 70% 70%',
+    ],
     transition: {
       duration: 8,
       repeat: Infinity,
@@ -37,4 +41,3 @@ export const blobAnimation: Variants = {
     },
   },
 };
-

@@ -12,25 +12,20 @@ import CyberCanvas from '../components/CyberCanvas';
 export default function Home() {
   return (
     <div className="min-h-[100svh] relative bg-background text-foreground select-text transition-colors duration-300">
-      {/* Fixed global mathematical Aurora Borealis background shader */}
-      <div className="fixed inset-0 z-0 pointer-events-none select-none">
+      {/* Background canvas subtly sits behind */}
+      <div className="fixed inset-0 z-0 pointer-events-none select-none opacity-40 dark:opacity-20 transition-opacity duration-700">
         <CyberCanvas />
       </div>
 
-      {/* Main content z-index wrapper */}
+      {/* Main content wrapper */}
       <div className="relative z-10">
         <Navbar />
-        <main>
+        <main className="flex flex-col gap-32 sm:gap-48 pb-32">
           <Hero />
-          <div className="divider" />
           <About />
-          <div className="divider" />
           <Skills />
-          <div className="divider" />
           <Projects />
-          <div className="divider" />
           <Timeline />
-          <div className="divider" />
           <Contact />
         </main>
         <Footer />
