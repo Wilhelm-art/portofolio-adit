@@ -80,7 +80,7 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
           >
-            <div className="relative w-64 h-[22rem] sm:w-80 sm:h-[28rem] md:w-[28rem] md:h-[34rem]">
+            <div className="relative w-56 h-72 sm:w-64 sm:h-80 md:w-72 md:h-[26rem]">
               <div className="w-full h-full bg-zinc-100 dark:bg-zinc-900 overflow-hidden shadow-2xl">
                 <img
                   src="/profile.jpg"
