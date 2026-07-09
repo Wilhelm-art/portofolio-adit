@@ -1,5 +1,6 @@
 import { TextEffect } from './ui/text-effect';
 import { InView } from './ui/in-view';
+import { Marquee } from './ui/marquee';
 import { Download, Github, Linkedin, MessageSquare } from 'lucide-react';
 import { CONTACT_DATA } from '../lib/constants';
 import { useLanguage } from '../lib/LanguageContext';
@@ -105,6 +106,22 @@ export default function Hero() {
             </div>
           </InView>
         </div>
+      </div>
+
+      {/* Marquee Section */}
+      <div className="absolute bottom-0 left-0 right-0 border-t border-b border-[#5D5F5E]/20 bg-[#FAF9F6]/80 backdrop-blur-sm z-0">
+        <Marquee speed={40} className="mt-0 sm:mt-0 py-2">
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#284A60]/30 uppercase tracking-widest">Web Development</span>
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#AB8B65]/30 uppercase tracking-widest">•</span>
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#284A60]/30 uppercase tracking-widest">Cybersecurity</span>
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#AB8B65]/30 uppercase tracking-widest">•</span>
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#284A60]/30 uppercase tracking-widest">Penetration Testing</span>
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#AB8B65]/30 uppercase tracking-widest">•</span>
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#284A60]/30 uppercase tracking-widest">React & Next.js</span>
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#AB8B65]/30 uppercase tracking-widest">•</span>
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#284A60]/30 uppercase tracking-widest">Information Security</span>
+          <span className="mx-8 text-xl md:text-3xl font-display font-medium text-[#AB8B65]/30 uppercase tracking-widest">•</span>
+        </Marquee>
       </div>
     </section>
   );
