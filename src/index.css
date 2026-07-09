@@ -22,7 +22,7 @@
 
   body {
     -webkit-overflow-scrolling: touch;
-    @apply bg-[#FAF9F6] text-slate-800 font-sans antialiased selection:bg-slate-800 selection:text-white transition-colors duration-300;
+    @apply bg-[#FAF9F6] text-[#284A60] font-sans antialiased selection:bg-[#AB8B65] selection:text-white transition-colors duration-300;
     will-change: scroll-position;
   }
 
@@ -40,7 +40,7 @@
 
 @layer utilities {
   .surface-card {
-    @apply bg-white border border-slate-100 shadow-sm transition-colors duration-300;
+    @apply bg-white border border-[#5D5F5E]/20 shadow-sm transition-colors duration-300;
   }
 
   .geist-font {
@@ -52,14 +52,18 @@
   }
 
   .primary-button {
-    @apply bg-slate-800 text-white hover:bg-slate-700 transition-colors duration-300;
+    @apply bg-[#284A60] text-white hover:bg-[#4A6453] transition-colors duration-300;
   }
 
   .secondary-button {
-    @apply bg-slate-50 text-slate-800 hover:bg-slate-100 transition-colors duration-300 border border-slate-200;
+    @apply bg-transparent text-[#284A60] hover:bg-[#AB8B65]/10 transition-colors duration-300 border border-[#284A60];
+  }
+
+  .accent-button {
+    @apply bg-[#AB8B65] text-white hover:bg-[#284A60] transition-colors duration-300;
   }
 
   .border-subtle {
-    @apply border-slate-200;
+    @apply border-[#5D5F5E]/20;
   }
 }
