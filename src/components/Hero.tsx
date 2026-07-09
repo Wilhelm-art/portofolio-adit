@@ -1,4 +1,5 @@
-import { motion } from 'motion/react';
+import { TextEffect } from './ui/text-effect';
+import { InView } from './ui/in-view';
 import { Download, Github, Linkedin, MessageSquare } from 'lucide-react';
 import { CONTACT_DATA } from '../lib/constants';
 import { useLanguage } from '../lib/LanguageContext';
@@ -13,23 +14,35 @@ export default function Hero() {
     >
       <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
-          <motion.div
+          <InView
             className="flex-1 flex flex-col items-start w-full"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } }
+            }}
           >
-            <h1 className="text-6xl sm:text-7xl md:text-8xl font-medium tracking-tighter text-zinc-950 dark:text-zinc-50 leading-[1.1] mb-8 geist-font">
-              {language === 'id' ? 'Pengembang' : 'Software'}
-              <br />
-              <span className="text-zinc-400 dark:text-zinc-500">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl font-medium tracking-tighter text-[#284A60] leading-[1.1] mb-8 geist-font">
+              <TextEffect per="word" preset="fade-in-up">
+                {language === 'id' ? 'Pengembang' : 'Software'}
+              </TextEffect>
+              <TextEffect 
+                per="word" 
+                preset="blur" 
+                delay={0.2}
+                className="text-[#AB8B65]"
+              >
                 {language === 'id' ? 'Keamanan.' : 'Security.'}
-              </span>
+              </TextEffect>
             </h1>
 
-            <p className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 mb-12 max-w-xl leading-relaxed inter-font">
+            <TextEffect
+              per="line"
+              preset="blur"
+              delay={0.4}
+              className="text-lg sm:text-xl text-[#5D5F5E] mb-12 max-w-xl leading-relaxed inter-font"
+            >
               {t('hero.subtitle')}
-            </p>
+            </TextEffect>
 
             <div className="flex flex-wrap items-center gap-8">
               <a
@@ -47,7 +60,7 @@ export default function Hero() {
                   href={CONTACT_DATA.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-400 hover:text-zinc-950 dark:hover:text-white transition-colors"
+                  className="text-[#4A6453] hover:text-[#284A60] transition-colors"
                   aria-label="GitHub"
                 >
                   <Github size={20} />
@@ -56,7 +69,7 @@ export default function Hero() {
                   href={CONTACT_DATA.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-400 hover:text-zinc-950 dark:hover:text-white transition-colors"
+                  className="text-[#4A6453] hover:text-[#284A60] transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin size={20} />
@@ -65,31 +78,32 @@ export default function Hero() {
                   href={CONTACT_DATA.discord}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-zinc-400 hover:text-zinc-950 dark:hover:text-white transition-colors"
+                  className="text-[#4A6453] hover:text-[#284A60] transition-colors"
                   aria-label="Discord"
                 >
                   <MessageSquare size={20} />
                 </a>
               </div>
             </div>
-          </motion.div>
+          </InView>
 
-          <motion.div
+          <InView
             className="flex-1 flex justify-center lg:justify-end w-full relative z-10"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
+            variants={{
+              hidden: { opacity: 0, scale: 0.95 },
+              visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: 'easeOut', delay: 0.2 } }
+            }}
           >
             <div className="relative w-56 h-72 sm:w-64 sm:h-80 md:w-72 md:h-[26rem]">
-              <div className="w-full h-full bg-zinc-100 dark:bg-zinc-900 overflow-hidden shadow-2xl">
+              <div className="w-full h-full bg-[#FAF9F6] border-4 border-[#284A60] overflow-hidden shadow-2xl">
                 <img
                   src="/profile.jpg"
                   alt="Adit Hardiansyah Surachman"
-                  className="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 hover:scale-100"
+                  className="w-full h-full object-cover object-top hover:scale-105 transition-all duration-700 ease-in-out"
                 />
               </div>
             </div>
-          </motion.div>
+          </InView>
         </div>
       </div>
     </section>
