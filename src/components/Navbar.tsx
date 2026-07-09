@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Sun, Moon, Languages } from 'lucide-react';
+import { Menu, X, Languages } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useLanguage } from '../lib/LanguageContext';
-import { useTheme } from '../lib/ThemeContext';
 
 const navKeys = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
 const NAVBAR_HEIGHT = 80;
@@ -13,7 +12,6 @@ export default function Navbar() {
   const [isMobileMenuOpen, setMobileMenu] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const { t, language, toggleLanguage } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 50);
@@ -93,20 +91,14 @@ export default function Navbar() {
           <div className="flex items-center gap-3 pl-6 border-l border-zinc-200 dark:border-zinc-800">
             <button
               onClick={toggleLanguage}
-              className="p-2 flex items-center gap-1 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors bg-transparent border-none outline-none cursor-pointer"
+              className="p-2 flex items-center gap-1 text-slate-500 hover:text-slate-800 transition-colors bg-transparent border-none outline-none cursor-pointer"
               aria-label="Toggle Language"
             >
               <Languages size={16} />
               <span className="text-[10px] font-bold uppercase">{language}</span>
             </button>
 
-            <button
-              onClick={toggleTheme}
-              className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors bg-transparent border-none outline-none cursor-pointer"
-              aria-label="Toggle Theme"
-            >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
+            {/* Theme toggle removed for light-only theme */}
 
             <a
               href="https://drive.google.com/file/d/1gnTbq-vJhQnL2z-wkXwxheaXb1D6rH40/view?usp=sharing"
@@ -120,17 +112,11 @@ export default function Navbar() {
         </div>
 
         <div className="md:hidden flex items-center gap-3">
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle Theme"
-            className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 bg-transparent border-none outline-none cursor-pointer"
-          >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
+          {/* Theme toggle removed for light-only theme */}
 
           <button
             type="button"
-            className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 p-2 -mr-2 bg-transparent border-none outline-none cursor-pointer"
+            className="text-slate-500 hover:text-slate-800 p-2 -mr-2 bg-transparent border-none outline-none cursor-pointer"
             onClick={() => setMobileMenu((prev) => !prev)}
             aria-label="Toggle menu"
             aria-expanded={isMobileMenuOpen}
