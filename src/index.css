@@ -22,13 +22,11 @@
 
   body {
     -webkit-overflow-scrolling: touch;
-    @apply bg-white text-zinc-950 font-sans antialiased selection:bg-zinc-950 selection:text-white transition-colors duration-300;
+    @apply bg-[#FAF9F6] text-slate-800 font-sans antialiased selection:bg-slate-800 selection:text-white transition-colors duration-300;
     will-change: scroll-position;
   }
 
-  .dark body {
-    @apply bg-[#09090b] text-zinc-50 selection:bg-white selection:text-black;
-  }
+  /* Dark mode removed */
 
   h1,
   h2,
@@ -42,7 +40,7 @@
 
 @layer utilities {
   .surface-card {
-    @apply bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/50 dark:border-zinc-800/50 transition-colors duration-300;
+    @apply bg-white border border-slate-100 shadow-sm transition-colors duration-300;
   }
 
   .geist-font {
@@ -54,14 +52,14 @@
   }
 
   .primary-button {
-    @apply bg-zinc-950 text-white dark:bg-white dark:text-zinc-950 hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors duration-300;
+    @apply bg-slate-800 text-white hover:bg-slate-700 transition-colors duration-300;
   }
 
   .secondary-button {
-    @apply bg-zinc-100 text-zinc-950 dark:bg-zinc-900 dark:text-white hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors duration-300 border border-transparent dark:border-zinc-800/50;
+    @apply bg-slate-50 text-slate-800 hover:bg-slate-100 transition-colors duration-300 border border-slate-200;
   }
 
   .border-subtle {
-    @apply border-zinc-200 dark:border-zinc-800/60;
+    @apply border-slate-200;
   }
 }

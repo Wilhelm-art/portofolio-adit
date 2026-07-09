@@ -18,18 +18,19 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         return 'light';
       }
     }
-    return 'dark'; // Default to dark theme
+    return 'light'; // Default to light theme
   });
 
   useEffect(() => {
     const root = window.document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(theme);
-    localStorage.setItem('theme', theme);
+    root.classList.remove('dark');
+    root.classList.add('light');
+    localStorage.setItem('theme', 'light');
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    // Only support light theme now
+    setTheme('light');
   };
 
   return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
