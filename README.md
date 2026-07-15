@@ -3,7 +3,7 @@
 A modern, responsive, and internationalized portfolio built to showcase my projects, skills, and experience as a Technical Creative & Pipeline Specialist.
 
 ## 🚀 Live Demo
-[View Live Portfolio](#) *(Update with your live URL once deployed)*
+[View Live Portfolio](https://portofolio-adit.vercel.app)
 
 ## ✨ Features
 - **Modern Tech Stack:** Built with React 19, Vite, and TypeScript.
