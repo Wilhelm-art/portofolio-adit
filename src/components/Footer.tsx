@@ -9,10 +9,10 @@ export function Footer() {
         <span className="hidden sm:inline">&copy; {new Date().getFullYear()}</span>
       </div>
       <div className="flex gap-6 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-        <a href="https://linkedin.com/in/adithardiansyah" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
+        <a href="https://linkedin.com/in/adit-hardiansyah-surachman-b9aab1315/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
           <Linkedin className="h-3 w-3" /> LinkedIn
         </a>
-        <a href="https://github.com/adithardiansyah" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
+        <a href="https://github.com/Wilhelm-art" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1">
           <Github className="h-3 w-3" /> GitHub
         </a>
         <a href="mailto:adithardiansyah091@gmail.com" className="hover:text-white transition-colors flex items-center gap-1">

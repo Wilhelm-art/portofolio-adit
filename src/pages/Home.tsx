@@ -44,9 +44,8 @@ export function Home() {
               <Download className="w-4 h-4" />
               {t('hero.cta_download')}
             </Link>
-            <a 
-              href="https://wa.me/6281234567890" // Placeholder, user will update
-              target="_blank"
+            <a href="https://wa.me/6285659832513" // Updated with correct WhatsApp number
+                          target="_blank"
               rel="noopener noreferrer"
               className="border border-white/20 hover:border-white/40 text-white px-8 py-4 text-sm font-bold uppercase tracking-widest transition-all rounded-sm"
             >
@@ -81,8 +80,8 @@ export function Home() {
             {/* The user mentioned a photo with a solid red background. We use a placeholder image for now, and they will replace it. */}
             <div className="absolute inset-0 bg-accent-red/10 flex items-center justify-center text-accent-red font-display text-lg">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop" 
-                alt="Adit Hardiansyah Surachman" 
+                              src="/assets/profile.jpg" 
+                              alt="Adit Hardiansyah Surachman" 
                 className="w-full h-full object-cover mix-blend-luminosity hover:mix-blend-normal transition-all duration-500"
               />
             </div>

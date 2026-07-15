@@ -24,16 +24,18 @@ export function Resume() {
             
             <div className="flex flex-wrap gap-4">
               <a 
-                href="/resume/adit-cv-id.pdf" 
-                download
+                href="https://drive.google.com/file/d/1oJSIMlTs2hHnD1hY6rY0glTLSdGr5S_t/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-accent-red hover:bg-accent-red/90 transition-colors shadow-sm"
               >
                 <Download className="w-4 h-4 mr-2" />
                 {t('resume.download_id')}
               </a>
               <a 
-                href="/resume/adit-cv-en.pdf" 
-                download
+                href="https://drive.google.com/file/d/1zmIBvzadSzNE1YKiVMwlMWOlcdPXiuPq/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-4 py-2 border border-white/20 text-sm font-medium rounded-md text-white bg-base-800 hover:bg-base-700 transition-colors shadow-sm"
               >
                 <Download className="w-4 h-4 mr-2" />
@@ -43,9 +45,8 @@ export function Resume() {
           </div>
 
           <div className="bg-base-800 p-2 sm:p-4 rounded-xl border border-white/10 shadow-2xl h-[800px]">
-             {/* Using an iframe to render the PDF directly in the browser */}
              <iframe 
-                src="/resume/adit-cv-id.pdf" 
+                src="https://drive.google.com/file/d/1oJSIMlTs2hHnD1hY6rY0glTLSdGr5S_t/preview" 
                 className="w-full h-full rounded bg-white"
                 title="Resume PDF Viewer"
              />

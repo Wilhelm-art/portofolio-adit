@@ -94,13 +94,13 @@ export function About() {
                   <h3 className="font-bold text-lg text-white mb-4">{t('about.certifications')}</h3>
                   <ul className="space-y-4">
                     <li>
-                      <a href="/certs/google-cybersecurity.pdf" target="_blank" rel="noopener noreferrer" className="block group">
+                      <a href="https://drive.google.com/file/d/1HOwxuX834gxiyAHmYR59sBcSmdvgTZpZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="block group">
                         <div className="font-medium group-hover:text-accent-red transition-colors">Google Cybersecurity Certificate</div>
                         <div className="text-xs text-gray-500 font-mono mt-1">2026</div>
                       </a>
                     </li>
                     <li>
-                      <a href="/certs/bnsp-pemesinan.pdf" target="_blank" rel="noopener noreferrer" className="block group">
+                      <a href="https://drive.google.com/file/d/1OPbuB9XTssClEjfKDS-APmF7KQJ46t5v/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="block group">
                         <div className="font-medium group-hover:text-accent-red transition-colors">BNSP Teknik Pemesinan</div>
                         <div className="text-xs text-gray-500 font-mono mt-1">2021</div>
                       </a>
