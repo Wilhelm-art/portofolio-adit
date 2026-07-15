@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
@@ -91,7 +91,7 @@ export function Contact() {
                 </a>
 
                 <a 
-                  href="https://wa.me/6281234567890" 
+                  href="https://wa.me/6285659832513" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center p-4 bg-base-800 rounded-lg border border-white/5 hover:border-white/20 transition-colors group"
@@ -101,7 +101,7 @@ export function Contact() {
                   </div>
                   <div className="ml-4">
                     <h3 className="font-bold text-white mb-1">WhatsApp</h3>
-                    <p className="text-gray-400">+62 812-3456-7890</p>
+                    <p className="text-gray-400">+62 856-5983-2513</p>
                   </div>
                 </a>
 
