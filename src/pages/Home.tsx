@@ -80,9 +80,9 @@ export function Home() {
             {/* The user mentioned a photo with a solid red background. We use a placeholder image for now, and they will replace it. */}
             <div className="absolute inset-0 bg-accent-red/10 flex items-center justify-center text-accent-red font-display text-lg">
               <img 
-                              src="/assets/profile.jpg" 
-                              alt="Adit Hardiansyah Surachman" 
-                className="w-full h-full object-cover mix-blend-luminosity hover:mix-blend-normal transition-all duration-500"
+                src="/assets/profile.jpg" 
+                alt="Adit Hardiansyah Surachman" 
+                className="w-full h-full object-cover object-top mix-blend-luminosity hover:mix-blend-normal transition-all duration-500"
               />
             </div>
           </div>
