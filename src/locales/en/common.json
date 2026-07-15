@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "resume": "Resume",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm Adit",
+    "headline": "Computer Science graduate building full-stack systems and securing networks.",
+    "cta_download": "Download CV",
+    "cta_whatsapp": "WhatsApp Me",
+    "cta_projects": "View Projects"
+  },
+  "about": {
+    "title": "About Me",
+    "summary": "Adit Hardiansyah Surachman is a Computer Science graduate from STMIK Mardira Indonesia (GPA 3.61/4.00) based in Bandung, Indonesia, specializing in full-stack web development and network security.",
+    "education": "Education",
+    "certifications": "Certifications",
+    "experience": "Experience",
+    "skills": "Skills"
+  },
+  "projects": {
+    "title": "Projects",
+    "view_live": "View Live",
+    "view_source": "Source Code",
+    "problem": "Problem",
+    "solution": "Solution",
+    "impact": "Impact",
+    "tech_stack": "Tech Stack"
+  },
+  "resume": {
+    "title": "Resume",
+    "download_id": "Download CV (ID)",
+    "download_en": "Download CV (EN)"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  }
+}

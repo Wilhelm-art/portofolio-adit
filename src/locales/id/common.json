@@ -1,0 +1,45 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "projects": "Proyek",
+    "resume": "Resume",
+    "contact": "Kontak"
+  },
+  "hero": {
+    "greeting": "Hai, Saya Adit",
+    "headline": "Lulusan S1 Teknik Informatika — siap membangun sistem, mengamankan jaringan, dan menyelesaikan masalah IT.",
+    "cta_download": "Unduh CV",
+    "cta_whatsapp": "WhatsApp Saya",
+    "cta_projects": "Lihat Proyek"
+  },
+  "about": {
+    "title": "Tentang Saya",
+    "summary": "Adit Hardiansyah Surachman adalah lulusan S1 Teknik Informatika dari STMIK Mardira Indonesia (IPK 3.61/4.00) yang berdomisili di Bandung, Indonesia, dengan spesialisasi dalam pengembangan web full-stack dan keamanan jaringan.",
+    "education": "Pendidikan",
+    "certifications": "Sertifikasi",
+    "experience": "Pengalaman",
+    "skills": "Keahlian"
+  },
+  "projects": {
+    "title": "Proyek",
+    "view_live": "Lihat Website",
+    "view_source": "Kode Sumber",
+    "problem": "Masalah",
+    "solution": "Solusi",
+    "impact": "Dampak",
+    "tech_stack": "Teknologi"
+  },
+  "resume": {
+    "title": "Resume",
+    "download_id": "Unduh CV (ID)",
+    "download_en": "Unduh CV (EN)"
+  },
+  "contact": {
+    "title": "Kontak",
+    "name": "Nama",
+    "email": "Email",
+    "message": "Pesan",
+    "send": "Kirim Pesan"
+  }
+}

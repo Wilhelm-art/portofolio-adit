@@ -1,0 +1,33 @@
+# Adit Hardiansyah Surachman
+Location: Bandung, Indonesia
+Email: adithardiansyah091@gmail.com
+WhatsApp: +62 812-3456-7890
+
+## Overview
+Adit Hardiansyah Surachman is a Computer Science graduate from STMIK Mardira Indonesia (GPA 3.61/4.00) based in Bandung, Indonesia. He specializes in full-stack web development and network security. He is open to work in software engineering, IT administration, and network security roles.
+
+## Education
+- S1 Teknik Informatika at STMIK Mardira Indonesia (2021-2025)
+- Teknik Pemesinan at SMK Mahardhika Batujajar
+
+## Certifications
+- Google Cybersecurity Certificate (2026)
+- BNSP Teknik Pemesinan (2021)
+
+## Skills
+- Web/Software: PHP, Python, Next.js, React, Laravel, TypeScript, Tailwind CSS, SQL
+- Networking & Security: Network Security, Threat Analysis, Risk Management, LAN/WAN, System Testing, Linux
+- Administrasi: Microsoft Office, Google Workspace, Document Management
+- Languages: Indonesian (Native), English (Active)
+
+## Experience
+- Lead Developer at Masjid AT-Tijaniyah
+- Staf IT/Administrasi at Dinas Perdagangan dan Perindustrian Kota Bandung
+- Operator Produksi at PT. Bahagia Sejahtera Metalindo
+
+## Projects
+- GadgetVault: Premium marketplace for flagship gadgets (Next.js, Prisma, PostgreSQL).
+- Surabi Cikal Cisangkan: Digital storefront for a traditional culinary business (React, Vite, Tailwind).
+- Sistem Kas Masjid AT-Tijaniyah: Financial transparency & management system (Laravel, Alpine.js, MySQL).
+- Komik Zynqtoon: Comic and webtoon reading platform (Next.js, React).
+- SaveTok: No-watermark video downloader (React, Vite, Express.js).
