@@ -1,4 +1,4 @@
-# Adit Hardiansyah Surachman (Sadut) - Personal Portfolio
+# Adit Hardiansyah Surachman - Personal Portfolio
 
 A modern, responsive, and internationalized portfolio built to showcase my projects, skills, and experience as a Technical Creative & Pipeline Specialist.
 
