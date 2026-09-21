@@ -1,106 +1,176 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export function Navbar() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const isEnglish = location.pathname.startsWith('/en');
   const basePath = isEnglish ? '/en' : '';
 
   const navLinks = [
-    { name: t('nav.home'), path: `${basePath}/` },
+    { name: t('nav.home'), path: `${basePath}/`, exact: true },
     { name: t('nav.about'), path: `${basePath}/about` },
     { name: t('nav.projects'), path: `${basePath}/projects` },
     { name: t('nav.resume'), path: `${basePath}/resume` },
     { name: t('nav.contact'), path: `${basePath}/contact` },
   ];
 
-  const setLanguage = (lang: 'en' | 'id') => {
-    if (lang === 'en' && !isEnglish) {
+  const handleLanguageSwitch = (targetLang: 'id' | 'en') => {
+    if (targetLang === 'en' && !isEnglish) {
       i18n.changeLanguage('en');
-      window.location.href = `/en${location.pathname === '/' ? '' : location.pathname}`;
-    } else if (lang === 'id' && isEnglish) {
+      const newPath = `/en${location.pathname === '/' ? '' : location.pathname}`;
+      navigate(newPath);
+    } else if (targetLang === 'id' && isEnglish) {
       i18n.changeLanguage('id');
-      window.location.href = location.pathname.replace(/^\/en/, '') || '/';
+      const newPath = location.pathname.replace(/^\/en/, '') || '/';
+      navigate(newPath);
     }
   };
 
+  const isLinkActive = (path: string, exact?: boolean) => {
+    if (exact) {
+      return location.pathname === path || (path === '/' && location.pathname === '');
+    }
+    return location.pathname.startsWith(path);
+  };
+
   return (
-    <nav className="fixed w-full z-50 bg-base-900/90 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-[var(--color-canvas-950)]/95 backdrop-blur-sm border-b border-[rgba(245,242,235,0.08)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex-shrink-0 flex items-center gap-3">
-            <Link to={`${basePath}/`} className="w-10 h-10 bg-accent-red flex items-center justify-center font-bold text-lg rounded-sm text-white">
-              A
-            </Link>
-            <Link to={`${basePath}/`} className="text-sm font-semibold tracking-[0.2em] uppercase hidden sm:block hover:text-white transition-colors">
-              Adit Hardiansyah S.
-            </Link>
-          </div>
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className="text-[11px] font-medium uppercase tracking-widest text-slate-400 hover:text-white transition-colors py-2"
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="flex items-center bg-white/5 p-1 rounded-full border border-white/10 ml-4">
-                <button
-                  onClick={() => setLanguage('id')}
-                  className={`px-3 py-1 text-[10px] font-bold rounded-full transition-colors ${!isEnglish ? 'bg-accent-red text-white' : 'text-slate-500 hover:text-white'}`}
-                >
-                  ID
-                </button>
-                <button
-                  onClick={() => setLanguage('en')}
-                  className={`px-3 py-1 text-[10px] font-bold rounded-full transition-colors ${isEnglish ? 'bg-accent-red text-white' : 'text-slate-500 hover:text-white'}`}
-                >
-                  EN
-                </button>
-              </div>
+          
+          {/* Brand Wordmark */}
+          <Link 
+            to={`${basePath}/`} 
+            className="flex items-center gap-3 group focus-visible:ring-1 focus-visible:ring-[var(--color-terracotta)]"
+          >
+            <span className="w-8 h-8 rounded-sm bg-[var(--color-canvas-850)] border border-[rgba(245,242,235,0.12)] flex items-center justify-center font-mono text-xs font-semibold text-[var(--color-paper-50)] group-hover:border-[var(--color-terracotta)] transition-colors">
+              A.
+            </span>
+            <div className="flex flex-col">
+              <span className="text-sm font-semibold tracking-wider uppercase text-[var(--color-paper-50)]">
+                Adit Hardiansyah S.
+              </span>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-stone-muted)]">
+                Bandung, ID
+              </span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            <div className="flex items-center space-x-6">
+              {navLinks.map((link) => {
+                const active = isLinkActive(link.path, link.exact);
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`text-xs font-mono uppercase tracking-widest transition-colors py-1 relative ${
+                      active
+                        ? 'text-[var(--color-paper-50)] font-semibold'
+                        : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
+                    }`}
+                  >
+                    {link.name}
+                    {active && (
+                      <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[var(--color-terracotta)]" />
+                    )}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Language Switcher */}
+            <div className="flex items-center border border-[rgba(245,242,235,0.12)] rounded-sm p-0.5 bg-[var(--color-canvas-900)]" role="group" aria-label="Language selection">
+              <button
+                type="button"
+                onClick={() => handleLanguageSwitch('id')}
+                aria-pressed={!isEnglish}
+                className={`px-2.5 py-1 text-[11px] font-mono uppercase font-semibold transition-colors rounded-sm ${
+                  !isEnglish 
+                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] shadow-sm' 
+                    : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
+                }`}
+              >
+                ID
+              </button>
+              <button
+                type="button"
+                onClick={() => handleLanguageSwitch('en')}
+                aria-pressed={isEnglish}
+                className={`px-2.5 py-1 text-[11px] font-mono uppercase font-semibold transition-colors rounded-sm ${
+                  isEnglish 
+                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] shadow-sm' 
+                    : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
+                }`}
+              >
+                EN
+              </button>
             </div>
           </div>
-          <div className="md:hidden flex items-center">
-             <button
-                onClick={() => setLanguage(isEnglish ? 'id' : 'en')}
-                className="flex items-center text-gray-300 hover:text-white mr-4 p-2"
+
+          {/* Mobile Navigation Toggle */}
+          <div className="md:hidden flex items-center gap-3">
+            <div className="flex items-center border border-[rgba(245,242,235,0.12)] rounded-sm p-0.5 bg-[var(--color-canvas-900)] mr-2">
+              <button
+                type="button"
+                onClick={() => handleLanguageSwitch('id')}
+                className={`px-2 py-0.5 text-[10px] font-mono uppercase font-semibold ${
+                  !isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)]' : 'text-[var(--color-stone-muted)]'
+                }`}
               >
-                <Globe className="w-5 h-5 mr-1" />
-                <span className="text-sm font-medium">{isEnglish ? 'ID' : 'EN'}</span>
+                ID
               </button>
+              <button
+                type="button"
+                onClick={() => handleLanguageSwitch('en')}
+                className={`px-2 py-0.5 text-[10px] font-mono uppercase font-semibold ${
+                  isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)]' : 'text-[var(--color-stone-muted)]'
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white p-2"
+              aria-label={isOpen ? "Tutup menu" : "Buka menu"}
+              aria-expanded={isOpen}
+              className="p-2 text-[var(--color-paper-50)] border border-[rgba(245,242,235,0.12)] rounded-sm bg-[var(--color-canvas-900)]"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile Menu Panel */}
       {isOpen && (
-        <div className="md:hidden bg-base-800 border-b border-white/10">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
+        <div className="md:hidden border-b border-[rgba(245,242,235,0.1)] bg-[var(--color-canvas-900)] px-4 py-4 space-y-2">
+          {navLinks.map((link) => {
+            const active = isLinkActive(link.path, link.exact);
+            return (
               <Link
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                className={`block px-3 py-2 text-xs font-mono uppercase tracking-widest rounded-sm transition-colors ${
+                  active
+                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] font-semibold border-l-2 border-[var(--color-terracotta)]'
+                    : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
+                }`}
               >
                 {link.name}
               </Link>
-            ))}
-          </div>
+            );
+          })}
         </div>
       )}
     </nav>

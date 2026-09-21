@@ -1,45 +1,53 @@
 {
   "nav": {
     "home": "Home",
-    "about": "About",
+    "about": "Profile",
     "projects": "Projects",
     "resume": "Resume",
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Hi, I'm Adit",
-    "headline": "Computer Science graduate building full-stack systems and securing networks.",
+    "role": "Software Engineering & Network Security",
+    "headline": "Engineered for resilience and practical utility.",
+    "subheadline": "Computer Science graduate from STMIK Mardira Indonesia (GPA 3.61/4.00). Building production-ready full-stack applications, optimizing server infrastructure, and auditing security weaknesses.",
+    "status": "Available for Full-time & Contract roles",
+    "location": "Bandung, Indonesia",
+    "cta_projects": "Explore Work",
     "cta_download": "Download CV",
-    "cta_whatsapp": "WhatsApp Me",
-    "cta_projects": "View Projects"
+    "cta_contact": "Get in Touch"
   },
   "about": {
-    "title": "About Me",
-    "summary": "Adit Hardiansyah Surachman is a Computer Science graduate from STMIK Mardira Indonesia (GPA 3.61/4.00) based in Bandung, Indonesia, specializing in full-stack web development and network security.",
+    "title": "Profile & Background",
+    "summary": "I am a software engineer and technical specialist based in Bandung, Indonesia. Holding a B.S. in Computer Science from STMIK Mardira Indonesia with a 3.61/4.00 GPA, alongside Google Cybersecurity and national BNSP technical certifications. My work centers on reliable full-stack web applications, database design, and network infrastructure hardening.",
+    "experience": "Work & Leadership Experience",
     "education": "Education",
     "certifications": "Certifications",
-    "experience": "Experience",
-    "skills": "Skills"
+    "skills": "Technical Disciplines"
   },
   "projects": {
-    "title": "Projects",
-    "view_live": "View Live",
-    "view_source": "Source Code",
-    "problem": "Problem",
-    "solution": "Solution",
-    "impact": "Impact",
-    "tech_stack": "Tech Stack"
+    "title": "Selected Projects",
+    "subtitle": "Case studies of deployed applications, public community ledgers, and performant web utilities.",
+    "featured": "Featured Project",
+    "view_live": "Live Site",
+    "view_details": "Case Study",
+    "view_source": "Source Repository",
+    "problem": "Problem Statement",
+    "solution": "Architecture & Implementation",
+    "impact": "Measurable Impact",
+    "tech_stack": "Technologies Used"
   },
   "resume": {
-    "title": "Resume",
-    "download_id": "Download CV (ID)",
-    "download_en": "Download CV (EN)"
+    "title": "Curriculum Vitae",
+    "subtitle": "Professional trajectory, verified credentials, and comprehensive technical skills.",
+    "download_id": "Download PDF (Indonesian)",
+    "download_en": "Download PDF (English)"
   },
   "contact": {
     "title": "Contact",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send Message"
+    "subtitle": "Open to technical discussions, full-stack engineering opportunities, IT infrastructure roles, or project engagements.",
+    "direct_email": "Direct Email",
+    "direct_wa": "Direct WhatsApp",
+    "location_title": "Location",
+    "send_email_button": "Send Email"
   }
 }

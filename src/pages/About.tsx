@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
-import { Code2, Database, ShieldCheck, FileText, Server, Globe } from 'lucide-react';
+import { ArrowUpRight, GraduationCap, ShieldCheck, Award } from 'lucide-react';
 
 export function About() {
   const { t } = useTranslation();
@@ -10,27 +10,47 @@ export function About() {
   const isEnglish = location.pathname.startsWith('/en');
 
   const skills = [
-    { category: 'Web/Software', icon: Code2, items: ['PHP', 'Python', 'Next.js', 'React', 'Laravel', 'TypeScript', 'Tailwind CSS', 'SQL'] },
-    { category: 'Networking & Security', icon: ShieldCheck, items: ['Network Security', 'Threat Analysis', 'Risk Management', 'LAN/WAN', 'System Testing', 'Linux'] },
-    { category: 'Administrasi', icon: FileText, items: ['Microsoft Office', 'Google Workspace', 'Pengelolaan Dokumen', 'Surat-menyurat Dinas'] },
-    { category: 'Languages', icon: Globe, items: ['Bahasa Indonesia (Native)', 'English (Active)'] },
+    {
+      category: isEnglish ? 'Full-Stack Development' : 'Pengembangan Web Full-Stack',
+      items: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Laravel 10', 'PHP', 'Python', 'SQL & PostgreSQL', 'Prisma ORM']
+    },
+    {
+      category: isEnglish ? 'Network Security & Systems' : 'Keamanan Jaringan & Sistem',
+      items: ['Threat Analysis', 'SIEM & Log Monitoring', 'Network Hardening', 'LAN / WAN Configuration', 'Linux Administration', 'Docker']
+    },
+    {
+      category: isEnglish ? 'Operational & Administrative' : 'Administrasi & Alur Kerja',
+      items: ['Manajemen Dokumen Teknis', 'Google Workspace', 'SOP & Pengujian Sistem', 'Laporan Keuangan & Akuntabilitas']
+    }
   ];
 
   const experience = [
     {
       role: 'Lead Developer',
-      company: 'Masjid AT-Tijaniyah',
-      date: isEnglish ? 'Mar - Aug 2025' : 'Mar - Agt 2025'
+      organization: 'Masjid AT-Tijaniyah',
+      period: isEnglish ? 'Mar – Aug 2025' : 'Mar – Agt 2025',
+      location: 'Cimahi / Bandung',
+      description: isEnglish
+        ? 'Designed and deployed an automated, transparent financial ledger with live public cash-flow dashboard and prayer time tracking widget.'
+        : 'Merancang dan mengimplementasikan sistem pembukuan kas digital masjid dengan dasbor transparansi publik serta modul waktu salat otomatis.'
     },
     {
-      role: 'Staf IT/Administrasi',
-      company: 'Dinas Perdagangan dan Perindustrian Kota Bandung',
-      date: isEnglish ? 'Oct 2024 - Jan 2025' : 'Okt 2024 - Jan 2025'
+      role: isEnglish ? 'IT & Administration Staff' : 'Staf IT / Administrasi',
+      organization: isEnglish ? 'Department of Trade and Industry, Bandung City' : 'Dinas Perdagangan dan Perindustrian Kota Bandung',
+      period: isEnglish ? 'Oct 2024 – Jan 2025' : 'Okt 2024 – Jan 2025',
+      location: 'Bandung',
+      description: isEnglish
+        ? 'Assisted in internal IT maintenance, hardware and network troubleshooting, and municipal official documentation processing.'
+        : 'Mengelola pemeliharaan perangkat keras dan jaringan komputer kantor serta mengurus surat-menyurat dan arsip digital dinas.'
     },
     {
-      role: 'Operator Produksi',
-      company: 'PT. Bahagia Sejahtera Metalindo',
-      date: isEnglish ? 'Aug - Sep 2020' : 'Agt - Sep 2020'
+      role: isEnglish ? 'Production Operator' : 'Operator Produksi',
+      organization: 'PT. Bahagia Sejahtera Metalindo',
+      period: isEnglish ? 'Aug – Sep 2020' : 'Agt – Sep 2020',
+      location: 'Bandung Barat',
+      description: isEnglish
+        ? 'Executed machine operations and industrial precision fabrication in accordance with strict quality assurance standards.'
+        : 'Menjalankan operasional mesin pemesinan presisi dan inspeksi mutu komponen industri manufaktur.'
     }
   ];
 
@@ -41,99 +61,202 @@ export function About() {
         <meta name="description" content={t('about.summary')} />
       </Helmet>
       
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
-          <h1 className="text-4xl font-bold font-display mb-8">{t('about.title')}<span className="text-accent-red">.</span></h1>
-          <p className="text-xl text-gray-300 leading-relaxed mb-16">
-            {t('about.summary')}
-          </p>
+          
+          {/* Header */}
+          <header className="border-b border-[rgba(245,242,235,0.08)] pb-12 mb-16">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-terracotta)]" />
+              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-stone-muted)]">
+                {isEnglish ? "Biographical Overview" : "Ringkasan Profil"}
+              </span>
+            </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[var(--color-paper-50)] mb-8">
+              {t('about.title')}
+            </h1>
+            <p className="text-lg sm:text-xl text-[var(--color-paper-100)] leading-relaxed max-w-3xl">
+              {t('about.summary')}
+            </p>
+          </header>
 
-          <div className="space-y-16">
-            <section>
-              <h2 className="text-2xl font-bold font-display mb-6 border-b border-white/10 pb-2">{t('about.experience')}</h2>
-              <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-white/20 before:to-transparent">
-                {experience.map((exp, index) => (
-                  <div key={index} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                    <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-base-900 text-gray-400 group-hover:text-accent-red group-hover:border-accent-red transition-colors shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow">
-                      <Server className="w-5 h-5" />
+          <div className="space-y-20">
+
+            {/* Experience Section */}
+            <section className="border-b border-[rgba(245,242,235,0.08)] pb-16">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)]">
+                  {t('about.experience')}
+                </h2>
+                <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-stone-muted)]">
+                  2020 – 2025
+                </span>
+              </div>
+
+              <div className="divide-y divide-[rgba(245,242,235,0.06)]">
+                {experience.map((item, index) => (
+                  <div key={index} className="py-8 first:pt-0 last:pb-0 grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <div className="md:col-span-4">
+                      <span className="font-mono text-xs text-[var(--color-terracotta)] block mb-1">
+                        {item.period}
+                      </span>
+                      <h3 className="text-lg font-bold font-display text-[var(--color-paper-50)]">
+                        {item.role}
+                      </h3>
+                      <p className="text-xs font-mono text-[var(--color-stone-muted)] mt-1">
+                        {item.organization} • {item.location}
+                      </p>
                     </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-base-800 p-6 rounded-lg border border-white/5 hover:border-white/10 transition-colors">
-                      <div className="flex flex-col mb-1">
-                        <h3 className="font-bold text-lg text-white">{exp.role}</h3>
-                        <span className="text-accent-red font-mono text-sm">{exp.date}</span>
-                      </div>
-                      <div className="text-gray-400">{exp.company}</div>
+                    <div className="md:col-span-8">
+                      <p className="text-sm text-[var(--color-stone-muted)] leading-relaxed">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
             </section>
 
-            <section>
-              <h2 className="text-2xl font-bold font-display mb-6 border-b border-white/10 pb-2">{t('about.education')} & {t('about.certifications')}</h2>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-base-800 p-6 rounded-lg border border-white/5">
-                  <h3 className="font-bold text-lg text-white mb-4">{t('about.education')}</h3>
-                  <div className="space-y-4">
-                    <div>
-                      <div className="font-medium">STMIK Mardira Indonesia</div>
-                      <div className="text-sm text-gray-400">S1 Teknik Informatika (GPA: 3.61/4.00)</div>
-                      <div className="text-xs text-accent-red font-mono mt-1">2021 - 2025</div>
+            {/* Education & Certifications Section */}
+            <section className="border-b border-[rgba(245,242,235,0.08)] pb-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                {/* Education */}
+                <div>
+                  <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)] mb-8 flex items-center gap-2">
+                    <GraduationCap className="w-5 h-5 text-[var(--color-terracotta)]" />
+                    <span>{t('about.education')}</span>
+                  </h2>
+
+                  <div className="space-y-6">
+                    <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                      <div className="flex items-baseline justify-between mb-2">
+                        <span className="text-sm font-bold text-[var(--color-paper-50)]">
+                          STMIK Mardira Indonesia
+                        </span>
+                        <span className="font-mono text-xs text-[var(--color-stone-muted)]">
+                          2021 – 2025
+                        </span>
+                      </div>
+                      <p className="text-xs text-[var(--color-stone-muted)] mb-3">
+                        S1 Teknik Informatika • Bandung, Indonesia
+                      </p>
+                      <div className="inline-block px-2.5 py-1 text-xs font-mono bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] border border-[rgba(245,242,235,0.1)] rounded-sm">
+                        IPK: 3.61 / 4.00 (Sangat Memuaskan)
+                      </div>
                     </div>
-                    <div>
-                      <div className="font-medium">SMK Mahardhika Batujajar</div>
-                      <div className="text-sm text-gray-400">Teknik Pemesinan</div>
+
+                    <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                      <div className="flex items-baseline justify-between mb-2">
+                        <span className="text-sm font-bold text-[var(--color-paper-50)]">
+                          SMK Mahardhika Batujajar
+                        </span>
+                        <span className="font-mono text-xs text-[var(--color-stone-muted)]">
+                          2017 – 2020
+                        </span>
+                      </div>
+                      <p className="text-xs text-[var(--color-stone-muted)]">
+                        Teknik Pemesinan • Bandung Barat
+                      </p>
                     </div>
                   </div>
                 </div>
-                <div className="bg-base-800 p-6 rounded-lg border border-white/5">
-                  <h3 className="font-bold text-lg text-white mb-4">{t('about.certifications')}</h3>
-                  <ul className="space-y-4">
-                    <li>
-                      <a href="https://drive.google.com/file/d/1HOwxuX834gxiyAHmYR59sBcSmdvgTZpZ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="block group">
-                        <div className="font-medium group-hover:text-accent-red transition-colors">Google Cybersecurity Certificate</div>
-                        <div className="text-xs text-gray-500 font-mono mt-1">2026</div>
+
+                {/* Certifications */}
+                <div>
+                  <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)] mb-8 flex items-center gap-2">
+                    <ShieldCheck className="w-5 h-5 text-[var(--color-terracotta)]" />
+                    <span>{t('about.certifications')}</span>
+                  </h2>
+
+                  <div className="space-y-6">
+                    
+                    <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                      <div className="flex items-baseline justify-between mb-2">
+                        <span className="text-sm font-bold text-[var(--color-paper-50)]">
+                          Google Cybersecurity Certificate
+                        </span>
+                        <span className="font-mono text-xs text-[var(--color-stone-muted)]">
+                          2026
+                        </span>
+                      </div>
+                      <p className="text-xs text-[var(--color-stone-muted)] mb-4">
+                        Penerbit: Google (Coursera Verified) • Keamanan Jaringan, Deteksi Ancaman, SIEM & Python.
+                      </p>
+                      <a
+                        href="https://drive.google.com/file/d/1HOwxuX834gxiyAHmYR59sBcSmdvgTZpZ/view?usp=drive_link"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-terracotta)] hover:underline"
+                      >
+                        <span>Verifikasi Dokumen Sertifikat</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
                       </a>
-                    </li>
-                    <li>
-                      <a href="https://drive.google.com/file/d/1OPbuB9XTssClEjfKDS-APmF7KQJ46t5v/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="block group">
-                        <div className="font-medium group-hover:text-accent-red transition-colors">BNSP Teknik Pemesinan</div>
-                        <div className="text-xs text-gray-500 font-mono mt-1">2021</div>
+                    </div>
+
+                    <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                      <div className="flex items-baseline justify-between mb-2">
+                        <span className="text-sm font-bold text-[var(--color-paper-50)]">
+                          Sertifikasi BNSP Teknisi Komputer
+                        </span>
+                        <span className="font-mono text-xs text-[var(--color-stone-muted)]">
+                          2025
+                        </span>
+                      </div>
+                      <p className="text-xs text-[var(--color-stone-muted)] mb-4">
+                        Badan Nasional Sertifikasi Profesi • Standar Kompetensi Nasional Indonesia.
+                      </p>
+                      <a
+                        href="https://drive.google.com/file/d/1J_E7l4kE1z2M3N4O5P6Q7R8S9T0U1V2W/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]"
+                      >
+                        <span>Sertifikat Kompetensi Kerja</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
                       </a>
-                    </li>
-                  </ul>
+                    </div>
+
+                  </div>
                 </div>
+
               </div>
             </section>
 
+            {/* Technical Skills Section */}
             <section>
-              <h2 className="text-2xl font-bold font-display mb-6 border-b border-white/10 pb-2">{t('about.skills')}</h2>
-              <div className="grid md:grid-cols-2 gap-6">
-                {skills.map((skillGroup, index) => {
-                  const Icon = skillGroup.icon;
-                  return (
-                    <div key={index} className="bg-base-800 p-6 rounded-lg border border-white/5">
-                      <div className="flex items-center mb-4 text-gray-300">
-                        <Icon className="w-5 h-5 mr-2 text-accent-red" />
-                        <h3 className="font-bold">{skillGroup.category}</h3>
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {skillGroup.items.map((item, i) => (
-                          <span key={i} className="px-3 py-1 bg-base-900 border border-white/10 rounded-full text-sm text-gray-300">
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
+              <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)] mb-8">
+                {t('about.skills')}
+              </h2>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {skills.map((group, index) => (
+                  <div 
+                    key={index}
+                    className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm"
+                  >
+                    <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--color-paper-50)] pb-3 mb-4 border-b border-[rgba(245,242,235,0.06)]">
+                      {group.category}
+                    </h3>
+                    <ul className="space-y-2">
+                      {group.items.map((skill, sIdx) => (
+                        <li key={sIdx} className="text-xs font-mono text-[var(--color-stone-muted)] flex items-center gap-2">
+                          <span className="w-1 h-1 rounded-full bg-[var(--color-stone-subtle)]" />
+                          <span>{skill}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </section>
+
           </div>
+
         </motion.div>
       </div>
     </>

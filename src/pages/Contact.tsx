@@ -2,183 +2,211 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
-import { Mail, MessageCircle, MapPin, Send } from 'lucide-react';
+import { Mail, MessageSquare, Linkedin, Github, MapPin, Send, ArrowUpRight } from 'lucide-react';
 
 export function Contact() {
   const { t } = useTranslation();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [senderName, setSenderName] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleComposeEmail = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    // Mock API call since we don't have the serverless function yet
-    try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
-      (e.target as HTMLFormElement).reset();
-    } catch (error) {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What technologies does Adit work with?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Adit specializes in React, Next.js, TypeScript, Tailwind CSS, Laravel, and Python, alongside strong network security capabilities."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is Adit available for full-time roles or internships?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, Adit is currently seeking opportunities in IT, administration, network engineering, and full-stack development."
-        }
-      }
-    ]
+    const mailSubject = encodeURIComponent(subject ? `[Portfolio Inquiry] ${subject}` : `[Portfolio Inquiry] Pesan dari ${senderName || 'Pengunjung'}`);
+    const mailBody = encodeURIComponent(`Nama: ${senderName}\n\nPesan:\n${message}`);
+    window.location.href = `mailto:adithardiansyah091@gmail.com?subject=${mailSubject}&body=${mailBody}`;
   };
 
   return (
     <>
       <Helmet>
         <title>{t('contact.title')} | Adit Hardiansyah Surachman</title>
-        <meta name="description" content="Get in touch with Adit Hardiansyah Surachman for work opportunities." />
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
-        </script>
+        <meta name="description" content={t('contact.subtitle')} />
       </Helmet>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
         >
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold font-display mb-4">{t('contact.title')}<span className="text-accent-red">.</span></h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              I'm always open to discussing product design work, software engineering roles, or network security opportunities.
+          {/* Header */}
+          <header className="border-b border-[rgba(245,242,235,0.08)] pb-10 mb-16">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-terracotta)]" />
+              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-stone-muted)]">
+                Komunikasi Langsung
+              </span>
+            </div>
+            <h1 className="text-4xl sm:text-5xl font-bold font-display text-[var(--color-paper-50)] mb-4">
+              {t('contact.title')}
+            </h1>
+            <p className="text-base sm:text-lg text-[var(--color-stone-muted)] max-w-2xl leading-relaxed">
+              {t('contact.subtitle')}
             </p>
-          </div>
+          </header>
 
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
-            <div>
-              <h2 className="text-2xl font-bold font-display mb-8">Get in Touch</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            {/* Direct Channel Cards Column */}
+            <div className="lg:col-span-5 space-y-6">
               
-              <div className="space-y-8">
-                <a 
-                  href="mailto:adithardiansyah091@gmail.com" 
-                  className="flex items-center p-4 bg-base-800 rounded-lg border border-white/5 hover:border-white/20 transition-colors group"
-                >
-                  <div className="w-12 h-12 bg-base-900 rounded-full flex items-center justify-center text-gray-400 group-hover:text-accent-red transition-colors shrink-0">
-                    <Mail className="w-5 h-5" />
+              <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-terracotta)] block mb-3">
+                  Saluran Utama
+                </span>
+                
+                <div className="space-y-6">
+                  
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] block mb-1">
+                      {t('contact.direct_email')}
+                    </span>
+                    <a 
+                      href="mailto:adithardiansyah091@gmail.com"
+                      className="text-sm font-mono text-[var(--color-paper-50)] hover:text-[var(--color-terracotta)] transition-colors inline-flex items-center gap-2"
+                    >
+                      <Mail className="w-4 h-4 text-[var(--color-terracotta)]" />
+                      <span>adithardiansyah091@gmail.com</span>
+                    </a>
                   </div>
-                  <div className="ml-4">
-                    <h3 className="font-bold text-white mb-1">Email</h3>
-                    <p className="text-gray-400">adithardiansyah091@gmail.com</p>
-                  </div>
-                </a>
 
-                <a 
-                  href="https://wa.me/6285659832513" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center p-4 bg-base-800 rounded-lg border border-white/5 hover:border-white/20 transition-colors group"
-                >
-                  <div className="w-12 h-12 bg-base-900 rounded-full flex items-center justify-center text-gray-400 group-hover:text-accent-red transition-colors shrink-0">
-                    <MessageCircle className="w-5 h-5" />
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] block mb-1">
+                      {t('contact.direct_wa')}
+                    </span>
+                    <a 
+                      href="https://wa.me/6285659832513?text=Halo%20Adit,%20saya%20melihat%20portofolio%20Anda"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-mono text-[var(--color-paper-50)] hover:text-[var(--color-terracotta)] transition-colors inline-flex items-center gap-2"
+                    >
+                      <MessageSquare className="w-4 h-4 text-[var(--color-terracotta)]" />
+                      <span>+62 856-5983-2513</span>
+                    </a>
                   </div>
-                  <div className="ml-4">
-                    <h3 className="font-bold text-white mb-1">WhatsApp</h3>
-                    <p className="text-gray-400">+62 856-5983-2513</p>
-                  </div>
-                </a>
 
-                <div className="flex items-center p-4 bg-base-800 rounded-lg border border-white/5">
-                  <div className="w-12 h-12 bg-base-900 rounded-full flex items-center justify-center text-gray-400 shrink-0">
-                    <MapPin className="w-5 h-5" />
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] block mb-1">
+                      {t('contact.location_title')}
+                    </span>
+                    <div className="text-sm font-mono text-[var(--color-paper-50)] flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-[var(--color-stone-muted)]" />
+                      <span>Bandung, Jawa Barat, Indonesia</span>
+                    </div>
                   </div>
-                  <div className="ml-4">
-                    <h3 className="font-bold text-white mb-1">Location</h3>
-                    <p className="text-gray-400">Bandung, Indonesia</p>
-                  </div>
+
                 </div>
+              </div>
+
+              {/* Social Profiles */}
+              <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-paper-50)] block mb-4">
+                  Jejaring Profesional
+                </span>
+                
+                <div className="space-y-3 text-xs font-mono">
+                  <a 
+                    href="https://linkedin.com/in/adit-hardiansyah-surachman-b9aab1315/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 bg-[var(--color-canvas-850)] hover:bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] rounded-sm border border-[rgba(245,242,235,0.06)] transition-colors"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Linkedin className="w-4 h-4 text-[#0A66C2]" />
+                      <span>LinkedIn Profile</span>
+                    </span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[var(--color-stone-muted)]" />
+                  </a>
+
+                  <a 
+                    href="https://github.com/Wilhelm-art"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between p-3 bg-[var(--color-canvas-850)] hover:bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] rounded-sm border border-[rgba(245,242,235,0.06)] transition-colors"
+                  >
+                    <span className="flex items-center gap-2">
+                      <Github className="w-4 h-4" />
+                      <span>GitHub Repositories</span>
+                    </span>
+                    <ArrowUpRight className="w-3.5 h-3.5 text-[var(--color-stone-muted)]" />
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Functional Email Composer Form Column */}
+            <div className="lg:col-span-7">
+              <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 sm:p-8 rounded-sm">
+                <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-terracotta)] block mb-2">
+                  Tulis Pesan Cepat
+                </span>
+                <h3 className="text-xl font-bold font-display text-[var(--color-paper-50)] mb-6">
+                  Kirim Pesan via Aplikasi Email Anda
+                </h3>
+
+                <form onSubmit={handleComposeEmail} className="space-y-5">
+                  <div>
+                    <label htmlFor="senderName" className="block text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] mb-2">
+                      Nama Lengkap Anda
+                    </label>
+                    <input 
+                      type="text" 
+                      id="senderName" 
+                      required
+                      value={senderName}
+                      onChange={(e) => setSenderName(e.target.value)}
+                      placeholder="e.g. John Doe"
+                      className="w-full bg-[var(--color-canvas-950)] border border-[rgba(245,242,235,0.12)] rounded-sm px-4 py-3 text-sm text-[var(--color-paper-50)] placeholder-[var(--color-stone-faint)] focus:border-[var(--color-terracotta)] transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] mb-2">
+                      Topik Pembahasan
+                    </label>
+                    <input 
+                      type="text" 
+                      id="subject" 
+                      required
+                      value={subject}
+                      onChange={(e) => setSubject(e.target.value)}
+                      placeholder="e.g. Diskusi Proyek Web / Rekrutmen IT"
+                      className="w-full bg-[var(--color-canvas-950)] border border-[rgba(245,242,235,0.12)] rounded-sm px-4 py-3 text-sm text-[var(--color-paper-50)] placeholder-[var(--color-stone-faint)] focus:border-[var(--color-terracotta)] transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] mb-2">
+                      Detail Pesan
+                    </label>
+                    <textarea 
+                      id="message" 
+                      rows={5}
+                      required
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Tuliskan gambaran proyek, pertanyaan, atau penawaran kerjasama Anda..."
+                      className="w-full bg-[var(--color-canvas-950)] border border-[rgba(245,242,235,0.12)] rounded-sm px-4 py-3 text-sm text-[var(--color-paper-50)] placeholder-[var(--color-stone-faint)] focus:border-[var(--color-terracotta)] transition-colors resize-y"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full bg-[var(--color-paper-50)] text-[var(--color-canvas-950)] hover:bg-[var(--color-paper-100)] py-3.5 px-6 rounded-sm text-xs font-mono uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-colors shadow-sm cursor-pointer"
+                  >
+                    <Send className="w-4 h-4 text-[var(--color-terracotta)]" />
+                    <span>{t('contact.send_email_button')}</span>
+                  </button>
+                  
+                  <p className="text-[11px] font-mono text-[var(--color-stone-subtle)] text-center leading-relaxed">
+                    Form ini langsung membuka draf pesan di aplikasi email Anda dengan informasi di atas terisi rapi.
+                  </p>
+                </form>
               </div>
             </div>
 
-            <div className="bg-base-800 p-8 rounded-xl border border-white/5">
-              <h2 className="text-2xl font-bold font-display mb-6">Send a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">{t('contact.name')}</label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    className="w-full px-4 py-3 bg-base-900 border border-white/10 rounded-lg focus:ring-2 focus:ring-accent-red focus:border-transparent text-white placeholder-gray-500 transition-all"
-                    placeholder="John Doe"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">{t('contact.email')}</label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    className="w-full px-4 py-3 bg-base-900 border border-white/10 rounded-lg focus:ring-2 focus:ring-accent-red focus:border-transparent text-white placeholder-gray-500 transition-all"
-                    placeholder="john@example.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">{t('contact.message')}</label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={4}
-                    className="w-full px-4 py-3 bg-base-900 border border-white/10 rounded-lg focus:ring-2 focus:ring-accent-red focus:border-transparent text-white placeholder-gray-500 transition-all resize-none"
-                    placeholder="How can I help you?"
-                  ></textarea>
-                </div>
-                
-                {submitStatus === 'success' && (
-                  <div className="p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-400 text-sm">
-                    Message sent successfully! I'll get back to you soon.
-                  </div>
-                )}
-                
-                {submitStatus === 'error' && (
-                  <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm">
-                    Failed to send message. Please try again or email me directly.
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-accent-red hover:bg-accent-red/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-base-900 focus:ring-accent-red transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    'Sending...'
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5 mr-2" />
-                      {t('contact.send')}
-                    </>
-                  )}
-                </button>
-              </form>
-            </div>
           </div>
         </motion.div>
       </div>
