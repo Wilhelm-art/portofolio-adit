@@ -1,20 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-base-900: #0A0A0B;
-  --color-base-800: #141416;
-  --color-accent-red: #E11D48;
-  --color-accent-blue: #3B82F6;
+  --color-canvas-950: #121110;
+  --color-canvas-900: #171614;
+  --color-canvas-850: #1D1B19;
+  --color-canvas-800: #252320;
+  --color-canvas-750: #2E2B27;
+
+  --color-paper-50: #F5F2EB;
+  --color-paper-100: #ECE8DE;
+  
+  --color-stone-muted: #A8A29E;
+  --color-stone-subtle: #78716C;
+  --color-stone-faint: #44403C;
+
+  --color-terracotta: #D96B43;
+  --color-terracotta-hover: #E2583E;
+  --color-terracotta-muted: rgba(217, 107, 67, 0.15);
+}
+
+:root {
+  color-scheme: dark;
 }
 
 body {
-  @apply bg-base-900 text-[#F8FAFC] font-sans antialiased selection:bg-accent-red selection:text-white;
+  background-color: var(--color-canvas-950);
+  color: var(--color-paper-50);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  selection-background-color: #D96B43;
+  selection-color: #FFFFFF;
 }
 
+::selection {
+  background-color: #D96B43;
+  color: #FFFFFF;
+}
+
+/* Editorial Heading Typography */
 h1, h2, h3, h4, h5, h6 {
-  @apply font-display tracking-tight;
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+  color: var(--color-paper-50);
+}
+
+/* Hairline Editorial Borders */
+.border-editorial {
+  border-color: rgba(245, 242, 235, 0.08);
+}
+
+.border-editorial-subtle {
+  border-color: rgba(245, 242, 235, 0.14);
+}
+
+/* Accessible Keyboard Focus Ring (antislop-human) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 2px;
+}
+
+/* Editorial Grid Framing */
+.editorial-grid {
+  background-image: linear-gradient(to right, rgba(245, 242, 235, 0.03) 1px, transparent 1px);
+  background-size: 240px 100%;
 }

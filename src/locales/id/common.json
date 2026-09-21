@@ -1,45 +1,53 @@
 {
   "nav": {
     "home": "Beranda",
-    "about": "Tentang",
+    "about": "Profil",
     "projects": "Proyek",
     "resume": "Resume",
     "contact": "Kontak"
   },
   "hero": {
-    "greeting": "Hai, Saya Adit",
-    "headline": "Lulusan S1 Teknik Informatika — siap membangun sistem, mengamankan jaringan, dan menyelesaikan masalah IT.",
+    "role": "Rekayasa Perangkat Lunak & Keamanan Jaringan",
+    "headline": "Membangun sistem web yang teruji dan aman.",
+    "subheadline": "Lulusan S1 Teknik Informatika STMIK Mardira Indonesia (IPK 3.61). Mengembangkan aplikasi skala produksi, mengoptimalkan arsitektur server, dan mengidentifikasi celah keamanan secara presisi.",
+    "status": "Tersedia untuk kerja Full-time & Kontrak",
+    "location": "Bandung, Indonesia",
+    "cta_projects": "Eksplorasi Proyek",
     "cta_download": "Unduh CV",
-    "cta_whatsapp": "WhatsApp Saya",
-    "cta_projects": "Lihat Proyek"
+    "cta_contact": "Hubungi Langsung"
   },
   "about": {
-    "title": "Tentang Saya",
-    "summary": "Adit Hardiansyah Surachman adalah lulusan S1 Teknik Informatika dari STMIK Mardira Indonesia (IPK 3.61/4.00) yang berdomisili di Bandung, Indonesia, dengan spesialisasi dalam pengembangan web full-stack dan keamanan jaringan.",
-    "education": "Pendidikan",
-    "certifications": "Sertifikasi",
-    "experience": "Pengalaman",
-    "skills": "Keahlian"
+    "title": "Tentang & Latar Belakang",
+    "summary": "Saya adalah praktisi teknologi yang berfokus pada pengembangan web full-stack dan ketahanan jaringan. Menyelesaikan studi S1 Teknik Informatika di STMIK Mardira Indonesia dengan IPK 3.61/4.00, didukung sertifikasi resmi Google Cybersecurity dan BNSP. Berpengalaman menangani implementasi sistem informasi publik, storefront UMKM, hingga platform digital fungsional.",
+    "experience": "Riwayat Kerja & Proyek",
+    "education": "Pendidikan Formal",
+    "certifications": "Sertifikasi Resmi",
+    "skills": "Spesialisasi Teknis"
   },
   "projects": {
-    "title": "Proyek",
-    "view_live": "Lihat Website",
-    "view_source": "Kode Sumber",
-    "problem": "Masalah",
-    "solution": "Solusi",
-    "impact": "Dampak",
-    "tech_stack": "Teknologi"
+    "title": "Arsip Proyek",
+    "subtitle": "Kumpulan sistem terdistribusi, storefront digital, dan perkakas web yang telah diuji dan digunakan secara nyata.",
+    "featured": "Proyek Unggulan",
+    "view_live": "Kunjungi Aplikasi",
+    "view_details": "Lihat Studi Kasus",
+    "view_source": "Repositori Kode",
+    "problem": "Tantangan & Masalah",
+    "solution": "Arsitektur & Solusi",
+    "impact": "Hasil & Dampak Terukur",
+    "tech_stack": "Teknologi Terpakai"
   },
   "resume": {
-    "title": "Resume",
-    "download_id": "Unduh CV (ID)",
-    "download_en": "Unduh CV (EN)"
+    "title": "Dokumen Resume",
+    "subtitle": "Riwayat profesional, kualifikasi teknis, dan portofolio implementasi dalam format dokumen resmi.",
+    "download_id": "Unduh PDF (Bahasa Indonesia)",
+    "download_en": "Unduh PDF (English)"
   },
   "contact": {
-    "title": "Kontak",
-    "name": "Nama",
-    "email": "Email",
-    "message": "Pesan",
-    "send": "Kirim Pesan"
+    "title": "Hubungi Saya",
+    "subtitle": "Terbuka untuk diskusi teknis, peluang rekayasa web, pengelolaan infrastruktur IT, atau kolaborasi proyek.",
+    "direct_email": "Surel Langsung",
+    "direct_wa": "WhatsApp Langsung",
+    "location_title": "Domisili",
+    "send_email_button": "Kirim Surel"
   }
 }

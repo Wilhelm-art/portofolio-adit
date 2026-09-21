@@ -4,13 +4,17 @@ import { Footer } from './Footer';
 
 export function Layout() {
   return (
-    <div className="min-h-screen flex flex-col bg-base-900 overflow-x-hidden relative">
-      {/* Background Decorative Elements */}
-      <div className="fixed top-0 right-0 w-[500px] h-[500px] bg-accent-red/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
-      <div className="fixed bottom-0 left-0 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+    <div className="min-h-screen flex flex-col bg-[var(--color-canvas-950)] text-[var(--color-paper-50)] selection:bg-[var(--color-terracotta)] selection:text-white">
+      {/* Skip to Content link for accessibility (antislop-human) */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[var(--color-terracotta)] text-white px-4 py-2 text-xs font-mono uppercase tracking-wider rounded-sm shadow-lg"
+      >
+        Skip to main content
+      </a>
       
       <Navbar />
-      <main className="flex-grow pt-16 z-10">
+      <main id="main-content" className="flex-grow pt-20">
         <Outlet />
       </main>
       <Footer />

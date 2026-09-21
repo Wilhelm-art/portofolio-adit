@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
 import { projects } from '../data';
 
 export function Projects() {
@@ -15,65 +15,136 @@ export function Projects() {
     <>
       <Helmet>
         <title>{t('projects.title')} | Adit Hardiansyah Surachman</title>
-        <meta name="description" content="Portfolio of full-stack web development and network security projects." />
+        <meta name="description" content={t('projects.subtitle')} />
       </Helmet>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="text-4xl font-bold font-display mb-12">{t('projects.title')}<span className="text-accent-red">.</span></h1>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <motion.div 
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group flex flex-col bg-base-800 rounded-xl overflow-hidden border border-white/5 hover:border-white/20 transition-colors"
-              >
-                <Link to={`${basePath}/projects/${project.id}`} className="block relative aspect-video overflow-hidden bg-base-900">
-                  {/* Fallback pattern if image is missing */}
-                  <div className="absolute inset-0 bg-base-900 opacity-50"></div>
-                  <img 
-                    src={project.screenshot} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop';
-                    }}
-                  />
-                </Link>
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold font-display text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-400 text-sm mb-4 flex-grow">{project.tagline}</p>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.stack.slice(0, 3).map((tech, i) => (
-                      <span key={i} className="text-xs font-mono text-gray-500 bg-base-900 px-2 py-1 rounded">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.stack.length > 3 && (
-                      <span className="text-xs font-mono text-gray-500 bg-base-900 px-2 py-1 rounded">
-                        +{project.stack.length - 3}
-                      </span>
-                    )}
-                  </div>
-                  <Link 
-                    to={`${basePath}/projects/${project.id}`}
-                    className="inline-flex items-center text-accent-red hover:text-white transition-colors text-sm font-medium mt-auto"
-                  >
-                    View Details
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
+        {/* Header Section */}
+        <header className="mb-16 border-b border-[rgba(245,242,235,0.08)] pb-10">
+          <div className="flex items-center gap-3 mb-4">
+            <span className="w-2 h-2 rounded-full bg-[var(--color-terracotta)]" />
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-stone-muted)]">
+              {isEnglish ? "Portfolio Archive" : "Arsip Portofolio"}
+            </span>
           </div>
-        </motion.div>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[var(--color-paper-50)] mb-4">
+            {t('projects.title')}
+          </h1>
+          <p className="text-base sm:text-lg text-[var(--color-stone-muted)] max-w-3xl leading-relaxed">
+            {t('projects.subtitle')}
+          </p>
+        </header>
+
+        {/* Project Archive List */}
+        <div className="space-y-12">
+          {projects.map((project, idx) => (
+            <motion.article 
+              key={project.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: idx * 0.05 }}
+              className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] rounded-sm overflow-hidden hover:border-[rgba(245,242,235,0.22)] transition-colors"
+            >
+              <div className="p-6 sm:p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  
+                  {/* Left Column: Visual Project Preview */}
+                  <div className="lg:col-span-5">
+                    <Link 
+                      to={`${basePath}/projects/${project.id}`}
+                      className="block relative aspect-[16/10] overflow-hidden rounded-sm bg-[var(--color-canvas-850)] border border-[rgba(245,242,235,0.08)] group"
+                    >
+                      <img 
+                        src={project.screenshot} 
+                        alt={project.title}
+                        className="w-full h-full object-cover object-top filter grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                        onError={(e) => {
+                          (e.target as HTMLElement).style.display = 'none';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-canvas-950)]/60 via-transparent to-transparent opacity-60 group-hover:opacity-10 transition-opacity" />
+                    </Link>
+                  </div>
+
+                  {/* Right Column: Title, Stack, Narrative & Actions */}
+                  <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-mono text-xs text-[var(--color-stone-subtle)]">
+                          NO. 0{idx + 1}
+                        </span>
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.stack.slice(0, 4).map((tech) => (
+                            <span 
+                              key={tech} 
+                              className="px-2 py-0.5 text-[10px] font-mono text-[var(--color-stone-muted)] bg-[var(--color-canvas-800)] rounded-sm"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <h2 className="text-2xl sm:text-3xl font-bold font-display text-[var(--color-paper-50)] mb-2">
+                        <Link 
+                          to={`${basePath}/projects/${project.id}`}
+                          className="hover:text-[var(--color-terracotta)] transition-colors"
+                        >
+                          {project.title}
+                        </Link>
+                      </h2>
+                      <p className="text-sm text-[var(--color-stone-muted)] leading-relaxed">
+                        {project.tagline}
+                      </p>
+                    </div>
+
+                    <div className="space-y-3 text-xs sm:text-sm text-[var(--color-stone-muted)] border-t border-[rgba(245,242,235,0.06)] pt-3">
+                      <div>
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-paper-50)] block mb-0.5">
+                          {t('projects.problem')}
+                        </span>
+                        <p className="line-clamp-2 leading-relaxed">{project.problem}</p>
+                      </div>
+
+                      <div className="bg-[var(--color-canvas-850)] p-3 rounded-sm border-l-2 border-[var(--color-terracotta)]">
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-paper-50)] block mb-0.5">
+                          {t('projects.impact')}
+                        </span>
+                        <p className="line-clamp-2 leading-relaxed text-[var(--color-paper-100)]">{project.impact}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-3 pt-2">
+                      <Link
+                        to={`${basePath}/projects/${project.id}`}
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold border border-[rgba(245,242,235,0.18)] hover:border-[rgba(245,242,235,0.4)] text-[var(--color-paper-50)] rounded-sm transition-colors"
+                      >
+                        <span>{t('projects.view_details')}</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </Link>
+
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider text-[var(--color-terracotta)] hover:text-[var(--color-terracotta-hover)] transition-colors"
+                        >
+                          <span>{t('projects.view_live')}</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
       </div>
     </>
   );
