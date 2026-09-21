@@ -1,10 +1,10 @@
 # Adit Hardiansyah Surachman
-Location: Bandung, Indonesia
+Portfolio: https://portfolio-adit.web.id
 Email: adithardiansyah091@gmail.com
-WhatsApp: +62 812-3456-7890
+Location: Bandung, Indonesia
 
-## Overview
-Adit Hardiansyah Surachman is a Computer Science graduate from STMIK Mardira Indonesia (GPA 3.61/4.00) based in Bandung, Indonesia. He specializes in full-stack web development and network security. He is open to work in software engineering, IT administration, and network security roles.
+## Summary
+Adit Hardiansyah Surachman is a Computer Science graduate from STMIK Mardira Indonesia (GPA 3.62/4.00) based in Bandung, Indonesia. He specializes in full-stack web development and network security. He is open to work in software engineering, IT administration, and network security roles.
 
 ## Education
 - S1 Teknik Informatika at STMIK Mardira Indonesia (2021-2025)
