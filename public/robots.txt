@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aditsurachman.com/sitemap.xml
+Sitemap: https://portfolio-adit.web.id/sitemap.xml

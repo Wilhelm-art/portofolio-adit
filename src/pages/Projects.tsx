@@ -21,11 +21,11 @@ export function Projects() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
         {/* Header Section */}
-        <header className="mb-16 border-b border-[rgba(245,242,235,0.08)] pb-10">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="w-2 h-2 rounded-full bg-[var(--color-terracotta)]" />
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-stone-muted)]">
-              {isEnglish ? "Portfolio Archive" : "Arsip Portofolio"}
+        <header className="mb-14 border-b border-white/10 pb-10">
+          <div className="flex items-center gap-2.5 mb-4">
+            <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+            <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-accent)] font-medium">
+              {isEnglish ? "Engineered Systems & Products" : "Sistem & Aplikasi Produksi"}
             </span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[var(--color-paper-50)] mb-4">
@@ -37,14 +37,14 @@ export function Projects() {
         </header>
 
         {/* Project Archive List */}
-        <div className="space-y-12">
+        <div className="space-y-10">
           {projects.map((project, idx) => (
             <motion.article 
               key={project.id}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: idx * 0.05 }}
-              className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] rounded-sm overflow-hidden hover:border-[rgba(245,242,235,0.22)] transition-colors"
+              transition={{ duration: 0.3, delay: idx * 0.04 }}
+              className="border border-white/10 bg-[var(--color-canvas-900)] rounded-lg overflow-hidden hover:border-[var(--color-accent)]/50 transition-all"
             >
               <div className="p-6 sm:p-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -53,7 +53,7 @@ export function Projects() {
                   <div className="lg:col-span-5">
                     <Link 
                       to={`${basePath}/projects/${project.id}`}
-                      className="block relative aspect-[16/10] overflow-hidden rounded-sm bg-[var(--color-canvas-850)] border border-[rgba(245,242,235,0.08)] group"
+                      className="block relative aspect-[16/10] overflow-hidden rounded bg-[var(--color-canvas-850)] border border-white/10 group"
                     >
                       <img 
                         src={project.screenshot} 
@@ -78,7 +78,7 @@ export function Projects() {
                           {project.stack.slice(0, 4).map((tech) => (
                             <span 
                               key={tech} 
-                              className="px-2 py-0.5 text-[10px] font-mono text-[var(--color-stone-muted)] bg-[var(--color-canvas-800)] rounded-sm"
+                              className="px-2 py-0.5 text-[10px] font-mono text-[var(--color-stone-muted)] bg-[var(--color-canvas-800)] border border-white/5 rounded"
                             >
                               {tech}
                             </span>
@@ -89,7 +89,7 @@ export function Projects() {
                       <h2 className="text-2xl sm:text-3xl font-bold font-display text-[var(--color-paper-50)] mb-2">
                         <Link 
                           to={`${basePath}/projects/${project.id}`}
-                          className="hover:text-[var(--color-terracotta)] transition-colors"
+                          className="hover:text-[var(--color-accent)] transition-colors"
                         >
                           {project.title}
                         </Link>
@@ -99,16 +99,16 @@ export function Projects() {
                       </p>
                     </div>
 
-                    <div className="space-y-3 text-xs sm:text-sm text-[var(--color-stone-muted)] border-t border-[rgba(245,242,235,0.06)] pt-3">
+                    <div className="space-y-3 text-xs sm:text-sm text-[var(--color-stone-muted)] border-t border-white/10 pt-3">
                       <div>
-                        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-paper-50)] block mb-0.5">
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-paper-50)] block mb-0.5 font-medium">
                           {t('projects.problem')}
                         </span>
                         <p className="line-clamp-2 leading-relaxed">{project.problem}</p>
                       </div>
 
-                      <div className="bg-[var(--color-canvas-850)] p-3 rounded-sm border-l-2 border-[var(--color-terracotta)]">
-                        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-paper-50)] block mb-0.5">
+                      <div className="bg-[var(--color-canvas-850)] p-3 rounded border-l-2 border-[var(--color-accent)]">
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-accent)] block mb-0.5 font-medium">
                           {t('projects.impact')}
                         </span>
                         <p className="line-clamp-2 leading-relaxed text-[var(--color-paper-100)]">{project.impact}</p>
@@ -118,7 +118,7 @@ export function Projects() {
                     <div className="flex items-center gap-3 pt-2">
                       <Link
                         to={`${basePath}/projects/${project.id}`}
-                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold border border-[rgba(245,242,235,0.18)] hover:border-[rgba(245,242,235,0.4)] text-[var(--color-paper-50)] rounded-sm transition-colors"
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold border border-white/20 hover:border-white/40 text-[var(--color-paper-50)] rounded transition-all active:scale-[0.98]"
                       >
                         <span>{t('projects.view_details')}</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -129,7 +129,7 @@ export function Projects() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider text-[var(--color-terracotta)] hover:text-[var(--color-terracotta-hover)] transition-colors"
+                          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-all active:scale-[0.98]"
                         >
                           <span>{t('projects.view_live')}</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />

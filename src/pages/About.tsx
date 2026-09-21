@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
-import { ArrowUpRight, GraduationCap, ShieldCheck, Award } from 'lucide-react';
+import { ArrowUpRight, GraduationCap, ShieldCheck } from 'lucide-react';
 
 export function About() {
   const { t } = useTranslation();
@@ -63,20 +63,20 @@ export function About() {
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.35 }}
         >
           
           {/* Header */}
-          <header className="border-b border-[rgba(245,242,235,0.08)] pb-12 mb-16">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-terracotta)]" />
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-stone-muted)]">
+          <header className="border-b border-white/10 pb-12 mb-14">
+            <div className="flex items-center gap-2.5 mb-4">
+              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
+              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-accent)] font-medium">
                 {isEnglish ? "Biographical Overview" : "Ringkasan Profil"}
               </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[var(--color-paper-50)] mb-8">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-display text-[var(--color-paper-50)] mb-6">
               {t('about.title')}
             </h1>
             <p className="text-lg sm:text-xl text-[var(--color-paper-100)] leading-relaxed max-w-3xl">
@@ -84,10 +84,10 @@ export function About() {
             </p>
           </header>
 
-          <div className="space-y-20">
+          <div className="space-y-16">
 
             {/* Experience Section */}
-            <section className="border-b border-[rgba(245,242,235,0.08)] pb-16">
+            <section className="border-b border-white/10 pb-16">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)]">
                   {t('about.experience')}
@@ -97,11 +97,11 @@ export function About() {
                 </span>
               </div>
 
-              <div className="divide-y divide-[rgba(245,242,235,0.06)]">
+              <div className="divide-y divide-white/5">
                 {experience.map((item, index) => (
-                  <div key={index} className="py-8 first:pt-0 last:pb-0 grid grid-cols-1 md:grid-cols-12 gap-4">
+                  <div key={index} className="py-7 first:pt-0 last:pb-0 grid grid-cols-1 md:grid-cols-12 gap-4">
                     <div className="md:col-span-4">
-                      <span className="font-mono text-xs text-[var(--color-terracotta)] block mb-1">
+                      <span className="font-mono text-xs text-[var(--color-accent)] block mb-1 font-medium">
                         {item.period}
                       </span>
                       <h3 className="text-lg font-bold font-display text-[var(--color-paper-50)]">
@@ -122,18 +122,18 @@ export function About() {
             </section>
 
             {/* Education & Certifications Section */}
-            <section className="border-b border-[rgba(245,242,235,0.08)] pb-16">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <section className="border-b border-white/10 pb-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 
                 {/* Education */}
                 <div>
-                  <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)] mb-8 flex items-center gap-2">
-                    <GraduationCap className="w-5 h-5 text-[var(--color-terracotta)]" />
+                  <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)] mb-6 flex items-center gap-2.5">
+                    <GraduationCap className="w-5 h-5 text-[var(--color-accent)]" />
                     <span>{t('about.education')}</span>
                   </h2>
 
-                  <div className="space-y-6">
-                    <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                  <div className="space-y-4">
+                    <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
                       <div className="flex items-baseline justify-between mb-2">
                         <span className="text-sm font-bold text-[var(--color-paper-50)]">
                           STMIK Mardira Indonesia
@@ -145,12 +145,12 @@ export function About() {
                       <p className="text-xs text-[var(--color-stone-muted)] mb-3">
                         S1 Teknik Informatika • Bandung, Indonesia
                       </p>
-                      <div className="inline-block px-2.5 py-1 text-xs font-mono bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] border border-[rgba(245,242,235,0.1)] rounded-sm">
-                        IPK: 3.61 / 4.00 (Sangat Memuaskan)
+                      <div className="inline-block px-3 py-1 text-xs font-mono bg-[var(--color-canvas-800)] text-[var(--color-accent)] border border-white/10 rounded font-semibold">
+                        IPK: 3.62 / 4.00 (Sangat Memuaskan)
                       </div>
                     </div>
 
-                    <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                    <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
                       <div className="flex items-baseline justify-between mb-2">
                         <span className="text-sm font-bold text-[var(--color-paper-50)]">
                           SMK Mahardhika Batujajar
@@ -168,14 +168,14 @@ export function About() {
 
                 {/* Certifications */}
                 <div>
-                  <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)] mb-8 flex items-center gap-2">
-                    <ShieldCheck className="w-5 h-5 text-[var(--color-terracotta)]" />
+                  <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)] mb-6 flex items-center gap-2.5">
+                    <ShieldCheck className="w-5 h-5 text-[var(--color-accent)]" />
                     <span>{t('about.certifications')}</span>
                   </h2>
 
-                  <div className="space-y-6">
+                  <div className="space-y-4">
                     
-                    <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                    <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
                       <div className="flex items-baseline justify-between mb-2">
                         <span className="text-sm font-bold text-[var(--color-paper-50)]">
                           Google Cybersecurity Certificate
@@ -191,14 +191,14 @@ export function About() {
                         href="https://drive.google.com/file/d/1HOwxuX834gxiyAHmYR59sBcSmdvgTZpZ/view?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-terracotta)] hover:underline"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors active:scale-[0.98]"
                       >
                         <span>Verifikasi Dokumen Sertifikat</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </a>
                     </div>
 
-                    <div className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm">
+                    <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
                       <div className="flex items-baseline justify-between mb-2">
                         <span className="text-sm font-bold text-[var(--color-paper-50)]">
                           Sertifikasi BNSP Teknisi Komputer
@@ -214,7 +214,7 @@ export function About() {
                         href="https://drive.google.com/file/d/1J_E7l4kE1z2M3N4O5P6Q7R8S9T0U1V2W/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] transition-colors active:scale-[0.98]"
                       >
                         <span>Sertifikat Kompetensi Kerja</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -233,19 +233,19 @@ export function About() {
                 {t('about.skills')}
               </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {skills.map((group, index) => (
                   <div 
                     key={index}
-                    className="border border-[rgba(245,242,235,0.08)] bg-[var(--color-canvas-900)] p-6 rounded-sm"
+                    className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg"
                   >
-                    <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--color-paper-50)] pb-3 mb-4 border-b border-[rgba(245,242,235,0.06)]">
+                    <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--color-paper-50)] pb-3 mb-4 border-b border-white/5 font-semibold">
                       {group.category}
                     </h3>
                     <ul className="space-y-2">
                       {group.items.map((skill, sIdx) => (
                         <li key={sIdx} className="text-xs font-mono text-[var(--color-stone-muted)] flex items-center gap-2">
-                          <span className="w-1 h-1 rounded-full bg-[var(--color-stone-subtle)]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]/60" />
                           <span>{skill}</span>
                         </li>
                       ))}
