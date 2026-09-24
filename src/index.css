@@ -6,23 +6,23 @@
   --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-canvas-950: #0A0D14;
-  --color-canvas-900: #101622;
-  --color-canvas-850: #161F30;
-  --color-canvas-800: #1E2B42;
-  --color-canvas-750: #293B59;
+  --color-canvas-950: #0e1015;
+  --color-canvas-900: #15181f;
+  --color-canvas-850: #1c202a;
+  --color-canvas-800: #232835;
+  --color-canvas-750: #2b3140;
 
-  --color-paper-50: #F8FAFC;
-  --color-paper-100: #F1F5F9;
+  --color-paper-50: #f1f3f7;
+  --color-paper-100: #dce1ea;
   
-  --color-stone-muted: #94A3B8;
-  --color-stone-subtle: #64748B;
-  --color-stone-faint: #334155;
+  --color-stone-muted: #949db0;
+  --color-stone-subtle: #687285;
+  --color-stone-faint: #3c4352;
 
-  --color-accent: #38BDF8;
-  --color-accent-hover: #0EA5E9;
-  --color-accent-muted: rgba(56, 189, 248, 0.12);
-  --color-accent-border: rgba(56, 189, 248, 0.28);
+  --color-accent: #4b85db;
+  --color-accent-hover: #3b73c4;
+  --color-accent-muted: rgba(75, 133, 219, 0.12);
+  --color-accent-border: rgba(75, 133, 219, 0.28);
 }
 
 :root {
@@ -39,8 +39,8 @@ body {
 }
 
 ::selection {
-  background-color: rgba(56, 189, 248, 0.3);
-  color: #FFFFFF;
+  background-color: rgba(75, 133, 219, 0.25);
+  color: #ffffff;
 }
 
 /* Crisp Clean Heading Typography */
@@ -52,25 +52,18 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Hairline Precision Borders */
 .border-subtle {
-  border-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.07);
 }
 
 .border-subtle-hover {
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Accessible Keyboard Focus Ring (antislop-human) */
+/* Accessible Keyboard Focus Ring */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
-}
-
-/* Subtle Technical Grid Backdrop */
-.tech-grid {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 64px 64px;
 }

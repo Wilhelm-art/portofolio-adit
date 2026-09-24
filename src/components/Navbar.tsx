@@ -40,7 +40,7 @@ export function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-[var(--color-canvas-950)]/90 backdrop-blur-md border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-[var(--color-canvas-950)]/90 backdrop-blur-md border-b border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18">
           
@@ -49,14 +49,14 @@ export function Navbar() {
             to={`${basePath}/`} 
             className="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-sm"
           >
-            <span className="w-8 h-8 rounded bg-[var(--color-canvas-850)] border border-white/10 flex items-center justify-center font-mono text-xs font-bold text-[var(--color-accent)] group-hover:border-[var(--color-accent)] transition-colors">
+            <span className="w-8 h-8 rounded bg-[var(--color-canvas-850)] border border-white/[0.08] flex items-center justify-center font-mono text-xs font-bold text-[var(--color-accent)] group-hover:border-[var(--color-accent)] transition-colors">
               A
             </span>
             <div className="flex flex-col">
               <span className="text-sm font-semibold tracking-tight text-[var(--color-paper-50)] group-hover:text-[var(--color-accent)] transition-colors">
                 Adit Hardiansyah Surachman
               </span>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-stone-muted)]">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-stone-muted)]">
                 Software & Systems
               </span>
             </div>
@@ -71,7 +71,7 @@ export function Navbar() {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`text-xs font-mono uppercase tracking-widest transition-colors py-1 relative ${
+                    className={`text-xs font-mono uppercase tracking-wider transition-colors py-1 relative ${
                       active
                         ? 'text-[var(--color-paper-50)] font-semibold'
                         : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
@@ -87,14 +87,14 @@ export function Navbar() {
             </div>
 
             {/* Language Switcher */}
-            <div className="flex items-center border border-white/10 rounded p-0.5 bg-[var(--color-canvas-900)]" role="group" aria-label="Language selection">
+            <div className="flex items-center border border-white/[0.08] rounded p-0.5 bg-[var(--color-canvas-900)]" role="group" aria-label="Language selection">
               <button
                 type="button"
                 onClick={() => handleLanguageSwitch('id')}
                 aria-pressed={!isEnglish}
                 className={`px-2.5 py-1 text-[11px] font-mono uppercase font-semibold transition-all rounded active:scale-[0.98] ${
                   !isEnglish 
-                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-accent)] shadow-sm' 
+                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] shadow-sm' 
                     : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
                 }`}
               >
@@ -106,7 +106,7 @@ export function Navbar() {
                 aria-pressed={isEnglish}
                 className={`px-2.5 py-1 text-[11px] font-mono uppercase font-semibold transition-all rounded active:scale-[0.98] ${
                   isEnglish 
-                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-accent)] shadow-sm' 
+                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] shadow-sm' 
                     : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
                 }`}
               >
@@ -116,13 +116,14 @@ export function Navbar() {
           </div>
 
           {/* Mobile Navigation Toggle */}
-          <div className="md:hidden flex items-center gap-3">
-            <div className="flex items-center border border-white/10 rounded p-0.5 bg-[var(--color-canvas-900)] mr-2">
+          <div className="md:hidden flex items-center gap-2">
+            <div className="flex items-center border border-white/[0.08] rounded p-0.5 bg-[var(--color-canvas-900)]" role="group" aria-label="Language selection">
               <button
                 type="button"
                 onClick={() => handleLanguageSwitch('id')}
-                className={`px-2 py-0.5 text-[10px] font-mono uppercase font-semibold rounded ${
-                  !isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-accent)]' : 'text-[var(--color-stone-muted)]'
+                aria-label="Pilih Bahasa Indonesia"
+                className={`min-h-[38px] px-2.5 text-xs font-mono uppercase font-semibold rounded flex items-center justify-center transition-all ${
+                  !isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)]' : 'text-[var(--color-stone-muted)]'
                 }`}
               >
                 ID
@@ -130,8 +131,9 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => handleLanguageSwitch('en')}
-                className={`px-2 py-0.5 text-[10px] font-mono uppercase font-semibold rounded ${
-                  isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-accent)]' : 'text-[var(--color-stone-muted)]'
+                aria-label="Switch to English"
+                className={`min-h-[38px] px-2.5 text-xs font-mono uppercase font-semibold rounded flex items-center justify-center transition-all ${
+                  isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)]' : 'text-[var(--color-stone-muted)]'
                 }`}
               >
                 EN
@@ -141,11 +143,11 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              aria-label={isOpen ? "Tutup menu" : "Buka menu"}
+              aria-label={isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
               aria-expanded={isOpen}
-              className="p-2 text-[var(--color-paper-50)] border border-white/10 rounded bg-[var(--color-canvas-900)] active:scale-[0.95] transition-transform"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center text-[var(--color-paper-50)] border border-white/[0.08] rounded bg-[var(--color-canvas-900)] active:scale-[0.95] transition-transform"
             >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -153,7 +155,7 @@ export function Navbar() {
 
       {/* Mobile Menu Panel */}
       {isOpen && (
-        <div className="md:hidden border-b border-white/10 bg-[var(--color-canvas-900)] px-4 py-4 space-y-2">
+        <div className="md:hidden border-b border-white/[0.08] bg-[var(--color-canvas-900)] px-4 py-4 space-y-1.5 animate-in fade-in duration-200">
           {navLinks.map((link) => {
             const active = isLinkActive(link.path, link.exact);
             return (
@@ -161,10 +163,10 @@ export function Navbar() {
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 text-xs font-mono uppercase tracking-widest rounded transition-colors ${
+                className={`min-h-[44px] flex items-center px-3.5 py-2.5 text-xs font-mono uppercase tracking-wider rounded transition-colors active:scale-[0.98] ${
                   active
                     ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] font-semibold border-l-2 border-[var(--color-accent)]'
-                    : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
+                    : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] hover:bg-[var(--color-canvas-850)]'
                 }`}
               >
                 {link.name}

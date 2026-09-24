@@ -1,4 +1,28 @@
 {
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "portofolio-adit-two.vercel.app"
+        }
+      ],
+      "destination": "https://www.portfolio-adit.web.id/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "portfolio-adit.web.id"
+        }
+      ],
+      "destination": "https://www.portfolio-adit.web.id/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

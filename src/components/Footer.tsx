@@ -4,7 +4,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-[var(--color-canvas-950)] mt-24 py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="border-t border-white/[0.08] bg-[var(--color-canvas-950)] mt-24 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Profile & Location */}
@@ -14,7 +14,7 @@ export function Footer() {
           <span>Bandung, Jawa Barat, Indonesia</span>
           <span className="hidden sm:inline text-white/20">/</span>
           <div className="flex items-center gap-1.5 text-emerald-400">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             <span>Open to Opportunities</span>
           </div>
         </div>

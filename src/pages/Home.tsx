@@ -34,9 +34,8 @@ export function Home() {
               transition={{ duration: 0.35 }}
               className="lg:col-span-8 flex flex-col justify-center"
             >
-              <div className="flex items-center gap-2.5 mb-6">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-accent)] font-medium">
+              <div className="flex items-center gap-2 mb-6">
+                <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] font-medium bg-[var(--color-accent-muted)] px-2.5 py-1 rounded border border-[var(--color-accent-border)]">
                   {t('hero.role')}
                 </span>
               </div>
@@ -53,7 +52,7 @@ export function Home() {
               <div className="flex flex-wrap items-center gap-4">
                 <Link
                   to={`${basePath}/projects`}
-                  className="bg-[var(--color-accent)] text-slate-950 hover:bg-[var(--color-accent-hover)] active:scale-[0.98] px-6 py-3 text-xs font-mono uppercase tracking-wider font-bold flex items-center gap-2 rounded transition-all shadow-sm"
+                  className="bg-[var(--color-paper-50)] text-[var(--color-canvas-950)] hover:bg-white active:scale-[0.98] px-6 py-3 text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2 rounded transition-all shadow-sm"
                 >
                   <span>{t('hero.cta_projects')}</span>
                   <ArrowUpRight className="w-4 h-4" />
@@ -61,7 +60,7 @@ export function Home() {
 
                 <Link
                   to={`${basePath}/resume`}
-                  className="border border-white/20 hover:border-white/40 text-[var(--color-paper-50)] hover:bg-[var(--color-canvas-850)] active:scale-[0.98] px-6 py-3 text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2 rounded transition-all"
+                  className="border border-white/15 hover:border-white/30 text-[var(--color-paper-50)] hover:bg-[var(--color-canvas-850)] active:scale-[0.98] px-6 py-3 text-xs font-mono uppercase tracking-wider font-medium flex items-center gap-2 rounded transition-all"
                 >
                   <Download className="w-4 h-4 text-[var(--color-accent)]" />
                   <span>{t('hero.cta_download')}</span>
@@ -87,18 +86,18 @@ export function Home() {
               transition={{ duration: 0.4, delay: 0.1 }}
               className="lg:col-span-4 flex flex-col"
             >
-              <div className="border border-white/10 bg-[var(--color-canvas-900)] p-3 rounded-lg shadow-xl shadow-black/20">
+              <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-3 rounded-lg shadow-lg">
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-[var(--color-canvas-850)] rounded">
                   <img 
                     src="/assets/profile.jpg" 
                     alt="Adit Hardiansyah Surachman" 
-                    className="w-full h-full object-cover object-top filter grayscale contrast-105 hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-500"
                     onError={(e) => {
                       (e.target as HTMLElement).style.display = 'none';
                     }}
                   />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--color-canvas-950)] via-[var(--color-canvas-950)]/70 to-transparent p-4">
-                    <p className="font-mono text-sm font-bold text-[var(--color-paper-50)]">
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[var(--color-canvas-950)] via-[var(--color-canvas-950)]/80 to-transparent p-4">
+                    <p className="font-mono text-sm font-semibold text-[var(--color-paper-50)]">
                       Adit Hardiansyah Surachman
                     </p>
                     <p className="font-mono text-xs text-[var(--color-accent)] mt-0.5">
@@ -115,45 +114,45 @@ export function Home() {
           </div>
 
           {/* Verified Credentials Bar */}
-          <div className="mt-14 pt-8 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-14 pt-8 border-t border-white/[0.08] grid grid-cols-1 md:grid-cols-3 gap-6">
             
-            <div className="flex items-start gap-4 p-4 rounded-lg bg-[var(--color-canvas-900)]/60 border border-white/5">
-              <div className="w-10 h-10 rounded bg-[var(--color-canvas-800)] border border-white/10 flex items-center justify-center text-[var(--color-accent)] shrink-0">
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-[var(--color-canvas-900)] border border-white/[0.06]">
+              <div className="w-10 h-10 rounded bg-[var(--color-canvas-800)] border border-white/[0.08] flex items-center justify-center text-[var(--color-accent)] shrink-0">
                 <GraduationCap className="w-5 h-5" />
               </div>
               <div>
-                <div className="font-mono text-sm font-bold text-[var(--color-paper-50)]">
+                <div className="font-mono text-sm font-semibold text-[var(--color-paper-50)]">
                   IPK 3.62 / 4.00
                 </div>
-                <div className="text-xs text-[var(--color-stone-muted)] mt-0.5">
+                <div className="text-xs text-[var(--color-stone-muted)] mt-0.5 leading-relaxed">
                   S1 Teknik Informatika, STMIK Mardira Indonesia (2021–2025)
                 </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-lg bg-[var(--color-canvas-900)]/60 border border-white/5">
-              <div className="w-10 h-10 rounded bg-[var(--color-canvas-800)] border border-white/10 flex items-center justify-center text-[var(--color-accent)] shrink-0">
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-[var(--color-canvas-900)] border border-white/[0.06]">
+              <div className="w-10 h-10 rounded bg-[var(--color-canvas-800)] border border-white/[0.08] flex items-center justify-center text-[var(--color-accent)] shrink-0">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <div className="font-mono text-sm font-bold text-[var(--color-paper-50)]">
+                <div className="font-mono text-sm font-semibold text-[var(--color-paper-50)]">
                   Google Cybersecurity
                 </div>
-                <div className="text-xs text-[var(--color-stone-muted)] mt-0.5">
+                <div className="text-xs text-[var(--color-stone-muted)] mt-0.5 leading-relaxed">
                   Sertifikasi Profesional resmi identifikasi ancaman, SIEM & audit keamanan
                 </div>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-lg bg-[var(--color-canvas-900)]/60 border border-white/5">
-              <div className="w-10 h-10 rounded bg-[var(--color-canvas-800)] border border-white/10 flex items-center justify-center text-[var(--color-accent)] shrink-0">
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-[var(--color-canvas-900)] border border-white/[0.06]">
+              <div className="w-10 h-10 rounded bg-[var(--color-canvas-800)] border border-white/[0.08] flex items-center justify-center text-[var(--color-accent)] shrink-0">
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <div className="font-mono text-sm font-bold text-[var(--color-paper-50)]">
+                <div className="font-mono text-sm font-semibold text-[var(--color-paper-50)]">
                   Sertifikasi BNSP
                 </div>
-                <div className="text-xs text-[var(--color-stone-muted)] mt-0.5">
+                <div className="text-xs text-[var(--color-stone-muted)] mt-0.5 leading-relaxed">
                   Standar Kompetensi Kerja Nasional Indonesia bidang Teknisi Komputer
                 </div>
               </div>
@@ -163,10 +162,10 @@ export function Home() {
         </section>
 
         {/* Featured Projects Section */}
-        <section className="py-20 border-b border-white/10">
+        <section className="py-20 border-b border-white/[0.08]">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-accent)] block mb-2 font-medium">
+              <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] block mb-2 font-medium">
                 {t('projects.featured')}
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold font-display tracking-tight text-[var(--color-paper-50)]">
@@ -175,7 +174,7 @@ export function Home() {
             </div>
             <Link
               to={`${basePath}/projects`}
-              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-[var(--color-accent)] transition-colors group"
+              className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] transition-colors group"
             >
               <span>{isEnglish ? "View All Projects" : "Lihat Semua Proyek"}</span>
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -186,7 +185,7 @@ export function Home() {
             {featuredProjects.map((project, idx) => (
               <article 
                 key={project.id}
-                className="border border-white/10 bg-[var(--color-canvas-900)] hover:border-[var(--color-accent)]/50 transition-all rounded-lg overflow-hidden"
+                className="border border-white/[0.07] bg-[var(--color-canvas-900)] hover:border-white/20 transition-all rounded-lg overflow-hidden"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-6 sm:p-8 items-center">
                   
@@ -194,17 +193,16 @@ export function Home() {
                   <div className="lg:col-span-5">
                     <Link 
                       to={`${basePath}/projects/${project.id}`}
-                      className="block relative aspect-[16/10] overflow-hidden rounded bg-[var(--color-canvas-850)] border border-white/10 group"
+                      className="block relative aspect-[16/10] overflow-hidden rounded bg-[var(--color-canvas-850)] border border-white/[0.08] group"
                     >
                       <img 
                         src={project.screenshot} 
                         alt={project.title}
-                        className="w-full h-full object-cover object-top filter grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                        className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
                         onError={(e) => {
                           (e.target as HTMLElement).style.display = 'none';
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-canvas-950)]/60 via-transparent to-transparent opacity-60 group-hover:opacity-10 transition-opacity" />
                     </Link>
                   </div>
 
@@ -219,7 +217,7 @@ export function Home() {
                           {project.stack.slice(0, 3).map((tech) => (
                             <span 
                               key={tech}
-                              className="px-2 py-0.5 text-[10px] font-mono text-[var(--color-stone-muted)] bg-[var(--color-canvas-800)] border border-white/5 rounded"
+                              className="px-2 py-0.5 text-[10px] font-mono text-[var(--color-stone-muted)] bg-[var(--color-canvas-800)] border border-white/[0.06] rounded"
                             >
                               {tech}
                             </span>
@@ -240,15 +238,15 @@ export function Home() {
                       </p>
                     </div>
 
-                    <div className="space-y-3 text-xs sm:text-sm text-[var(--color-stone-muted)] border-t border-white/10 pt-4">
+                    <div className="space-y-3 text-xs sm:text-sm text-[var(--color-stone-muted)] border-t border-white/[0.08] pt-4">
                       <div>
                         <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-paper-50)] block mb-0.5 font-medium">
                           {t('projects.problem')}
                         </span>
                         <p className="line-clamp-2 leading-relaxed">{project.problem}</p>
                       </div>
-                      <div className="bg-[var(--color-canvas-850)] p-3 rounded border-l-2 border-[var(--color-accent)]">
-                        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-accent)] block mb-0.5 font-medium">
+                      <div className="bg-[var(--color-canvas-850)]/70 p-3.5 rounded-md border border-white/[0.06]">
+                        <span className="font-mono text-[10px] uppercase tracking-wider text-[var(--color-accent)] block mb-1 font-medium">
                           {t('projects.impact')}
                         </span>
                         <p className="line-clamp-2 leading-relaxed text-[var(--color-paper-100)]">{project.impact}</p>
@@ -258,7 +256,7 @@ export function Home() {
                     <div className="flex items-center gap-3 pt-2">
                       <Link
                         to={`${basePath}/projects/${project.id}`}
-                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider font-semibold border border-white/20 hover:border-white/40 text-[var(--color-paper-50)] rounded transition-all active:scale-[0.98]"
+                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider font-medium border border-white/15 hover:border-white/30 text-[var(--color-paper-50)] hover:bg-[var(--color-canvas-850)] rounded transition-all active:scale-[0.98]"
                       >
                         <span>{t('projects.view_details')}</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -268,7 +266,7 @@ export function Home() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] rounded transition-all active:scale-[0.98]"
+                          className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-paper-50)] transition-colors active:scale-[0.98]"
                         >
                           <span>{t('projects.view_live')}</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />

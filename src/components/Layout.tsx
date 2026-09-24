@@ -8,7 +8,7 @@ export function Layout() {
       {/* Skip to Content link for accessibility (antislop-human) */}
       <a 
         href="#main-content" 
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[var(--color-accent)] text-slate-950 font-bold px-4 py-2 text-xs font-mono uppercase tracking-wider rounded shadow-lg"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 z-50 bg-[var(--color-paper-50)] text-[var(--color-canvas-950)] font-semibold px-4 py-2 text-xs font-mono uppercase tracking-wider rounded shadow-lg"
       >
         Skip to main content
       </a>

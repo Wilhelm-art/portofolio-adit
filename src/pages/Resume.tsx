@@ -23,11 +23,10 @@ export function Resume() {
           transition={{ duration: 0.35 }}
         >
           {/* Header */}
-          <header className="border-b border-white/10 pb-10 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <header className="border-b border-white/[0.08] pb-10 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <div className="flex items-center gap-2.5 mb-4">
-                <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-accent)] font-medium">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] font-medium bg-[var(--color-accent-muted)] px-2.5 py-1 rounded border border-[var(--color-accent-border)]">
                   Dokumen Resmi
                 </span>
               </div>
@@ -45,9 +44,9 @@ export function Resume() {
                 href={resumeIdUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-bold bg-[var(--color-accent)] text-slate-950 hover:bg-[var(--color-accent-hover)] rounded transition-all active:scale-[0.98] shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-semibold bg-[var(--color-paper-50)] text-[var(--color-canvas-950)] hover:bg-white rounded transition-all active:scale-[0.98] shadow-sm"
               >
-                <Download className="w-4 h-4 text-slate-950" />
+                <Download className="w-4 h-4 text-[var(--color-canvas-950)]" />
                 <span>{t('resume.download_id')}</span>
               </a>
 
@@ -55,7 +54,7 @@ export function Resume() {
                 href={resumeEnUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-semibold border border-white/20 hover:border-white/40 text-[var(--color-paper-50)] rounded transition-all active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-medium border border-white/15 hover:border-white/30 text-[var(--color-paper-50)] hover:bg-[var(--color-canvas-850)] rounded transition-all active:scale-[0.98]"
               >
                 <Download className="w-4 h-4 text-[var(--color-accent)]" />
                 <span>{t('resume.download_en')}</span>
@@ -64,20 +63,20 @@ export function Resume() {
           </header>
 
           {/* Document Preview Frame */}
-          <div className="border border-white/10 bg-[var(--color-canvas-900)] p-2 sm:p-4 rounded-lg shadow-xl shadow-black/20">
-            <div className="flex items-center justify-between px-3 py-2 border-b border-white/5 mb-3 text-xs font-mono text-[var(--color-stone-muted)]">
+          <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-2 sm:p-4 rounded-lg shadow-lg">
+            <div className="flex items-center justify-between px-3 py-2 border-b border-white/[0.06] mb-3 text-xs font-mono text-[var(--color-stone-muted)]">
               <span>Curriculum Vitae Preview • Adit Hardiansyah Surachman</span>
               <a 
                 href={resumeIdUrl} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-[var(--color-accent)] transition-colors inline-flex items-center gap-1 active:scale-[0.98]"
+                className="hover:text-[var(--color-paper-50)] transition-colors inline-flex items-center gap-1 active:scale-[0.98]"
               >
                 <span>Buka Dokumen Penuh</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
-            <div className="h-[750px] w-full bg-slate-950 rounded overflow-hidden">
+            <div className="h-[750px] w-full bg-[var(--color-canvas-950)] rounded overflow-hidden">
               <iframe 
                 src="https://drive.google.com/file/d/1oJSIMlTs2hHnD1hY6rY0glTLSdGr5S_t/preview" 
                 className="w-full h-full border-0"

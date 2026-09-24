@@ -2,13 +2,20 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
-import { Mail, MessageSquare, Linkedin, Github, MapPin, Send, ArrowUpRight } from 'lucide-react';
+import { Mail, MessageSquare, Linkedin, Github, MapPin, Send, ArrowUpRight, Copy, Check } from 'lucide-react';
 
 export function Contact() {
   const { t } = useTranslation();
   const [senderName, setSenderName] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText('adithardiansyah091@gmail.com');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleComposeEmail = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,10 +38,9 @@ export function Contact() {
           transition={{ duration: 0.35 }}
         >
           {/* Header */}
-          <header className="border-b border-white/10 pb-10 mb-14">
-            <div className="flex items-center gap-2.5 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-accent)] font-medium">
+          <header className="border-b border-white/[0.08] pb-10 mb-14">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] font-medium bg-[var(--color-accent-muted)] px-2.5 py-1 rounded border border-[var(--color-accent-border)]">
                 Komunikasi Langsung
               </span>
             </div>
@@ -51,8 +57,8 @@ export function Contact() {
             {/* Direct Channel Cards Column */}
             <div className="lg:col-span-5 space-y-6">
               
-              <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-accent)] block mb-4 font-semibold">
+              <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 rounded-lg">
+                <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] block mb-4 font-semibold">
                   Saluran Utama
                 </span>
                 
@@ -62,13 +68,24 @@ export function Contact() {
                     <span className="text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] block mb-1">
                       {t('contact.direct_email')}
                     </span>
-                    <a 
-                      href="mailto:adithardiansyah091@gmail.com"
-                      className="text-sm font-mono text-[var(--color-paper-50)] hover:text-[var(--color-accent)] transition-colors inline-flex items-center gap-2 active:scale-[0.98]"
-                    >
-                      <Mail className="w-4 h-4 text-[var(--color-accent)]" />
-                      <span>adithardiansyah091@gmail.com</span>
-                    </a>
+                    <div className="flex items-center justify-between gap-2">
+                      <a 
+                        href="mailto:adithardiansyah091@gmail.com"
+                        className="text-sm font-mono text-[var(--color-paper-50)] hover:text-[var(--color-accent)] transition-colors inline-flex items-center gap-2 active:scale-[0.98] break-all"
+                      >
+                        <Mail className="w-4 h-4 text-[var(--color-accent)] shrink-0" />
+                        <span>adithardiansyah091@gmail.com</span>
+                      </a>
+                      <button
+                        type="button"
+                        onClick={handleCopyEmail}
+                        aria-label="Salin alamat email"
+                        title={copied ? "Email disalin!" : "Salin email"}
+                        className="min-h-[36px] min-w-[36px] flex items-center justify-center p-1.5 text-xs font-mono text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] bg-[var(--color-canvas-850)] hover:bg-[var(--color-canvas-800)] border border-white/[0.08] rounded transition-all active:scale-95 shrink-0 cursor-pointer"
+                      >
+                        {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                      </button>
+                    </div>
                   </div>
 
                   <div>
@@ -100,8 +117,8 @@ export function Contact() {
               </div>
 
               {/* Social Profiles */}
-              <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-paper-50)] block mb-4 font-semibold">
+              <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 rounded-lg">
+                <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-paper-50)] block mb-4 font-semibold">
                   Jejaring Profesional
                 </span>
                 
@@ -110,10 +127,10 @@ export function Contact() {
                     href="https://linkedin.com/in/adit-hardiansyah-surachman-b9aab1315/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 bg-[var(--color-canvas-850)] hover:bg-[var(--color-canvas-800)] hover:border-[var(--color-accent)]/40 text-[var(--color-paper-50)] rounded border border-white/5 transition-all active:scale-[0.98]"
+                    className="flex items-center justify-between p-3 bg-[var(--color-canvas-850)] hover:bg-[var(--color-canvas-800)] hover:border-white/20 text-[var(--color-paper-50)] rounded border border-white/[0.06] transition-all active:scale-[0.98]"
                   >
                     <span className="flex items-center gap-2">
-                      <Linkedin className="w-4 h-4 text-[#38BDF8]" />
+                      <Linkedin className="w-4 h-4 text-[var(--color-accent)]" />
                       <span>LinkedIn Profile</span>
                     </span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-[var(--color-stone-muted)]" />
@@ -123,7 +140,7 @@ export function Contact() {
                     href="https://github.com/Wilhelm-art"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-3 bg-[var(--color-canvas-850)] hover:bg-[var(--color-canvas-800)] hover:border-[var(--color-accent)]/40 text-[var(--color-paper-50)] rounded border border-white/5 transition-all active:scale-[0.98]"
+                    className="flex items-center justify-between p-3 bg-[var(--color-canvas-850)] hover:bg-[var(--color-canvas-800)] hover:border-white/20 text-[var(--color-paper-50)] rounded border border-white/[0.06] transition-all active:scale-[0.98]"
                   >
                     <span className="flex items-center gap-2">
                       <Github className="w-4 h-4" />
@@ -138,8 +155,8 @@ export function Contact() {
 
             {/* Functional Email Composer Form Column */}
             <div className="lg:col-span-7">
-              <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 sm:p-8 rounded-lg">
-                <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-accent)] block mb-2 font-semibold">
+              <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 sm:p-8 rounded-lg">
+                <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] block mb-2 font-semibold">
                   Tulis Pesan Cepat
                 </span>
                 <h3 className="text-xl font-bold font-display text-[var(--color-paper-50)] mb-6">
@@ -158,7 +175,7 @@ export function Contact() {
                       value={senderName}
                       onChange={(e) => setSenderName(e.target.value)}
                       placeholder="e.g. John Doe"
-                      className="w-full bg-[var(--color-canvas-950)] border border-white/10 rounded px-4 py-3 text-sm text-[var(--color-paper-50)] placeholder-[var(--color-stone-subtle)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
+                      className="w-full bg-[var(--color-canvas-950)] border border-white/[0.08] rounded px-4 py-3 text-sm text-[var(--color-paper-50)] placeholder-[var(--color-stone-subtle)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
                     />
                   </div>
 
@@ -173,7 +190,7 @@ export function Contact() {
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                       placeholder="e.g. Diskusi Proyek Web / Rekrutmen IT"
-                      className="w-full bg-[var(--color-canvas-950)] border border-white/10 rounded px-4 py-3 text-sm text-[var(--color-paper-50)] placeholder-[var(--color-stone-subtle)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
+                      className="w-full bg-[var(--color-canvas-950)] border border-white/[0.08] rounded px-4 py-3 text-sm text-[var(--color-paper-50)] placeholder-[var(--color-stone-subtle)] focus:border-[var(--color-accent)] focus:outline-none transition-colors"
                     />
                   </div>
 
@@ -188,15 +205,15 @@ export function Contact() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Tuliskan gambaran proyek, pertanyaan, atau penawaran kerjasama Anda..."
-                      className="w-full bg-[var(--color-canvas-950)] border border-white/10 rounded px-4 py-3 text-sm text-[var(--color-paper-50)] placeholder-[var(--color-stone-subtle)] focus:border-[var(--color-accent)] focus:outline-none transition-colors resize-y"
+                      className="w-full bg-[var(--color-canvas-950)] border border-white/[0.08] rounded px-4 py-3 text-sm text-[var(--color-paper-50)] placeholder-[var(--color-stone-subtle)] focus:border-[var(--color-accent)] focus:outline-none transition-colors resize-y"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-[var(--color-accent)] text-slate-950 hover:bg-[var(--color-accent-hover)] py-3 px-6 rounded text-xs font-mono uppercase tracking-wider font-bold flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm cursor-pointer"
+                    className="w-full bg-[var(--color-paper-50)] text-[var(--color-canvas-950)] hover:bg-white py-3 px-6 rounded text-xs font-mono uppercase tracking-wider font-semibold flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm cursor-pointer"
                   >
-                    <Send className="w-4 h-4 text-slate-950" />
+                    <Send className="w-4 h-4 text-[var(--color-canvas-950)]" />
                     <span>{t('contact.send_email_button')}</span>
                   </button>
                   
