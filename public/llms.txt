@@ -1,33 +1,23 @@
-# Adit Hardiansyah Surachman
-Portfolio: https://www.portfolio-adit.web.id
-Email: adithardiansyah091@gmail.com
-Location: Bandung, Indonesia
+# Adit Hardiansyah Surachman (Portfolio)
 
-## Summary
-Adit Hardiansyah Surachman is a Computer Science graduate from STMIK Mardira Indonesia (GPA 3.62/4.00) based in Bandung, Indonesia. He specializes in full-stack web development and network security. He is open to work in software engineering, IT administration, and network security roles.
+> Software Engineer & Network Security Specialist based in Bandung, West Java, Indonesia. Computer Science graduate from STMIK Mardira Indonesia (GPA 3.62/4.00, Sangat Memuaskan) with verified Google Cybersecurity and national BNSP certifications.
 
-## Education
-- S1 Teknik Informatika at STMIK Mardira Indonesia (2021-2025)
-- Teknik Pemesinan at SMK Mahardhika Batujajar
+## Core Navigation
 
-## Certifications
-- Google Cybersecurity Certificate (2026)
-- BNSP Teknik Pemesinan (2021)
+- [Home](https://www.portfolio-adit.web.id/): Official portfolio homepage, biography, core qualifications, and featured case studies.
+- [About Profile](https://www.portfolio-adit.web.id/about): In-depth background, formal education, verified credential links, and work history.
+- [Projects Archive](https://www.portfolio-adit.web.id/projects): Case studies, architectural problems, solutions, and live production links.
+- [Curriculum Vitae](https://www.portfolio-adit.web.id/resume): Formal CV and downloadable Indonesian & English resume documents.
+- [Contact Channels](https://www.portfolio-adit.web.id/contact): Direct email, verified WhatsApp, and professional profiles.
 
-## Skills
-- Web/Software: PHP, Python, Next.js, React, Laravel, TypeScript, Tailwind CSS, SQL
-- Networking & Security: Network Security, Threat Analysis, Risk Management, LAN/WAN, System Testing, Linux
-- Administrasi: Microsoft Office, Google Workspace, Document Management
-- Languages: Indonesian (Native), English (Active)
+## Featured Production Projects
 
-## Experience
-- Lead Developer at Masjid AT-Tijaniyah
-- Staf IT/Administrasi at Dinas Perdagangan dan Perindustrian Kota Bandung
-- Operator Produksi at PT. Bahagia Sejahtera Metalindo
+- [GadgetVault](https://gadget-vault-seven.vercel.app/): Premium e-commerce marketplace for flagship gadgets built with Next.js, Prisma, and PostgreSQL.
+- [Surabi Cikal Cisangkan](https://surabi-cikal-cisangkan.vercel.app/): Digital storefront and catalog for an authentic culinary business built with React and Vite.
+- [Sistem Kas Masjid AT-Tijaniyah](https://github.com/Wilhelm-art/kas-masjid-tijaniyah): Public financial ledger and prayer schedule widget built with Laravel 10 and MySQL.
+- [SaveTok](https://savetok-frontend.vercel.app/): High-performance, no-watermark video utility built with React, Vite, and Express.js.
+- [Komik Zynqtoon](https://zynqtoon.vercel.app/): Comic and webtoon reading platform with smooth reader mode built with Next.js.
 
-## Projects
-- GadgetVault: Premium marketplace for flagship gadgets (Next.js, Prisma, PostgreSQL).
-- Surabi Cikal Cisangkan: Digital storefront for a traditional culinary business (React, Vite, Tailwind).
-- Sistem Kas Masjid AT-Tijaniyah: Financial transparency & management system (Laravel, Alpine.js, MySQL).
-- Komik Zynqtoon: Comic and webtoon reading platform (Next.js, React).
-- SaveTok: No-watermark video downloader (React, Vite, Express.js).
+## Extended Documentation for LLMs
+
+- [Full Context Documentation](https://www.portfolio-adit.web.id/llms-full.txt): Complete technical architecture, skills taxonomy, and career timeline for generative AI search crawlers.
