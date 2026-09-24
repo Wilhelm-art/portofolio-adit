@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowUpRight, ArrowRight, Download, MessageSquare, ShieldCheck, Award, GraduationCap } from 'lucide-react';
-import { motion } from 'motion/react';
 import { projects } from '../data';
 
 export function Home() {
