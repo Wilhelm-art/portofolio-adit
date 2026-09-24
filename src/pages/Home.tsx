@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowUpRight, Download, MessageSquare, ShieldCheck, Award, GraduationCap } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Download, MessageSquare, ShieldCheck, Award, GraduationCap } from 'lucide-react';
 import { motion } from 'motion/react';
 import { projects } from '../data';
 
@@ -28,12 +28,7 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
             {/* Main Narrative Column */}
-            <motion.div 
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35 }}
-              className="lg:col-span-8 flex flex-col justify-center"
-            >
+            <div className="lg:col-span-8 flex flex-col justify-center">
               <div className="flex items-center gap-2 mb-6">
                 <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] font-medium bg-[var(--color-accent-muted)] px-2.5 py-1 rounded border border-[var(--color-accent-border)]">
                   {t('hero.role')}
@@ -55,7 +50,7 @@ export function Home() {
                   className="bg-[var(--color-paper-50)] text-[var(--color-canvas-950)] hover:bg-white active:scale-[0.98] px-6 py-3 text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2 rounded transition-all shadow-sm"
                 >
                   <span>{t('hero.cta_projects')}</span>
-                  <ArrowUpRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
 
                 <Link
@@ -77,15 +72,10 @@ export function Home() {
                   <span>{t('hero.cta_contact')}</span>
                 </a>
               </div>
-            </motion.div>
+            </div>
 
             {/* Profile Frame Column */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="lg:col-span-4 flex flex-col"
-            >
+            <div className="lg:col-span-4 flex flex-col">
               <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-3 rounded-lg shadow-lg">
                 <div className="relative aspect-[4/5] w-full overflow-hidden bg-[var(--color-canvas-850)] rounded">
                   <img 
@@ -113,7 +103,7 @@ export function Home() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
           </div>
 
