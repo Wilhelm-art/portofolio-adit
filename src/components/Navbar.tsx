@@ -91,6 +91,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => handleLanguageSwitch('id')}
+                aria-label="ID - Pilih Bahasa Indonesia"
                 aria-pressed={!isEnglish}
                 className={`px-2.5 py-1 text-[11px] font-mono uppercase font-semibold transition-all rounded active:scale-[0.98] ${
                   !isEnglish 
@@ -103,6 +104,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => handleLanguageSwitch('en')}
+                aria-label="EN - Switch to English"
                 aria-pressed={isEnglish}
                 className={`px-2.5 py-1 text-[11px] font-mono uppercase font-semibold transition-all rounded active:scale-[0.98] ${
                   isEnglish 
@@ -121,7 +123,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => handleLanguageSwitch('id')}
-                aria-label="Pilih Bahasa Indonesia"
+                aria-label="ID - Pilih Bahasa Indonesia"
                 className={`min-h-[38px] px-2.5 text-xs font-mono uppercase font-semibold rounded flex items-center justify-center transition-all ${
                   !isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)]' : 'text-[var(--color-stone-muted)]'
                 }`}
@@ -131,7 +133,7 @@ export function Navbar() {
               <button
                 type="button"
                 onClick={() => handleLanguageSwitch('en')}
-                aria-label="Switch to English"
+                aria-label="EN - Switch to English"
                 className={`min-h-[38px] px-2.5 text-xs font-mono uppercase font-semibold rounded flex items-center justify-center transition-all ${
                   isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)]' : 'text-[var(--color-stone-muted)]'
                 }`}

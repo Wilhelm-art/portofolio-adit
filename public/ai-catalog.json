@@ -1,0 +1,23 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Adit Hardiansyah Surachman Portfolio",
+    "identifier": "urn:ai:portfolio-adit.web.id:host"
+  },
+  "entries": [
+    {
+      "identifier": "urn:ai:portfolio-adit.web.id:resource:llms-txt",
+      "displayName": "LLM Documentation & Case Studies",
+      "type": "text/markdown",
+      "url": "https://www.portfolio-adit.web.id/llms.txt",
+      "description": "Index of portfolio pages, case studies, and engineering qualifications for AI agents."
+    },
+    {
+      "identifier": "urn:ai:portfolio-adit.web.id:resource:llms-full-txt",
+      "displayName": "Full LLM Context",
+      "type": "text/markdown",
+      "url": "https://www.portfolio-adit.web.id/llms-full.txt",
+      "description": "Comprehensive technical background, skills matrix, and architecture documentation."
+    }
+  ]
+}

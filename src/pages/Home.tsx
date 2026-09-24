@@ -71,7 +71,7 @@ export function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] px-4 py-3 text-xs font-mono uppercase tracking-wider flex items-center gap-2 transition-colors ml-auto sm:ml-0 active:scale-[0.98]"
-                  aria-label="Direct message on WhatsApp"
+                  aria-label={`${t('hero.cta_contact')} (WhatsApp)`}
                 >
                   <MessageSquare className="w-4 h-4 text-[var(--color-accent)]" />
                   <span>{t('hero.cta_contact')}</span>
@@ -91,6 +91,10 @@ export function Home() {
                   <img 
                     src="/assets/profile.jpg" 
                     alt="Adit Hardiansyah Surachman" 
+                    loading="eager"
+                    fetchPriority="high"
+                    width="372"
+                    height="459"
                     className="w-full h-full object-cover object-top hover:scale-[1.02] transition-transform duration-500"
                     onError={(e) => {
                       (e.target as HTMLElement).style.display = 'none';
@@ -198,6 +202,10 @@ export function Home() {
                       <img 
                         src={project.screenshot} 
                         alt={project.title}
+                        loading="lazy"
+                        decoding="async"
+                        width="1000"
+                        height="625"
                         className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
                         onError={(e) => {
                           (e.target as HTMLElement).style.display = 'none';

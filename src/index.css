@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -16,7 +15,7 @@
   --color-paper-100: #dce1ea;
   
   --color-stone-muted: #949db0;
-  --color-stone-subtle: #687285;
+  --color-stone-subtle: #98a2b3;
   --color-stone-faint: #3c4352;
 
   --color-accent: #4b85db;

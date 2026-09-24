@@ -15,6 +15,18 @@
       })();
     </script>
     
+    <!-- Performance Preloads & Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/assets/profile.jpg" fetchpriority="high" type="image/jpeg" />
+    <link rel="ai-catalog" type="application/json" href="/.well-known/ai-catalog.json" />
+
+    <!-- Google Fonts Non-blocking -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    </noscript>
+
     <!-- Core SEO Meta Tags -->
     <meta name="title" content="Adit Hardiansyah Surachman | Software Engineer & Network Security" />
     <meta name="description" content="Portofolio resmi Adit Hardiansyah Surachman. Lulusan S1 Teknik Informatika STMIK Mardira Indonesia (IPK 3.62) dengan sertifikasi Google Cybersecurity dan BNSP. Spesialis full-stack web dan keamanan jaringan." />
