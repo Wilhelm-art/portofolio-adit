@@ -2,22 +2,32 @@
   "specVersion": "1.0",
   "host": {
     "displayName": "Adit Hardiansyah Surachman Portfolio",
-    "identifier": "urn:ai:portfolio-adit.web.id:host"
+    "identifier": "urn:air:portfolio-adit.web.id:host:main"
   },
   "entries": [
     {
-      "identifier": "urn:ai:portfolio-adit.web.id:resource:llms-txt",
+      "identifier": "urn:air:portfolio-adit.web.id:docs:llms-txt",
       "displayName": "LLM Documentation & Case Studies",
-      "type": "text/markdown",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://www.portfolio-adit.web.id/llms.txt",
-      "description": "Index of portfolio pages, case studies, and engineering qualifications for AI agents."
+      "description": "Index of portfolio pages, case studies, and engineering qualifications for AI agents.",
+      "representativeQueries": [
+        "Who is Adit Hardiansyah Surachman?",
+        "What projects has Adit built?",
+        "Adit Hardiansyah Surachman skills and portfolio"
+      ]
     },
     {
-      "identifier": "urn:ai:portfolio-adit.web.id:resource:llms-full-txt",
+      "identifier": "urn:air:portfolio-adit.web.id:docs:llms-full-txt",
       "displayName": "Full LLM Context",
-      "type": "text/markdown",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
       "url": "https://www.portfolio-adit.web.id/llms-full.txt",
-      "description": "Comprehensive technical background, skills matrix, and architecture documentation."
+      "description": "Comprehensive technical background, skills matrix, and architecture documentation.",
+      "representativeQueries": [
+        "Adit Hardiansyah Surachman education and GPA",
+        "Adit Hardiansyah Surachman Google Cybersecurity certification",
+        "Full-stack and network security projects by Adit"
+      ]
     }
   ]
 }
