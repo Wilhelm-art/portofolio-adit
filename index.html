@@ -5,55 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Adit Hardiansyah Surachman | Software Engineer & Network Security</title>
     
+    <!-- Instant Domain Redirect for portofolio-adit-two.vercel.app and apex domain -->
+    <script>
+      (function() {
+        var h = window.location.hostname;
+        if (h === 'portofolio-adit-two.vercel.app' || h === 'portfolio-adit.web.id' || (h.endsWith('.vercel.app') && h !== 'localhost')) {
+          window.location.replace('https://www.portfolio-adit.web.id' + window.location.pathname + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
+    
     <!-- Core SEO Meta Tags -->
     <meta name="title" content="Adit Hardiansyah Surachman | Software Engineer & Network Security" />
     <meta name="description" content="Portofolio resmi Adit Hardiansyah Surachman. Lulusan S1 Teknik Informatika STMIK Mardira Indonesia (IPK 3.62) dengan sertifikasi Google Cybersecurity dan BNSP. Spesialis full-stack web dan keamanan jaringan." />
     <meta name="keywords" content="Adit Hardiansyah Surachman, Adit Surachman, Sadut, Software Engineer Bandung, Full Stack Developer, STMIK Mardira Indonesia, Keamanan Jaringan, Google Cybersecurity, BNSP, Portfolio Adit" />
     <meta name="author" content="Adit Hardiansyah Surachman" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <link rel="canonical" href="https://portfolio-adit.web.id/" />
+    <link rel="canonical" href="https://www.portfolio-adit.web.id/" />
+
+    <!-- Geographic & Local SEO (GEO) Meta Tags -->
+    <meta name="geo.region" content="ID-JB" />
+    <meta name="geo.placename" content="Bandung" />
+    <meta name="geo.position" content="-6.9175;107.6191" />
+    <meta name="ICBM" content="-6.9175, 107.6191" />
 
     <!-- Multilingual Alternate Links -->
-    <link rel="alternate" hreflang="id" href="https://portfolio-adit.web.id/" />
-    <link rel="alternate" hreflang="en" href="https://portfolio-adit.web.id/en" />
-    <link rel="alternate" hreflang="x-default" href="https://portfolio-adit.web.id/" />
+    <link rel="alternate" hreflang="id" href="https://www.portfolio-adit.web.id/" />
+    <link rel="alternate" hreflang="en" href="https://www.portfolio-adit.web.id/en" />
+    <link rel="alternate" hreflang="x-default" href="https://www.portfolio-adit.web.id/" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="profile" />
-    <meta property="og:url" content="https://portfolio-adit.web.id/" />
+    <meta property="og:url" content="https://www.portfolio-adit.web.id/" />
     <meta property="og:title" content="Adit Hardiansyah Surachman | Software Engineer & Network Security" />
     <meta property="og:description" content="Portofolio resmi Adit Hardiansyah Surachman. S1 Teknik Informatika STMIK Mardira Indonesia (IPK 3.62), Google Cybersecurity & BNSP certified." />
-    <meta property="og:image" content="https://portfolio-adit.web.id/assets/profile.jpg" />
+    <meta property="og:image" content="https://www.portfolio-adit.web.id/assets/profile.jpg" />
     <meta property="og:site_name" content="Adit Hardiansyah Surachman Portfolio" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:locale:alternate" content="en_US" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="https://portfolio-adit.web.id/" />
+    <meta name="twitter:url" content="https://www.portfolio-adit.web.id/" />
     <meta name="twitter:title" content="Adit Hardiansyah Surachman | Software Engineer" />
     <meta name="twitter:description" content="S1 Teknik Informatika STMIK Mardira Indonesia (IPK 3.62) • Google Cybersecurity & BNSP Certified." />
-    <meta name="twitter:image" content="https://portfolio-adit.web.id/assets/profile.jpg" />
+    <meta name="twitter:image" content="https://www.portfolio-adit.web.id/assets/profile.jpg" />
 
-    <!-- JSON-LD Structured Data for Google Rich Results -->
+    <!-- JSON-LD Structured Data for Google Rich Results & Generative AI (GEO) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@graph": [
         {
           "@type": "Person",
-          "@id": "https://portfolio-adit.web.id/#person",
+          "@id": "https://www.portfolio-adit.web.id/#person",
           "name": "Adit Hardiansyah Surachman",
           "alternateName": ["Adit Surachman", "Sadut"],
           "jobTitle": "Software Engineer & Network Security Specialist",
-          "url": "https://portfolio-adit.web.id",
-          "image": "https://portfolio-adit.web.id/assets/profile.jpg",
+          "url": "https://www.portfolio-adit.web.id",
+          "image": "https://www.portfolio-adit.web.id/assets/profile.jpg",
           "email": "mailto:adithardiansyah091@gmail.com",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Bandung",
             "addressRegion": "Jawa Barat",
+            "postalCode": "40111",
             "addressCountry": "ID"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": -6.9175,
+            "longitude": 107.6191
           },
           "alumniOf": {
             "@type": "CollegeOrUniversity",
@@ -107,25 +129,25 @@
         },
         {
           "@type": "WebSite",
-          "@id": "https://portfolio-adit.web.id/#website",
-          "url": "https://portfolio-adit.web.id/",
+          "@id": "https://www.portfolio-adit.web.id/#website",
+          "url": "https://www.portfolio-adit.web.id/",
           "name": "Adit Hardiansyah Surachman Portfolio",
           "description": "Portofolio Rekayasa Perangkat Lunak dan Keamanan Jaringan Adit Hardiansyah Surachman",
           "publisher": {
-            "@id": "https://portfolio-adit.web.id/#person"
+            "@id": "https://www.portfolio-adit.web.id/#person"
           },
           "inLanguage": ["id-ID", "en-US"]
         },
         {
           "@type": "ProfilePage",
-          "@id": "https://portfolio-adit.web.id/#webpage",
-          "url": "https://portfolio-adit.web.id/",
+          "@id": "https://www.portfolio-adit.web.id/#webpage",
+          "url": "https://www.portfolio-adit.web.id/",
           "name": "Adit Hardiansyah Surachman | Software Engineer & Network Security",
           "isPartOf": {
-            "@id": "https://portfolio-adit.web.id/#website"
+            "@id": "https://www.portfolio-adit.web.id/#website"
           },
           "about": {
-            "@id": "https://portfolio-adit.web.id/#person"
+            "@id": "https://www.portfolio-adit.web.id/#person"
           }
         }
       ]

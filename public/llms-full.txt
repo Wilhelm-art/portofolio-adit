@@ -1,0 +1,40 @@
+# Adit Hardiansyah Surachman — Full Technical Context & Profile
+
+- **Official Portfolio**: https://www.portfolio-adit.web.id
+- **Canonical Domain**: https://www.portfolio-adit.web.id
+- **Location**: Bandung, Jawa Barat, Indonesia
+- **Direct Email**: adithardiansyah091@gmail.com
+- **LinkedIn**: https://linkedin.com/in/adit-hardiansyah-surachman-b9aab1315/
+- **GitHub**: https://github.com/Wilhelm-art
+- **WhatsApp**: +62 856-5983-2513
+
+## Summary
+Adit Hardiansyah Surachman is an Indonesian Software Engineer and Network Security Specialist based in Bandung, West Java. He graduated from STMIK Mardira Indonesia with a Bachelor of Computer Science (S1 Teknik Informatika), graduating with honors (IPK 3.62 / 4.00, Sangat Memuaskan). He holds the official Google Cybersecurity Professional Certificate (Coursera Verified) and the Indonesian National Professional Certification Agency (BNSP) certification.
+
+## Technical Skills
+- **Frontend & Web Development**: React 19, Next.js 15+, TypeScript, Tailwind CSS, Vite, Framer Motion / Motion.
+- **Backend & Systems**: Node.js, Express.js, PHP, Laravel 10, Python, PostgreSQL, MySQL, Prisma ORM, RESTful API design.
+- **Network Security & Infrastructure**: Threat Analysis, Network Hardening, SIEM & Security Log Auditing, LAN/WAN Network Configuration, Linux Server Administration (Debian/Ubuntu), Docker, Cloudflare, Vercel.
+- **Operational & Workflow**: Technical Documentation, SOP Verification, Google Workspace, Financial Ledger Administration.
+
+## Verified Credentials & Academic Honors
+1. **Sarjana Komputer (S1 Teknik Informatika)**: STMIK Mardira Indonesia (2021–2025). Graduated with IPK 3.62 / 4.00 (Sangat Memuaskan).
+2. **Google Cybersecurity Professional Certificate (2026)**: Credential verified by Google via Coursera. Modules: Threat Detection, SIEM Log Monitoring, Network Architecture Security, Python for Cybersecurity.
+3. **Sertifikasi Kompetensi BNSP**: Badan Nasional Sertifikasi Profesi (Indonesia National Occupational Standards).
+
+## Production Projects
+1. **GadgetVault** (`https://gadget-vault-silk.vercel.app`):
+   - Tech Stack: Next.js 16, Prisma, PostgreSQL, NextAuth v5, Zustand, Zod, Tailwind CSS.
+   - Purpose: Secure, high-craft e-commerce platform for flagship electronics featuring OTP-verified accounts and admin KYC dashboard.
+2. **Surabi Cikal Cisangkan** (`https://surabi-cikal-cisangkan.vercel.app`):
+   - Tech Stack: React, Vite, Tailwind CSS, Motion.
+   - Purpose: Mobile-first culinary platform with one-tap WhatsApp ordering and Google Maps integration for a local traditional business.
+3. **Sistem Kas Masjid AT-Tijaniyah** (`https://sistem-kas-masjid.vercel.app`):
+   - Tech Stack: Laravel 10, Alpine.js, MySQL, Docker.
+   - Purpose: Public transparent ledger dashboard, prayer times automation, and donation management.
+4. **Komik Zynqtoon** (`https://komik-zynqtoon.vercel.app`):
+   - Tech Stack: Next.js, React, Tailwind CSS.
+   - Purpose: High-performance web comic reader with responsive image streaming.
+5. **SaveTok** (`https://savetok.web.id`):
+   - Tech Stack: React, Vite, Express.js, Tailwind CSS.
+   - Purpose: Multilingual (ID/EN/ES) video utility with Schema.org JSON-LD optimization.

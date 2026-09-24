@@ -69,10 +69,9 @@ export function About() {
         >
           
           {/* Header */}
-          <header className="border-b border-white/10 pb-12 mb-14">
-            <div className="flex items-center gap-2.5 mb-4">
-              <span className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              <span className="font-mono text-xs uppercase tracking-widest text-[var(--color-accent)] font-medium">
+          <header className="border-b border-white/[0.08] pb-12 mb-14">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] font-medium bg-[var(--color-accent-muted)] px-2.5 py-1 rounded border border-[var(--color-accent-border)]">
                 {isEnglish ? "Biographical Overview" : "Ringkasan Profil"}
               </span>
             </div>
@@ -87,7 +86,7 @@ export function About() {
           <div className="space-y-16">
 
             {/* Experience Section */}
-            <section className="border-b border-white/10 pb-16">
+            <section className="border-b border-white/[0.08] pb-16">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-2xl font-bold font-display text-[var(--color-paper-50)]">
                   {t('about.experience')}
@@ -97,7 +96,7 @@ export function About() {
                 </span>
               </div>
 
-              <div className="divide-y divide-white/5">
+              <div className="divide-y divide-white/[0.06]">
                 {experience.map((item, index) => (
                   <div key={index} className="py-7 first:pt-0 last:pb-0 grid grid-cols-1 md:grid-cols-12 gap-4">
                     <div className="md:col-span-4">
@@ -122,7 +121,7 @@ export function About() {
             </section>
 
             {/* Education & Certifications Section */}
-            <section className="border-b border-white/10 pb-16">
+            <section className="border-b border-white/[0.08] pb-16">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 
                 {/* Education */}
@@ -133,33 +132,33 @@ export function About() {
                   </h2>
 
                   <div className="space-y-4">
-                    <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
+                    <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 rounded-lg">
                       <div className="flex items-baseline justify-between mb-2">
-                        <span className="text-sm font-bold text-[var(--color-paper-50)]">
+                        <span className="text-sm font-semibold text-[var(--color-paper-50)]">
                           STMIK Mardira Indonesia
                         </span>
                         <span className="font-mono text-xs text-[var(--color-stone-muted)]">
                           2021 – 2025
                         </span>
                       </div>
-                      <p className="text-xs text-[var(--color-stone-muted)] mb-3">
+                      <p className="text-xs text-[var(--color-stone-muted)] mb-3 leading-relaxed">
                         S1 Teknik Informatika • Bandung, Indonesia
                       </p>
-                      <div className="inline-block px-3 py-1 text-xs font-mono bg-[var(--color-canvas-800)] text-[var(--color-accent)] border border-white/10 rounded font-semibold">
+                      <div className="inline-block px-3 py-1 text-xs font-mono bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] border border-white/[0.08] rounded font-medium">
                         IPK: 3.62 / 4.00 (Sangat Memuaskan)
                       </div>
                     </div>
 
-                    <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
+                    <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 rounded-lg">
                       <div className="flex items-baseline justify-between mb-2">
-                        <span className="text-sm font-bold text-[var(--color-paper-50)]">
+                        <span className="text-sm font-semibold text-[var(--color-paper-50)]">
                           SMK Mahardhika Batujajar
                         </span>
                         <span className="font-mono text-xs text-[var(--color-stone-muted)]">
                           2017 – 2020
                         </span>
                       </div>
-                      <p className="text-xs text-[var(--color-stone-muted)]">
+                      <p className="text-xs text-[var(--color-stone-muted)] leading-relaxed">
                         Teknik Pemesinan • Bandung Barat
                       </p>
                     </div>
@@ -175,46 +174,46 @@ export function About() {
 
                   <div className="space-y-4">
                     
-                    <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
+                    <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 rounded-lg">
                       <div className="flex items-baseline justify-between mb-2">
-                        <span className="text-sm font-bold text-[var(--color-paper-50)]">
+                        <span className="text-sm font-semibold text-[var(--color-paper-50)]">
                           Google Cybersecurity Certificate
                         </span>
                         <span className="font-mono text-xs text-[var(--color-stone-muted)]">
                           2026
                         </span>
                       </div>
-                      <p className="text-xs text-[var(--color-stone-muted)] mb-4">
+                      <p className="text-xs text-[var(--color-stone-muted)] mb-4 leading-relaxed">
                         Penerbit: Google (Coursera Verified) • Keamanan Jaringan, Deteksi Ancaman, SIEM & Python.
                       </p>
                       <a
                         href="https://drive.google.com/file/d/1HOwxuX834gxiyAHmYR59sBcSmdvgTZpZ/view?usp=drive_link"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors active:scale-[0.98]"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-paper-50)] transition-colors active:scale-[0.98]"
                       >
                         <span>Verifikasi Dokumen Sertifikat</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </a>
                     </div>
 
-                    <div className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg">
+                    <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 rounded-lg">
                       <div className="flex items-baseline justify-between mb-2">
-                        <span className="text-sm font-bold text-[var(--color-paper-50)]">
+                        <span className="text-sm font-semibold text-[var(--color-paper-50)]">
                           Sertifikasi BNSP Teknisi Komputer
                         </span>
                         <span className="font-mono text-xs text-[var(--color-stone-muted)]">
                           2025
                         </span>
                       </div>
-                      <p className="text-xs text-[var(--color-stone-muted)] mb-4">
+                      <p className="text-xs text-[var(--color-stone-muted)] mb-4 leading-relaxed">
                         Badan Nasional Sertifikasi Profesi • Standar Kompetensi Nasional Indonesia.
                       </p>
                       <a
                         href="https://drive.google.com/file/d/1J_E7l4kE1z2M3N4O5P6Q7R8S9T0U1V2W/view?usp=sharing"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] transition-colors active:scale-[0.98]"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-paper-50)] transition-colors active:scale-[0.98]"
                       >
                         <span>Sertifikat Kompetensi Kerja</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
@@ -237,9 +236,9 @@ export function About() {
                 {skills.map((group, index) => (
                   <div 
                     key={index}
-                    className="border border-white/10 bg-[var(--color-canvas-900)] p-6 rounded-lg"
+                    className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 rounded-lg"
                   >
-                    <h3 className="text-xs font-mono uppercase tracking-widest text-[var(--color-paper-50)] pb-3 mb-4 border-b border-white/5 font-semibold">
+                    <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--color-paper-50)] pb-3 mb-4 border-b border-white/[0.06] font-semibold">
                       {group.category}
                     </h3>
                     <ul className="space-y-2">
