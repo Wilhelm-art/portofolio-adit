@@ -572,7 +572,7 @@ export function Home() {
               {/* Profile Top Row */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-8 border-b border-white/[0.08]">
                 <img 
-                  src="/assets/profile-cutout.webp" 
+                  src="/assets/profile-avatar.webp" 
                   alt="Adit Hardiansyah" 
                   loading="lazy"
                   width="80"
