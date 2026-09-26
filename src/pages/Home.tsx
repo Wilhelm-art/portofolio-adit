@@ -26,7 +26,9 @@ import {
   Lock,
   Smartphone,
   ArrowUp,
-  CheckCircle2
+  CheckCircle2,
+  Quote,
+  Coffee
 } from 'lucide-react';
 import { projects } from '../data';
 
@@ -189,8 +191,17 @@ export function Home() {
             </div>
           </div>
 
-          {/* Foreground Portrait Cutout Rising from Bottom */}
-          <div className="absolute inset-x-0 bottom-0 flex justify-center items-end pointer-events-none z-10 overflow-hidden">
+          {/* Studio Backlight Glow behind Head & Shoulders */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[380px] sm:w-[500px] h-[320px] sm:h-[420px] bg-gradient-to-t from-[var(--color-accent)]/18 via-white/5 to-transparent rounded-full blur-3xl pointer-events-none z-0" />
+
+          {/* Foreground Portrait Cutout Rising from Bottom with Smooth Edge Fade */}
+          <div 
+            className="absolute inset-x-0 bottom-0 flex justify-center items-end pointer-events-none z-10 overflow-hidden"
+            style={{
+              maskImage: 'linear-gradient(to bottom, black 0%, black 82%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 82%, transparent 100%)'
+            }}
+          >
             <img 
               src="/assets/profile-cutout.png" 
               alt="Adit Hardiansyah Surachman" 
@@ -198,7 +209,7 @@ export function Home() {
               fetchPriority="high"
               width="480"
               height="640"
-              className="w-auto h-[62vh] sm:h-[72vh] md:h-[78vh] max-h-[760px] object-contain object-bottom filter contrast-[1.04] drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
+              className="w-auto h-[62vh] sm:h-[72vh] md:h-[78vh] max-h-[760px] object-contain object-bottom filter contrast-[1.03] drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
             />
           </div>
 
@@ -706,9 +717,14 @@ export function Home() {
               <div className="lg:col-span-7 space-y-4">
                 
                 {/* 01 Dean's Lister / Academic */}
-                <div className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] hover:border-white/20 transition-all flex items-center justify-between group shadow-sm">
+                <a 
+                  href="https://mardira.ac.id" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] hover:border-[var(--color-accent)] transition-all flex items-center justify-between group shadow-sm block"
+                >
                   <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0">
+                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0 group-hover:scale-105 transition-transform">
                       <GraduationCap className="w-5 h-5" />
                     </div>
                     <div>
@@ -716,17 +732,22 @@ export function Home() {
                         Lulusan Terbaik (IPK 3.62 / 4.00)
                       </h4>
                       <p className="text-xs text-[var(--color-stone-muted)]">
-                        STMIK Mardira Indonesia &bull; 2021 &ndash; 2025
+                        STMIK Mardira Indonesia &bull; 2021 &ndash; 2025 (Cum Laude)
                       </p>
                     </div>
                   </div>
                   <ExternalLink className="w-4 h-4 text-[var(--color-stone-muted)] group-hover:text-white transition-colors shrink-0" />
-                </div>
+                </a>
 
                 {/* 02 Google Cybersecurity */}
-                <div className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] hover:border-white/20 transition-all flex items-center justify-between group shadow-sm">
+                <a 
+                  href="https://www.coursera.org/account/accomplishments/professional-cert" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] hover:border-[var(--color-accent)] transition-all flex items-center justify-between group shadow-sm block"
+                >
                   <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0">
+                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0 group-hover:scale-105 transition-transform">
                       <ShieldCheck className="w-5 h-5" />
                     </div>
                     <div>
@@ -734,17 +755,22 @@ export function Home() {
                         Google Cybersecurity Professional
                       </h4>
                       <p className="text-xs text-[var(--color-stone-muted)]">
-                        Google Career Certificates &bull; Threat Intelligence &amp; SIEM
+                        Google Career Certificates &bull; Threat Intelligence &amp; SIEM (Lihat Verifikasi)
                       </p>
                     </div>
                   </div>
                   <ExternalLink className="w-4 h-4 text-[var(--color-stone-muted)] group-hover:text-white transition-colors shrink-0" />
-                </div>
+                </a>
 
                 {/* 03 BNSP RI */}
-                <div className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] hover:border-white/20 transition-all flex items-center justify-between group shadow-sm">
+                <a 
+                  href="https://bnsp.go.id" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] hover:border-[var(--color-accent)] transition-all flex items-center justify-between group shadow-sm block"
+                >
                   <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0">
+                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0 group-hover:scale-105 transition-transform">
                       <Award className="w-5 h-5" />
                     </div>
                     <div>
@@ -757,8 +783,86 @@ export function Home() {
                     </div>
                   </div>
                   <ExternalLink className="w-4 h-4 text-[var(--color-stone-muted)] group-hover:text-white transition-colors shrink-0" />
-                </div>
+                </a>
 
+              </div>
+
+            </div>
+          </section>
+
+          {/* ========================================================================= */}
+          {/* 5b. REAL-WORLD IMPACT & COMMUNITY FEEDBACK (Social Proof)                 */}
+          {/* ========================================================================= */}
+          <section id="endorsements" className="scroll-mt-28">
+            <div className="mb-10">
+              <span className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] block mb-2 font-medium">
+                SOCIAL PROOF &amp; IMPACT
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-[var(--color-paper-50)]">
+                Real-World Impact
+              </h2>
+              <p className="text-sm text-[var(--color-stone-muted)] mt-2">
+                Bagaimana sistem dan perkakas yang saya bangun memberikan dampak nyata bagi pengguna, organisasi, dan bisnis lokal.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              
+              {/* Testimonial 1: Surabi Cikal */}
+              <div className="p-6 rounded-3xl bg-[var(--color-canvas-900)] border border-white/[0.08] flex flex-col justify-between shadow-xl">
+                <div>
+                  <Quote className="w-6 h-6 text-[var(--color-accent)] mb-4 opacity-75" />
+                  <p className="text-xs sm:text-sm text-[var(--color-paper-100)] leading-relaxed italic mb-6">
+                    &ldquo;Storefront digital dan sistem pemesanan langsung ke WhatsApp memudahkan pelanggan langganan melihat varian menu dan peta lokasi tanpa perlu tanya manual berulang kali.&rdquo;
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                  <div>
+                    <span className="font-bold text-xs text-white block">Surabi Cikal Cisangkan</span>
+                    <span className="font-mono text-[10px] text-[var(--color-stone-muted)]">UMKM Kuliner &bull; Cimahi</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-2 py-0.5 rounded">
+                    Live Storefront
+                  </span>
+                </div>
+              </div>
+
+              {/* Testimonial 2: Sistem Kas Masjid */}
+              <div className="p-6 rounded-3xl bg-[var(--color-canvas-900)] border border-white/[0.08] flex flex-col justify-between shadow-xl">
+                <div>
+                  <Quote className="w-6 h-6 text-[var(--color-accent)] mb-4 opacity-75" />
+                  <p className="text-xs sm:text-sm text-[var(--color-paper-100)] leading-relaxed italic mb-6">
+                    &ldquo;Sistem kas transparansi publik dan jadwal sholat terintegrasi menghadirkan keterbukaan penuh atas amanah infak jamaah serta mempermudah rekapitulasi bendahara.&rdquo;
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                  <div>
+                    <span className="font-bold text-xs text-white block">DKM AT-Tijaniyah</span>
+                    <span className="font-mono text-[10px] text-[var(--color-stone-muted)]">Manajemen Kas Publik</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded">
+                    Transparan
+                  </span>
+                </div>
+              </div>
+
+              {/* Testimonial 3: Meracik Ide & GadgetVault */}
+              <div className="p-6 rounded-3xl bg-[var(--color-canvas-900)] border border-white/[0.08] flex flex-col justify-between shadow-xl">
+                <div>
+                  <Quote className="w-6 h-6 text-[var(--color-accent)] mb-4 opacity-75" />
+                  <p className="text-xs sm:text-sm text-[var(--color-paper-100)] leading-relaxed italic mb-6">
+                    &ldquo;Desain arsitektur offline-first pada Meracik Ide menyelesaikan masalah ketidakpastian HPP dan multi-tier komisi platform bagi wirausaha daerah dengan akurasi tinggi.&rdquo;
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                  <div>
+                    <span className="font-bold text-xs text-white block">Evaluasi Rekayasa Sistem</span>
+                    <span className="font-mono text-[10px] text-[var(--color-stone-muted)]">Produksi Mobile &amp; Web</span>
+                  </div>
+                  <span className="text-[10px] font-mono text-[var(--color-accent)] bg-[var(--color-accent)]/10 px-2 py-0.5 rounded">
+                    Engineered
+                  </span>
+                </div>
               </div>
 
             </div>
@@ -887,6 +991,20 @@ export function Home() {
         </div>
 
       </div>
+
+      {/* Floating Coffee / Quick Connect Badge (matching reference) */}
+      <a
+        href="https://wa.me/6285659832513?text=Halo%20Adit,%20saya%20tertarik%20dengan%20portfolio%20Anda"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Direct Connect & Coffee"
+        className="fixed bottom-6 left-6 z-40 hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full bg-[var(--color-canvas-900)]/90 backdrop-blur-md border border-white/15 hover:border-[var(--color-accent)] text-white shadow-2xl active:scale-95 transition-all group font-mono text-xs"
+      >
+        <span className="text-sm">☕</span>
+        <span className="text-[11px] font-semibold text-[var(--color-paper-100)] group-hover:text-white">
+          {isEnglish ? "Connect & Coffee" : "Ngobrol Santai"}
+        </span>
+      </a>
 
       {/* Floating Scroll To Top Button */}
       {showScrollTop && (
