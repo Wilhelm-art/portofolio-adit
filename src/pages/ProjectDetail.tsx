@@ -154,15 +154,111 @@ export function ProjectDetail() {
                 </p>
               </section>
 
-              <section>
+              <section className="border-b border-white/[0.08] pb-8">
                 <h2 className="text-xl font-bold font-display text-[var(--color-paper-50)] mb-3 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
                   {t('projects.impact')}
                 </h2>
-                <div className="bg-[var(--color-canvas-850)]/70 border border-white/[0.06] p-6 rounded-lg">
+                <div className="bg-[var(--color-canvas-850)]/70 border border-white/[0.06] p-6 rounded-2xl">
                   <p className="text-base text-[var(--color-paper-50)] leading-relaxed font-medium">
                     {project.impact}
                   </p>
+                </div>
+              </section>
+
+              {/* System Architecture & Flowchart Section */}
+              <section className="pt-2">
+                <h2 className="text-xl font-bold font-display text-[var(--color-paper-50)] mb-3 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
+                  {isEnglish ? "System Architecture & Data Flow" : "Arsitektur Sistem & Alur Data"}
+                </h2>
+                <p className="text-xs sm:text-sm text-[var(--color-stone-muted)] mb-5">
+                  {isEnglish 
+                    ? "Production design principles and layer separation implemented in this system."
+                    : "Pemisahan lapisan arsitektur dan pola rekayasa yang diterapkan pada sistem ini."}
+                </p>
+
+                <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-5 sm:p-6 rounded-2xl space-y-4 shadow-xl">
+                  {/* Layer 1: Client */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-[var(--color-canvas-850)] border border-white/[0.06] gap-3">
+                    <div className="flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] flex items-center justify-center font-mono text-xs font-bold shrink-0">
+                        1
+                      </span>
+                      <div>
+                        <span className="font-mono text-[10px] text-[var(--color-accent)] uppercase block font-semibold">
+                          CLIENT &amp; PRESENTATION LAYER
+                        </span>
+                        <span className="font-bold text-xs sm:text-sm text-white">
+                          {project.id === 'meracik-ide' 
+                            ? 'React Native • Expo SDK 57 • NativeWind (Offline-First Mobile)' 
+                            : `${project.stack[0]} • Responsive Adaptive UI • Tactile Micro-Interactions`}
+                        </span>
+                      </div>
+                    </div>
+                    <span className="px-2.5 py-1 text-[10px] font-mono text-[var(--color-stone-muted)] bg-white/5 rounded border border-white/5 self-start sm:self-auto">
+                      Frontend Interface
+                    </span>
+                  </div>
+
+                  {/* Flow Arrow */}
+                  <div className="flex justify-center -my-2 text-[var(--color-accent)] opacity-60">
+                    &darr;
+                  </div>
+
+                  {/* Layer 2: Logic & Security */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-[var(--color-canvas-850)] border border-white/[0.06] gap-3">
+                    <div className="flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono text-xs font-bold shrink-0">
+                        2
+                      </span>
+                      <div>
+                        <span className="font-mono text-[10px] text-emerald-400 uppercase block font-semibold">
+                          LOGIC, STATE &amp; SECURITY LAYER
+                        </span>
+                        <span className="font-bold text-xs sm:text-sm text-white">
+                          {project.id === 'gadget-vault' 
+                            ? 'NextAuth.js • Role-Based KYC Verification • CSRF & CSP Protection' 
+                            : project.id === 'meracik-ide'
+                            ? 'Zustand Global State • HPP Calculation Engine • Multi-Tier Price Simulator'
+                            : 'REST API Controller • Input Sanitization • Auth Guard Middleware'}
+                        </span>
+                      </div>
+                    </div>
+                    <span className="px-2.5 py-1 text-[10px] font-mono text-emerald-400 bg-emerald-500/10 rounded border border-emerald-500/20 self-start sm:self-auto">
+                      Business Core
+                    </span>
+                  </div>
+
+                  {/* Flow Arrow */}
+                  <div className="flex justify-center -my-2 text-[var(--color-accent)] opacity-60">
+                    &darr;
+                  </div>
+
+                  {/* Layer 3: Persistence & DB */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl bg-[var(--color-canvas-850)] border border-white/[0.06] gap-3">
+                    <div className="flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-mono text-xs font-bold shrink-0">
+                        3
+                      </span>
+                      <div>
+                        <span className="font-mono text-[10px] text-indigo-400 uppercase block font-semibold">
+                          PERSISTENCE &amp; STORAGE LAYER
+                        </span>
+                        <span className="font-bold text-xs sm:text-sm text-white">
+                          {project.id === 'meracik-ide'
+                            ? 'SQLite Local Database (Zero-Latency Offline) • Auto Sync Engine'
+                            : project.id === 'gadget-vault'
+                            ? 'Prisma ORM • PostgreSQL Relational Database • Index Optimization'
+                            : 'MySQL Relational Schema • Indexed Queries • ACID Transactions'}
+                        </span>
+                      </div>
+                    </div>
+                    <span className="px-2.5 py-1 text-[10px] font-mono text-indigo-400 bg-indigo-500/10 rounded border border-indigo-500/20 self-start sm:self-auto">
+                      Database Layer
+                    </span>
+                  </div>
+
                 </div>
               </section>
 

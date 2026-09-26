@@ -40,24 +40,34 @@ export function Resume() {
             
             {/* Download Buttons */}
             <div className="flex flex-wrap items-center gap-3">
+              {/* Direct Instant PDF Download (Local Asset) */}
+              <a 
+                href="/resume/Adit_Hardiansyah_Resume.pdf"
+                download="Adit_Hardiansyah_Resume.pdf"
+                className="inline-flex items-center gap-2 px-6 py-3 text-xs font-mono uppercase tracking-wider font-bold bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-hover)] rounded-full transition-all active:scale-[0.98] shadow-lg"
+              >
+                <Download className="w-4 h-4 text-white" />
+                <span>Unduh CV Langsung (PDF)</span>
+              </a>
+
               <a 
                 href={resumeIdUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-semibold bg-[var(--color-paper-50)] text-[var(--color-canvas-950)] hover:bg-white rounded transition-all active:scale-[0.98] shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-semibold border border-white/20 hover:border-white/40 text-[var(--color-paper-50)] hover:bg-white/5 rounded-full transition-all active:scale-[0.98]"
               >
-                <Download className="w-4 h-4 text-[var(--color-canvas-950)]" />
-                <span>{t('resume.download_id')}</span>
+                <ExternalLink className="w-4 h-4 text-[var(--color-accent)]" />
+                <span>Google Drive (ID)</span>
               </a>
 
               <a 
                 href={resumeEnUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-medium border border-white/15 hover:border-white/30 text-[var(--color-paper-50)] hover:bg-[var(--color-canvas-850)] rounded transition-all active:scale-[0.98]"
+                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-medium border border-white/15 hover:border-white/30 text-[var(--color-paper-50)] hover:bg-white/5 rounded-full transition-all active:scale-[0.98]"
               >
-                <Download className="w-4 h-4 text-[var(--color-accent)]" />
-                <span>{t('resume.download_en')}</span>
+                <ExternalLink className="w-4 h-4 text-[var(--color-stone-muted)]" />
+                <span>Google Drive (EN)</span>
               </a>
             </div>
           </header>

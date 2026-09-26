@@ -893,12 +893,20 @@ export function Home() {
                   </p>
                 </div>
 
-                <div className="pt-2">
-                  <Link
-                    to={`${basePath}/resume`}
+                <div className="pt-2 flex flex-wrap items-center gap-3">
+                  <a
+                    href="/resume/Adit_Hardiansyah_Resume.pdf"
+                    download="Adit_Hardiansyah_Resume.pdf"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-mono text-xs font-semibold uppercase tracking-wider hover:bg-white/90 active:scale-95 transition-all shadow-lg"
                   >
-                    <span>DOWNLOAD RESUME &rarr;</span>
+                    <Download className="w-3.5 h-3.5" />
+                    <span>DOWNLOAD RESUME (PDF)</span>
+                  </a>
+                  <Link
+                    to={`${basePath}/resume`}
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 hover:border-white/40 text-white font-mono text-xs font-medium uppercase tracking-wider hover:bg-white/5 transition-all"
+                  >
+                    <span>Detail Resume &rarr;</span>
                   </Link>
                 </div>
               </div>
