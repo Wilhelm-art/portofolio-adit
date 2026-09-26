@@ -109,6 +109,8 @@ export function CommandPalette() {
           <input 
             type="text"
             autoFocus
+            aria-label="Cari proyek, keahlian, aksi cepat"
+            data-testid="command-palette-input"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={isEnglish ? "Type to search projects, actions, skills..." : "Cari proyek, keahlian, aksi cepat..."}

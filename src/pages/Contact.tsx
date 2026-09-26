@@ -172,6 +172,7 @@ export function Contact() {
                       type="text" 
                       id="senderName" 
                       required
+                      maxLength={100}
                       value={senderName}
                       onChange={(e) => setSenderName(e.target.value)}
                       placeholder="e.g. John Doe"
@@ -187,6 +188,7 @@ export function Contact() {
                       type="text" 
                       id="subject" 
                       required
+                      maxLength={150}
                       value={subject}
                       onChange={(e) => setSubject(e.target.value)}
                       placeholder="e.g. Diskusi Proyek Web / Rekrutmen IT"
@@ -202,6 +204,7 @@ export function Contact() {
                       id="message" 
                       rows={5}
                       required
+                      maxLength={2500}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Tuliskan gambaran proyek, pertanyaan, atau penawaran kerjasama Anda..."
