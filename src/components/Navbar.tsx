@@ -130,7 +130,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
-            aria-label="Cari proyek dan aksi (Ctrl+K)"
+            aria-label="Search (Cari proyek dan aksi Ctrl+K)"
             title="Search projects & actions (Ctrl+K)"
             className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[var(--color-stone-muted)] hover:text-white text-xs font-mono transition-all"
           >
@@ -146,7 +146,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => handleLanguageSwitch('id')}
-              aria-label="Bahasa Indonesia"
+              aria-label="Bahasa Indonesia (ID)"
               className={`px-2 sm:px-2.5 py-1 text-[10px] font-mono uppercase font-semibold rounded-full transition-all ${
                 !isEnglish 
                   ? 'bg-white/15 text-white shadow-sm' 
@@ -158,7 +158,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => handleLanguageSwitch('en')}
-              aria-label="English"
+              aria-label="English (EN)"
               className={`px-2 sm:px-2.5 py-1 text-[10px] font-mono uppercase font-semibold rounded-full transition-all ${
                 isEnglish 
                   ? 'bg-white/15 text-white shadow-sm' 
