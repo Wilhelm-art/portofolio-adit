@@ -12,6 +12,8 @@ build/
 coverage/
 *.lcov
 .nyc_output/
+playwright-report/
+test-results/
 
 # Logs
 *.log
