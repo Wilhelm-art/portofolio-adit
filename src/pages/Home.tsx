@@ -206,6 +206,7 @@ export function Home() {
             }}
           >
             <picture>
+              <source media="(max-width: 640px)" srcSet="/assets/profile-cutout-sm.webp" type="image/webp" />
               <source srcSet="/assets/profile-cutout.webp" type="image/webp" />
               <img 
                 src="/assets/profile-cutout.png" 
@@ -947,7 +948,7 @@ export function Home() {
                     >
                       {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                     </button>
-                    <span className="font-mono text-[10px] text-[var(--color-stone-faint)]">01</span>
+                    <span className="font-mono text-[10px] text-[var(--color-stone-subtle)]">01</span>
                   </div>
                 </div>
 
@@ -969,7 +970,7 @@ export function Home() {
                   </div>
                   <div className="flex items-center gap-2">
                     <ArrowUpRight className="w-4 h-4 text-[var(--color-stone-muted)] group-hover:text-white transition-colors" />
-                    <span className="font-mono text-[10px] text-[var(--color-stone-faint)]">02</span>
+                    <span className="font-mono text-[10px] text-[var(--color-stone-subtle)]">02</span>
                   </div>
                 </a>
 
@@ -991,7 +992,7 @@ export function Home() {
                   </div>
                   <div className="flex items-center gap-2">
                     <ArrowUpRight className="w-4 h-4 text-[var(--color-stone-muted)] group-hover:text-white transition-colors" />
-                    <span className="font-mono text-[10px] text-[var(--color-stone-faint)]">03</span>
+                    <span className="font-mono text-[10px] text-[var(--color-stone-subtle)]">03</span>
                   </div>
                 </a>
 

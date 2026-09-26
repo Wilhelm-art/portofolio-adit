@@ -40,7 +40,7 @@ test.describe('Portfolio Critical User Journeys (Slide 5 Suite)', () => {
     await page.goto('/');
 
     // Open Command Palette via Navbar button or shortcut
-    const searchBtn = page.locator('button[aria-label*="Ctrl+K"]').first();
+    const searchBtn = page.locator('button[aria-label*="Search"]').first();
     await expect(searchBtn).toBeVisible();
     await searchBtn.click();
 

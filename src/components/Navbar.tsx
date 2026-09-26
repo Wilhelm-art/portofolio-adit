@@ -130,7 +130,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
-            aria-label="Search (Cari proyek dan aksi Ctrl+K)"
+            aria-label="Search ⌘K (Cari proyek dan aksi)"
             title="Search projects & actions (Ctrl+K)"
             className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[var(--color-stone-muted)] hover:text-white text-xs font-mono transition-all"
           >
