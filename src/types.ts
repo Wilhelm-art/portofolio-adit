@@ -9,4 +9,6 @@ export interface Project {
   liveUrl?: string;
   repoUrl?: string;
   screenshot: string;
+  category?: 'web' | 'mobile' | 'system' | 'security';
+  featured?: boolean;
 }
