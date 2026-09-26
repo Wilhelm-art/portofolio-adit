@@ -22,7 +22,8 @@
     <!-- Performance Preloads & Resource Hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="image" href="/assets/profile-cutout.webp" fetchpriority="high" type="image/webp" />
+    <link rel="preload" as="image" href="/assets/profile-cutout-sm.webp" media="(max-width: 640px)" fetchpriority="high" type="image/webp" />
+    <link rel="preload" as="image" href="/assets/profile-cutout.webp" media="(min-width: 641px)" fetchpriority="high" type="image/webp" />
     <link rel="ai-catalog" type="application/json" href="/.well-known/ai-catalog.json" />
 
     <!-- Google Fonts Non-blocking -->
