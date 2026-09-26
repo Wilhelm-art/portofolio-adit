@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X } from 'lucide-react';
@@ -8,16 +8,26 @@ export function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const isEnglish = location.pathname.startsWith('/en');
   const basePath = isEnglish ? '/en' : '';
+  const isHome = location.pathname === '/' || location.pathname === '/en' || location.pathname === '/en/';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
-    { name: t('nav.home'), path: `${basePath}/`, exact: true },
-    { name: t('nav.about'), path: `${basePath}/about` },
-    { name: t('nav.projects'), path: `${basePath}/projects` },
-    { name: t('nav.resume'), path: `${basePath}/resume` },
-    { name: t('nav.contact'), path: `${basePath}/contact` },
+    { name: isEnglish ? 'WORK' : 'KARYA', href: isHome ? '#work' : `${basePath}/#work` },
+    { name: isEnglish ? 'WHAT I CAN DO' : 'KEAHLIAN', href: isHome ? '#what-i-can-do' : `${basePath}/#what-i-can-do` },
+    { name: isEnglish ? 'ABOUT' : 'TENTANG', href: isHome ? '#about' : `${basePath}/#about` },
+    { name: isEnglish ? 'AWARDS' : 'PENGHARGAAN', href: isHome ? '#awards' : `${basePath}/#awards` },
+    { name: 'RESUME', href: `${basePath}/resume` },
   ];
 
   const handleLanguageSwitch = (targetLang: 'id' | 'en') => {
@@ -32,155 +42,147 @@ export function Navbar() {
     }
   };
 
-  const isLinkActive = (path: string, exact?: boolean) => {
-    if (exact) {
-      return location.pathname === path || (path === '/' && location.pathname === '');
-    }
-    return location.pathname.startsWith(path);
-  };
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-[var(--color-canvas-950)]/90 backdrop-blur-md border-b border-white/[0.08]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18">
-          
-          {/* Brand Wordmark with Monogram Logo "A" */}
-          <Link 
-            to={`${basePath}/`} 
-            className="flex items-center gap-3.5 group focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-lg"
-          >
-            <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-white/12 via-white/6 to-white/2 border border-white/15 flex items-center justify-center shadow-inner group-hover:border-[var(--color-accent)] group-hover:scale-105 transition-all">
-              <span className="font-serif italic text-lg font-bold text-[var(--color-paper-50)] group-hover:text-[var(--color-accent)] transition-colors select-none">
-                A
-              </span>
-              <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--color-accent)] ring-2 ring-[var(--color-canvas-950)]" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-sm font-semibold tracking-tight text-[var(--color-paper-50)] group-hover:text-[var(--color-accent)] transition-colors">
-                Adit Hardiansyah
-              </span>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-stone-muted)]">
-                Software & Security
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            <div className="flex items-center space-x-6">
-              {navLinks.map((link) => {
-                const active = isLinkActive(link.path, link.exact);
-                return (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    className={`text-xs font-mono uppercase tracking-wider transition-colors py-1 relative ${
-                      active
-                        ? 'text-[var(--color-paper-50)] font-semibold'
-                        : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
-                    }`}
-                  >
-                    {link.name}
-                    {active && (
-                      <span className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[var(--color-accent)] rounded-full" />
-                    )}
-                  </Link>
-                );
-              })}
-            </div>
-
-            {/* Language Switcher */}
-            <div className="flex items-center border border-white/[0.08] rounded p-0.5 bg-[var(--color-canvas-900)]" role="group" aria-label="Language selection">
-              <button
-                type="button"
-                onClick={() => handleLanguageSwitch('id')}
-                aria-label="ID - Pilih Bahasa Indonesia"
-                aria-pressed={!isEnglish}
-                className={`px-2.5 py-1 text-[11px] font-mono uppercase font-semibold transition-all rounded active:scale-[0.98] ${
-                  !isEnglish 
-                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] shadow-sm' 
-                    : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
-                }`}
-              >
-                ID
-              </button>
-              <button
-                type="button"
-                onClick={() => handleLanguageSwitch('en')}
-                aria-label="EN - Switch to English"
-                aria-pressed={isEnglish}
-                className={`px-2.5 py-1 text-[11px] font-mono uppercase font-semibold transition-all rounded active:scale-[0.98] ${
-                  isEnglish 
-                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] shadow-sm' 
-                    : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)]'
-                }`}
-              >
-                EN
-              </button>
-            </div>
-
-            {/* Hire Me Pill CTA */}
-            <Link
-              to={`${basePath}/contact`}
-              className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-white/20 bg-white/[0.04] hover:bg-[var(--color-paper-50)] text-[var(--color-paper-50)] hover:text-[var(--color-canvas-950)] text-xs font-mono font-medium transition-all active:scale-[0.98] shadow-sm"
-            >
-              {isEnglish ? 'Hire Me' : 'Hubungi'}
-            </Link>
+    <header className="fixed top-4 sm:top-5 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-5xl transition-all duration-300">
+      <nav 
+        className={`w-full rounded-full transition-all duration-300 px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border ${
+          scrolled
+            ? 'bg-[var(--color-canvas-900)]/90 backdrop-blur-xl border-white/15 shadow-[0_12px_40px_rgba(0,0,0,0.6)]'
+            : 'bg-[var(--color-canvas-900)]/75 backdrop-blur-lg border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.35)]'
+        }`}
+      >
+        {/* Brand Monogram "A" Logo */}
+        <Link 
+          to={`${basePath}/`} 
+          className="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-full"
+        >
+          <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-white/15 via-white/8 to-white/2 border border-white/20 flex items-center justify-center shadow-inner group-hover:border-[var(--color-accent)] group-hover:scale-105 transition-all">
+            <span className="font-serif italic text-base sm:text-lg font-bold text-[var(--color-paper-50)] group-hover:text-[var(--color-accent)] transition-colors select-none">
+              A
+            </span>
+            <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--color-accent)] ring-2 ring-[var(--color-canvas-950)]" />
           </div>
-
-          {/* Mobile Navigation Toggle */}
-          <div className="md:hidden flex items-center gap-2">
-            <div className="flex items-center border border-white/[0.08] rounded p-0.5 bg-[var(--color-canvas-900)]" role="group" aria-label="Language selection">
-              <button
-                type="button"
-                onClick={() => handleLanguageSwitch('id')}
-                aria-label="ID - Pilih Bahasa Indonesia"
-                className={`min-h-[38px] px-2.5 text-xs font-mono uppercase font-semibold rounded flex items-center justify-center transition-all ${
-                  !isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)]' : 'text-[var(--color-stone-muted)]'
-                }`}
-              >
-                ID
-              </button>
-              <button
-                type="button"
-                onClick={() => handleLanguageSwitch('en')}
-                aria-label="EN - Switch to English"
-                className={`min-h-[38px] px-2.5 text-xs font-mono uppercase font-semibold rounded flex items-center justify-center transition-all ${
-                  isEnglish ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)]' : 'text-[var(--color-stone-muted)]'
-                }`}
-              >
-                EN
-              </button>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label={isOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
-              aria-expanded={isOpen}
-              className="min-w-[44px] min-h-[44px] flex items-center justify-center text-[var(--color-paper-50)] border border-white/[0.08] rounded bg-[var(--color-canvas-900)] active:scale-[0.95] transition-transform"
-            >
-              {isOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
-            </button>
+          <div className="flex flex-col">
+            <span className="text-xs sm:text-sm font-bold tracking-tight text-[var(--color-paper-50)] group-hover:text-[var(--color-accent)] transition-colors">
+              ADIT
+            </span>
+            <span className="hidden sm:block text-[9px] font-mono tracking-widest text-[var(--color-stone-muted)] uppercase">
+              ENGINEER
+            </span>
           </div>
-        </div>
-      </div>
+        </Link>
 
-      {/* Mobile Menu Panel */}
-      {isOpen && (
-        <div className="md:hidden border-b border-white/[0.08] bg-[var(--color-canvas-900)] px-4 py-4 space-y-1.5 animate-in fade-in duration-200">
+        {/* Center Desktop Navigation */}
+        <div className="hidden md:flex items-center gap-5 lg:gap-7">
           {navLinks.map((link) => {
-            const active = isLinkActive(link.path, link.exact);
+            const isAnchor = link.href.includes('#');
+            if (isAnchor) {
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-[11px] font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] transition-colors py-1 relative group"
+                >
+                  {link.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--color-accent)] group-hover:w-full transition-all duration-200" />
+                </a>
+              );
+            }
             return (
               <Link
                 key={link.name}
-                to={link.path}
+                to={link.href}
+                className="text-[11px] font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] transition-colors py-1 relative group"
+              >
+                {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[var(--color-accent)] group-hover:w-full transition-all duration-200" />
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Right Actions: Lang + Hire Me CTA */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Language Switcher */}
+          <div className="flex items-center border border-white/10 rounded-full p-0.5 bg-black/20" role="group" aria-label="Language selection">
+            <button
+              type="button"
+              onClick={() => handleLanguageSwitch('id')}
+              aria-label="Bahasa Indonesia"
+              className={`px-2 sm:px-2.5 py-1 text-[10px] font-mono uppercase font-semibold rounded-full transition-all ${
+                !isEnglish 
+                  ? 'bg-white/15 text-white shadow-sm' 
+                  : 'text-[var(--color-stone-muted)] hover:text-white'
+              }`}
+            >
+              ID
+            </button>
+            <button
+              type="button"
+              onClick={() => handleLanguageSwitch('en')}
+              aria-label="English"
+              className={`px-2 sm:px-2.5 py-1 text-[10px] font-mono uppercase font-semibold rounded-full transition-all ${
+                isEnglish 
+                  ? 'bg-white/15 text-white shadow-sm' 
+                  : 'text-[var(--color-stone-muted)] hover:text-white'
+              }`}
+            >
+              EN
+            </button>
+          </div>
+
+          {/* Hire Me CTA Button */}
+          {isHome ? (
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black text-[var(--color-paper-50)] text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-200 active:scale-95 shadow-sm"
+            >
+              {isEnglish ? 'Hire Me' : 'Hire Me'}
+            </a>
+          ) : (
+            <Link
+              to={`${basePath}/#contact`}
+              className="inline-flex items-center justify-center px-4 sm:px-5 py-1.5 sm:py-2 rounded-full border border-white/20 bg-white/5 hover:bg-white hover:text-black text-[var(--color-paper-50)] text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-200 active:scale-95 shadow-sm"
+            >
+              {isEnglish ? 'Hire Me' : 'Hire Me'}
+            </Link>
+          )}
+
+          {/* Mobile Menu Button */}
+          <button
+            type="button"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Tutup navigasi' : 'Buka navigasi'}
+            className="md:hidden w-8 h-8 flex items-center justify-center text-white border border-white/10 rounded-full bg-white/5 active:scale-95 transition-all ml-0.5"
+          >
+            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Dropdown Panel */}
+      {isOpen && (
+        <div className="md:hidden mt-2 rounded-2xl bg-[var(--color-canvas-900)]/95 backdrop-blur-xl border border-white/15 p-4 shadow-2xl space-y-2 animate-slideUp">
+          {navLinks.map((link) => {
+            const isAnchor = link.href.includes('#');
+            if (isAnchor) {
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block px-4 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-white hover:bg-white/5 transition-colors"
+                >
+                  {link.name}
+                </a>
+              );
+            }
+            return (
+              <Link
+                key={link.name}
+                to={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`min-h-[44px] flex items-center px-3.5 py-2.5 text-xs font-mono uppercase tracking-wider rounded transition-colors active:scale-[0.98] ${
-                  active
-                    ? 'bg-[var(--color-canvas-800)] text-[var(--color-paper-50)] font-semibold border-l-2 border-[var(--color-accent)]'
-                    : 'text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] hover:bg-[var(--color-canvas-850)]'
-                }`}
+                className="block px-4 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-white hover:bg-white/5 transition-colors"
               >
                 {link.name}
               </Link>
@@ -188,6 +190,6 @@ export function Navbar() {
           })}
         </div>
       )}
-    </nav>
+    </header>
   );
 }
