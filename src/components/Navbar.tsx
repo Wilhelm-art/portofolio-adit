@@ -44,20 +44,23 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-18">
           
-          {/* Brand Wordmark with Full Name */}
+          {/* Brand Wordmark with Monogram Logo "A" */}
           <Link 
             to={`${basePath}/`} 
-            className="flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-sm"
+            className="flex items-center gap-3.5 group focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] rounded-lg"
           >
-            <span className="w-8 h-8 rounded bg-[var(--color-canvas-850)] border border-white/[0.08] flex items-center justify-center font-mono text-xs font-bold text-[var(--color-accent)] group-hover:border-[var(--color-accent)] transition-colors">
-              A
-            </span>
+            <div className="relative w-9 h-9 rounded-xl bg-gradient-to-br from-white/12 via-white/6 to-white/2 border border-white/15 flex items-center justify-center shadow-inner group-hover:border-[var(--color-accent)] group-hover:scale-105 transition-all">
+              <span className="font-serif italic text-lg font-bold text-[var(--color-paper-50)] group-hover:text-[var(--color-accent)] transition-colors select-none">
+                A
+              </span>
+              <span className="absolute -bottom-0.5 -right-0.5 w-2 h-2 rounded-full bg-[var(--color-accent)] ring-2 ring-[var(--color-canvas-950)]" />
+            </div>
             <div className="flex flex-col">
               <span className="text-sm font-semibold tracking-tight text-[var(--color-paper-50)] group-hover:text-[var(--color-accent)] transition-colors">
-                Adit Hardiansyah Surachman
+                Adit Hardiansyah
               </span>
               <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--color-stone-muted)]">
-                Software & Systems
+                Software & Security
               </span>
             </div>
           </Link>
@@ -115,6 +118,14 @@ export function Navbar() {
                 EN
               </button>
             </div>
+
+            {/* Hire Me Pill CTA */}
+            <Link
+              to={`${basePath}/contact`}
+              className="inline-flex items-center justify-center px-4 py-1.5 rounded-full border border-white/20 bg-white/[0.04] hover:bg-[var(--color-paper-50)] text-[var(--color-paper-50)] hover:text-[var(--color-canvas-950)] text-xs font-mono font-medium transition-all active:scale-[0.98] shadow-sm"
+            >
+              {isEnglish ? 'Hire Me' : 'Hubungi'}
+            </Link>
           </div>
 
           {/* Mobile Navigation Toggle */}
