@@ -205,15 +205,18 @@ export function Home() {
               WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 82%, transparent 100%)'
             }}
           >
-            <img 
-              src="/assets/profile-cutout.png" 
-              alt="Adit Hardiansyah Surachman" 
-              loading="eager"
-              fetchPriority="high"
-              width="480"
-              height="640"
-              className="w-auto h-[62vh] sm:h-[72vh] md:h-[78vh] max-h-[760px] object-contain object-bottom filter contrast-[1.03] drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
-            />
+            <picture>
+              <source srcSet="/assets/profile-cutout.webp" type="image/webp" />
+              <img 
+                src="/assets/profile-cutout.png" 
+                alt="Adit Hardiansyah Surachman" 
+                loading="eager"
+                fetchPriority="high"
+                width="480"
+                height="640"
+                className="w-auto h-[62vh] sm:h-[72vh] md:h-[78vh] max-h-[760px] object-contain object-bottom filter contrast-[1.03] drop-shadow-[0_20px_50px_rgba(0,0,0,0.9)]"
+              />
+            </picture>
           </div>
 
           {/* Floating Subtle Role Badge at Bottom Center */}
@@ -348,19 +351,23 @@ export function Home() {
                 <ChevronLeft className="w-5 h-5" />
               </button>
               
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1">
                 {featuredDeck.map((_, dotIdx) => (
                   <button
                     key={dotIdx}
                     type="button"
                     onClick={() => setActiveCardIdx(dotIdx)}
                     aria-label={`Go to slide ${dotIdx + 1}`}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      dotIdx === activeCardIdx 
-                        ? 'w-6 bg-[var(--color-accent)]' 
-                        : 'w-2 bg-white/20 hover:bg-white/40'
-                    }`}
-                  />
+                    className="min-h-[44px] min-w-[28px] flex items-center justify-center cursor-pointer p-1"
+                  >
+                    <span
+                      className={`h-1.5 rounded-full transition-all duration-300 block ${
+                        dotIdx === activeCardIdx 
+                          ? 'w-6 bg-[var(--color-accent)]' 
+                          : 'w-2 bg-white/20 hover:bg-white/40'
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
 
@@ -564,8 +571,11 @@ export function Home() {
               {/* Profile Top Row */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 pb-8 border-b border-white/[0.08]">
                 <img 
-                  src="/assets/profile-cutout.png" 
+                  src="/assets/profile-cutout.webp" 
                   alt="Adit Hardiansyah" 
+                  loading="lazy"
+                  width="80"
+                  height="80"
                   className="w-20 h-20 rounded-full object-cover object-top bg-[var(--color-canvas-800)] border-2 border-[var(--color-accent)] shadow-lg shrink-0"
                 />
 
@@ -1008,7 +1018,7 @@ export function Home() {
         href="https://wa.me/6285659832513?text=Halo%20Adit,%20saya%20tertarik%20dengan%20portfolio%20Anda"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Direct Connect & Coffee"
+        aria-label={isEnglish ? "Connect & Coffee via WhatsApp" : "Ngobrol Santai via WhatsApp"}
         className="fixed bottom-6 left-6 z-40 hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full bg-[var(--color-canvas-900)]/90 backdrop-blur-md border border-white/15 hover:border-[var(--color-accent)] text-white shadow-2xl active:scale-95 transition-all group font-mono text-xs"
       >
         <span className="text-sm">☕</span>
