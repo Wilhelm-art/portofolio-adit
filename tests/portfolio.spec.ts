@@ -14,7 +14,7 @@ test.describe('Portfolio Critical User Journeys (Slide 5 Suite)', () => {
     await expect(logo).toContainText('A');
 
     // Check profile image cutout (first in DOM is hero)
-    const profileImg = page.locator('img[src*="profile-cutout.png"]').first();
+    const profileImg = page.locator('img[src*="profile-cutout"]').first();
     await expect(profileImg).toBeVisible();
 
     // Check role banner badge
@@ -112,13 +112,13 @@ test.describe('Portfolio Critical User Journeys (Slide 5 Suite)', () => {
     await page.goto('/');
 
     // Click English button
-    const enBtn = page.getByRole('button', { name: 'English' }).first();
+    const enBtn = page.getByRole('button', { name: /English/i }).first();
     await expect(enBtn).toBeVisible();
     await enBtn.click();
     await expect(page).toHaveURL(/\/en/);
 
     // Click Bahasa Indonesia button
-    const idBtn = page.getByRole('button', { name: 'Bahasa Indonesia' }).first();
+    const idBtn = page.getByRole('button', { name: /Bahasa Indonesia/i }).first();
     await expect(idBtn).toBeVisible();
     await idBtn.click();
     await expect(page).toHaveURL(/\/(?!en)/);

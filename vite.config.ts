@@ -18,9 +18,6 @@ export default defineConfig(() => {
             if (id.includes('node_modules/lucide-react')) {
               return 'lucide-icons';
             }
-            if (id.includes('node_modules/motion')) {
-              return 'vendor-motion';
-            }
             if (
               id.includes('node_modules/i18next') ||
               id.includes('node_modules/react-i18next') ||

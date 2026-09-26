@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
 import { Download, ExternalLink } from 'lucide-react';
 
 export function Resume() {
@@ -17,11 +16,7 @@ export function Resume() {
       </Helmet>
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-        >
+        <div className="animate-slideUp">
           {/* Header */}
           <header className="border-b border-white/[0.08] pb-10 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
@@ -95,7 +90,7 @@ export function Resume() {
             </div>
           </div>
 
-        </motion.div>
+        </div>
       </div>
     </>
   );

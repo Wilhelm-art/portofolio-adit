@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
 import { Mail, MessageSquare, Linkedin, Github, MapPin, Send, ArrowUpRight, Copy, Check } from 'lucide-react';
 
 export function Contact() {
@@ -32,11 +31,7 @@ export function Contact() {
       </Helmet>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-        >
+        <div className="animate-slideUp">
           {/* Header */}
           <header className="border-b border-white/[0.08] pb-10 mb-14">
             <div className="flex items-center gap-2 mb-4">
@@ -228,7 +223,7 @@ export function Contact() {
             </div>
 
           </div>
-        </motion.div>
+        </div>
       </div>
     </>
   );

@@ -2,7 +2,6 @@ import { useTranslation } from 'react-i18next';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react';
-import { motion } from 'motion/react';
 import { projects } from '../data';
 
 export function ProjectDetail() {
@@ -59,11 +58,7 @@ export function ProjectDetail() {
       </Helmet>
 
       <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-        >
+        <div className="animate-slideUp">
           
           {/* Back Navigation */}
           <Link 
@@ -307,7 +302,7 @@ export function ProjectDetail() {
 
           </div>
 
-        </motion.div>
+        </div>
       </article>
     </>
   );
