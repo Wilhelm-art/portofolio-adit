@@ -21,12 +21,32 @@ test.describe('Portfolio Critical User Journeys (Slide 5 Suite)', () => {
     await expect(page.locator('text=SOFTWARE ENGINEER & NETWORK SECURITY').first()).toBeVisible();
   });
 
-  test('J-02: 1-Click local PDF resume download triggers expected file', async ({ page }) => {
+  test('J-02: 1-Click local PDF resume download triggers expected file and ATS view toggles', async ({ page }) => {
     await page.goto('/resume');
     
     // Locate the direct PDF download button in resume page
     const downloadBtn = page.locator('a[href*="Adit_Hardiansyah_Resume.pdf"][download]').first();
     await expect(downloadBtn).toBeVisible();
+
+    // Verify PDF viewer points to local asset, not blocked external URL
+    const pdfObject = page.locator('object[data*="Adit_Hardiansyah_Resume.pdf"]');
+    await expect(pdfObject).toBeVisible();
+
+    // Switch to Interactive ATS View
+    const atsTabBtn = page.getByRole('button', { name: /Format ATS Interaktif|Interactive ATS View/i });
+    await expect(atsTabBtn).toBeVisible();
+    await atsTabBtn.click();
+
+    // Verify ATS content elements
+    await expect(page.locator('text=/RINGKASAN PROFESIONAL|PROFESSIONAL SUMMARY/i').first()).toBeVisible();
+    await expect(page.locator('text=STMIK Mardira Indonesia').first()).toBeVisible();
+    await expect(page.locator('text=Google Cybersecurity').first()).toBeVisible();
+    await expect(page.locator('text=BNSP').first()).toBeVisible();
+
+    // Switch back to PDF tab
+    const pdfTabBtn = page.getByRole('button', { name: /Pratinjau PDF Asli|PDF Preview/i });
+    await pdfTabBtn.click();
+    await expect(pdfObject).toBeVisible();
 
     // Intercept browser download event
     const downloadPromise = page.waitForEvent('download');
