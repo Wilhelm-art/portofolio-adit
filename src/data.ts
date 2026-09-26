@@ -25,7 +25,7 @@ export const projects: Project[] = [
     impact: 'Empowered local entrepreneurs to calculate precise margins and protect profit sustainability.',
     liveUrl: 'https://github.com/Wilhelm-art/meracik-ide',
     repoUrl: 'https://github.com/Wilhelm-art/meracik-ide',
-    screenshot: '/projects/gadget-vault.webp',
+    screenshot: '/projects/meracik-ide.webp',
     category: 'mobile',
     featured: true
   },

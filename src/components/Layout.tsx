@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { CommandPalette } from './CommandPalette';
 
 export function Layout() {
   const location = useLocation();
@@ -21,6 +22,9 @@ export function Layout() {
         <Outlet />
       </main>
       <Footer />
+
+      {/* Global Command Palette (Ctrl+K) */}
+      <CommandPalette />
     </div>
   );
 }
