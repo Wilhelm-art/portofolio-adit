@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ArrowUpRight, Search } from 'lucide-react';
-import { motion } from 'motion/react';
 import { projects } from '../data';
 
 export function Projects() {
@@ -115,12 +114,9 @@ export function Projects() {
             </div>
           ) : (
             filteredProjects.map((project, idx) => (
-            <motion.article 
+            <article 
               key={project.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: idx * 0.04 }}
-              className="border border-white/[0.07] bg-[var(--color-canvas-900)] rounded-lg overflow-hidden hover:border-white/20 transition-all"
+              className="border border-white/[0.07] bg-[var(--color-canvas-900)] rounded-lg overflow-hidden hover:border-white/20 transition-all animate-fadeIn"
             >
               <div className="p-6 sm:p-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -216,7 +212,7 @@ export function Projects() {
 
                 </div>
               </div>
-            </motion.article>
+            </article>
           )))}
         </div>
 

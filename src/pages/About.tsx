@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion } from 'motion/react';
 import { ArrowUpRight, GraduationCap, ShieldCheck } from 'lucide-react';
 
 export function About() {
@@ -62,11 +61,7 @@ export function About() {
       </Helmet>
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.35 }}
-        >
+        <div className="animate-slideUp">
           
           {/* Header */}
           <header className="border-b border-white/[0.08] pb-12 mb-14">
@@ -256,7 +251,7 @@ export function About() {
 
           </div>
 
-        </motion.div>
+        </div>
       </div>
     </>
   );

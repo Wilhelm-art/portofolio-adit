@@ -19,10 +19,10 @@
   --color-stone-subtle: #98a2b3;
   --color-stone-faint: #3c4352;
 
-  --color-accent: #4b85db;
-  --color-accent-hover: #3b73c4;
-  --color-accent-muted: rgba(75, 133, 219, 0.12);
-  --color-accent-border: rgba(75, 133, 219, 0.28);
+  --color-accent: #5d9df8;
+  --color-accent-hover: #4b85db;
+  --color-accent-muted: rgba(93, 157, 248, 0.12);
+  --color-accent-border: rgba(93, 157, 248, 0.28);
 }
 
 :root {
