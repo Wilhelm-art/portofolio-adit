@@ -160,6 +160,9 @@ export function Home() {
           id="hero" 
           className="relative w-full h-screen min-h-[640px] max-h-[1050px] flex items-center justify-center overflow-hidden select-none"
         >
+          {/* Accessible Semantic Heading for Screen Readers & Web Crawlers */}
+          <h1 className="sr-only">Adit Hardiansyah Surachman - Software Engineer &amp; Network Security Specialist</h1>
+
           {/* Subtle Ambient Radial Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--color-accent)]/8 rounded-full blur-[140px] pointer-events-none -z-10" />
 
