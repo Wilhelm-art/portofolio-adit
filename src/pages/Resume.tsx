@@ -230,8 +230,8 @@ export function Resume() {
                 </div>
               </div>
 
-              {/* PDF Frame */}
-              <div className="relative w-full h-[650px] sm:h-[840px] bg-[var(--color-canvas-950)] flex flex-col items-center justify-center">
+              {/* Desktop PDF Frame (Native embedded PDF viewer) */}
+              <div className="hidden sm:flex relative w-full h-[840px] bg-[var(--color-canvas-950)] flex-col items-center justify-center">
                 <object
                   data={`${activePdfUrl}#view=FitH&toolbar=0&navpanes=0`}
                   type="application/pdf"
@@ -275,9 +275,60 @@ export function Resume() {
                 </object>
               </div>
 
-              {/* Mobile notice */}
-              <div className="p-3 bg-[var(--color-canvas-950)] border-t border-white/[0.06] text-center text-xs text-[var(--color-stone-muted)]">
-                <span>{isEnglish ? "Viewing on mobile device?" : "Membuka lewat ponsel?"} </span>
+              {/* Mobile Dedicated Document Card (Resolves blank/black void on mobile browsers) */}
+              <div className="sm:hidden p-6 bg-[var(--color-canvas-950)] text-center flex flex-col items-center justify-center space-y-4">
+                <div className="w-16 h-16 rounded-2xl bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 flex items-center justify-center text-[var(--color-accent)] shadow-inner">
+                  <FileText className="w-8 h-8" />
+                </div>
+                <div className="space-y-1.5 max-w-xs">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-mono font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Dokumen PDF Resmi • 43.6 KB</span>
+                  </div>
+                  <h3 className="text-base font-bold font-display text-[var(--color-paper-50)]">
+                    {activePdfName}
+                  </h3>
+                  <p className="text-xs text-[var(--color-stone-muted)] leading-relaxed">
+                    {isEnglish
+                      ? "Mobile browsers (Android/iOS) do not support inline PDF frames. Open the full document in a new tab or read the mobile-optimized ATS view below."
+                      : "Peramban ponsel (Android & iOS) secara bawaan tidak mendukung bingkai PDF di dalam halaman web. Silakan buka PDF langsung di layar penuh atau baca format teks ATS yang nyaman di bawah."}
+                  </p>
+                </div>
+
+                <div className="w-full max-w-xs space-y-2.5 pt-2">
+                  <a
+                    href={activePdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 px-4 rounded-xl bg-[var(--color-accent)] text-white text-xs font-mono font-bold flex items-center justify-center gap-2 hover:bg-[var(--color-accent)]/90 transition-all shadow-md active:scale-[0.98]"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>{isEnglish ? "Open PDF in Full Screen" : "Buka PDF di Layar Penuh"}</span>
+                  </a>
+
+                  <a
+                    href={activePdfUrl}
+                    download={activePdfName}
+                    className="w-full py-2.5 px-4 rounded-xl bg-[var(--color-canvas-900)] border border-white/10 text-[var(--color-paper-50)] text-xs font-mono font-medium flex items-center justify-center gap-2 hover:border-[var(--color-accent)] transition-all active:scale-[0.98]"
+                  >
+                    <Download className="w-3.5 h-3.5 text-[var(--color-accent)]" />
+                    <span>{isEnglish ? "Download Authentic PDF" : "Unduh File PDF"}</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('ats')}
+                    className="w-full py-2.5 px-4 rounded-xl bg-white/5 border border-white/10 text-[var(--color-accent)] text-xs font-mono font-medium flex items-center justify-center gap-2 hover:bg-white/10 transition-all active:scale-[0.98]"
+                  >
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>{isEnglish ? "Read Plain Text Version" : "Baca Versi Teks Terstruktur"}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Desktop notice */}
+              <div className="hidden sm:block p-3 bg-[var(--color-canvas-950)] border-t border-white/[0.06] text-center text-xs text-[var(--color-stone-muted)]">
+                <span>{isEnglish ? "Viewing on desktop?" : "Membaca di komputer?"} </span>
                 <button
                   type="button"
                   onClick={() => setActiveTab('ats')}
