@@ -731,31 +731,27 @@ export function Home() {
               <div className="lg:col-span-7 space-y-4">
                 
                 {/* 01 Dean's Lister / Academic */}
-                <a 
-                  href="https://mardira.ac.id" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] hover:border-[var(--color-accent)] transition-all flex items-center justify-between group shadow-sm block"
+                <div 
+                  className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] flex items-center justify-between shadow-sm"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0">
                       <GraduationCap className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold font-display text-white group-hover:text-[var(--color-accent)] transition-colors">
-                        Lulusan Terbaik (IPK 3.62 / 4.00)
+                      <h4 className="text-base font-bold font-display text-white">
+                        Lulusan Sarjana (IPK 3.62 / 4.00)
                       </h4>
                       <p className="text-xs text-[var(--color-stone-muted)]">
-                        STMIK Mardira Indonesia &bull; 2021 &ndash; 2025 (Cum Laude)
+                        STMIK Mardira Indonesia &bull; 2021 &ndash; 2025 (Sangat Memuaskan)
                       </p>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[var(--color-stone-muted)] group-hover:text-white transition-colors shrink-0" />
-                </a>
+                </div>
 
                 {/* 02 Google Cybersecurity */}
                 <a 
-                  href="https://www.coursera.org/account/accomplishments/professional-cert" 
+                  href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/LQ1NNIQRM3Q1" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] hover:border-[var(--color-accent)] transition-all flex items-center justify-between group shadow-sm block"
@@ -777,27 +773,23 @@ export function Home() {
                 </a>
 
                 {/* 03 BNSP RI */}
-                <a 
-                  href="https://bnsp.go.id" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] hover:border-[var(--color-accent)] transition-all flex items-center justify-between group shadow-sm block"
+                <div 
+                  className="p-5 rounded-2xl bg-[var(--color-canvas-900)] border border-white/[0.08] flex items-center justify-between shadow-sm"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0 group-hover:scale-105 transition-transform">
+                    <div className="w-11 h-11 rounded-xl bg-white/5 flex items-center justify-center text-[var(--color-accent)] shrink-0">
                       <Award className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold font-display text-white group-hover:text-[var(--color-accent)] transition-colors">
+                      <h4 className="text-base font-bold font-display text-white">
                         Sertifikasi Profesi BNSP RI
                       </h4>
                       <p className="text-xs text-[var(--color-stone-muted)]">
-                        Badan Nasional Sertifikasi Profesi &bull; Teknisi Jaringan Komputer
+                        Badan Nasional Sertifikasi Profesi &bull; Standar Kompetensi Kerja Nasional
                       </p>
                     </div>
                   </div>
-                  <ExternalLink className="w-4 h-4 text-[var(--color-stone-muted)] group-hover:text-white transition-colors shrink-0" />
-                </a>
+                </div>
 
               </div>
 
