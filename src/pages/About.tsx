@@ -182,7 +182,7 @@ export function About() {
                         Penerbit: Google (Coursera Verified) • Keamanan Jaringan, Deteksi Ancaman, SIEM & Python.
                       </p>
                       <a
-                        href="https://drive.google.com/file/d/1HOwxuX834gxiyAHmYR59sBcSmdvgTZpZ/view?usp=drive_link"
+                        href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/LQ1NNIQRM3Q1"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-paper-50)] transition-colors active:scale-[0.98]"
@@ -195,24 +195,15 @@ export function About() {
                     <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 rounded-lg">
                       <div className="flex items-baseline justify-between mb-2">
                         <span className="text-sm font-semibold text-[var(--color-paper-50)]">
-                          Sertifikasi BNSP Teknisi Komputer
+                          Sertifikasi BNSP
                         </span>
                         <span className="font-mono text-xs text-[var(--color-stone-muted)]">
-                          2025
+                          2021
                         </span>
                       </div>
-                      <p className="text-xs text-[var(--color-stone-muted)] mb-4 leading-relaxed">
-                        Badan Nasional Sertifikasi Profesi • Standar Kompetensi Nasional Indonesia.
+                      <p className="text-xs text-[var(--color-stone-muted)] leading-relaxed">
+                        Badan Nasional Sertifikasi Profesi • Standar Kompetensi Kerja Nasional Indonesia.
                       </p>
-                      <a
-                        href="https://drive.google.com/file/d/1J_E7l4kE1z2M3N4O5P6Q7R8S9T0U1V2W/view?usp=sharing"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-paper-50)] transition-colors active:scale-[0.98]"
-                      >
-                        <span>Sertifikat Kompetensi Kerja</span>
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </a>
                     </div>
 
                   </div>
