@@ -43,8 +43,9 @@ export function Resume() {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   // Original Authentic CV Files in public/resume/
-  const cvIdFile = "/resume/CV_Adit_Hardiansyah_Surachman.pdf";
-  const cvEnFile = "/resume/CV_Adit_Hardiansyah_Surachman_EN.pdf";
+  const cvVersion = "v=20261021b";
+  const cvIdFile = `/resume/CV_Adit_Hardiansyah_Surachman.pdf?${cvVersion}`;
+  const cvEnFile = `/resume/CV_Adit_Hardiansyah_Surachman_EN.pdf?${cvVersion}`;
 
   // Active CV file based on selected language
   const activePdfUrl = pdfLang === 'en' ? cvEnFile : cvIdFile;
@@ -205,7 +206,7 @@ export function Resume() {
                 <div className="flex items-center gap-1.5 sm:gap-2 truncate">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
                   <span className="truncate font-medium text-[var(--color-paper-50)]">{activePdfName}</span>
-                  <span className="hidden md:inline-block text-white/30">• 43.6 KB</span>
+                  <span className="hidden md:inline-block text-white/30">• {pdfLang === 'en' ? '101.0 KB' : '109.8 KB'}</span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3 shrink-0">
                   <a 
@@ -282,7 +283,7 @@ export function Resume() {
                 <div className="space-y-1.5 max-w-xs">
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-mono font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Dokumen PDF Resmi • 43.6 KB</span>
+                    <span>Dokumen PDF Resmi • {pdfLang === 'en' ? '101.0 KB' : '109.8 KB'}</span>
                   </div>
                   <h3 className="text-base font-bold font-display text-[var(--color-paper-50)]">
                     {activePdfName}
