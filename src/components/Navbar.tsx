@@ -1,10 +1,51 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import { Menu, X, Search, Sun, Moon } from 'lucide-react';
+
+function SearchIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </svg>
+  );
+}
+
+function SunIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+    </svg>
+  );
+}
+
+function MoonIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+    </svg>
+  );
+}
+
+function MenuIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <line x1="4" x2="20" y1="12" y2="12" />
+      <line x1="4" x2="20" y1="6" y2="6" />
+      <line x1="4" x2="20" y1="18" y2="18" />
+    </svg>
+  );
+}
+
+function CloseIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M18 6 6 18M6 6l12 12" />
+    </svg>
+  );
+}
 
 export function Navbar() {
-  const { t, i18n } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -22,15 +63,24 @@ export function Navbar() {
     if (theme === 'light') {
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.remove('light');
-      document.documentElement.classList.add('dark');
     }
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+  }, []);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setTheme((prev) => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      if (next === 'light') {
+        document.documentElement.classList.add('light');
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.remove('light');
+        document.documentElement.classList.add('dark');
+      }
+      try {
+        localStorage.setItem('theme', next);
+      } catch (_) {}
+      return next;
+    });
   };
 
   const isEnglish = location.pathname.startsWith('/en');
@@ -53,7 +103,8 @@ export function Navbar() {
     { name: 'RESUME', href: `${basePath}/resume` },
   ];
 
-  const handleLanguageSwitch = (targetLang: 'id' | 'en') => {
+  const handleLanguageSwitch = async (targetLang: 'id' | 'en') => {
+    const { default: i18n } = await import('../i18n');
     if (targetLang === 'en' && !isEnglish) {
       i18n.changeLanguage('en');
       const newPath = `/en${location.pathname === '/' ? '' : location.pathname}`;
@@ -130,11 +181,11 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
-            aria-label="Search"
+            aria-label="Search ⌘K"
             title="Search projects & actions (Ctrl+K)"
             className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-[var(--color-stone-muted)] hover:text-white text-xs font-mono transition-all"
           >
-            <Search className="w-3.5 h-3.5 text-[var(--color-accent)]" />
+            <SearchIcon className="w-3.5 h-3.5 text-[var(--color-accent)]" />
             <span className="hidden sm:inline text-[10px] uppercase font-semibold">Search</span>
             <kbd className="hidden sm:inline-block px-1.5 py-0.2 bg-black/40 border border-white/10 rounded text-[9px] text-[var(--color-paper-100)]" aria-hidden="true">
               ⌘K
@@ -146,7 +197,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => handleLanguageSwitch('id')}
-              aria-label="Bahasa Indonesia (ID)"
+              aria-label="ID - Bahasa Indonesia"
               className={`px-2 sm:px-2.5 py-1 text-[10px] font-mono uppercase font-semibold rounded-full transition-all ${
                 !isEnglish 
                   ? 'bg-white/15 text-white shadow-sm' 
@@ -158,7 +209,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => handleLanguageSwitch('en')}
-              aria-label="English (EN)"
+              aria-label="EN - English"
               className={`px-2 sm:px-2.5 py-1 text-[10px] font-mono uppercase font-semibold rounded-full transition-all ${
                 isEnglish 
                   ? 'bg-white/15 text-white shadow-sm' 
@@ -178,9 +229,9 @@ export function Navbar() {
             className="w-8 h-8 rounded-full border border-white/10 bg-white/5 hover:bg-white/15 flex items-center justify-center text-[var(--color-stone-muted)] hover:text-white transition-all active:scale-95"
           >
             {theme === 'dark' ? (
-              <Sun className="w-4 h-4 text-amber-400 animate-fadeIn" />
+              <SunIcon className="w-4 h-4 text-amber-400 animate-fadeIn" />
             ) : (
-              <Moon className="w-4 h-4 text-blue-500 animate-fadeIn" />
+              <MoonIcon className="w-4 h-4 text-blue-500 animate-fadeIn" />
             )}
           </button>
 
@@ -208,7 +259,7 @@ export function Navbar() {
             aria-label={isOpen ? 'Tutup navigasi' : 'Buka navigasi'}
             className="md:hidden w-8 h-8 flex items-center justify-center text-white border border-white/10 rounded-full bg-white/5 active:scale-95 transition-all ml-0.5"
           >
-            {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            {isOpen ? <CloseIcon className="w-4 h-4" /> : <MenuIcon className="w-4 h-4" />}
           </button>
         </div>
       </nav>

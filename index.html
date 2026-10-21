@@ -8,30 +8,31 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https:; frame-src 'self' https://drive.google.com; object-src 'self'; base-uri 'self';" />
     <title>Adit Hardiansyah Surachman | Software Engineer & Network Security</title>
-    
-    <!-- Instant Domain Redirect for portofolio-adit-two.vercel.app and apex domain -->
-    <script>
-      (function() {
-        var h = window.location.hostname;
-        if (h === 'portofolio-adit-two.vercel.app' || h === 'portfolio-adit.web.id' || (h.endsWith('.vercel.app') && h !== 'localhost')) {
-          window.location.replace('https://www.portfolio-adit.web.id' + window.location.pathname + window.location.search + window.location.hash);
-        }
-      })();
-    </script>
-    
-    <!-- Performance Preloads & Resource Hints -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Favicon & Brand Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <!-- Performance Preloads -->
     <link rel="preload" as="image" href="/assets/profile-cutout-sm.webp" media="(max-width: 640px)" fetchpriority="high" type="image/webp" />
     <link rel="preload" as="image" href="/assets/profile-cutout.webp" media="(min-width: 641px)" fetchpriority="high" type="image/webp" />
     <link rel="ai-catalog" type="application/json" href="/.well-known/ai-catalog.json" />
-
-    <!-- Google Fonts Non-blocking -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" />
-    </noscript>
-
+    <!-- Critical CSS for Instant Zero-FCP Dark Canvas Paint -->
+    <style>
+      @font-face {
+        font-family: 'Plus Jakarta Sans';
+        font-style: normal;
+        font-weight: 400 700;
+        font-display: swap;
+        src: url('/fonts/plus-jakarta-sans.woff2') format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      html, body {
+        background-color: #0e1015;
+        color: #f1f3f7;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
     <!-- Core SEO Meta Tags -->
     <meta name="title" content="Adit Hardiansyah Surachman | Software Engineer & Network Security" />
     <meta name="description" content="Portofolio resmi Adit Hardiansyah Surachman. Lulusan S1 Teknik Informatika STMIK Mardira Indonesia (IPK 3.62) dengan sertifikasi Google Cybersecurity dan BNSP. Spesialis full-stack web dan keamanan jaringan." />
@@ -39,18 +40,15 @@
     <meta name="author" content="Adit Hardiansyah Surachman" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <link rel="canonical" href="https://www.portfolio-adit.web.id/" />
-
     <!-- Geographic & Local SEO (GEO) Meta Tags -->
     <meta name="geo.region" content="ID-JB" />
     <meta name="geo.placename" content="Bandung" />
     <meta name="geo.position" content="-6.9175;107.6191" />
     <meta name="ICBM" content="-6.9175, 107.6191" />
-
     <!-- Multilingual Alternate Links -->
     <link rel="alternate" hreflang="id" href="https://www.portfolio-adit.web.id/" />
     <link rel="alternate" hreflang="en" href="https://www.portfolio-adit.web.id/en" />
     <link rel="alternate" hreflang="x-default" href="https://www.portfolio-adit.web.id/" />
-
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://www.portfolio-adit.web.id/" />
@@ -60,14 +58,16 @@
     <meta property="og:site_name" content="Adit Hardiansyah Surachman Portfolio" />
     <meta property="og:locale" content="id_ID" />
     <meta property="og:locale:alternate" content="en_US" />
-
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://www.portfolio-adit.web.id/" />
     <meta name="twitter:title" content="Adit Hardiansyah Surachman | Software Engineer" />
     <meta name="twitter:description" content="S1 Teknik Informatika STMIK Mardira Indonesia (IPK 3.62) • Google Cybersecurity & BNSP Certified." />
     <meta name="twitter:image" content="https://www.portfolio-adit.web.id/assets/profile.jpg" />
-
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
     <!-- JSON-LD Structured Data for Google Rich Results & Generative AI (GEO) -->
     <script type="application/ld+json">
     {
@@ -170,35 +170,5 @@
       ]
     }
     </script>
-  </head>
-  <body>
-    <div id="root">
-      <header class="border-b border-white/[0.08] bg-[var(--color-canvas-950)]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded bg-[var(--color-canvas-850)] border border-white/[0.08] flex items-center justify-center font-mono font-bold text-sm text-[var(--color-accent)]">A</div>
-            <div>
-              <span class="font-display font-bold text-sm text-[var(--color-paper-50)] block leading-none">Adit H. S.</span>
-              <span class="font-mono text-[10px] text-[var(--color-stone-muted)] block mt-0.5">Software Engineer</span>
-            </div>
-          </div>
-        </div>
-      </header>
-      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-16">
-        <div class="max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-[var(--color-canvas-900)] border border-white/[0.08] mb-6">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            <span class="font-mono text-xs uppercase tracking-wider text-[var(--color-paper-50)]">Tersedia untuk Kerja</span>
-          </div>
-          <h1 class="text-4xl sm:text-5xl font-bold font-display text-[var(--color-paper-50)] tracking-tight mb-6">
-            Rekayasa Perangkat Lunak & Keamanan Jaringan
-          </h1>
-          <p class="text-lg text-[var(--color-stone-muted)] leading-relaxed mb-8">
-            Lulusan S1 Teknik Informatika STMIK Mardira Indonesia (IPK 3.62/4.00) dengan sertifikasi Google Cybersecurity dan BNSP.
-          </p>
-        </div>
-      </main>
-    </div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

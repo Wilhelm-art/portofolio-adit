@@ -11,17 +11,28 @@ export default defineConfig(() => {
         '@': path.resolve(__dirname, '.'),
       },
     },
+    esbuild: {
+      legalComments: 'none',
+      drop: ['console', 'debugger'],
+    },
     build: {
+      target: 'es2022',
+      cssMinify: true,
       rollupOptions: {
         output: {
           manualChunks(id) {
+            if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+              return 'vendor-react';
+            }
+            if (id.includes('node_modules/react-router') || id.includes('node_modules/@remix-run/router')) {
+              return 'vendor-router';
+            }
             if (id.includes('node_modules/lucide-react')) {
               return 'lucide-icons';
             }
             if (
               id.includes('node_modules/i18next') ||
-              id.includes('node_modules/react-i18next') ||
-              id.includes('node_modules/react-helmet-async')
+              id.includes('node_modules/react-i18next')
             ) {
               return 'vendor-i18n';
             }

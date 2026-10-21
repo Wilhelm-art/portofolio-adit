@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import { PageHead } from '../components/PageHead';
 import { 
   Download, 
   ExternalLink, 
@@ -21,7 +22,8 @@ import {
 
 export function Resume() {
   const { t, i18n } = useTranslation();
-  const isEnglish = i18n.language.startsWith('en');
+  const location = useLocation();
+  const isEnglish = location.pathname.startsWith('/en') || Boolean(i18n?.language?.startsWith('en'));
 
   // Select between PDF Preview and Interactive ATS View
   const [activeTab, setActiveTab] = useState<'pdf' | 'ats'>(() => {
@@ -60,10 +62,7 @@ export function Resume() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('resume.title')} | Adit Hardiansyah Surachman</title>
-        <meta name="description" content={t('resume.subtitle')} />
-      </Helmet>
+      <PageHead title={`${t('resume.title')} | Adit Hardiansyah Surachman`} description={t('resume.subtitle')} />
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="animate-slideUp">
@@ -352,8 +351,8 @@ export function Resume() {
                 </h2>
                 <p className="text-sm font-mono text-[var(--color-accent)] font-medium mt-1">
                   {pdfLang === 'en' 
-                    ? "Informatics Engineering Graduate • IT Administration • Software Engineering" 
-                    : "Lulusan S1 Teknik Informatika • Staf IT & Administrasi • Software Engineering"}
+                    ? "IT Systems Specialist & Technical Operations • Software, Infrastructure & Industrial Machinery" 
+                    : "IT Systems Specialist & Technical Operations • Software, Infrastructure & Industrial Machinery"}
                 </p>
                 
                 <div className="flex flex-wrap items-center gap-y-2 gap-x-4 mt-4 text-xs font-mono text-[var(--color-stone-muted)]">
@@ -421,8 +420,8 @@ export function Resume() {
                 </h3>
                 <p className="text-sm text-[var(--color-paper-50)] leading-relaxed bg-[var(--color-canvas-950)] p-4 rounded-lg border border-white/[0.04]">
                   {pdfLang === 'en'
-                    ? "Bachelor of Informatics Engineering graduate with hands-on experience in administration, information technology, and industrial operations, including within government institutions. Skilled in data management, official correspondence, financial reporting, and daily operational support. Possesses strong analytical skills, a high attention to detail, and the ability to quickly adapt to new procedures and work environments. Ready to actively contribute across various fields including administration, IT, and production operations."
-                    : "Lulusan S1 Teknik Informatika dengan pengalaman nyata di bidang administrasi dan teknologi informasi, termasuk di lingkungan instansi pemerintahan. Terbiasa menangani pengelolaan data, surat-menyurat, pelaporan keuangan, dan dukungan operasional harian. Memiliki kemampuan analitis yang kuat, teliti dalam bekerja, serta mudah beradaptasi dengan prosedur dan lingkungan kerja baru. Siap berkontribusi secara aktif dalam mendukung kelancaran operasional di berbagai bidang, termasuk administrasi, teknologi informasi, dan operasional produksi."}
+                    ? "Dual-discipline Information Technology & Technical Operations Specialist holding a Bachelor of Computer Science in Informatics Engineering (GPA 3.62/4.00), Google Cybersecurity Professional Certification, and an accredited vocational foundation in Machining Engineering (Official UKK Certificate). Combines hands-on software systems engineering, relational database administration, reporting workflow automation, and IT infrastructure troubleshooting with the rigorous operational discipline required for precision industrial machinery and high-pressure steam boiler utility systems. Demonstrated track record of reducing administrative reporting turnaround time by 40% through end-to-end data digitalization, while upholding strict compliance with industrial SOP and occupational safety standards (OHS/K3) backed by a 100% Zero Accident record."
+                    : "Profesional Teknologi Informasi & Operasional Teknis berkualifikasi ganda lulusan S1 Teknik Informatika (IPK 3,62/4,00) bersertifikasi Google Cybersecurity dengan fondasi kejuruan Teknik Pemesinan (Sertifikat UKK Resmi). Menggabungkan kemampuan rekayasa sistem perangkat lunak, administrasi database, otomasi pelaporan, dan troubleshooting TI dengan kedisiplinan operasional mesin manufaktur berpresisi serta sistem utilitas ketel uap industri (steam boiler). Terbukti memangkas waktu kerja administrasi hingga 40% melalui digitalisasi data, serta menjunjung tinggi kepatuhan SOP dan K3 dengan rekam jejak 100% Zero Accident."}
                 </p>
               </div>
 
@@ -443,7 +442,7 @@ export function Resume() {
                       </p>
                     </div>
                     <span className="font-mono text-[11px] px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 self-start sm:self-auto font-medium">
-                      IPK: 3,61 / 4,00
+                      IPK: 3,62 / 4,00
                     </span>
                   </div>
 
@@ -474,62 +473,89 @@ export function Resume() {
                   <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04]">
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
                       <h4 className="text-sm font-bold text-[var(--color-paper-50)]">
-                        {pdfLang === 'en' ? "Department of Trade and Industry, City of Bandung" : "Dinas Perdagangan dan Perindustrian Kota Bandung"}
+                        {pdfLang === 'en' ? "IT Systems & Administration Specialist" : "Staf IT & Administrasi Sistem"}
                       </h4>
                       <span className="font-mono text-[11px] text-[var(--color-accent)] font-semibold">
                         Okt 2024 – Jan 2025
                       </span>
                     </div>
                     <p className="text-xs font-mono text-[var(--color-stone-muted)] mb-2.5">
-                      {pdfLang === 'en' ? "IT / Administration Staff • Bandung, West Java" : "Staf IT / Administrasi • Bandung, Jawa Barat"}
+                      {pdfLang === 'en' ? "Department of Trade and Industry, Bandung City • Bandung, West Java" : "Dinas Perdagangan dan Perindustrian Kota Bandung • Bandung, Jawa Barat"}
                     </p>
                     <ul className="text-xs text-[var(--color-stone-muted)] leading-relaxed list-disc list-inside space-y-1">
                       <li>
                         {pdfLang === 'en'
-                          ? "Developed a web-based budget calculation application to digitize manual processes, significantly improving accuracy and efficiency of annual financial reporting."
-                          : "Mengembangkan aplikasi perhitungan anggaran berbasis web untuk mendigitalisasi proses manual, meningkatkan akurasi dan efisiensi pelaporan keuangan tahunan dinas secara signifikan."}
+                          ? "Engineered a web-based budget data recapitulation application (PHP & MySQL), automating manual cross-divisional ledger calculations and cutting financial reporting turnaround time by 40%."
+                          : "Mengembangkan aplikasi rekapitulasi data anggaran berbasis web (PHP & MySQL), mengotomasi kalkulasi manual lintas bidang dinas dan mempercepat waktu penyusunan laporan keuangan hingga 40%."}
                       </li>
                       <li>
                         {pdfLang === 'en'
-                          ? "Conducted comprehensive system testing and data recapitulation to ensure integrity of financial reports prior to formal audits."
-                          : "Melakukan pengujian sistem secara menyeluruh dan rekap data untuk memastikan integritas laporan keuangan sebelum audit formal."}
+                          ? "Eliminated human data entry errors ahead of official municipal BPK/Inspectorate audits through automated input validation rules and centralized relational database reconciliation."
+                          : "Mengeliminasi potensi human error pada data anggaran menjelang audit resmi BPK/Inspektorat melalui validasi input formulir otomatis dan rekonsiliasi basis data terpusat."}
                       </li>
                       <li>
                         {pdfLang === 'en'
-                          ? "Provided IT technical support and maintained smooth daily operations of the department."
-                          : "Memberikan dukungan teknis IT dan menjaga kelancaran operasional harian departemen."}
+                          ? "Delivered Tier-1/2 daily IT Helpdesk support: resolved hardware/software issues for staff workstations, managed local area network (LAN) configurations, and maintained 99%+ operational workstation availability."
+                          : "Menyediakan layanan IT Helpdesk harian: menangani troubleshooting hardware/software workstation staf, konfigurasi jaringan lokal (LAN), serta memastikan 99%+ ketersediaan operasional perangkat kerja."}
                       </li>
                     </ul>
                   </div>
 
-                  {/* Masjid AT-Tijaniyah */}
+                  {/* DKM Masjid AT-Tijaniyah */}
                   <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04]">
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
                       <h4 className="text-sm font-bold text-[var(--color-paper-50)]">
-                        Masjid AT-Tijaniyah
+                        {pdfLang === 'en' ? "Lead Full-Stack Developer (Capstone Project)" : "Lead Full-Stack Developer (Proyek Skripsi)"}
                       </h4>
                       <span className="font-mono text-[11px] text-[var(--color-accent)] font-semibold">
                         Mar 2025 – Agt 2025
                       </span>
                     </div>
                     <p className="text-xs font-mono text-[var(--color-stone-muted)] mb-2.5">
-                      {pdfLang === 'en' ? "Lead Developer • West Bandung, West Java" : "Lead Developer • Bandung Barat, Jawa Barat"}
+                      {pdfLang === 'en' ? "DKM AT-Tijaniyah Mosque • West Bandung, West Java" : "DKM Masjid AT-Tijaniyah • Bandung Barat, Jawa Barat"}
                     </p>
                     <ul className="text-xs text-[var(--color-stone-muted)] leading-relaxed list-disc list-inside space-y-1">
                       <li>
                         {pdfLang === 'en'
-                          ? "Independently designed and developed a web-based financial management system to modernize bookkeeping previously done manually."
-                          : "Merancang dan mengembangkan sistem manajemen keuangan berbasis web secara mandiri untuk memodernisasi pembukuan yang sebelumnya dilakukan secara manual."}
+                          ? "Architected and built an end-to-end web cash management system (Laravel 10, Tailwind CSS, MySQL), digitizing manual paper ledgers into an accountable, transparent financial platform."
+                          : "Merancang dan membangun arsitektur sistem informasi kas web (Laravel 10, Tailwind CSS, MySQL) yang mendigitalisasi 100% pembukuan fisik manual menjadi sistem kas digital akuntabel dan transparan."}
                       </li>
                       <li>
                         {pdfLang === 'en'
-                          ? "Implemented a cash-based accounting model to simplify financial recording and reporting."
-                          : "Mengimplementasikan model akuntansi berbasis kas untuk menyederhanakan pencatatan dan pelaporan keuangan organisasi."}
+                          ? "Implemented a cash-basis accounting ledger engine with automated monthly and annual financial balance statements alongside scheduled database backup and recovery protocols."
+                          : "Mengimplementasikan modul akuntansi berbasis kas (cash-basis) dengan otomatisasi pelaporan bulanan/tahunan serta mekanisme pencadangan basis data berkala (database backup & recovery)."}
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* PT. Lestari Makaroni */}
+                  <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04]">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                      <h4 className="text-sm font-bold text-[var(--color-paper-50)]">
+                        {pdfLang === 'en' ? "Boiler & Utilities System Operator" : "Operator Boiler & Sistem Utilitas"}
+                      </h4>
+                      <span className="font-mono text-[11px] text-[var(--color-accent)] font-semibold">
+                        Jun 2023 – Agt 2023
+                      </span>
+                    </div>
+                    <p className="text-xs font-mono text-[var(--color-stone-muted)] mb-2.5">
+                      {pdfLang === 'en' ? "PT. Lestari Makaroni • West Bandung, West Java" : "PT. Lestari Makaroni • Bandung Barat, Jawa Barat"}
+                    </p>
+                    <ul className="text-xs text-[var(--color-stone-muted)] leading-relaxed list-disc list-inside space-y-1">
+                      <li>
+                        {pdfLang === 'en'
+                          ? "Operated and regulated industrial steam boiler utility systems continuously, guaranteeing stable, uninterrupted high-pressure thermal steam delivery across food manufacturing lines."
+                          : "Mengoperasikan dan mengontrol sistem ketel uap industri (steam boiler) secara berkelanjutan guna menjamin kestabilan suplai uap panas bertekanan tinggi untuk seluruh lini mesin produksi makanan."}
                       </li>
                       <li>
                         {pdfLang === 'en'
-                          ? "Managed full end-to-end development cycle from requirements analysis, coding, and testing to deployment."
-                          : "Mengelola siklus pengembangan end-to-end mulai dari analisis kebutuhan, pengkodean, pengujian, hingga deployment."}
+                          ? "Conducted hourly instrument telemetry monitoring on steam pressure gauges, water column levels, and burner combustion temperatures to proactively prevent overpressure explosion hazards."
+                          : "Melakukan monitoring instrumen secara berkala per jam terhadap manometer tekanan kerja (steam pressure gauge), level air ketel, dan suhu burner untuk mengantisipasi risiko bahaya ledakan/overpressure."}
+                      </li>
+                      <li>
+                        {pdfLang === 'en'
+                          ? "Executed scheduled preventive maintenance protocols: performed routine sediment blowdowns, burner cleanings, and safety valve inspections with a 100% Zero Accident safety record."
+                          : "Menjalankan SOP perawatan preventif terjadwal: melaksanakan prosedur pengurasan endapan kerak (blowdown rutin), pembersihan burner, dan inspeksi valve dengan rekam jejak 100% Zero Accident."}
                       </li>
                     </ul>
                   </div>
@@ -538,40 +564,78 @@ export function Resume() {
                   <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04]">
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
                       <h4 className="text-sm font-bold text-[var(--color-paper-50)]">
-                        PT. Bahagia Sejahtera Metalindo
+                        {pdfLang === 'en' ? "Production & Machining Operator" : "Operator Produksi & Pemesinan Logam"}
                       </h4>
                       <span className="font-mono text-[11px] text-[var(--color-accent)] font-semibold">
                         Agt 2020 – Sep 2020
                       </span>
                     </div>
                     <p className="text-xs font-mono text-[var(--color-stone-muted)] mb-2.5">
-                      {pdfLang === 'en' ? "Production Operator • West Bandung, West Java" : "Operator Produksi • Bandung Barat, Jawa Barat"}
+                      {pdfLang === 'en' ? "PT. Bahagia Sejahtera Metalindo • West Bandung, West Java" : "PT. Bahagia Sejahtera Metalindo • Bandung Barat, Jawa Barat"}
                     </p>
                     <ul className="text-xs text-[var(--color-stone-muted)] leading-relaxed list-disc list-inside space-y-1">
                       <li>
                         {pdfLang === 'en'
-                          ? "Carried out production processes according to technical specifications with high precision and full compliance with occupational health and safety (K3) standards and industry SOPs."
-                          : "Menjalankan proses produksi sesuai spesifikasi teknis dengan tingkat presisi tinggi dan kepatuhan penuh terhadap standar K3 serta SOP industri."}
+                          ? "Operated industrial metal fabrication machinery for plate shearing and stamping according to CAD engineering drawings and tight ISO dimensional tolerances."
+                          : "Mengoperasikan mesin manufaktur industri logam untuk proses pemotongan dan pencetakan pelat baja sesuai lembar kerja gambar teknik (engineering drawing) dan batas toleransi dimensi ketat."}
+                      </li>
+                      <li>
+                        {pdfLang === 'en'
+                          ? "Performed in-process Quality Control (QC) inspections using vernier calipers to minimize scrap rates and enforced 5S workplace standardization protocols."
+                          : "Menjalankan inspeksi Quality Control (QC) in-process menggunakan jangka sorong (vernier caliper) guna menekan rasio produk cacat (scrap) serta menerapkan budaya kerja 5S/5R."}
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
 
-              {/* 4. Sertifikasi & Lisensi / Certifications & Licenses */}
+              {/* 4. Proyek Teknis Unggulan / Featured Technical Projects */}
+              <div>
+                <h3 className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] font-semibold mb-3 flex items-center gap-2">
+                  <Code2 className="w-4 h-4" />
+                  <span>{pdfLang === 'en' ? "FEATURED TECHNICAL PROJECTS" : "PROYEK TEKNIS UNGGULAN"}</span>
+                </h3>
+                <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04]">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                    <h4 className="text-sm font-bold text-[var(--color-paper-50)]">
+                      PayNote &amp; Meracik-Ide — Web &amp; Mobile Applications
+                    </h4>
+                    <span className="font-mono text-[11px] text-[var(--color-accent)] font-semibold">
+                      Jan 2024 – Des 2024
+                    </span>
+                  </div>
+                  <p className="text-xs font-mono text-[var(--color-stone-muted)] mb-2.5">
+                    Independent Technical Projects (github.com/Wilhelm-art) • Bandung, Jawa Barat
+                  </p>
+                  <ul className="text-xs text-[var(--color-stone-muted)] leading-relaxed list-disc list-inside space-y-1">
+                    <li>
+                      <strong className="text-[var(--color-paper-50)]">PayNote:</strong> {pdfLang === 'en'
+                        ? "Engineered a financial tracking web application with MVC architecture, automated multi-category balance computation, and interactive analytical visual charts built with Laravel 10 and MySQL."
+                        : "Membangun aplikasi pencatatan keuangan dengan arsitektur MVC, kalkulasi saldo multi-kategori otomatis, dan visualisasi chart analitik interaktif menggunakan Laravel 10 dan MySQL."}
+                    </li>
+                    <li>
+                      <strong className="text-[var(--color-paper-50)]">Meracik-Ide:</strong> {pdfLang === 'en'
+                        ? "Developed a mobile financial calculator (COGS/HPP & Break-Even Point for MSMEs) using React Native/Expo, and designed an interactive portfolio web application achieving optimal Google Web Vitals scores (95+)."
+                        : "Mengembangkan aplikasi mobile kalkulasi finansial (HPP & BEP UMKM) berbasis React Native/Expo serta merancang website portofolio interaktif dengan skor Google Web Vitals optimal (95+)."}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* 5. Sertifikasi & Lisensi / Certifications & Licenses */}
               <div>
                 <h3 className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] font-semibold mb-3 flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4" />
-                  <span>{pdfLang === 'en' ? "CERTIFICATIONS & LICENSES" : "SERTIFIKASI & LISENSI"}</span>
+                  <span>{pdfLang === 'en' ? "CERTIFICATIONS & LICENSES" : "SERTIFIKASI & LISENSI PROFESIONAL"}</span>
                 </h3>
                 <div className="space-y-3">
                   <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
                       <h4 className="text-sm font-semibold text-[var(--color-paper-50)]">
-                        Google Cybersecurity Certificate
+                        Google Cybersecurity Professional Certificate
                       </h4>
                       <p className="text-xs text-[var(--color-stone-muted)] mt-0.5">
-                        Google Career Certificates • 2026
+                        Google Career Certificates / Coursera • 2026
                       </p>
                     </div>
                     <span className="font-mono text-[11px] px-2.5 py-1 rounded bg-[var(--color-accent-muted)] text-[var(--color-accent)] border border-[var(--color-accent-border)] self-start sm:self-auto font-medium">
@@ -582,64 +646,63 @@ export function Resume() {
                   <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
                       <h4 className="text-sm font-semibold text-[var(--color-paper-50)]">
-                        Sertifikat Kompetensi Kerja Nasional (BNSP) — Teknik Pemesinan
+                        {pdfLang === 'en' ? "Vocational Competency Certificate (UKK) in Machining Engineering" : "Sertifikat Uji Kompetensi Keahlian (UKK) Teknik Pemesinan"}
                       </h4>
                       <p className="text-xs text-[var(--color-stone-muted)] mt-0.5">
-                        Badan Nasional Sertifikasi Profesi • 2021
+                        PT. Indo Integral Sekawan • 2021
                       </p>
                     </div>
-                    <span className="font-mono text-[11px] px-2.5 py-1 rounded bg-[var(--color-accent-muted)] text-[var(--color-accent)] border border-[var(--color-accent-border)] self-start sm:self-auto font-medium">
-                      BNSP RI
+                    <span className="font-mono text-[11px] px-2.5 py-1 rounded bg-white/5 text-[var(--color-paper-50)] border border-white/10 self-start sm:self-auto font-medium">
+                      UKK Resmi
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* 5. Keahlian / Skills */}
+              {/* 6. Keahlian Teknis & Alat Kerja / Technical Skills */}
               <div>
                 <h3 className="font-mono text-xs uppercase tracking-wider text-[var(--color-accent)] font-semibold mb-3 flex items-center gap-2">
-                  <Code2 className="w-4 h-4" />
-                  <span>{pdfLang === 'en' ? "SKILLS" : "KEAHLIAN"}</span>
+                  <Sparkles className="w-4 h-4" />
+                  <span>{pdfLang === 'en' ? "TECHNICAL SKILLS & TOOLS" : "KEAHLIAN TEKNIS & ALAT KERJA"}</span>
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04]">
-                    <h5 className="font-mono text-xs font-bold text-[var(--color-paper-50)] mb-1">
-                      {pdfLang === 'en' ? "Administration & Office" : "Administrasi & Perkantoran"}
+                    <h5 className="font-mono text-xs font-bold text-[var(--color-accent)] mb-1">
+                      {pdfLang === 'en' ? "Software Development" : "Pengembangan Perangkat Lunak"}
                     </h5>
                     <p className="text-xs text-[var(--color-stone-muted)] leading-relaxed">
-                      Microsoft Office (Word, Excel, PowerPoint), Google Workspace, pengelolaan dokumen & arsip, surat-menyurat dinas, rekap data.
+                      PHP, Laravel, MySQL, JavaScript, TypeScript, React, Next.js, React Native, RESTful APIs, Git &amp; GitHub.
                     </p>
                   </div>
 
                   <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04]">
-                    <h5 className="font-mono text-xs font-bold text-[var(--color-paper-50)] mb-1">
-                      {pdfLang === 'en' ? "Information Technology" : "Teknologi Informasi"}
+                    <h5 className="font-mono text-xs font-bold text-[var(--color-accent)] mb-1">
+                      {pdfLang === 'en' ? "IT Support, Networking & Security" : "IT Support, Jaringan & Keamanan"}
                     </h5>
                     <p className="text-xs text-[var(--color-stone-muted)] leading-relaxed">
-                      PHP, Python, Next.js, React, Laravel, TypeScript, Tailwind CSS, SQL, Linux, SDLC.
+                      Troubleshooting PC (Hardware/Software), Jaringan LAN/WAN, TCP/IP, DNS/DHCP, Windows Server/10/11, Linux, Keamanan Siber (Google Certified).
                     </p>
                   </div>
 
                   <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04]">
-                    <h5 className="font-mono text-xs font-bold text-[var(--color-paper-50)] mb-1">
-                      {pdfLang === 'en' ? "Cybersecurity & Networking" : "Keamanan Siber & Jaringan"}
+                    <h5 className="font-mono text-xs font-bold text-[var(--color-accent)] mb-1">
+                      {pdfLang === 'en' ? "Machining & Plant Operations" : "Teknis Mesin & Operasional Pabrik"}
                     </h5>
                     <p className="text-xs text-[var(--color-stone-muted)] leading-relaxed">
-                      Network Security, Threat Analysis, Risk Management, LAN/WAN, System Testing & Troubleshooting.
+                      Pengoperasian Sistem Boiler Industri, Mesin Bubut Konvensional, Mesin Frais, Quality Control (Jangka Sorong, Mikrometer), SOP K3 Manufaktur, 5S/5R.
                     </p>
                   </div>
 
                   <div className="p-4 rounded-lg bg-[var(--color-canvas-950)] border border-white/[0.04]">
-                    <h5 className="font-mono text-xs font-bold text-[var(--color-paper-50)] mb-1">
-                      {pdfLang === 'en' ? "Production & Languages" : "Operasional & Bahasa"}
+                    <h5 className="font-mono text-xs font-bold text-[var(--color-accent)] mb-1">
+                      {pdfLang === 'en' ? "Administration & Computing" : "Administrasi & Komputasi"}
                     </h5>
                     <p className="text-xs text-[var(--color-stone-muted)] leading-relaxed">
-                      Operasional mesin industri, quality control, K3 & SOP produksi. Bahasa Indonesia (Native), Bahasa Inggris (Aktif).
+                      Microsoft Excel (Advanced Formula &amp; Rekap Data Logsheet), Microsoft Word, Google Workspace, Command Prompt / PowerShell.
                     </p>
                   </div>
                 </div>
               </div>
-
             </div>
           )}
 

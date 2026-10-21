@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { PageHead } from '../components/PageHead';
 import { ArrowUpRight, Search } from 'lucide-react';
 import { projects } from '../data';
 
@@ -38,10 +38,7 @@ export function Projects() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('projects.title')} | Adit Hardiansyah Surachman</title>
-        <meta name="description" content={t('projects.subtitle')} />
-      </Helmet>
+      <PageHead title={"{t('projects.title')} | Adit Hardiansyah Surachman"} description={t('projects.subtitle')} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
@@ -130,6 +127,9 @@ export function Projects() {
                       <img 
                         src={project.screenshot} 
                         alt={project.title}
+                        width="480"
+                        height="300"
+                        loading="lazy"
                         className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
                         onError={(e) => {
                           (e.target as HTMLElement).style.display = 'none';

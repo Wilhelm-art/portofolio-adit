@@ -23,7 +23,7 @@ export function CommandPalette() {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [query, setQuery] = useState('');
   const [copied, setCopied] = useState(false);
 

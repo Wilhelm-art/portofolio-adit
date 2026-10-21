@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { PageHead } from '../components/PageHead';
 import { ArrowUpRight, GraduationCap, ShieldCheck } from 'lucide-react';
 
 export function About() {
@@ -55,10 +55,7 @@ export function About() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('about.title')} | Adit Hardiansyah Surachman</title>
-        <meta name="description" content={t('about.summary')} />
-      </Helmet>
+      <PageHead title={"{t('about.title')} | Adit Hardiansyah Surachman"} description={t('about.summary')} />
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="animate-slideUp">
