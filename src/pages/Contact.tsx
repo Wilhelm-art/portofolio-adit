@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import { PageHead } from '../components/PageHead';
 import { Mail, MessageSquare, Linkedin, Github, MapPin, Send, ArrowUpRight, Copy, Check } from 'lucide-react';
 
 export function Contact() {
@@ -25,10 +25,7 @@ export function Contact() {
 
   return (
     <>
-      <Helmet>
-        <title>{t('contact.title')} | Adit Hardiansyah Surachman</title>
-        <meta name="description" content={t('contact.subtitle')} />
-      </Helmet>
+      <PageHead title={"{t('contact.title')} | Adit Hardiansyah Surachman"} description={t('contact.subtitle')} />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="animate-slideUp">

@@ -105,7 +105,14 @@ html {
   animation: marquee 30s linear infinite;
   display: flex;
   width: max-content;
-  will-change: transform;
+  contain: layout paint style;
+  transform: translateZ(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }
 
 /* Hollow Outline Text Stroke */
@@ -148,4 +155,3 @@ html.light .text-stroke-outline-strong {
   -webkit-text-stroke: 2px rgba(15, 23, 42, 0.22);
   color: transparent;
 }
-

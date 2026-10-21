@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { useParams, Link, useLocation } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import { PageHead } from '../components/PageHead';
 import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react';
 import { projects } from '../data';
 
@@ -49,13 +49,7 @@ export function ProjectDetail() {
 
   return (
     <>
-      <Helmet>
-        <title>{project.title} | Adit Hardiansyah Surachman</title>
-        <meta name="description" content={project.tagline} />
-        <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
-        </script>
-      </Helmet>
+      <PageHead title={"{project.title} | Adit Hardiansyah Surachman"} description={project.tagline} />
 
       <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="animate-slideUp">
@@ -102,6 +96,9 @@ export function ProjectDetail() {
               <img 
                 src={project.screenshot} 
                 alt={`Tampilan antarmuka ${project.title}`}
+                width="800"
+                height="450"
+                loading="lazy"
                 className="w-full h-full object-cover object-top"
                 onError={(e) => {
                   const target = e.target as HTMLElement;

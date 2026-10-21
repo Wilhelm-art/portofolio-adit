@@ -1,12 +1,12 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
 
 import enCommon from './locales/en/common.json';
 import idCommon from './locales/id/common.json';
 
+const isEn = typeof window !== 'undefined' && window.location.pathname.startsWith('/en');
+
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources: {
@@ -17,6 +17,7 @@ i18n
         common: idCommon,
       },
     },
+    lng: isEn ? 'en' : 'id',
     fallbackLng: 'id',
     defaultNS: 'common',
     interpolation: {
