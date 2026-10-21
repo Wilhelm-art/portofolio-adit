@@ -51,8 +51,8 @@ export function Resume() {
   const activePdfName = pdfLang === 'en' ? "CV_Adit_Hardiansyah_Surachman_EN.pdf" : "CV_Adit_Hardiansyah_Surachman.pdf";
 
   // Google Drive Mirrors
-  const resumeIdUrl = "https://drive.google.com/file/d/1oJSIMlTs2hHnD1hY6rY0glTLSdGr5S_t/view?usp=sharing";
-  const resumeEnUrl = "https://drive.google.com/file/d/1zmIBvzadSzNE1YKiVMwlMWOlcdPXiuPq/view?usp=sharing";
+  const resumeIdUrl = "https://drive.google.com/file/d/1PPRLUeM_r5TaoEL6X1iz0uMx1xJ3EwNo/view?usp=sharing";
+  const resumeEnUrl = "https://drive.google.com/file/d/1w6BHPLNlXkpx9VXiTWjowLf6KCGfDGH3/view?usp=sharing";
 
   const handleCopy = (text: string, field: string) => {
     navigator.clipboard.writeText(text);
