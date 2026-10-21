@@ -99,8 +99,7 @@ This portfolio intentionally departs from common "AI-generated template cliches"
 
 - **Core Framework:** React 19, TypeScript 5.8, Vite 6
 - **Styling:** Tailwind CSS v4, Lucide React icons
-- **Animations:** Framer Motion (`motion/react`)
-- **Routing & State:** React Router v7, React Helmet Async
+- **Routing & State:** React Router v7
 - **Localization:** i18next, react-i18next
 - **Hosting & Edge:** Vercel Edge Network, Cloudflare DNS
 
