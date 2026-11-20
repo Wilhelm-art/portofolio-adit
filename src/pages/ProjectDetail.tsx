@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { PageHead } from '../components/PageHead';
-import { ArrowLeft, ArrowUpRight, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, ExternalLink, Github } from 'lucide-react';
 import { projects } from '../data';
 
 export function ProjectDetail() {
@@ -49,7 +49,7 @@ export function ProjectDetail() {
 
   return (
     <>
-      <PageHead title={"{project.title} | Adit Hardiansyah Surachman"} description={project.tagline} />
+      <PageHead title={`${project.title} | Adit Hardiansyah Surachman`} description={project.tagline} />
 
       <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="animate-slideUp">
@@ -77,17 +77,30 @@ export function ProjectDetail() {
               {project.tagline}
             </p>
 
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-semibold bg-[var(--color-paper-50)] text-[var(--color-canvas-950)] hover:bg-white rounded transition-all active:scale-[0.98] shadow-sm"
-              >
-                <span>{t('projects.view_live')}</span>
-                <ExternalLink className="w-3.5 h-3.5 text-[var(--color-canvas-950)]" />
-              </a>
-            )}
+            <div className="flex flex-wrap items-center gap-3">
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-semibold bg-[var(--color-paper-50)] text-[var(--color-canvas-950)] hover:bg-white rounded transition-all active:scale-[0.98] shadow-sm"
+                >
+                  <span>{t('projects.view_live')}</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-[var(--color-canvas-950)]" />
+                </a>
+              )}
+              {project.repoUrl && (
+                <a
+                  href={project.repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-3 text-xs font-mono uppercase tracking-wider font-semibold border border-white/15 hover:border-white/30 text-[var(--color-paper-50)] hover:bg-[var(--color-canvas-850)] rounded transition-all active:scale-[0.98]"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>{isEnglish ? "Source Code (GitHub)" : "Kode Sumber (GitHub)"}</span>
+                </a>
+              )}
+            </div>
           </header>
 
           {/* Project Visual / Architecture Card */}
@@ -184,6 +197,8 @@ export function ProjectDetail() {
                         <span className="font-bold text-xs sm:text-sm text-white">
                           {project.id === 'meracik-ide' 
                             ? 'React Native • Expo SDK 57 • NativeWind (Offline-First Mobile)' 
+                            : project.id === 'lacakin'
+                            ? 'React Native • Expo • Google ML Kit On-Device OCR • Tailwind CSS'
                             : `${project.stack[0]} • Responsive Adaptive UI • Tactile Micro-Interactions`}
                         </span>
                       </div>
@@ -213,6 +228,10 @@ export function ProjectDetail() {
                             ? 'NextAuth.js • Role-Based KYC Verification • CSRF & CSP Protection' 
                             : project.id === 'meracik-ide'
                             ? 'Zustand Global State • HPP Calculation Engine • Multi-Tier Price Simulator'
+                            : project.id === 'lacakin'
+                            ? 'Local Atomic Ledger • On-Device ML OCR Parser • Biometric Privacy Shield'
+                            : project.id === 'disdagin-keuangan-web'
+                            ? 'Laravel 10 RBAC Controller • Sub-second Engine (0.3s) • Kadis & Admin Roles'
                             : 'REST API Controller • Input Sanitization • Auth Guard Middleware'}
                         </span>
                       </div>
@@ -238,10 +257,12 @@ export function ProjectDetail() {
                           PERSISTENCE &amp; STORAGE LAYER
                         </span>
                         <span className="font-bold text-xs sm:text-sm text-white">
-                          {project.id === 'meracik-ide'
-                            ? 'SQLite Local Database (Zero-Latency Offline) • Auto Sync Engine'
+                          {project.id === 'meracik-ide' || project.id === 'lacakin'
+                            ? 'SQLite Local Database (Zero-Latency Offline) • 100% Local Privacy'
                             : project.id === 'gadget-vault'
                             ? 'Prisma ORM • PostgreSQL Relational Database • Index Optimization'
+                            : project.id === 'disdagin-keuangan-web'
+                            ? 'Supabase PostgreSQL Cloud DB • Automated Financial PDF/Excel Export'
                             : 'MySQL Relational Schema • Indexed Queries • ACID Transactions'}
                         </span>
                       </div>
@@ -290,6 +311,26 @@ export function ProjectDetail() {
                     className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-paper-50)] transition-colors active:scale-[0.98]"
                   >
                     <span>{project.liveUrl.replace(/^https?:\/\//, '')}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              )}
+
+              {project.repoUrl && (
+                <div className="border border-white/[0.08] bg-[var(--color-canvas-900)] p-6 rounded-lg">
+                  <h3 className="text-xs font-mono uppercase tracking-wider text-[var(--color-paper-50)] mb-2 font-semibold">
+                    {isEnglish ? "Source Code" : "Repositori Kode"}
+                  </h3>
+                  <p className="text-xs text-[var(--color-stone-muted)] mb-4 leading-relaxed">
+                    {isEnglish ? "Open-source GitHub repository with complete architectural implementation." : "Kode sumber terbuka di GitHub dengan implementasi arsitektur lengkap."}
+                  </p>
+                  <a
+                    href={project.repoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-[var(--color-accent)] hover:text-[var(--color-paper-50)] transition-colors active:scale-[0.98]"
+                  >
+                    <span>{project.repoUrl.replace(/^https?:\/\//, '')}</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                 </div>

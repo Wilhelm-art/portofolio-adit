@@ -55,7 +55,7 @@ export function About() {
 
   return (
     <>
-      <PageHead title={"{t('about.title')} | Adit Hardiansyah Surachman"} description={t('about.summary')} />
+      <PageHead title={`${t('about.title')} | Adit Hardiansyah Surachman`} description={t('about.summary')} />
       
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="animate-slideUp">

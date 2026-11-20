@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { PageHead } from '../components/PageHead';
-import { ArrowUpRight, Search } from 'lucide-react';
+import { ArrowUpRight, Github, Search } from 'lucide-react';
 import { projects } from '../data';
 
 export function Projects() {
@@ -11,12 +11,13 @@ export function Projects() {
   const isEnglish = location.pathname.startsWith('/en');
   const basePath = isEnglish ? '/en' : '';
 
-  const [activeCategory, setActiveCategory] = useState<'all' | 'fullstack' | 'systems' | 'frontend'>('all');
+  const [activeCategory, setActiveCategory] = useState<'all' | 'fullstack' | 'mobile' | 'systems' | 'frontend'>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
   const categories = [
     { id: 'all' as const, label: isEnglish ? 'All Projects' : 'Semua Proyek' },
-    { id: 'fullstack' as const, label: isEnglish ? 'Full-Stack' : 'Full-Stack Web' },
+    { id: 'fullstack' as const, label: isEnglish ? 'Full-Stack Web' : 'Full-Stack Web' },
+    { id: 'mobile' as const, label: isEnglish ? 'Mobile Apps' : 'Aplikasi Mobile' },
     { id: 'systems' as const, label: isEnglish ? 'Systems & DB' : 'Sistem & Basis Data' },
     { id: 'frontend' as const, label: isEnglish ? 'Frontend / Utility' : 'Frontend / Utilitas' },
   ];
@@ -30,15 +31,16 @@ export function Projects() {
 
     if (!matchesSearch) return false;
     if (activeCategory === 'all') return true;
-    if (activeCategory === 'fullstack') return project.stack.some(s => ['Next.js', 'Next.js 16', 'Laravel', 'Laravel 10', 'Prisma', 'Express.js'].includes(s));
-    if (activeCategory === 'systems') return project.stack.some(s => ['PostgreSQL', 'MySQL', 'Docker', 'Prisma'].includes(s));
-    if (activeCategory === 'frontend') return project.stack.some(s => ['React', 'Tailwind CSS', 'Framer Motion'].includes(s));
+    if (activeCategory === 'fullstack') return ['disdagin-keuangan-web', 'gadget-vault', 'sistem-kas-masjid', 'komik-zynqtoon'].includes(project.id);
+    if (activeCategory === 'mobile') return project.category === 'mobile' || project.stack.some(s => ['React Native', 'Expo', 'Expo SDK 57', 'Android'].includes(s));
+    if (activeCategory === 'systems') return project.category === 'system' || project.stack.some(s => s.toLowerCase().includes('sql') || s.toLowerCase().includes('docker') || s.toLowerCase().includes('prisma') || s.toLowerCase().includes('supabase'));
+    if (activeCategory === 'frontend') return ['surabi-cikal-cisangkan', 'savetok'].includes(project.id);
     return true;
   });
 
   return (
     <>
-      <PageHead title={"{t('projects.title')} | Adit Hardiansyah Surachman"} description={t('projects.subtitle')} />
+      <PageHead title={`${t('projects.title')} | Adit Hardiansyah Surachman`} description={t('projects.subtitle')} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
@@ -186,7 +188,7 @@ export function Projects() {
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-3 pt-2">
+                    <div className="flex flex-wrap items-center gap-3 pt-2">
                       <Link
                         to={`${basePath}/projects/${project.id}`}
                         className="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-mono uppercase tracking-wider font-medium border border-white/15 hover:border-white/30 text-[var(--color-paper-50)] hover:bg-[var(--color-canvas-850)] rounded transition-all active:scale-[0.98]"
@@ -204,6 +206,19 @@ export function Projects() {
                         >
                           <span>{t('projects.view_live')}</span>
                           <ArrowUpRight className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+
+                      {project.repoUrl && (
+                        <a
+                          href={project.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-mono uppercase tracking-wider text-[var(--color-stone-muted)] hover:text-[var(--color-paper-50)] border border-white/[0.08] hover:border-white/20 rounded transition-colors active:scale-[0.98]"
+                          title={isEnglish ? "View GitHub Repository" : "Buka Repositori GitHub"}
+                        >
+                          <Github className="w-3.5 h-3.5" />
+                          <span>Repo</span>
                         </a>
                       )}
                     </div>
