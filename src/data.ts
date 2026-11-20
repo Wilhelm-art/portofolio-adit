@@ -30,6 +30,20 @@ export const projects: Project[] = [
     featured: true
   },
   {
+    id: 'lacakin',
+    title: 'Lacakin',
+    tagline: '100% Offline-First Personal Finance & AI Receipt Scanner Mobile App',
+    problem: 'Users required a private, zero-cloud personal financial tracker capable of instantly digitizing physical receipts without exposing sensitive transactions or requiring internet connectivity.',
+    solution: 'Engineered an offline-first Android application with on-device Google ML Kit OCR receipt scanning, multi-wallet atomic ledger, recurring bill countdowns, and biometric app lock.',
+    stack: ['React Native', 'Expo', 'Google ML Kit OCR', 'SQLite', 'TypeScript', 'Tailwind CSS'],
+    impact: 'Delivered 100% local data privacy with sub-second receipt parsing and zero cloud telemetry.',
+    liveUrl: 'https://github.com/Wilhelm-art/lacakin/releases/latest',
+    repoUrl: 'https://github.com/Wilhelm-art/lacakin',
+    screenshot: '/projects/lacakin.webp',
+    category: 'mobile',
+    featured: true
+  },
+  {
     id: 'meracik-ide',
     title: 'Meracik Ide',
     tagline: 'Mobile Business Engine for Indonesian MSMEs (UMKM)',

@@ -56,3 +56,7 @@ desktop.ini
 
 # Antigravity IDE local cache
 .antigravity/
+
+# User local session notepad / scratch
+agy.txt
+

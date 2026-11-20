@@ -500,7 +500,7 @@ export function HomeContent() {
                   <div className="flex flex-wrap items-center gap-6 font-mono text-xs text-[var(--color-stone-muted)]">
                     <div>
                       <span className="text-[10px] uppercase block text-[var(--color-stone-subtle)]">PROJECTS</span>
-                      <span className="font-bold text-white text-sm">7+ Systems</span>
+                      <span className="font-bold text-white text-sm">8+ Systems</span>
                     </div>
                     <div>
                       <span className="text-[10px] uppercase block text-[var(--color-stone-subtle)]">CERTIFICATES</span>
