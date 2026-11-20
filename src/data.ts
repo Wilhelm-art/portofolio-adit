@@ -2,6 +2,20 @@ import { Project } from './types';
 
 export const projects: Project[] = [
   {
+    id: 'disdagin-keuangan-web',
+    title: 'SIPK DISDAGIN Kota Bandung',
+    tagline: 'Regional budget & municipal treasury management system',
+    problem: 'The Municipal Department of Trade and Industry needed a centralized, sub-second financial system to track budgeting, revenue, and municipal expenditures with strict role-based access control (RBAC).',
+    solution: 'Architected a high-performance cloud ledger with Laravel 10, Supabase PostgreSQL, role-based access control (Admin & Kadis), sub-second execution (0.3s), and official PDF/Excel report export.',
+    stack: ['Laravel 10', 'Supabase PostgreSQL', 'Tailwind CSS', 'Vercel Serverless', 'PHP 8.2'],
+    impact: 'Achieved sub-second query latency (0.3s) and Grade A+ security compliance for municipal financial governance.',
+    liveUrl: 'https://disdagin.vercel.app',
+    repoUrl: 'https://github.com/Wilhelm-art/disdagin-keuangan-web',
+    screenshot: '/projects/disdagin.webp',
+    category: 'system',
+    featured: true
+  },
+  {
     id: 'gadget-vault',
     title: 'GadgetVault',
     tagline: 'Premium marketplace for flagship gadgets',
@@ -51,7 +65,7 @@ export const projects: Project[] = [
     solution: 'Engineered a comprehensive system with public live cash-flow reports, live prayer-time widget, and a secure admin panel for ledger and donation tracking.',
     stack: ['Laravel 10', 'Alpine.js', 'MySQL', 'Docker'],
     impact: 'Brought full financial transparency to the community and streamlined administrative workflows.',
-    liveUrl: 'https://sistem-kas-masjid.vercel.app',
+    liveUrl: 'https://github.com/Wilhelm-art/sistem-kas-masjid',
     repoUrl: 'https://github.com/Wilhelm-art/sistem-kas-masjid',
     screenshot: '/projects/masjid.webp',
     category: 'system',
