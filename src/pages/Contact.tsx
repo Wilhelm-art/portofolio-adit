@@ -25,7 +25,7 @@ export function Contact() {
 
   return (
     <>
-      <PageHead title={"{t('contact.title')} | Adit Hardiansyah Surachman"} description={t('contact.subtitle')} />
+      <PageHead title={`${t('contact.title')} | Adit Hardiansyah Surachman`} description={t('contact.subtitle')} />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="animate-slideUp">
