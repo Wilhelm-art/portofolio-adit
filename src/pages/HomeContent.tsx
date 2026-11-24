@@ -809,8 +809,8 @@ export function HomeContent() {
 
                 <div className="pt-2 flex flex-wrap items-center gap-3">
                   <a
-                    href="/resume/CV_Adit_Hardiansyah_Surachman.pdf"
-                    download="CV_Adit_Hardiansyah_Surachman.pdf"
+                    href="/resume/CV_Adit_Hardiansyah_Surachman_ID.pdf"
+                    download="CV_Adit_Hardiansyah_Surachman_ID.pdf"
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black font-mono text-xs font-semibold uppercase tracking-wider hover:bg-white/90 active:scale-95 transition-all shadow-lg"
                   >
                     <Download className="w-3.5 h-3.5" />
