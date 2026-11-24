@@ -43,13 +43,13 @@ export function Resume() {
   const [copiedField, setCopiedField] = useState<string | null>(null);
 
   // Original Authentic CV Files in public/resume/
-  const cvVersion = "v=20261021b";
-  const cvIdFile = `/resume/CV_Adit_Hardiansyah_Surachman.pdf?${cvVersion}`;
+  const cvVersion = "v=20261124";
+  const cvIdFile = `/resume/CV_Adit_Hardiansyah_Surachman_ID.pdf?${cvVersion}`;
   const cvEnFile = `/resume/CV_Adit_Hardiansyah_Surachman_EN.pdf?${cvVersion}`;
 
   // Active CV file based on selected language
   const activePdfUrl = pdfLang === 'en' ? cvEnFile : cvIdFile;
-  const activePdfName = pdfLang === 'en' ? "CV_Adit_Hardiansyah_Surachman_EN.pdf" : "CV_Adit_Hardiansyah_Surachman.pdf";
+  const activePdfName = pdfLang === 'en' ? "CV_Adit_Hardiansyah_Surachman_EN.pdf" : "CV_Adit_Hardiansyah_Surachman_ID.pdf";
 
   // Google Drive Mirrors
   const resumeIdUrl = "https://drive.google.com/file/d/1PPRLUeM_r5TaoEL6X1iz0uMx1xJ3EwNo/view?usp=sharing";
@@ -90,7 +90,7 @@ export function Resume() {
               {/* Direct Instant PDF Download (Bahasa Indonesia) */}
               <a 
                 href={cvIdFile}
-                download="CV_Adit_Hardiansyah_Surachman.pdf"
+                download="CV_Adit_Hardiansyah_Surachman_ID.pdf"
                 className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono uppercase tracking-wider font-bold bg-[var(--color-accent)] text-white hover:bg-[var(--color-accent-hover)] rounded-full transition-all active:scale-[0.98] shadow-lg shadow-[var(--color-accent)]/20"
                 title="Unduh CV Asli Bahasa Indonesia"
               >
@@ -283,7 +283,7 @@ export function Resume() {
                 <div className="space-y-1.5 max-w-xs">
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-mono font-medium">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Dokumen PDF Resmi • {pdfLang === 'en' ? '101.0 KB' : '109.8 KB'}</span>
+                    <span>Dokumen PDF Resmi • {pdfLang === 'en' ? '100.4 KB' : '98.1 KB'}</span>
                   </div>
                   <h3 className="text-base font-bold font-display text-[var(--color-paper-50)]">
                     {activePdfName}
@@ -352,8 +352,8 @@ export function Resume() {
                 </h2>
                 <p className="text-sm font-mono text-[var(--color-accent)] font-medium mt-1">
                   {pdfLang === 'en' 
-                    ? "IT Systems Specialist & Technical Operations • Software, Infrastructure & Industrial Machinery" 
-                    : "IT Systems Specialist & Technical Operations • Software, Infrastructure & Industrial Machinery"}
+                    ? "IT Support Specialist • Software Engineer • Manufacturing Operations" 
+                    : "IT Support • Software Engineer • Operasional Manufaktur"}
                 </p>
                 
                 <div className="flex flex-wrap items-center gap-y-2 gap-x-4 mt-4 text-xs font-mono text-[var(--color-stone-muted)]">
